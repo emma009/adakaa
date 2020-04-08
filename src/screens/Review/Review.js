@@ -4,92 +4,27 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import {Header, Icon, Image, Text, Button} from 'react-native-elements';
-import AppConfig from '../../branding/App_config';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import Routes from '../navigation/Routes';
+import Routes from "../../navigation/Routes";
+import SingleReview from "./SingleReview";
 
-
-const assets = AppConfig.assets.default;
-
-
-export default class review extends Component {
+export default class Review extends Component {
 
 
     render () {
 
         return (
-            <View style={{flex: 1, alignItems: 'center'}}>
-
-                <Header
-                    centerComponent={{ text: 'LOGIN', style: { color: '#fff' } }}
-                    backgroundColor={'transparent'}
-                    containerStyle={{
-                        alignItems: 'flex-start',
-                        justifyContent: 'flex-start',
-                        position: 'absolute',
-                        top: 0,
-                        width: '100%',
-                        height: '100%',
-                        zIndex: 1
-                    }}
-                />
-
-                <Image source={assets.login_header} style={{ width: wp('100%'), height: hp('50%')}} />
-
-                <View style={{flex: 1, width: wp("85%"), justifyContent: "center"}}>
-                    <Text style={{fontSize: 24, fontWeight: "bold"}}>{"Welcome"}</Text>
-
-                    <Text style={{fontSize: 18}}>{"To the world the world the world the world the world the world the world the world the world the world the world the world the world the world the world"}</Text>
-
+            <View style={{width: wp("100%"), height: hp("100%"), backgroundColor: "grey", alignItems: "center"}}>
+                <View style={{width: wp("85%")}}>
                     <Button
-                        ViewComponent={() => {
-                            return(
-                                <View style={{height: 40, flexDirection: "row", alignItems: 'center', backgroundColor: "white"}}>
-                                    <View style={{marginLeft: "5%"}}>
-                                        <Icon
-                                            name="google"
-                                            type='font-awesome'
-                                            size={15}
-                                            color="red"
-                                        />
-                                    </View>
-                                    <View style={{flex: 1, alignItems: 'center'}}>
-                                        <Text style={{fontSize: 18}}>{"Connect using Google"}</Text>
-                                    </View>
-                                </View>
-                            );
-                        }}
+                        title={"Add review"}
+                        containerStyle={{marginBottom: "5%"}}
+                        onPress={() => this.props.navigation.navigate(Routes.SUBMIT_REVIEW)}
                     />
-
-                    <Button
-                        ViewComponent={() => {
-                            return(
-                                <View style={{height: 40, flexDirection: "row", alignItems: 'center', backgroundColor: "#6cc51d"}}>
-                                    <View style={{marginLeft: "5%"}}>
-                                        <Icon
-                                            name="google"
-                                            type='font-awesome'
-                                            size={15}
-                                            color="white"
-                                        />
-                                    </View>
-                                    <View style={{flex: 1, alignItems: 'center'}}>
-                                        <Text style={{fontSize: 18, color: "white"}} >{"Connect using Google"}</Text>
-                                    </View>
-                                </View>
-                            );
-                        }}
-                        onPress={() => {
-                            this.props.navigation.navigate(Routes.SIGNUP_FORM_SCREEN)
-                        }}
+                    <SingleReview
+                        rating={4.5}
+                        img={require('./Assets/Images/img.png')}
                     />
-
-                    <View style={{flexDirection:"row", alignItems: "center", justifyContent: "center"}}>
-                        <Text style={{fontSize: 16}}>{"Already have an account?"}</Text>
-                        <Button title={"Login"} type={"clear"} titleStyle={{color: "black "}} onPress={() => {
-                            this.props.navigation.navigate(Routes.LOGIN_FORM_SCREEN)
-                        }} />
-                    </View>
                 </View>
             </View>
         )

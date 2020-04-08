@@ -1,6 +1,4 @@
-
-
-
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 const styles = {
     buttonShadow: {
@@ -14,6 +12,7 @@ const styles = {
 
         elevation: 3,
     },
+    actualWidth: wp("85%"),
 
 };
 

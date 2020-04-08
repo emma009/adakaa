@@ -100,7 +100,7 @@ export default class IntroScreen extends Component {
 
                 </View>
 
-                <View style={{flex: 0.2, justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{flex: 0.2, justifyContent:  'center', alignItems: 'center'}}>
                     <Button containerStyle={{width: wp('80')}}
                             buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                             title={'Get Started'}

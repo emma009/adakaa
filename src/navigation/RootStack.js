@@ -11,13 +11,25 @@ import LoginScreen from '../screens/LoginScreen';
 import LoginFormScreen from '../screens/LoginFormScreen';
 import SignupFormScreen from '../screens/SignupFormScreen';
 import ForgotPasswordFormScreen from '../screens/ForgotPasswordFormScreen';
+import Testing from "../screens/Testing";
+import SingleGroceryItem from "../screens/SingleGroceryItem/SingleGroceryItem";
+import review from "../screens/Review/Review";
+import AddReview from "../screens/Review/AddReview";
+import ProfileMenu from "../screens/Profile/ProfileMenu";
+import About from "../screens/Profile/About/About";
 
 const Stack = createStackNavigator();
 
 export function RootStack() {
     return (
 
-        <Stack.Navigator initialRouteName={Routes.SPLASH_SCREEN} headerMode={'none'}>
+        <Stack.Navigator initialRouteName={Routes.TESTING} headerMode={'none'}>
+            <Stack.Screen name={Routes.ABOUT_ME} component={About} />
+            <Stack.Screen name={Routes.PROFILE_MENU} component={ProfileMenu} />
+            <Stack.Screen name={Routes.SUBMIT_REVIEW} component={AddReview} />
+            <Stack.Screen name={Routes.REVIEW} component={review} />
+            <Stack.Screen name={Routes.SINGLE_GROCERY_ITEM} component={SingleGroceryItem} />
+            <Stack.Screen name={Routes.TESTING} component={Testing} />
             <Stack.Screen name={Routes.SPLASH_SCREEN} component={SplashScreen} />
             <Stack.Screen name={Routes.INTRO_SCREEN} component={IntroScreen} />
             <Stack.Screen name={Routes.LOGIN_SCREEN} component={LoginScreen} />
