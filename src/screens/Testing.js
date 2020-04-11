@@ -4,8 +4,8 @@ import {
 } from 'react-native';
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import FoodItem from "./FoodItem/FoodItem";
-import CategoryItem from "./CategoryItem/CategoryItem";
+import FoodItem from "../components/FoodItem/FoodItem";
+import CategoryItem from "../components/CategoryItem/CategoryItem";
 import CartCounter from "../components/CartCounter/CartCounter";
 
 export default class Testing extends Component {
@@ -16,8 +16,8 @@ export default class Testing extends Component {
                 <View style={{width: wp("85%"), justifyContent: "space-between"}}>
                     <FoodItem
                         title={"Organic Lemons"}
-                        image={require("./FoodItem/Assets/Images/OrganicLemons.png")}
-                        bigImage={require("./FoodItem/Assets/Images/BigImage.png")}
+                        image={require("../components/FoodItem/Assets/Images/OrganicLemons.png")}
+                        bigImage={require("../components/FoodItem/Assets/Images/BigImage.png")}
                         price={"$1.22"}
                         weight={"1.50 lbs"}
                         discount={"15%"}
@@ -29,14 +29,14 @@ export default class Testing extends Component {
                         navigation={this.props.navigation}
                         ratingValue={1}
                     />
-                    <CategoryItem
-                        secondaryTitle={"fresh"}
-                        secondaryColor={"#FF4344"}
-                        primaryTitle={"fruits"}
-                        primaryColor={"#DD2021"}
-                        iconURI={require('./CategoryItem/Assets/Images/Icon.png')}
-                        bgURI={require('./CategoryItem/Assets/Images/Background.png')}
-                    />
+                    {/*<CategoryItem*/}
+                    {/*    secondaryTitle={"fresh"}*/}
+                    {/*    secondaryColor={"#FF4344"}*/}
+                    {/*    primaryTitle={"fruits"}*/}
+                    {/*    primaryColor={"#DD2021"}*/}
+                    {/*    iconURI={require('../components/CategoryItem/Assets/Images/Icon.png')}*/}
+                    {/*    bgURI={require('../components/CategoryItem/Assets/Images/Background.png')}*/}
+                    {/*/>*/}
                     <CartCounter
                         cartCount={10}
                     />

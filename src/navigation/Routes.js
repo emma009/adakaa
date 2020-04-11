@@ -8,9 +8,13 @@ const Routes = {
     SINGLE_GROCERY_ITEM: "single_grocery_item",
     REVIEW: "review",
     SUBMIT_REVIEW: "submit_review",
-    PROFILE_MENU: 'profile_menu',
-    ABOUT_ME: 'about_me',
-    TESTING: "Testing"
+    PROFILE_MENU: "profile_menu",
+    ABOUT_ME: "about_me",
+    TESTING: "Testing",
+    HOME: "home",
+    SEARCH: "search",
+    POPULAR_DEALS: "popular_deals",
+    CATEGORY: "category",
 };
 
 export default Routes;

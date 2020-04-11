@@ -6,6 +6,7 @@ const AppConfig = {
     colors: require(`./${APP_PATH}/styles/Colors.js`),
     typography: require(`./${APP_PATH}/styles/Typography.js`),
     assets: require(`./${APP_PATH}/assets/Assets.js`),
+    fonts: require(`./${APP_PATH}/assets/Fonts.js`)
 };
 
 export default AppConfig;

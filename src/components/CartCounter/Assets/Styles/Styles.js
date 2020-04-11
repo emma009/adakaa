@@ -1,5 +1,7 @@
-import Fonts from "../../../../../branding/carter/assets/Fonts";
-import colors from "../../../../../branding/carter/styles/Colors";
+import AppConfig from "../../../../../branding/App_config";
+
+const colors = AppConfig.colors.default;
+const Fonts = AppConfig.fonts.default;
 
 let Styles = {
     addCartText: {

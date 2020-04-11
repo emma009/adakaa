@@ -1,8 +1,10 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-import styles from "../../../../../branding/carter/styles/Style";
-import Fonts from "../../../../../branding/carter/assets/Fonts";
-import colors from "../../../../../branding/carter/styles/Colors";
+import AppConfig from "../../../../../branding/App_config";
+
+const colors = AppConfig.colors.default;
+const Fonts = AppConfig.fonts.default;
+const styles = AppConfig.styling.default;
 
 let Styles = {
     mainContainer: {
