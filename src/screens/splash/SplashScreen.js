@@ -4,7 +4,7 @@ import {
     TouchableOpacity,
     Text
 } from 'react-native';
-import Routes from '../navigation/Routes';
+import Routes from '../../navigation/Routes';
 import { StackActions } from '@react-navigation/native';
 
 
@@ -17,7 +17,6 @@ export default class SplashScreen extends Component {
                 StackActions.replace(Routes.INTRO_SCREEN)
             );
         }, 2000)
-
 
     }
 

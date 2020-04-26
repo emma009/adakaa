@@ -7,8 +7,8 @@ import {
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Button, Text} from 'react-native-elements';
-import AppConfig from '../../branding/App_config';
-import Routes from '../navigation/Routes';
+import AppConfig from '../../../branding/App_config';
+import Routes from '../../navigation/Routes';
 import {StackActions} from '@react-navigation/native';
 
 

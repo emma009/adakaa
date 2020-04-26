@@ -4,7 +4,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import {Header, Icon, Image, Text, Button} from 'react-native-elements';
-import AppConfig from '../../branding/App_config';
+import AppConfig from '../../../branding/App_config';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 

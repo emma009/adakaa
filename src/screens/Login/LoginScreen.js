@@ -4,15 +4,15 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import {Header, Icon, Image, Text, Button} from 'react-native-elements';
-import AppConfig from '../../branding/App_config';
+import AppConfig from '../../../branding/App_config';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import Routes from '../navigation/Routes';
+import Routes from '../../navigation/Routes';
 
 
 const assets = AppConfig.assets.default;
 
 
-export default class LoginFormScreen extends Component {
+export default class LoginScreen extends Component {
 
     componentDidMount(){
 
@@ -25,7 +25,7 @@ export default class LoginFormScreen extends Component {
             <View style={{flex: 1, alignItems: 'center'}}>
 
                 <Header
-                    centerComponent={{ text: 'LOGIN', style: { color: '#fff' } }}
+                    centerComponent={{ text: 'WELCOME', style: { color: '#fff' } }}
                     backgroundColor={'transparent'}
                     containerStyle={{
                         alignItems: 'flex-start',
@@ -78,26 +78,28 @@ export default class LoginFormScreen extends Component {
                                         />
                                     </View>
                                     <View style={{flex: 1, alignItems: 'center'}}>
-                                        <Text style={{fontSize: 18, color: "white"}} >{"Connect using Google"}</Text>
+                                        <Text style={{fontSize: 18, color: "white"}}>{"Sign Up"}</Text>
                                     </View>
                                 </View>
                             );
                         }}
-                        onPress={() => {
-                            this.props.navigation.navigate(Routes.SIGNUP_FORM_SCREEN)
-                        }}
+
+
                     />
 
                     <View style={{flexDirection:"row", alignItems: "center", justifyContent: "center"}}>
                         <Text style={{fontSize: 16}}>{"Already have an account?"}</Text>
-                        <Button title={"Login"} type={"clear"} titleStyle={{color: "black "}} onPress={() => {
-                            this.props.navigation.navigate(Routes.LOGIN_FORM_SCREEN)
-                        }} />
+                        <Button title={"Login"} type={"solid"} titleStyle={{color: "black "}} containerStyle={{borderWidth: 1}}/>
                     </View>
                 </View>
             </View>
         )
 
     }
+
+    onLoginPress = () => {
+
+        this.props.navigation.navigate(Routes.LOGIN_FORM_SCREEN);
+    };
 
 }

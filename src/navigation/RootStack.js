@@ -7,12 +7,12 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from './Routes';
-import SplashScreen from '../screens/SplashScreen';
-import IntroScreen from '../screens/IntroScreen';
-import LoginScreen from '../screens/LoginScreen';
-import LoginFormScreen from '../screens/LoginFormScreen';
-import SignupFormScreen from '../screens/SignupFormScreen';
-import ForgotPasswordFormScreen from '../screens/ForgotPasswordFormScreen';
+import SplashScreen from '../screens/splash/SplashScreen';
+import IntroScreen from '../screens/intro/IntroScreen';
+import LoginScreen from '../screens/Login/LoginScreen';
+import LoginFormScreen from '../screens/LoginForm/LoginFormScreen';
+import SignupFormScreen from '../screens/Signup/SignupFormScreen';
+import ForgotPasswordFormScreen from '../screens/ForgotPassword/ForgotPasswordFormScreen';
 import Testing from "../screens/Testing";
 import SingleGroceryItem from "../screens/SingleGroceryItem/SingleGroceryItem";
 import review from "../screens/Review/Review";
@@ -35,7 +35,7 @@ const Tab = createBottomTabNavigator();
 export function RootStack() {
     return (
 
-        <Stack.Navigator initialRouteName={"bottomtabsss"} headerMode={'none'}>
+        <Stack.Navigator initialRouteName={Routes.SPLASH_SCREEN} headerMode={'none'}>
             <Stack.Screen name={Routes.ABOUT_ME} component={About} />
             <Stack.Screen name={Routes.PROFILE_MENU} component={ProfileMenu} />
             <Stack.Screen name={Routes.SUBMIT_REVIEW} component={AddReview} />
@@ -43,7 +43,7 @@ export function RootStack() {
             <Stack.Screen name={Routes.SINGLE_GROCERY_ITEM} component={SingleGroceryItem} />
             <Stack.Screen name={Routes.TESTING} component={Testing} />
             <Stack.Screen name={Routes.SPLASH_SCREEN} component={SplashScreen} />
-            {/*<Stack.Screen name={Routes.INTRO_SCREEN} component={IntroScreen} />*/}
+            <Stack.Screen name={Routes.INTRO_SCREEN} component={IntroScreen} />
             <Stack.Screen name={Routes.LOGIN_SCREEN} component={LoginScreen} />
             <Stack.Screen name={Routes.LOGIN_FORM_SCREEN} component={LoginFormScreen} />
             <Stack.Screen name={Routes.SIGNUP_FORM_SCREEN} component={SignupFormScreen} />
