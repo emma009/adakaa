@@ -4,9 +4,9 @@ import {
 } from 'react-native';
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import FoodItem from "../components/FoodItem/FoodItem";
-import CategoryItem from "../components/CategoryItem/CategoryItem";
-import CartCounter from "../components/CartCounter/CartCounter";
+import FoodItem from "../components/Application/FoodItem/View";
+import CategoryItem from "../components/Application/CategoryItem/CategoryItem";
+import CartCounter from "../components/Application/CartCounter/CartCounter";
 
 export default class Testing extends Component {
 
@@ -16,8 +16,8 @@ export default class Testing extends Component {
                 <View style={{width: wp("85%"), justifyContent: "space-between"}}>
                     <FoodItem
                         title={"Organic Lemons"}
-                        image={require("../components/FoodItem/Assets/Images/OrganicLemons.png")}
-                        bigImage={require("../components/FoodItem/Assets/Images/BigImage.png")}
+                        image={require("../components/Application/FoodItem/Assets/Images/OrganicLemons.png")}
+                        bigImage={require("../components/Application/FoodItem/Assets/Images/BigImage.png")}
                         price={"$1.22"}
                         weight={"1.50 lbs"}
                         discount={"15%"}

@@ -1,6 +1,27 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import fonts from "../assets/Fonts";
+import Typography from "./Typography";
 
 const styles = {
+
+    buttonFontStyle: {
+        fontFamily: fonts.RUBIK_MEDIUM
+    },
+
+    socialButton: {
+        height: 40,
+        flexDirection: "row",
+        alignItems: 'center',
+        paddingLeft: wp("5")
+    },
+
+    socialButtonText: {
+        fontFamily: fonts.RUBIK_REGULAR,
+        fontSize: Typography.P3,
+        width: "100%",
+        textAlign: "center"
+    },
+
     buttonShadow: {
         shadowColor: "#000",
         shadowOffset: {
@@ -12,7 +33,14 @@ const styles = {
 
         elevation: 3,
     },
-    actualWidth: wp("85%"),
+
+    actualWidth: wp("90%"),
+
+    gridWidth: wp("90%"),
+
+    gridSize: {
+        width: wp("90%")
+    },
 
 };
 

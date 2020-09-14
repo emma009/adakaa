@@ -7,24 +7,39 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from './Routes';
-import SplashScreen from '../screens/splash/SplashScreen';
-import IntroScreen from '../screens/intro/IntroScreen';
-import LoginScreen from '../screens/Login/LoginScreen';
-import LoginFormScreen from '../screens/LoginForm/LoginFormScreen';
-import SignupFormScreen from '../screens/Signup/SignupFormScreen';
-import ForgotPasswordFormScreen from '../screens/ForgotPassword/ForgotPasswordFormScreen';
+import SplashScreen from '../screens/Splash/View';
+import IntroScreen from '../screens/Intro/View';
+import LoginScreen from '../screens/Login/View';
+import LoginFormScreen from '../screens/LoginForm/View';
+import SignupFormScreen from '../screens/Signup/View';
+import ForgotPasswordFormScreen from '../screens/ForgotPassword/View';
 import Testing from "../screens/Testing";
-import SingleGroceryItem from "../screens/SingleGroceryItem/SingleGroceryItem";
-import review from "../screens/Review/Review";
-import AddReview from "../screens/Review/AddReview";
-import ProfileMenu from "../screens/Profile/ProfileMenu";
-import About from "../screens/Profile/About/About";
-import {Avatar, Image} from "react-native-elements";
+import ProductDetail from "../screens/ProductDetail/View";
+import review from "../screens/ReviewList/View";
+import AddReview from "../screens/AddReview/View";
+import CartList from "../screens/CartList/View";
+import CheckoutDelivery from "../screens/CheckoutDelivery/View";
+import CheckoutAddress from "../screens/CheckoutAddress/View";
+import CheckoutPayment from "../screens/CheckoutPayment/View";
+import OrderSuccess from "../screens/OrderSuccess/View";
+import AboutMe from "../screens/AboutMe/View";
+import MyOrders from "../screens/MyOrders/View";
+import Profile from "../screens/Profile/View";
+import {Avatar, Icon, Image} from "react-native-elements";
 import AppConfig from "../../branding/App_config";
-import Home from "../screens/Home/Home";
-import PopularDeals from "../screens/PopularDeals/PopularDeals";
-import Category from "../screens/Category/Category";
+import Home from "../screens/Home/View";
+import Favourites from "../screens/Favourites/View";
+import PopularDeals from "../screens/PopularDeals/View";
+import CategoryList from "../screens/CategoryList/View";
+import CategoryItems from "../screens/CategoryItems/View";
 import Search from "../screens/Search/Search";
+import {SafeAreaProvider, SafeAreaConsumer} from "react-native-safe-area-context";
+import Globals from "../utils/Globals";
+import colors from "../../branding/carter/styles/Colors";
+import Styles from "../screens/Home/Styles";
+import AddAddress from "../screens/AddAddress/View";
+import MyAddress from "../screens/MyAddress/View";
+import MyCreditCards from "../screens/MyCreditCards/View";
 
 const images = AppConfig.assets.default;
 
@@ -36,22 +51,43 @@ export function RootStack() {
     return (
 
         <Stack.Navigator initialRouteName={Routes.SPLASH_SCREEN} headerMode={'none'}>
-            <Stack.Screen name={Routes.ABOUT_ME} component={About} />
-            <Stack.Screen name={Routes.PROFILE_MENU} component={ProfileMenu} />
-            <Stack.Screen name={Routes.SUBMIT_REVIEW} component={AddReview} />
-            <Stack.Screen name={Routes.REVIEW} component={review} />
-            <Stack.Screen name={Routes.SINGLE_GROCERY_ITEM} component={SingleGroceryItem} />
-            <Stack.Screen name={Routes.TESTING} component={Testing} />
             <Stack.Screen name={Routes.SPLASH_SCREEN} component={SplashScreen} />
             <Stack.Screen name={Routes.INTRO_SCREEN} component={IntroScreen} />
             <Stack.Screen name={Routes.LOGIN_SCREEN} component={LoginScreen} />
             <Stack.Screen name={Routes.LOGIN_FORM_SCREEN} component={LoginFormScreen} />
             <Stack.Screen name={Routes.SIGNUP_FORM_SCREEN} component={SignupFormScreen} />
             <Stack.Screen name={Routes.FORGOT_PASSWORD_FORM_SCREEN} component={ForgotPasswordFormScreen} />
+
+            <Stack.Screen name={Routes.HOME} component={bottomTabs} />
+
+            <Stack.Screen name={Routes.CATEGORY_LIST} component={CategoryList} />
+            <Stack.Screen name={Routes.CATEGORY_ITEMS} component={CategoryItems} />
             <Stack.Screen name={Routes.POPULAR_DEALS} component={PopularDeals} />
-            <Stack.Screen name={Routes.CATEGORY} component={Category} />
+            <Stack.Screen name={Routes.PRODUCT_DETAIL} component={ProductDetail} />
+
+
+            <Stack.Screen name={Routes.REVIEW_LIST} component={review} />
+            <Stack.Screen name={Routes.ADD_REVIEW} component={AddReview} />
+
+
+            <Stack.Screen name={Routes.CHECKOUT_DELIVERY} component={CheckoutDelivery} />
+            <Stack.Screen name={Routes.CHECKOUT_ADDRESS} component={CheckoutAddress} />
+            <Stack.Screen name={Routes.CHECKOUT_PAYMENT} component={CheckoutPayment} />
+
+
+            <Stack.Screen name={Routes.ORDER_SUCCESS} component={OrderSuccess} />
+
+
+            <Stack.Screen name={Routes.ABOUT_ME} component={AboutMe} />
+            <Stack.Screen name={Routes.MY_ORDERS} component={MyOrders} />
+            <Stack.Screen name={Routes.My_Address} component={MyAddress} />
+            <Stack.Screen name={Routes.Add_Address} component={AddAddress} />
+            <Stack.Screen name={Routes.My_CREDIT_CARDS} component={MyCreditCards} />
+
+
+            <Stack.Screen name={Routes.TESTING} component={Testing} />
             <Stack.Screen name={Routes.SEARCH} component={Search} />
-            <Stack.Screen name={"bottomtabsss"} component={bottomTabs} />
+
         </Stack.Navigator>
 
     );
@@ -61,10 +97,10 @@ function bottomTabs() {
     return(
         <Tab.Navigator tabBar={props => <MyTabBar {...props} />}>
 
-            <Tab.Screen name={Routes.HOME} component={Home} />
-            <Tab.Screen name={"test2"} component={Testing} />
-            <Tab.Screen name={"test3"} component={Testing} />
-            <Tab.Screen name={"test4"} component={Testing} />
+            <Tab.Screen name={"Home"} component={Home} />
+            <Tab.Screen name={"Favourite"} component={Favourites} />
+            <Tab.Screen name={"Profile"} component={Profile} />
+            <Tab.Screen name={"Cart"} component={CartList} />
 
         </Tab.Navigator>
     );
@@ -73,78 +109,116 @@ function bottomTabs() {
 
 function MyTabBar({ state, descriptors, navigation }) {
     return (
-        <View style={{ flexDirection: 'row' }}>
-            {state.routes.map((route, index) => {
-                console.log("descriptors ===>", descriptors);
-                console.log("index ===>", index);
-                const { options } = descriptors[route.key];
+
+            <View style={{ flexDirection: 'row', backgroundColor: "#fff" }}>
+                {state.routes.map((route, index) => {
+                    const { options } = descriptors[route.key];
 
 
-                const isFocused = state.index === index;
+                    const isFocused = state.index === index;
 
-                const onPress = () => {
-                    const event = navigation.emit({
-                        type: 'tabPress',
-                        target: route.key,
-                        canPreventDefault: true,
-                    });
+                    const onPress = () => {
+                        const event = navigation.emit({
+                            type: 'tabPress',
+                            target: route.key,
+                            canPreventDefault: true,
+                        });
 
-                    if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate(route.name);
+                        if (!isFocused && !event.defaultPrevented) {
+                            navigation.navigate(route.name);
+                        }
+                    };
+
+                    const onLongPress = () => {
+                        navigation.emit({
+                            type: 'tabLongPress',
+                            target: route.key,
+                        });
+                    };
+
+                    if (index === 3) {
+                        return (
+                            <TouchableOpacity
+                                accessibilityRole="button"
+                                accessibilityStates={isFocused ? ['selected'] : []}
+                                accessibilityLabel={options.tabBarAccessibilityLabel}
+                                testID={options.tabBarTestID}
+                                onPress={onPress}
+                                onLongPress={onLongPress}
+                                style={{ flex: 1, height: 40, backgroundColor: "white", justifyContent: "center", alignItems: "center", marginBottom: Globals.SAFE_AREA_INSET.bottom}}
+                            >
+
+                                <Avatar
+                                    rounded
+                                    size={"medium"}
+                                    containerStyle= {{
+                                        bottom: 10,
+                                        borderWidth: 5,
+                                        borderColor: "white"
+                                    }}
+                                    avatarStyle={{
+                                        backgroundColor: colors.buttonGreenColor
+                                    }}
+                                />
+
+
+                            </TouchableOpacity>
+                        );
                     }
-                };
+                    else {
 
-                const onLongPress = () => {
-                    navigation.emit({
-                        type: 'tabLongPress',
-                        target: route.key,
-                    });
-                };
+                        let icon = "google";
 
-                if (index === 3) {
-                    return (
-                        <TouchableOpacity
-                            accessibilityRole="button"
-                            accessibilityStates={isFocused ? ['selected'] : []}
-                            accessibilityLabel={options.tabBarAccessibilityLabel}
-                            testID={options.tabBarTestID}
-                            onPress={onPress}
-                            onLongPress={onLongPress}
-                            style={{ flex: 1, height: 50 }}
-                        >
+                        switch (index) {
 
-                            <Avatar rounded source={images.login_header} size={"medium"} />
+                            case 0:
+                                icon = "google";
+                                break;
+
+                            case 1:
+                                icon = "google";
+                                break;
+
+                            case 2:
+                                icon = "google";
+                                break;
+
+                        }
 
 
-                        </TouchableOpacity>
-                    );
-                }
-                else {
-                    return (
-                        <TouchableOpacity
-                            accessibilityRole="button"
-                            accessibilityStates={isFocused ? ['selected'] : []}
-                            accessibilityLabel={options.tabBarAccessibilityLabel}
-                            testID={options.tabBarTestID}
-                            onPress={onPress}
-                            onLongPress={onLongPress}
-                            style={{ flex: 1, height: 50}}
-                        >
+                        return (
+                            <TouchableOpacity
+                                accessibilityRole="button"
+                                accessibilityStates={isFocused ? ['selected'] : []}
+                                accessibilityLabel={options.tabBarAccessibilityLabel}
+                                testID={options.tabBarTestID}
+                                onPress={onPress}
+                                onLongPress={onLongPress}
+                                style={{flex: 1, height: 40, backgroundColor: "white", justifyContent: "center", alignItems: "center", marginBottom: Globals.SAFE_AREA_INSET.bottom}}>
+
+
+                                {/*isFocused is selected*/}
+
+                                <Icon
+                                    name={icon}
+                                    type="font-awesome"
+                                    size={14}
+                                    color={isFocused ? colors.buttonGreenColor: "#dadada"}
+                                    containerStyle={Styles.sectionHeadingIcon}
+                                />
+
+
+                            </TouchableOpacity>
+                        );
+                    }
+
+
+                })}
+            </View>
 
 
 
-                            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-                                {index === 0 ? "Home" : index === 1 ? "Favourite" : index === 2 ? "Account" : "Cart"}
-                            </Text>
 
-                        </TouchableOpacity>
-                    );
-                }
-
-
-            })}
-        </View>
     );
 }
-
 
