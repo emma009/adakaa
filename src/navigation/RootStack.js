@@ -7,8 +7,10 @@ import {
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from './Routes';
-import SplashScreen from '../screens/Splash/View';
-import IntroScreen from '../screens/Intro/View';
+import SplashScreen from '../screens/splash/View';
+import IntroScreen from '../screens/intro/View';
+import IntroScreen1 from '../screens/intro1/View';
+import IntroScreen2 from '../screens/intro2/View';
 import LoginScreen from '../screens/Login/View';
 import LoginFormScreen from '../screens/LoginForm/View';
 import SignupFormScreen from '../screens/Signup/View';
@@ -50,9 +52,11 @@ const Tab = createBottomTabNavigator();
 export function RootStack() {
     return (
 
-        <Stack.Navigator initialRouteName={Routes.SPLASH_SCREEN} headerMode={'none'}>
+        <Stack.Navigator initialRouteName={Routes.INTRO_SCREEN2} headerMode={'none'}>
             <Stack.Screen name={Routes.SPLASH_SCREEN} component={SplashScreen} />
             <Stack.Screen name={Routes.INTRO_SCREEN} component={IntroScreen} />
+            <Stack.Screen name={Routes.INTRO_SCREEN1} component={IntroScreen1} />
+            <Stack.Screen name={Routes.INTRO_SCREEN2} component={IntroScreen2} />
             <Stack.Screen name={Routes.LOGIN_SCREEN} component={LoginScreen} />
             <Stack.Screen name={Routes.LOGIN_FORM_SCREEN} component={LoginFormScreen} />
             <Stack.Screen name={Routes.SIGNUP_FORM_SCREEN} component={SignupFormScreen} />
