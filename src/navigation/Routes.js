@@ -1,6 +1,8 @@
 const Routes = {
     SPLASH_SCREEN: "splash",
     INTRO_SCREEN: "intro",
+    INTRO_SCREEN1: "intro1",
+    INTRO_SCREEN2: "intro2",
     LOGIN_SCREEN: "login",
     LOGIN_FORM_SCREEN: "login_form",
     SIGNUP_FORM_SCREEN: "signup_form",
