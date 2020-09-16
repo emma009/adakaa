@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Text } from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import { Button, Icon } from 'react-native-elements';
 
 import Styles from "./Assets/Styles/Styles";
@@ -8,11 +8,8 @@ import Styles from "./Assets/Styles/Styles";
 export default class SearchButton extends Component {
     render(){
         return(
-            <Button
-                onPress={() => console.log("Clicked")}
-                ViewComponent={() => {
-                    return(
-                        <View style={Styles.buttonContainer}>
+
+                        <TouchableOpacity onPress={this.props.onPress} style={Styles.buttonContainer}>
                             <Icon
                                 name='search'
                                 type='font-awesome'
@@ -28,10 +25,8 @@ export default class SearchButton extends Component {
                                 size={15}
                                 containerStyle={Styles.rightIcon}
                             />
-                        </View>
-                    );
-                }}
-            />
+                        </TouchableOpacity>
+
         );
     }
 }

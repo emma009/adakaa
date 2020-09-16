@@ -209,12 +209,7 @@ export default class MyOrders extends Component {
                 <View style={{marginLeft: wp("3")}}>
                     <Text style={Styles.orderNo}>{section.orderNo}</Text>
                     <Text style={Styles.dateTime}>{section.dateTime}</Text>
-                    <View style={{flexDirection: "row", alignItems: "center"}}>
-                        <Text style={Styles.itemLabel}>{"Items: "}</Text>
-                        <Text style={Styles.itemValue}>{section.items}</Text>
-                        <Text style={Styles.itemLabel}>{"Total: "}</Text>
-                        <Text style={Styles.itemValue}>{section.total}</Text>
-                    </View>
+
 
                 </View>
 

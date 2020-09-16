@@ -56,7 +56,7 @@ export default class CheckoutDelivery extends Component {
                                     title={'Track Order'}
                                     titleStyle={styles.buttonFontStyle}
                                     onPress={() => {
-                                        // this.props.navigation.navigate(Routes.CHECKOUT_PAYMENT)
+                                        this.props.navigation.navigate(Routes.TRACK_ORDERS)
                                     }}/>
 
                             </View>

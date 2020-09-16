@@ -25,12 +25,14 @@ const Routes = {
     ORDER_SUCCESS: "order_success",
 
     MY_ORDERS: "my_order",
+    TRACK_ORDERS: "track_order",
 
     ABOUT_ME: "about_me",
 
     TESTING: "Testing",
 
     SEARCH: "search",
+    APPLY_FILTERS: "apply_filters",
 
 
     My_Address: "my_address",
@@ -39,6 +41,9 @@ const Routes = {
 
     My_CREDIT_CARDS: "my_credit_cards",
     ADD_CREDIT_CARD: "add_credit_cards",
+
+    TRANSACTIONS: "transactions",
+    NOTIFICATIONS: "notifications",
 
 
 };

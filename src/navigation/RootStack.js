@@ -32,7 +32,7 @@ import Favourites from "../screens/Favourites/View";
 import PopularDeals from "../screens/PopularDeals/View";
 import CategoryList from "../screens/CategoryList/View";
 import CategoryItems from "../screens/CategoryItems/View";
-import Search from "../screens/Search/Search";
+import Search from "../screens/Search/View";
 import {SafeAreaProvider, SafeAreaConsumer} from "react-native-safe-area-context";
 import Globals from "../utils/Globals";
 import colors from "../../branding/carter/styles/Colors";
@@ -40,6 +40,11 @@ import Styles from "../screens/Home/Styles";
 import AddAddress from "../screens/AddAddress/View";
 import MyAddress from "../screens/MyAddress/View";
 import MyCreditCards from "../screens/MyCreditCards/View";
+import AddCreditCard from "../screens/AddCreditCard/View";
+import Transactions from "../screens/Transactions/View";
+import Notifications from "../screens/Notifications/View";
+import ApplyFilters from "../screens/ApplyFilters/View";
+import TrackOrder from "../screens/TrackOrder/View";
 
 const images = AppConfig.assets.default;
 
@@ -73,6 +78,7 @@ export function RootStack() {
             <Stack.Screen name={Routes.CHECKOUT_DELIVERY} component={CheckoutDelivery} />
             <Stack.Screen name={Routes.CHECKOUT_ADDRESS} component={CheckoutAddress} />
             <Stack.Screen name={Routes.CHECKOUT_PAYMENT} component={CheckoutPayment} />
+            <Stack.Screen name={Routes.TRACK_ORDERS} component={TrackOrder} />
 
 
             <Stack.Screen name={Routes.ORDER_SUCCESS} component={OrderSuccess} />
@@ -83,10 +89,15 @@ export function RootStack() {
             <Stack.Screen name={Routes.My_Address} component={MyAddress} />
             <Stack.Screen name={Routes.Add_Address} component={AddAddress} />
             <Stack.Screen name={Routes.My_CREDIT_CARDS} component={MyCreditCards} />
+            <Stack.Screen name={Routes.ADD_CREDIT_CARD} component={AddCreditCard} />
 
+            <Stack.Screen name={Routes.TRANSACTIONS} component={Transactions} />
+            <Stack.Screen name={Routes.NOTIFICATIONS} component={Notifications} />
+            <Stack.Screen name={Routes.SEARCH} component={Search} />
+            <Stack.Screen name={Routes.APPLY_FILTERS} component={ApplyFilters} />
 
             <Stack.Screen name={Routes.TESTING} component={Testing} />
-            <Stack.Screen name={Routes.SEARCH} component={Search} />
+
 
         </Stack.Navigator>
 

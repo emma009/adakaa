@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, ScrollView, TouchableWithoutFeedback, View, ViewComponent} from 'react-native';
+import {FlatList, Image, ScrollView, TouchableWithoutFeedback, View, ViewComponent} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import BaseView from "../BaseView"
@@ -43,6 +43,9 @@ export default class CheckoutDelivery extends Component {
                     return (
 
                         <View style={{flex: 1}}>
+
+                            <ScrollView>
+
 
                             <ShippingAddress
                                 markSecondComplete
@@ -112,87 +115,49 @@ export default class CheckoutDelivery extends Component {
 
                                 </TouchableWithoutFeedback>
 
-                                {/*<Button*/}
-                                {/*    onPress={() => {*/}
-                                {/*       */}
-
-                                {/*    }}*/}
-
-                                {/*    ViewComponent={() => {*/}
-                                {/*        return (*/}
-                                {/*            */}
-                                {/*        );*/}
-                                {/*    }}*/}
-                                {/*    containerStyle={[Styles.paymentMethodOuterContainer, {backgroundColor: "white"}, isPayPalSelected && {borderWidth: 1, borderColor: colors.buttonGreenColor}]}*/}
-                                {/*/>*/}
-
-                                {/*<Button*/}
-                                {/*    onPress={() => {*/}
-                                {/*        this.setState({*/}
-                                {/*            isPayPalSelected: false,*/}
-                                {/*            isCreditCardSelected: true,*/}
-                                {/*            isApplePaySelected: false*/}
-                                {/*        })*/}
-                                {/*    }}*/}
-
-                                {/*    ViewComponent={() => {*/}
-                                {/*        return (*/}
-                                {/*            <View style={Styles.paymentMethodInnerContainer}>*/}
-                                {/*                <Icon*/}
-                                {/*                    name="google"*/}
-                                {/*                    type='font-awesome'*/}
-                                {/*                    size={15}*/}
-                                {/*                    color={isCreditCardSelected ? colors.buttonGreenColor : "#dadada"}*/}
-                                {/*                />*/}
-                                {/*                <Text style={{marginTop: hp("1")}}>{"Credit Card"}</Text>*/}
-                                {/*            </View>*/}
-                                {/*        );*/}
-                                {/*    }}*/}
-                                {/*    containerStyle={[Styles.paymentMethodOuterContainer, {backgroundColor: "white"}, isCreditCardSelected && {borderWidth: 1, borderColor: colors.buttonGreenColor}]}*/}
-                                {/*/>*/}
-
-                                {/*<Button*/}
-                                {/*    onPress={() => {*/}
-                                {/*        this.setState({*/}
-                                {/*            isPayPalSelected: false,*/}
-                                {/*            isCreditCardSelected: false,*/}
-                                {/*            isApplePaySelected: true*/}
-                                {/*        })*/}
-                                {/*    }}*/}
-
-                                {/*    ViewComponent={() => {*/}
-                                {/*        return (*/}
-                                {/*            <View style={Styles.paymentMethodInnerContainer}>*/}
-                                {/*                <Icon*/}
-                                {/*                    name="google"*/}
-                                {/*                    type='font-awesome'*/}
-                                {/*                    size={15}*/}
-                                {/*                    color={isApplePaySelected ? colors.buttonGreenColor : "#dadada"}*/}
-                                {/*                />*/}
-                                {/*                <Text style={{marginTop: hp("1")}}>{"Apple Pay"}</Text>*/}
-                                {/*            </View>*/}
-                                {/*        );*/}
-                                {/*    }}*/}
-                                {/*    containerStyle={[Styles.paymentMethodOuterContainer, {backgroundColor: "white"}, isApplePaySelected && {borderWidth: 1, borderColor: colors.buttonGreenColor}]}*/}
-                                {/*/>*/}
-
 
                             </View>
 
-
-                            <View style={{flex: 1, justifyContent: "flex-end", marginBottom: hp("1")}}>
-
-                                <Button
-                                    buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                                    title={'Make Payment'}
-                                    titleStyle={styles.buttonFontStyle}
-                                    onPress={() => {
-                                        this.props.navigation.navigate(Routes.ORDER_SUCCESS)
-                                    }}/>
-
-                            </View>
+                            <Image source={require("../AddCreditCard/assets/credit_card.png")} style={{width: "100%", height: hp("30")}} resizeMode={"contain"} />
 
 
+                            <AppInput
+                                leftIcon={'google'}
+                                placeholder={"Cardholder Name"}
+                                onChangeText={(value) => {}}
+                            />
+
+                            <AppInput
+                                leftIcon={'google'}
+                                placeholder={"Card Name"}
+                                onChangeText={(value) => {}}
+                            />
+
+                            <AppInput
+                                leftIcon={'google'}
+                                placeholder={"Expiry"}
+                                onChangeText={(value) => {}}
+                            />
+
+                            <AppInput
+                                leftIcon={'google'}
+                                placeholder={"CVV"}
+                                onChangeText={(value) => {}}
+                            />
+
+
+
+                            </ScrollView>
+
+
+
+                            <Button
+                                buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
+                                title={'Make Payment'}
+                                titleStyle={styles.buttonFontStyle}
+                                onPress={() => {
+                                    this.props.navigation.navigate(Routes.ORDER_SUCCESS)
+                                }}/>
                         </View>
 
                     );

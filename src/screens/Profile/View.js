@@ -122,7 +122,7 @@ export default class ProfileMenu extends  Component {
 
                         </TouchableWithoutFeedback>
 
-                        <TouchableWithoutFeedback onPress={() => {this.props.navigation.navigate(Routes.ABOUT_ME)}}>
+                        <TouchableWithoutFeedback onPress={() => {this.props.navigation.navigate(Routes.TRANSACTIONS)}}>
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
@@ -143,7 +143,7 @@ export default class ProfileMenu extends  Component {
 
                     <View style={Styles.paymentMethodMainContainer}>
 
-                        <TouchableWithoutFeedback onPress={() => {this.props.navigation.navigate(Routes.ABOUT_ME)}}>
+                        <TouchableWithoutFeedback onPress={() => {this.props.navigation.navigate(Routes.NOTIFICATIONS)}}>
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
@@ -160,7 +160,7 @@ export default class ProfileMenu extends  Component {
 
                         </TouchableWithoutFeedback>
 
-                        <TouchableWithoutFeedback onPress={() => {this.props.navigation.navigate(Routes.ABOUT_ME)}}>
+                        <TouchableWithoutFeedback onPress={() => {this.props.navigation.navigate(Routes.CATEGORY_LIST)}}>
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>

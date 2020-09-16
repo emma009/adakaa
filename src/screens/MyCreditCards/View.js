@@ -164,7 +164,7 @@ export default class MyCreditCards extends Component {
                 title={"Credit Cards"}
                 rightIcon={"google"}
                 onRightIconPress={() => {
-                    this.props.navigation.navigate(Routes.Add_Address)
+                    this.props.navigation.navigate(Routes.ADD_CREDIT_CARD)
                 }}
                 childView={() => {
                     return (

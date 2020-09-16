@@ -261,7 +261,7 @@ export default class Home extends Component {
                 <StatusBar barStyle={Platform.OS === 'ios' ? "dark-content": "light-content"} />
 
                 <SearchButton
-                    _onPress={() => this.props.navigation.navigate(Routes.SEARCH)}
+                    onPress={() => this.props.navigation.navigate(Routes.SEARCH)}
                 />
 
                 <ScrollView showsVerticalScrollIndicator={false}>
