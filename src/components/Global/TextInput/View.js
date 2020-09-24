@@ -61,7 +61,8 @@ class TextInput extends Component {
             showPassword,
             isPasswordField,
             value,
-            keyboardType
+            keyboardType,
+            textInputRef
         } = this.props;
 
 
@@ -73,6 +74,7 @@ class TextInput extends Component {
 
             <Input
                 {...this.props}
+                ref={textInputRef}
                 placeholder={placeholder}
                 placeholderTextColor={placeholderTextColor}
                 onChangeText={(text) => onChangeText(text)}

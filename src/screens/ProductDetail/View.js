@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {
-    View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback
+    View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image
 } from 'react-native';
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import {Text, Button, Image, Icon, Rating} from 'react-native-elements';
+import {Text, Button, Icon, Rating} from 'react-native-elements';
 import Routes from "../../navigation/Routes";
 import Styles from "./Styles";
 import AppHeader from "../../components/Application/AppHeader/View";
@@ -12,6 +12,7 @@ import Counter from "../../components/Global/Counter/View"
 import {StackActions} from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
 import Globals from "../../utils/Globals";
+import assets from "../../../branding/carter/assets/Assets";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -47,7 +48,7 @@ export default class SingleGroceryItem extends Component {
                        <Image
                            source={item.bigImage}
                            resizeMode={"contain"}
-                           containerStyle={Styles.upperImage}
+                           style={Styles.upperImage}
                        />
                    </View>
 
@@ -66,20 +67,20 @@ export default class SingleGroceryItem extends Component {
 
                    <View style={Styles.priceContainer}>
                        <Text style={Styles.priceText}>{item.price}</Text>
-                       <Button
-                           type={"clear"}
-                           icon={
-                               <Icon
-                                   name="heart"
-                                   type='font-awesome'
-                                   size={20}
-                                   color={this.state.favourite ? "#FF595A" :"#B3BCCA"}
-                               />
-                           }
-                           buttonStyle={Styles.favouriteIcon}
-                           onPress={() => this.setState({favourite: !this.state.favourite})}
-                           containerStyle={{width: "50%"}}
-                       />
+                       <View style={{width: "50%", height: hp(2), justifyContent: "center", alignItems: "flex-end"}}>
+                           <TouchableOpacity onPress={() => {
+                               this.setState({favourite: !this.state.favourite})
+                           }}>
+                               <View>
+
+                                   { !this.state.favourite && <Image source={assets.heart_light_empty_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} /> }
+                                   { this.state.favourite && <Image source={assets.heart_filled_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorRed1}} resizeMode={"contain"} /> }
+
+                               </View>
+
+                           </TouchableOpacity>
+
+                       </View>
                    </View>
 
 
@@ -111,9 +112,9 @@ export default class SingleGroceryItem extends Component {
                    </TouchableWithoutFeedback>
 
 
-                   <Text style={Styles.detailText} numberOfLines={5}>{item.detail}</Text>
+                   <Text style={Styles.detailText} numberOfLines={4}>{item.detail}</Text>
 
-                   <View style={{flex: 1, justifyContent: "flex-end"}}>
+                   <View style={{flex: 1, justifyContent: "center"}}>
 
                        <View style={Styles.cartCounter}>
                            <Text style={Styles.cartCounterText }>QUANTITY</Text>

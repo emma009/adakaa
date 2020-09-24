@@ -13,7 +13,7 @@ let Styles = {
 
     foodItemContainer: {
 
-        height: hp("13"),
+        height: hp("15"),
 
         backgroundColor: "white",
 
@@ -35,12 +35,14 @@ let Styles = {
     nameTitle: {
         fontSize: Typography.P1,
         fontFamily: Fonts.RUBIK_MEDIUM,
+        color: colors.textColorBlack1
     },
     addressTitle: {
         fontSize: Typography.P4,
         fontFamily: Fonts.RUBIK_REGULAR,
         marginVertical: hp("0.5"),
         width: "50%",
+        color: colors.textColorGrey1
     },
     itemLabel: {
         fontSize: Typography.P4,
@@ -49,7 +51,8 @@ let Styles = {
     phoneTitle: {
         fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_REGULAR,
-        marginRight: wp("5")
+        marginRight: wp("5"),
+        color: colors.textColorGrey1
     },
     weightText: {
         color: "#697281",
@@ -57,11 +60,12 @@ let Styles = {
         fontSize: Typography.P5,
     },
     profileItemCircle: {
-        width: hp("6"),
-        height: hp("6"),
-        backgroundColor: "#edf8e4",
+        width: hp("8"),
+        height: hp("8"),
         justifyContent: "center",
-        borderRadius: hp("6") / 2
+        alignItems: "center",
+        borderRadius: hp("4"),
+        backgroundColor: colors.secondaryGreenColor
     },
 
     orderProgressCircle: {

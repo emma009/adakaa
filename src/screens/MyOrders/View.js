@@ -13,6 +13,7 @@ import Counter from "../../components/Global/Counter/View";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import fonts from "../../../branding/carter/assets/Fonts";
 import Typography from "../../../branding/carter/styles/Typography";
+import assets from "../../../branding/carter/assets/Assets";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -198,18 +199,35 @@ export default class MyOrders extends Component {
             <View style={Styles.foodItemContainer}>
 
                 <View style={Styles.profileItemCircle}>
-                    <Icon
-                        name="google"
-                        type='font-awesome'
-                        size={hp("3")}
-                        color={colors.buttonGreenColor}
-                    />
+                    <Image source={assets.order_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                 </View>
 
                 <View style={{marginLeft: wp("3")}}>
                     <Text style={Styles.orderNo}>{section.orderNo}</Text>
                     <Text style={Styles.dateTime}>{section.dateTime}</Text>
-
+                    <View style={{flexDirection: "row", alignItems: "center"}}>
+                        <Text style={{
+                            fontSize: Typography.P5,
+                            fontFamily: fonts.RUBIK_LIGHT,
+                            color: colors.textColorGrey1
+                        }}>{"Items: "}</Text>
+                        <Text style={{
+                            fontSize: Typography.P4,
+                            fontFamily: fonts.RUBIK_REGULAR,
+                            color: colors.textColorBlack1,
+                            marginRight: wp(2)
+                        }}>{"10"}</Text>
+                        <Text style={{
+                            fontSize: Typography.P5,
+                            fontFamily: fonts.RUBIK_LIGHT,
+                            color: colors.textColorGrey1
+                        }}>{"Total: "}</Text>
+                        <Text style={{
+                            fontSize: Typography.P4,
+                            fontFamily: fonts.RUBIK_REGULAR,
+                            color: colors.textColorBlack1
+                        }}>{"$ 16.99"}</Text>
+                    </View>
 
                 </View>
 
@@ -225,9 +243,9 @@ export default class MyOrders extends Component {
 
                     <View style={{flexDirection: "row"}}>
                         <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
 
-                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
                         </View>
                         <Text style={Styles.orderProgressTitle}>{"Orders Placed"}</Text>
                         <Text style={Styles.orderProgressSubTitle}>{section.orderPlaced}</Text>
@@ -235,9 +253,9 @@ export default class MyOrders extends Component {
 
                     <View style={{flexDirection: "row"}}>
                         <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
 
-                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
                         </View>
                         <Text style={Styles.orderProgressTitle}>{"Order Confirmed"}</Text>
                         <Text style={Styles.orderProgressSubTitle}>{section.orderConfirmed}</Text>
@@ -245,9 +263,9 @@ export default class MyOrders extends Component {
 
                     <View style={{flexDirection: "row"}}>
                         <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
 
-                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
                         </View>
                         <Text style={Styles.orderProgressTitle}>{"Order Shipped"}</Text>
                         <Text style={Styles.orderProgressSubTitle}>{section.orderShipped}</Text>
@@ -255,9 +273,9 @@ export default class MyOrders extends Component {
 
                     <View style={{flexDirection: "row"}}>
                         <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
 
-                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
                         </View>
                         <Text style={Styles.orderProgressTitle}>{"Out of Delivery"}</Text>
                         <Text style={Styles.orderProgressSubTitle}>{section.outOfDelivery}</Text>
@@ -265,7 +283,7 @@ export default class MyOrders extends Component {
 
                     <View style={{flexDirection: "row"}}>
                         <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderDelivered ? colors.buttonGreenColor : "#B3BCCA"}]} />
+                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderDelivered ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
                         </View>
                         <Text style={Styles.orderProgressTitle}>{"Order Delivered"}</Text>
                         <Text style={Styles.orderProgressSubTitle}>{section.orderDelivered}</Text>

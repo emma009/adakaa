@@ -2,13 +2,14 @@ import * as React from 'react';
 import {
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    Image
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from './Routes';
-import SplashScreen from '../screens/splash/View';
-import IntroScreen from '../screens/intro/View';
+import SplashScreen from '../screens/Splash/View';
+import IntroScreen from '../screens/Intro/View';
 import IntroScreen1 from '../screens/intro1/View';
 import IntroScreen2 from '../screens/intro2/View';
 import LoginScreen from '../screens/Login/View';
@@ -27,7 +28,6 @@ import OrderSuccess from "../screens/OrderSuccess/View";
 import AboutMe from "../screens/AboutMe/View";
 import MyOrders from "../screens/MyOrders/View";
 import Profile from "../screens/Profile/View";
-import {Avatar, Icon, Image} from "react-native-elements";
 import AppConfig from "../../branding/App_config";
 import Home from "../screens/Home/View";
 import Favourites from "../screens/Favourites/View";
@@ -47,6 +47,8 @@ import Transactions from "../screens/Transactions/View";
 import Notifications from "../screens/Notifications/View";
 import ApplyFilters from "../screens/ApplyFilters/View";
 import TrackOrder from "../screens/TrackOrder/View";
+import assets from "../../branding/carter/assets/Assets";
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 const images = AppConfig.assets.default;
 
@@ -57,7 +59,7 @@ const Tab = createBottomTabNavigator();
 export function RootStack() {
     return (
 
-        <Stack.Navigator initialRouteName={Routes.INTRO_SCREEN2} headerMode={'none'}>
+        <Stack.Navigator initialRouteName={Routes.INTRO_SCREEN} headerMode={'none'}>
             <Stack.Screen name={Routes.SPLASH_SCREEN} component={SplashScreen} />
             <Stack.Screen name={Routes.INTRO_SCREEN} component={IntroScreen} />
             <Stack.Screen name={Routes.INTRO_SCREEN1} component={IntroScreen1} />
@@ -163,18 +165,35 @@ function MyTabBar({ state, descriptors, navigation }) {
                                 style={{ flex: 1, height: 40, backgroundColor: "white", justifyContent: "center", alignItems: "center", marginBottom: Globals.SAFE_AREA_INSET.bottom}}
                             >
 
-                                <Avatar
-                                    rounded
-                                    size={"medium"}
-                                    containerStyle= {{
-                                        bottom: 10,
-                                        borderWidth: 5,
-                                        borderColor: "white"
-                                    }}
-                                    avatarStyle={{
-                                        backgroundColor: colors.buttonGreenColor
-                                    }}
-                                />
+                                <View style={{width: hp(7), height: hp(7),
+                                    bottom: 10,
+                                    borderWidth: 5,
+                                    borderRadius: hp(3.5),
+                                    borderColor: "white",
+                                    backgroundColor: colors.buttonGreenColor,
+                                    justifyContent: "center",
+                                    alignItems: "center"
+                                }}>
+                                    <Image source={assets.cart_regular_icon} style={{width: hp(3), height: hp(3), tintColor: "white" }} resizeMode={"contain"} />
+                                </View>
+
+                                {/*<Avatar*/}
+                                {/*    rounded*/}
+                                {/*    size={"medium"}*/}
+                                {/*    ImageComponent={() => {*/}
+                                {/*        return(*/}
+                                {/*            */}
+                                {/*        );*/}
+                                {/*    }}*/}
+                                {/*    containerStyle= {{*/}
+                                {/*        bottom: 10,*/}
+                                {/*        borderWidth: 5,*/}
+                                {/*        borderColor: "white"*/}
+                                {/*    }}*/}
+                                {/*    avatarStyle={{*/}
+                                {/*        backgroundColor: colors.buttonGreenColor*/}
+                                {/*    }}*/}
+                                {/*/>*/}
 
 
                             </TouchableOpacity>
@@ -182,20 +201,20 @@ function MyTabBar({ state, descriptors, navigation }) {
                     }
                     else {
 
-                        let icon = "google";
+                        let icon = assets.cart_regular_icon;
 
                         switch (index) {
 
                             case 0:
-                                icon = "google";
+                                icon = assets.home_icon;
                                 break;
 
                             case 1:
-                                icon = "google";
+                                icon = assets.heart_regular_icon;
                                 break;
 
                             case 2:
-                                icon = "google";
+                                icon = assets.account_icon;
                                 break;
 
                         }
@@ -214,14 +233,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
                                 {/*isFocused is selected*/}
 
-                                <Icon
-                                    name={icon}
-                                    type="font-awesome"
-                                    size={14}
-                                    color={isFocused ? colors.buttonGreenColor: "#dadada"}
-                                    containerStyle={Styles.sectionHeadingIcon}
-                                />
-
+                                <Image source={icon} style={{width: hp(3), height: hp(3), tintColor: isFocused ? colors.textColorBlack1: colors.iconColorGrey1}} resizeMode={"contain"} />
 
                             </TouchableOpacity>
                         );

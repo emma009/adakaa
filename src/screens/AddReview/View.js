@@ -9,6 +9,7 @@ import AppInput from "../../components/Application/AppInput/View"
 import Styles from "./Styles";
 import {StackActions} from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
+import assets from "../../../branding/carter/assets/Assets";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -45,8 +46,9 @@ export default class AddReview extends  Component {
 
                             <AppInput
                                 multiline
-                                leftIcon={'google'}
+                                leftIcon={assets.pencil_icon}
                                 placeholder={"Tell us about your experience"}
+                                placeholderTextColor={colors.textColorGrey1}
                                 onChangeText={(value) => {}}
                             />
 

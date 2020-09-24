@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Icon} from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
 import TextInput from "../../Global/TextInput/View";
-import {ViewPropTypes} from "react-native";
+import {Image, ViewPropTypes} from "react-native";
 
 const PropTypes = require('prop-types');
 
@@ -15,6 +15,7 @@ class AppInput extends Component {
 
     render() {
         const {
+            textInputRef,
             placeholder,
             placeholderTextColor,
             onChangeText,
@@ -31,15 +32,13 @@ class AppInput extends Component {
         return (
 
             <TextInput
+                {...this.props}
+                textInputRef={textInputRef}
                 placeholder={placeholder}
                 placeholderTextColor={placeholderTextColor}
                 leftIcon={
-                    <Icon
-                        name={leftIcon}
-                        type='font-awesome'
-                        size={15}
-                        color={leftIconColor}
-                    />}
+                    <Image source={leftIcon} style={{width: hp(2), height: hp(2), tintColor: leftIconColor}} resizeMode={"contain"} />
+                }
                 containerStyle={[
                     {
                         backgroundColor: backgroundColor,
@@ -49,7 +48,7 @@ class AppInput extends Component {
 
                     ]}
                 leftIconContainerStyle={{
-                    paddingRight: wp('5')
+                    paddingRight: wp('3')
                 }}
                 onChangeText={(value) => {
                     onChangeText(value)

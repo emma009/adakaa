@@ -36,7 +36,7 @@ export default class CheckoutDelivery extends Component {
                     selectedDeliveryIndex: index
                 })
             }}>
-                <View style={[Styles.deliveryContainer, this.state.selectedDeliveryIndex === index && {borderWidth: 1, borderColor: colors.buttonGreenColor}]}>
+                <View style={[Styles.deliveryContainer, this.state.selectedDeliveryIndex === index && {borderWidth: 1, borderColor: colors.primaryGreenColor}]}>
 
                     <View style={{flex: 0.8, height: "80%", paddingLeft: wp("5")}}>
                         <Text style={Styles.deliveryHeader}>{title}</Text>

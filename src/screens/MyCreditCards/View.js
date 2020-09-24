@@ -13,6 +13,8 @@ import Counter from "../../components/Global/Counter/View";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import fonts from "../../../branding/carter/assets/Fonts";
 import Typography from "../../../branding/carter/styles/Typography";
+import assets from "../../../branding/carter/assets/Assets";
+import TextInput from "../../components/Global/TextInput/View";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -83,23 +85,37 @@ export default class MyCreditCards extends Component {
             <View style={Styles.foodItemContainer}>
 
                 <View style={Styles.profileItemCircle}>
-                    <Icon
-                        name="google"
-                        type='font-awesome'
-                        size={hp("3")}
-                        color={colors.buttonGreenColor}
-                    />
+                    <Image source={section.type === "Master Card" ? assets.master_card_icon : assets.visa_icon} style={{width: hp(3), height: hp(3)}} resizeMode={"contain"} />
                 </View>
 
                 <View style={{marginLeft: wp("3")}}>
                     <Text style={Styles.nameTitle}>{section.type}</Text>
                     <Text style={Styles.addressTitle}>{section.cardNo}</Text>
+
                     <View style={{flexDirection: "row", alignItems: "center"}}>
-                        <Text style={Styles.itemLabel}>{"Expiry: "}</Text>
-                        <Text style={Styles.itemValue}>{section.expiry}</Text>
-                        <Text style={Styles.itemLabel}>{"CVV: "}</Text>
-                        <Text style={Styles.itemValue}>{section.CVV}</Text>
+                        <Text style={{
+                            fontSize: Typography.P5,
+                            fontFamily: fonts.RUBIK_LIGHT,
+                            color: colors.textColorGrey1
+                        }}>{"Expiry: "}</Text>
+                        <Text style={{
+                            fontSize: Typography.P4,
+                            fontFamily: fonts.RUBIK_REGULAR,
+                            color: colors.textColorBlack1,
+                            marginRight: wp(2)
+                        }}>{section.expiry}</Text>
+                        <Text style={{
+                            fontSize: Typography.P5,
+                            fontFamily: fonts.RUBIK_LIGHT,
+                            color: colors.textColorGrey1
+                        }}>{"CVV: "}</Text>
+                        <Text style={{
+                            fontSize: Typography.P4,
+                            fontFamily: fonts.RUBIK_REGULAR,
+                            color: colors.textColorBlack1
+                        }}>{section.CVV}</Text>
                     </View>
+
 
                 </View>
 
@@ -114,36 +130,74 @@ export default class MyCreditCards extends Component {
                 <View style={{flex: 1, alignItems: "center"}}>
 
                     <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.cardNo}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
+                        backgroundColor={colors.textColorGrey2}
+                        placeholderTextColor={colors.textColorGrey1}
+                        leftIcon={assets.account_icon}
+                        leftIconColor={colors.iconColorGrey1}
+                        placeholder={"Cardholder Name"}
                         onChangeText={(value) => {}}
                     />
 
                     <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.expiry}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
+                        backgroundColor={colors.textColorGrey2}
+                        placeholderTextColor={colors.textColorGrey1}
+                        leftIcon={assets.credit_card_icon}
+                        leftIconColor={colors.iconColorGrey1}
+                        placeholder={"Card Number"}
                         onChangeText={(value) => {}}
                     />
 
-                    <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.CVV}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
-                        onChangeText={(value) => {}}
-                    />
+                    <View style={{flexDirection: "row", width: "100%", justifyContent: "space-between"}}>
 
-                    <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.postalCode}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
-                        onChangeText={(value) => {}}
-                    />
+                        <TextInput
+                            placeholder={"Expiry"}
+                            placeholderTextColor={colors.textColorGrey1}
+                            leftIcon={
+                                <Image source={assets.calendar_icon}
+                                       resizeMode={"contain"}
+                                       style={{width: hp(2), height: hp (2), tintColor: colors.iconColorGrey1}} />
+                            }
+                            containerStyle={[
+                                {
+                                    backgroundColor: colors.textColorGrey2,
+                                    width: "49%",
+                                    marginVertical: hp("0.5"),
+                                },
+
+                            ]}
+                            leftIconContainerStyle={{
+                                paddingRight: wp('3')
+                            }}
+                            onChangeText={(value) => {
+
+                            }}
+                        />
+
+                        <TextInput
+                            placeholder={"CVV"}
+                            placeholderTextColor={colors.textColorGrey1}
+                            leftIcon={
+                                <Image source={assets.lock_icon}
+                                       resizeMode={"contain"}
+                                       style={{width: hp(2), height: hp (2), tintColor: colors.iconColorGrey1}} />
+                            }
+                            containerStyle={[
+                                {
+                                    backgroundColor: colors.textColorGrey2,
+                                    width: "49%",
+                                    marginVertical: hp("0.5"),
+                                },
+
+                            ]}
+                            leftIconContainerStyle={{
+                                paddingRight: wp('3')
+                            }}
+                            onChangeText={(value) => {
+
+                            }}
+                        />
+
+                    </View>
 
 
                 </View>
@@ -162,7 +216,7 @@ export default class MyCreditCards extends Component {
             <BaseView
                 navigation={this.props.navigation}
                 title={"Credit Cards"}
-                rightIcon={"google"}
+                rightIcon={assets.plus_circle_icon}
                 onRightIconPress={() => {
                     this.props.navigation.navigate(Routes.ADD_CREDIT_CARD)
                 }}
@@ -171,7 +225,7 @@ export default class MyCreditCards extends Component {
 
                         <View style={{flex: 1}}>
 
-                            <ScrollView>
+                            <ScrollView style={{flex: 0.9}}>
 
                                 <Accordion
                                     sections={creditCards}
@@ -185,13 +239,17 @@ export default class MyCreditCards extends Component {
 
                             </ScrollView>
 
-                                <Button
+                            <View style={{flex: 0.1, justifyContent: "flex-end", marginBottom: hp("1")}}>
+
+                            <Button
                                     buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                     title={'Save Settings'}
                                     titleStyle={styles.buttonFontStyle}
                                     onPress={() => {
 
                                     }}/>
+
+                            </View>
 
                         </View>
 

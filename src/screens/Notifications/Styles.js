@@ -38,11 +38,13 @@ let Styles = {
     nameTitle: {
         fontSize: Typography.P1,
         fontFamily: Fonts.RUBIK_MEDIUM,
+        color: colors.textColorBlack1
     },
     addressTitle: {
-        fontSize: Typography.P4,
+        fontSize: Typography.P5,
         fontFamily: Fonts.RUBIK_REGULAR,
         marginVertical: hp("0.5"),
+        color: colors.textColorGrey1
     },
     priceTitle: {
         flex: 1,

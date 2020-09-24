@@ -1,6 +1,8 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import fonts from "../../../branding/carter/assets/Fonts";
 import Typography from "../../../branding/carter/styles/Typography";
+import AppConfig from "../../../branding/App_config";
+const colors = AppConfig.colors.default;
 
 let style = {
 
@@ -24,7 +26,8 @@ let style = {
         fontSize: Typography.H6,
         width: wp("70"),
         textAlign: "center",
-        marginTop: hp("5")
+        marginTop: hp("5"),
+        color: colors.textColorBlack1
     },
 
     introLowerText: {
@@ -32,7 +35,8 @@ let style = {
         fontSize: Typography.P3,
         width: wp("70"),
         textAlign: "center",
-        marginTop: hp("2")
+        marginTop: hp("2"),
+        color: colors.textColorGrey1
     }
 
 

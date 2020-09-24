@@ -7,9 +7,9 @@ import Routes from '../../navigation/Routes';
 import Style from "./Style"
 import AppHeader from "../../components/Application/AppHeader/View"
 
-
 const assets = AppConfig.assets.default;
 const styles = AppConfig.styling.default;
+const colors = AppConfig.colors.default;
 
 
 export default class LoginScreen extends Component {
@@ -36,19 +36,21 @@ export default class LoginScreen extends Component {
 
                     <Text style={Style.welcomeDescription}>{"To the world's no. 1 grocery app for Android and IOS. We deliver everything on time."}</Text>
 
-                    <TouchableOpacity onPress={() => {
+                    <TouchableOpacity style={{marginBottom: hp(0.5)}} onPress={() => {
                         this.onGoogleSignInPress()
                     }}>
-                        <View style={[styles.socialButton, Style.googleSignInButton]}>
+
+                        <View style={[styles.socialButton, Style.googleSignInButton,{borderRadius: hp(0.3)}]}>
 
                             <Icon
                                 name="google"
                                 type='font-awesome'
-                                size={15}
+                                size={hp(2)}
                                 color="red"
+                                containerStyle={{position: "absolute", left: wp("5")}}
                             />
+                            <Text style={[styles.socialButtonText, {color: colors.textColorGrey1}]}>{"Connect using Google"}</Text>
 
-                            <Text style={styles.socialButtonText}>{"Connect using Google"}</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -59,21 +61,16 @@ export default class LoginScreen extends Component {
                     <TouchableOpacity onPress={() => {
                         this.onSignUpPress()
                     }}>
-                        <View style={[styles.socialButton, Style.signUpButton]}>
+                        <View style={[styles.socialButton, Style.signUpButton,{borderRadius: hp(0.3)}]}>
 
-                            <Icon
-                                name="google"
-                                type='font-awesome'
-                                size={15}
-                                color="white"
-                            />
+                            <Image source={assets.account_icon} containerStyle={{width: hp(2), height: hp(2), position: "absolute",left: wp("5")}} resizeMode={"contain"} />
 
                             <Text style={[styles.socialButtonText, Style.signUpButtonText]}>{"Create an account"}</Text>
                         </View>
                     </TouchableOpacity>
 
 
-                    <View style={Style.accountBottomContainer}>
+                    <View style={[Style.accountBottomContainer, {}]}>
                         <Text style={Style.accountText}>{"Already have an account?"}</Text>
                         <Button
                             title={"Login"}
@@ -83,6 +80,7 @@ export default class LoginScreen extends Component {
                                 this.onLoginPress()
                             }
                         />
+
                     </View>
                 </View>
             </View>

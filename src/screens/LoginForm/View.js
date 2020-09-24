@@ -11,6 +11,7 @@ import Routes from '../../navigation/Routes';
 import Style from "./Style";
 import {StackActions} from "@react-navigation/native";
 import AppHeader from "../../components/Application/AppHeader/View"
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 
 
 const assets = AppConfig.assets.default;
@@ -18,6 +19,7 @@ const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
 
 export default class LoginFormScreen extends Component {
+    inputRef = React.createRef();
 
     constructor(props) {
         super(props);
@@ -36,6 +38,13 @@ export default class LoginFormScreen extends Component {
     render () {
 
         return (
+            <KeyboardAwareScrollView
+                keyboardShouldPersistTaps={'never'}
+                // style={{flex: 1}}
+                getTextInputRefs={() => {
+                    return [this.inputRef];
+                }}
+                showsVerticalScrollIndicator={false}>
             <View style={{flex: 1, alignItems: 'center'}}>
 
                 <Image source={assets.login_header} style={Style.headerImage} />
@@ -54,15 +63,21 @@ export default class LoginFormScreen extends Component {
                     <Text style={Style.welcomeDescription}>{"Sign in to your account"}</Text>
 
                     <AppInput
-                        leftIcon={'google'}
+                        textInputRef={r => (this.inputRef = r)}
+                        leftIcon={assets.envelop_icon}
+                        leftIconColor={colors.iconColorGrey1}
                         placeholder={"Email Address"}
+                        placeholderTextColor={colors.textColorGrey1}
                         onChangeText={(value) => {}}
                     />
 
                     <AppInput
+                        textInputRef={r => (this.inputRef = r)}
                         isPasswordField
-                        leftIcon={'google'}
+                        leftIcon={assets.lock_icon}
+                        leftIconColor={colors.iconColorGrey1}
                         placeholder={"Password"}
+                        placeholderTextColor={colors.textColorGrey1}
                         onChangeText={(value) => {}}
                     />
 
@@ -99,6 +114,7 @@ export default class LoginFormScreen extends Component {
                     </View>
                 </View>
             </View>
+            </KeyboardAwareScrollView>
         )
 
     }

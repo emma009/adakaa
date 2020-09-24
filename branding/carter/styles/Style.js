@@ -12,7 +12,6 @@ const styles = {
         height: 40,
         flexDirection: "row",
         alignItems: 'center',
-        paddingLeft: wp("5")
     },
 
     socialButtonText: {

@@ -4,6 +4,7 @@ import styles from "../../../../../../branding/carter/styles/Style";
 import Typography from "../../../../../../branding/carter/styles/Typography";
 
 const Fonts = AppConfig.fonts.default;
+const colors = AppConfig.colors.default;
 
 let Styles = {
     buttonContainer: {
@@ -12,9 +13,8 @@ let Styles = {
         backgroundColor: "white",
         flexDirection: "row",
         alignItems: "center",
-        paddingLeft: "5%",
-        paddingRight: "5%",
-        marginVertical: hp("1")
+        marginVertical: hp("1"),
+        borderRadius: hp(0.3)
     },
     leftIcon: {
 
@@ -23,7 +23,7 @@ let Styles = {
         marginLeft: hp("2"),
         fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P4,
-        color: "#697281"
+        color: colors.textColorGrey1
     },
     rightIcon: {
         position: "absolute",

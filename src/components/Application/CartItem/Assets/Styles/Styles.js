@@ -29,17 +29,17 @@ let Styles = {
     },
     priceText: {
         fontSize: Typography.P5,
-        fontFamily: Fonts.RUBIK_REGULAR,
+        fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.primaryGreenColor
     },
     itemTitle: {
         fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_MEDIUM,
-        color: "#3B3B43"
+        color: colors.textColorBlack1
     },
     weightText: {
-        color: "#697281",
-        fontFamily: Fonts.RUBIK_LIGHT,
+        color: colors.textColorGrey1,
+        fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P5,
     },
 

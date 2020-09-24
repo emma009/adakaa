@@ -35,11 +35,13 @@ let Styles = {
     orderNo: {
         fontSize: Typography.P1,
         fontFamily: Fonts.RUBIK_MEDIUM,
+        color: colors.textColorBlack1
     },
     dateTime: {
         fontSize: Typography.P4,
         fontFamily: Fonts.RUBIK_REGULAR,
-        marginVertical: hp("0.5")
+        marginVertical: hp("0.5"),
+        color: colors.textColorGrey1
     },
     itemLabel: {
         fontSize: Typography.P4,
@@ -58,9 +60,10 @@ let Styles = {
     profileItemCircle: {
         width: hp("6"),
         height: hp("6"),
-        backgroundColor: "#edf8e4",
         justifyContent: "center",
-        borderRadius: hp("6") / 2
+        alignItems: "center",
+        borderRadius: hp("3"),
+        backgroundColor: colors.secondaryGreenColor
     },
 
     orderProgressCircle: {
@@ -82,14 +85,16 @@ let Styles = {
     orderProgressTitle: {
         flex: 0.5,
         fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4
+        fontSize: Typography.P4,
+        color: colors.textColorBlack1
     },
 
     orderProgressSubTitle: {
         flex: 0.5,
         textAlign: "right",
         fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5
+        fontSize: Typography.P5,
+        color: colors.textColorGrey1
     }
 
 }

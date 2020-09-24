@@ -19,104 +19,6 @@ const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
 
 
-const notifications = [
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    },
-    {
-        type: 'Master Card',
-        date: "Dec 10, 2020 at 10:00 PM",
-        price: "$16.99",
-
-    }
-];
-
 export default class Notifications extends Component {
     constructor(props) {
         super(props);
@@ -192,6 +94,8 @@ export default class Notifications extends Component {
 
                             </ScrollView>
 
+                            <View style={{flex: 1, justifyContent: "flex-end", marginBottom: hp("1")}}>
+
                             <Button
                                 buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                 title={'Save Settings'}
@@ -199,6 +103,8 @@ export default class Notifications extends Component {
                                 onPress={() => {
 
                                 }}/>
+
+                            </View>
 
                         </View>
 

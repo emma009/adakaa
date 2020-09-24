@@ -9,6 +9,8 @@ import { Text, Button, Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Routes from "../../../navigation/Routes";
 import Styles from "./Assets/Styles/Styles";
+import assets from "../../../../branding/carter/assets/Assets";
+import colors from "../../../../branding/carter/styles/Colors";
 
 export default class FoodItem extends Component {
     constructor(props) {
@@ -69,20 +71,19 @@ export default class FoodItem extends Component {
                                 <Text style={Styles.discountText}>- {discount}</Text>
                             </View>}
                         </View>
-                        <View style={{width: "50%"}}>
-                            <Button
-                                type={"clear"}
-                                icon={
-                                    <Icon
-                                        name="heart"
-                                        type='font-awesome'
-                                        size={15}
-                                        color={this.state.favourite ? "#FF595A" :"#B3BCCA"}
-                                    />
-                                }
-                                buttonStyle={{alignSelf: "flex-end"}}
-                                onPress={() => this._favouriteChange()}
-                            />
+                        <View style={{width: "50%", height: hp(2), paddingTop: wp(2), paddingEnd: wp(2), justifyContent: "center", alignItems: "flex-end"}}>
+                            <TouchableOpacity onPress={() => {
+                                this._favouriteChange()
+                            }}>
+                                <View>
+
+                                    { !this.state.favourite && <Image source={assets.heart_light_empty_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} /> }
+                                    { this.state.favourite && <Image source={assets.heart_filled_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorRed1}} resizeMode={"contain"} /> }
+
+                                </View>
+
+                            </TouchableOpacity>
+
                         </View>
                     </View>
 
@@ -104,45 +105,69 @@ export default class FoodItem extends Component {
                                     titleStyle={Styles.addCartText}
                                     type={"clear"}
                                     icon={
-                                        <Icon
-                                            name="shopping-bag"
-                                            type='font-awesome'
-                                            size={15}
-                                            color={Styles.addCartIcon.color}
-                                            containerStyle={Styles.addCartIcon}
-                                        />
+                                       <Image source={assets.cart_light_icon} style={{width: hp(1.5), height: hp(1.5), tintColor: colors.primaryGreenColor, marginRight: wp(1)}} resizeMode={"contain"} />
                                     }
                                     onPress={() => this._cartCountChange("add") }
                                 />
                                 : <View style={{ height: "100%",flexDirection: "row" ,justifyContent:"space-between",
                                     alignItems: "center"}}>
-                                    <Button
-                                        icon={
-                                            <Icon
-                                                name="minus"
-                                                type="font-awesome"
-                                                size={15}
-                                                color={Styles.AddSubtractText.color}
-                                            />
-                                        }
-                                        type={"clear"}
-                                        onPress={() => this._cartCountChange("subtract") }
-                                        containerStyle={Styles.AddButton}
-                                    />
+                                    <TouchableOpacity style={{
+                                        flex: 0.3,
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        borderRightColor: colors.borderColorLight,
+                                        borderRightWidth: 1,
+                                        height: "100%",
+                                    }} onPress={() => {
+                                        this._cartCountChange("subtract")
+                                    }}>
+
+                                        <Image source={assets.minus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+
+                                    </TouchableOpacity>
+
+                                    {/*<Button*/}
+                                    {/*    icon={*/}
+                                    {/*        <Icon*/}
+                                    {/*            name="minus"*/}
+                                    {/*            type="font-awesome"*/}
+                                    {/*            size={15}*/}
+                                    {/*            color={Styles.AddSubtractText}*/}
+                                    {/*        />*/}
+                                    {/*    }*/}
+                                    {/*    type={"clear"}*/}
+                                    {/*    onPress={() => this._cartCountChange("subtract") }*/}
+                                    {/*    containerStyle={Styles.AddButton}*/}
+                                    {/*/>*/}
                                     <Text style={Styles.cartNumberText}>{this.state.cartCount}</Text>
-                                    <Button
-                                        icon={
-                                            <Icon
-                                                name="plus"
-                                                type="font-awesome"
-                                                size={15}
-                                                color={Styles.AddSubtractText.color}
-                                            />
-                                        }
-                                        type={"clear"}
-                                        onPress={() => this._cartCountChange("add") }
-                                        containerStyle={Styles.subtractButton}
-                                    />
+
+                                    <TouchableOpacity style={{
+                                        flex: 0.3,
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        borderLeftColor: colors.borderColorLight,
+                                        borderLeftWidth: 1,
+                                        height: "100%",
+                                    }} onPress={() => {
+                                        this._cartCountChange("add")
+                                    }}>
+
+                                        <Image source={assets.plus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+
+                                    </TouchableOpacity>
+                                    {/*<Button*/}
+                                    {/*    icon={*/}
+                                    {/*        <Icon*/}
+                                    {/*            name="plus"*/}
+                                    {/*            type="font-awesome"*/}
+                                    {/*            size={15}*/}
+                                    {/*            color={Styles.AddSubtractText}*/}
+                                    {/*        />*/}
+                                    {/*    }*/}
+                                    {/*    type={"clear"}*/}
+                                    {/*    onPress={() => this._cartCountChange("add") }*/}
+                                    {/*    containerStyle={Styles.subtractButton}*/}
+                                    {/*/>*/}
                                 </View>
                             }
                         </View>

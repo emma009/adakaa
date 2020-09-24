@@ -13,13 +13,15 @@ let Styles = {
     primaryText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.H8,
-        paddingVertical: hp("3")
+        paddingVertical: hp("3"),
+        color: colors.textColorBlack1
     },
 
     secondaryText: {
         fontFamily: Fonts.RUBIK_LIGHT,
         fontSize: Typography.P2,
         textAlign: "center",
+        color: colors.textColorGrey1
     },
 
     rating: {

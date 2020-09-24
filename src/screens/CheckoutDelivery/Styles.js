@@ -22,7 +22,8 @@ let Styles = {
 
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.P3,
-        marginVertical: hp("1")
+        marginVertical: hp("1"),
+        color: colors.textColorBlack1
 
     },
 
@@ -30,6 +31,7 @@ let Styles = {
         fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P5,
         lineHeight: Typography.P3,
+        color: colors.textColorGrey1
     },
 
     deliveryPrice: {
@@ -37,7 +39,8 @@ let Styles = {
         fontSize: Typography.P3,
         flex: 0.2,
         textAlign: "right",
-        paddingRight: wp("5")
+        paddingRight: wp("5"),
+        color: colors.primaryGreenColor
     },
 
     flatListContainer: {

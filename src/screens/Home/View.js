@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {View, Text, FlatList, ScrollView, TouchableOpacity, StatusBar, Platform} from 'react-native';
+import {View, Text, FlatList, ScrollView, TouchableOpacity, StatusBar, Platform, Image} from 'react-native';
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import {Button, Icon, Image} from 'react-native-elements';
+import {Button, Icon} from 'react-native-elements';
 
 import FoodItem from "../../components/Application/FoodItem/View";
 import CategoryItem from "../../components/Application/CategoryItem/CategoryItem";
@@ -17,6 +17,7 @@ import Routes from "../../navigation/Routes";
 import AppConfig from "../../../branding/App_config";
 import Globals from "../../utils/Globals";
 import styles from "../../../branding/carter/styles/Style";
+import assets from "../../../branding/carter/assets/Assets";
 
 const colors = AppConfig.colors.default;
 
@@ -97,7 +98,7 @@ export default class Home extends Component {
                 {
                     secondaryTitle: "fresh",
                     secondaryColor: "#FF4344",
-                    primaryTitle: "fruits",
+                    primaryTitle: "Fruits",
                     primaryColor: "#DD2021",
                     iconURI: require('../../components/Application/CategoryItem/Assets/Images/fresh_fruits_icon.png'),
                     bgURI: require('../../components/Application/CategoryItem/Assets/Images/fresh_fruits.png')
@@ -105,7 +106,7 @@ export default class Home extends Component {
                 {
                     secondaryTitle: "fresh",
                     secondaryColor: "#ffa200",
-                    primaryTitle: "dairy",
+                    primaryTitle: "Dairy",
                     primaryColor: "#ee7b00",
                     iconURI: require('../../components/Application/CategoryItem/Assets/Images/fresh_dairy_icon.png'),
                     bgURI: require('../../components/Application/CategoryItem/Assets/Images/fresh_dairy.png')
@@ -113,7 +114,7 @@ export default class Home extends Component {
                 {
                     secondaryTitle: "organic",
                     secondaryColor: "#7ad228",
-                    primaryTitle: "vegetables",
+                    primaryTitle: "Vegetables",
                     primaryColor: "#519610",
                     iconURI: require('../../components/Application/CategoryItem/Assets/Images/organic_vegetable_icon.png'),
                     bgURI: require('../../components/Application/CategoryItem/Assets/Images/organic_vegetable.png')
@@ -121,7 +122,7 @@ export default class Home extends Component {
                 {
                     secondaryTitle: "original",
                     secondaryColor: "#1faaff",
-                    primaryTitle: "medicine",
+                    primaryTitle: "Medicine",
                     primaryColor: "#0076be",
                     iconURI: require('../../components/Application/CategoryItem/Assets/Images/original_medicine_icon.png'),
                     bgURI: require('../../components/Application/CategoryItem/Assets/Images/original_medicine.png')
@@ -129,66 +130,10 @@ export default class Home extends Component {
                 {
                     secondaryTitle: "quality",
                     secondaryColor: "#18e2d6",
-                    primaryTitle: "bakery",
+                    primaryTitle: "Bakery",
                     primaryColor: "#09bcb1",
                     iconURI: require('../../components/Application/CategoryItem/Assets/Images/quality_bakery_icon.png'),
                     bgURI: require('../../components/Application/CategoryItem/Assets/Images/quality_bakery.png')
-                },
-                {
-                    secondaryTitle: "baby",
-                    secondaryColor: "#d250e9",
-                    primaryTitle: "products",
-                    primaryColor: "#a627bc",
-                    iconURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products_icon.png'),
-                    bgURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products.png')
-                },
-                {
-                    secondaryTitle: "baby",
-                    secondaryColor: "#d250e9",
-                    primaryTitle: "products",
-                    primaryColor: "#a627bc",
-                    iconURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products_icon.png'),
-                    bgURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products.png')
-                },
-                {
-                    secondaryTitle: "baby",
-                    secondaryColor: "#d250e9",
-                    primaryTitle: "products",
-                    primaryColor: "#a627bc",
-                    iconURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products_icon.png'),
-                    bgURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products.png')
-                },
-                {
-                    secondaryTitle: "baby",
-                    secondaryColor: "#d250e9",
-                    primaryTitle: "products",
-                    primaryColor: "#a627bc",
-                    iconURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products_icon.png'),
-                    bgURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products.png')
-                },
-                {
-                    secondaryTitle: "baby",
-                    secondaryColor: "#d250e9",
-                    primaryTitle: "products",
-                    primaryColor: "#a627bc",
-                    iconURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products_icon.png'),
-                    bgURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products.png')
-                },
-                {
-                    secondaryTitle: "baby",
-                    secondaryColor: "#d250e9",
-                    primaryTitle: "products",
-                    primaryColor: "#a627bc",
-                    iconURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products_icon.png'),
-                    bgURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products.png')
-                },
-                {
-                    secondaryTitle: "baby",
-                    secondaryColor: "#d250e9",
-                    primaryTitle: "products",
-                    primaryColor: "#a627bc",
-                    iconURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products_icon.png'),
-                    bgURI: require('../../components/Application/CategoryItem/Assets/Images/baby_products.png')
                 }
             ],
             slider_data: [
@@ -252,8 +197,6 @@ export default class Home extends Component {
 
     render(){
 
-        console.log("Globals.SAFE_AREA_INSET.top ===>", Globals.SAFE_AREA_INSET.top);
-
         return(
 
             <View  style={[Styles.mainWrapper, styles.gridSize, {marginTop: Globals.SAFE_AREA_INSET.top}]}>
@@ -272,13 +215,8 @@ export default class Home extends Component {
 
                         <TouchableOpacity  onPress={() => {this.props.navigation.navigate(Routes.CATEGORY_LIST)}}>
                             <View style={Styles.sectionHeading}>
-                                <Text style={Styles.sectionHeadingText}>Category</Text>
-                                <Icon
-                                    name="google"
-                                    type="font-awesome"
-                                    size={14}
-                                    containerStyle={Styles.sectionHeadingIcon}
-                                />
+                                <Text style={Styles.sectionHeadingText}>Categories</Text>
+                                <Image source={assets.arrow_right_icon} style={{width: hp(2), height: hp(2), tintColor: colors.textColorGrey1}} resizeMode={"contain"} />
                             </View>
                         </TouchableOpacity>
 
@@ -306,12 +244,8 @@ export default class Home extends Component {
                         <TouchableOpacity onPress={() => {this.props.navigation.navigate(Routes.POPULAR_DEALS);}}>
                             <View style={Styles.sectionHeading}>
                                 <Text style={Styles.sectionHeadingText}>Popular Deals</Text>
-                                <Icon
-                                    name="google"
-                                    type="font-awesome"
-                                    size={14}
-                                    containerStyle={Styles.sectionHeadingIcon}
-                                />
+                                <Image source={assets.arrow_right_icon} style={{width: hp(2), height: hp(2), tintColor: colors.textColorGrey1}} resizeMode={"contain"} />
+
                             </View>
                         </TouchableOpacity>
 

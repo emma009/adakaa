@@ -25,18 +25,20 @@ let Styles = {
 
     paymentMethodInnerContainer: {
         flex: 0.3,
-        height: hp("12"),
+        height: hp("13"),
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "white"
+        backgroundColor: "white",
+        borderRadius: hp(1)
 
     },
     profileItemCircle: {
-        width: hp("4"),
-        height: hp("4"),
-        backgroundColor: "#edf8e4",
+        width: hp("6"),
+        height: hp("6"),
+        backgroundColor: colors.secondaryGreenColor,
         justifyContent: "center",
-        borderRadius: hp("4") / 2
+        alignItems: "center",
+        borderRadius: hp("3")
     }
 
 

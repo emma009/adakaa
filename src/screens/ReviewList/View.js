@@ -4,6 +4,7 @@ import ReviewItem from "../../components/Application/ReviewItem/View";
 
 import BaseView from "../BaseView"
 import Routes from "../../navigation/Routes";
+import assets from "../../../branding/carter/assets/Assets";
 
 export default class Review extends Component {
 
@@ -71,7 +72,7 @@ export default class Review extends Component {
             <BaseView
                 navigation={this.props.navigation}
                 title={"Reviews"}
-                rightIcon={"google"}
+                rightIcon={assets.plus_circle_icon}
                 onRightIconPress={() => {
                     this.props.navigation.navigate(Routes.ADD_REVIEW)
                 }}

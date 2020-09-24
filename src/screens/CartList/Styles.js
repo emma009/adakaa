@@ -31,24 +31,28 @@ let Styles = {
         fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P4,
         flex: 0.5,
+        color: colors.textColorGrey1
 
     },
     subtotalValueText: {
         fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P4,
         flex: 0.5,
-        textAlign: "right"
+        textAlign: "right",
+        color: colors.textColorGrey1
     },
     totalLabelText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.P1,
-        flex: 0.5
+        flex: 0.5,
+        color: colors.textColorBlack1
     },
     totalValueText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.P1,
         flex: 0.5,
-        textAlign: "right"
+        textAlign: "right",
+        color: colors.textColorBlack1
     },
 
 }

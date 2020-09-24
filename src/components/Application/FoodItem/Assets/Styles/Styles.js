@@ -1,4 +1,5 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import Typography from "../../../../../../branding/carter/styles/Typography";
 
 import AppConfig from "../../../../../../branding/App_config";
 
@@ -44,16 +45,19 @@ let Styles = {
         fontFamily: Fonts.RUBIK_MEDIUM
     },
     priceText: {
-        color: colors.primaryGreenColor
+        fontFamily: Fonts.RUBIK_MEDIUM,
+        color: colors.primaryGreenColor,
+        fontSize: Typography.P6
     },
     itemTitle: {
-        fontSize: 15,
+        fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_MEDIUM,
-        color: "#3B3B43",
+        color: colors.textColorBlack1,
         marginVertical: hp("0.5")
     },
     weightText: {
-        color: "#697281",
+        fontSize: Typography.P6,
+        color: colors.textColorGrey1,
         fontFamily: Fonts.RUBIK_REGULAR
     },
     itemBottomContainer: {
@@ -64,8 +68,10 @@ let Styles = {
         borderTopWidth: 1,
     },
     addCartText: {
-        color: "#697281",
+        color: colors.textColorGrey1,
         fontFamily: Fonts.RUBIK_REGULAR,
+        fontSize: Typography.P4,
+
     },
     addCartIcon: {
         color: colors.primaryGreenColor,
@@ -90,7 +96,7 @@ let Styles = {
     },
     cartNumberText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
-        color: "#3B3B43"
+        color: colors.textColorBlack1
     }
 }
 

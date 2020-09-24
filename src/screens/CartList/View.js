@@ -149,7 +149,7 @@ export default class Review extends Component {
                         <Text style={Styles.subtotalValueText}>$16.99</Text>
                     </View>
 
-                    <Divider style={{width: styles.gridWidth, alignSelf: "center", marginBottom: hp("1")}} />
+                    <Divider style={{width: styles.gridWidth, alignSelf: "center", marginBottom: hp("1"), backgroundColor: colors.borderColorLight}} />
 
                     <View style={Styles.totalContainer}>
                         <Text style={Styles.totalLabelText}>Total</Text>

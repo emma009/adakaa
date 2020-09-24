@@ -21,7 +21,7 @@ class ReviewItem extends Component {
 
         return (
 
-            <View style={{padding: "5%", backgroundColor: "white", marginVertical: hp("0.5")}}>
+            <View style={{padding: hp(1), backgroundColor: "white", marginVertical: hp("0.5")}}>
 
                 <View style={Styles.upperContainer}>
                     <Avatar

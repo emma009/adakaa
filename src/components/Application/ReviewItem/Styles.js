@@ -18,30 +18,34 @@ let Styles = {
 
     name: {
         fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4
+        fontSize: Typography.P4,
+        color: colors.textColorBlack1
     },
 
 
     time: {
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6
+        fontSize: Typography.P6,
+        color: colors.textColorGrey1
     },
 
     lowerContainer: {
         borderTopWidth: 1,
-        borderTopColor: "#dadada",
+        borderTopColor: colors.borderColorLight,
         paddingTop: "5%"
     },
 
     ratingText: {
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P2
+        fontSize: Typography.P2,
+        color: colors.textColorBlack1
     },
 
     commentText: {
         fontFamily: Fonts.RUBIK_LIGHT,
-        fontSize: Typography.P4,
-        marginTop: "2%"
+        fontSize: Typography.P5,
+        paddingTop: hp(1),
+        color: colors.textColorGrey1
     }
 
 }

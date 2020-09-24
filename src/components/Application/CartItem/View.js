@@ -11,6 +11,8 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Styles from "./Assets/Styles/Styles";
 import Counter from "../../Global/Counter/View";
+import assets from "../../../../branding/carter/assets/Assets";
+import colors from "../../../../branding/carter/styles/Colors";
 
 export default class CartItem extends Component {
     constructor(props) {
@@ -25,24 +27,36 @@ export default class CartItem extends Component {
             extrapolate: 'clamp',
         });
         return (
-            <Button
+
+            <TouchableOpacity
                 onPress={() => {
 
                 }}
-                ViewComponent={() => {
-                    return (
-                        <View style={{width: wp("20"), height: "100%", backgroundColor: "red", justifyContent: "center"}}>
-                            <Icon
-                                name="google"
-                                type='font-awesome'
-                                size={15}
-                                color={"white"}
-                            />
-                        </View>
+                style={{width: wp("20"), height: "100%", backgroundColor: colors.iconColorRed2, justifyContent: "center", alignItems: "center"}}
+            >
 
-                    );
-                }}
-                />
+                <Image source={assets.trash_icon} style={{width: hp(3), height: hp(3), tintColor: "white"}} resizeMode={"contain"} />
+
+            </TouchableOpacity>
+
+            // <Button
+            //     onPress={() => {
+            //
+            //     }}
+            //     ViewComponent={() => {
+            //         return (
+            //             <View style={{width: wp("20"), height: "100%", backgroundColor: "red", justifyContent: "center"}}>
+            //                 <Icon
+            //                     name="google"
+            //                     type='font-awesome'
+            //                     size={15}
+            //                     color={"white"}
+            //                 />
+            //             </View>
+            //
+            //         );
+            //     }}
+            //     />
         );
     };
 

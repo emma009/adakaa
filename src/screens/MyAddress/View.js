@@ -13,6 +13,8 @@ import Counter from "../../components/Global/Counter/View";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import fonts from "../../../branding/carter/assets/Fonts";
 import Typography from "../../../branding/carter/styles/Typography";
+import assets from "../../../branding/carter/assets/Assets";
+import TextInput from "../../components/Global/TextInput/View";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -96,12 +98,8 @@ export default class MyAddress extends Component {
             <View style={Styles.foodItemContainer}>
 
                 <View style={Styles.profileItemCircle}>
-                    <Icon
-                        name="google"
-                        type='font-awesome'
-                        size={hp("3")}
-                        color={colors.buttonGreenColor}
-                    />
+                    <Image source={assets.map_marker_icon} style={{width: hp(3.5), height: hp(3.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+
                 </View>
 
                 <View style={{marginLeft: wp("3")}}>
@@ -122,51 +120,91 @@ export default class MyAddress extends Component {
                 <View style={{flex: 1, alignItems: "center"}}>
 
                     <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.name}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
+                        backgroundColor={colors.textColorGrey2}
+                        placeholderTextColor={colors.textColorGrey1}
+                        leftIcon={assets.account_icon}
+                        leftIconColor={colors.iconColorGrey1}
+                        placeholder={"Name"}
                         onChangeText={(value) => {}}
                     />
 
                     <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.address}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
+                        backgroundColor={colors.textColorGrey2}
+                        placeholderTextColor={colors.textColorGrey1}
+                        leftIcon={assets.map_marker_icon}
+                        leftIconColor={colors.iconColorGrey1}
+                        placeholder={"Address"}
+                        onChangeText={(value) => {}}
+                    />
+
+                    <View style={{flexDirection: "row", width: "100%", justifyContent: "space-between"}}>
+
+                        <TextInput
+                            placeholder={"City"}
+                            placeholderTextColor={colors.textColorGrey1}
+                            leftIcon={
+                                <Image source={assets.map_marker_icon}
+                                       resizeMode={"contain"}
+                                       style={{width: hp(2), height: hp (2), tintColor: colors.iconColorGrey1}} />
+                            }
+                            containerStyle={[
+                                {
+                                    backgroundColor: colors.textColorGrey2,
+                                    width: "49%",
+                                    marginVertical: hp("0.5"),
+                                },
+
+                            ]}
+                            leftIconContainerStyle={{
+                                paddingRight: wp('3')
+                            }}
+                            onChangeText={(value) => {
+
+                            }}
+                        />
+
+                        <TextInput
+                            placeholder={"Zip Code"}
+                            placeholderTextColor={colors.textColorGrey1}
+                            leftIcon={
+                                <Image source={assets.mailbox_icon}
+                                       resizeMode={"contain"}
+                                       style={{width: hp(2), height: hp (2), tintColor: colors.iconColorGrey1}} />
+                            }
+                            containerStyle={[
+                                {
+                                    backgroundColor: colors.textColorGrey2,
+                                    width: "49%",
+                                    marginVertical: hp("0.5"),
+                                },
+
+                            ]}
+                            leftIconContainerStyle={{
+                                paddingRight: wp('3')
+                            }}
+                            onChangeText={(value) => {
+
+                            }}
+                        />
+
+                    </View>
+
+
+                    <AppInput
+                        backgroundColor={colors.textColorGrey2}
+                        placeholderTextColor={colors.textColorGrey1}
+                        leftIcon={assets.globe_icon}
+                        leftIconColor={colors.iconColorGrey1}
+                        placeholder={"Country"}
                         onChangeText={(value) => {}}
                     />
 
                     <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.city}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
-                        onChangeText={(value) => {}}
-                    />
-
-                    <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.postalCode}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
-                        onChangeText={(value) => {}}
-                    />
-
-
-                    <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.state}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
-                        onChangeText={(value) => {}}
-                    />
-
-                    <AppInput
-                        leftIcon={'google'}
-                        placeholder={section.phone}
-                        backgroundColor={"grey"}
-                        placeholderTextColor={"white"}
+                        backgroundColor={colors.textColorGrey2}
+                        placeholderTextColor={colors.textColorGrey1}
+                        leftIcon={assets.phone_icon}
+                        leftIconColor={colors.iconColorGrey1}
+                        placeholder={"Phone"}
                         onChangeText={(value) => {}}
                     />
 
@@ -188,7 +226,7 @@ export default class MyAddress extends Component {
             <BaseView
                 navigation={this.props.navigation}
                 title={"My Address"}
-                rightIcon={"google"}
+                rightIcon={assets.plus_circle_icon}
                 onRightIconPress={() => {
                     this.props.navigation.navigate(Routes.Add_Address)
                 }}
@@ -197,7 +235,7 @@ export default class MyAddress extends Component {
 
 
                         <View style={{flex: 1}}>
-                            <ScrollView>
+                            <ScrollView style={{flex: 0.9}}>
 
                                 <Accordion
                                     sections={addresses}
@@ -211,6 +249,8 @@ export default class MyAddress extends Component {
 
                             </ScrollView>
 
+                            <View style={{flex: 0.1, justifyContent: "flex-end", marginBottom: hp("1")}}>
+
                             <Button
                                 buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                 title={'Save Settings'}
@@ -218,6 +258,8 @@ export default class MyAddress extends Component {
                                 onPress={() => {
 
                                 }}/>
+
+                            </View>
                         </View>
 
 

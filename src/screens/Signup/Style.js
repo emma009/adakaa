@@ -22,13 +22,15 @@ let style = {
     welcomeHeader: {
         fontFamily: fonts.RUBIK_MEDIUM,
         fontSize: Typography.H8,
-        marginBottom: hp("2")
+        marginBottom: hp("2"),
+        color: colors.textColorBlack1
     },
 
     welcomeDescription: {
         fontFamily: fonts.RUBIK_REGULAR,
         fontSize: Typography.P3,
-        marginBottom: hp("2")
+        marginBottom: hp("2"),
+        color: colors.textColorGrey1
     },
 
     signUpButton: {
@@ -48,11 +50,13 @@ let style = {
 
     accountText: {
         fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4
+        fontSize: Typography.P4,
+        color: colors.textColorGrey1
+
     },
 
     loginButton: {
-        color: "#000000"
+        color: colors.textColorBlack1
     },
 
     signupButton: {

@@ -14,6 +14,7 @@ import Swipeable from "react-native-gesture-handler/Swipeable";
 import fonts from "../../../branding/carter/assets/Fonts";
 import Typography from "../../../branding/carter/styles/Typography";
 import FoodItem from "../../components/Application/FoodItem/View";
+import assets from "../../../branding/carter/assets/Assets";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -152,12 +153,8 @@ export default class Transactions extends Component {
                                         <View style={Styles.foodItemContainer}>
 
                                             <View style={Styles.profileItemCircle}>
-                                                <Icon
-                                                    name="google"
-                                                    type='font-awesome'
-                                                    size={hp("3")}
-                                                    color={colors.buttonGreenColor}
-                                                />
+                                                <Image source={item.type === "Master Card" ? assets.master_card_icon : assets.visa_icon} style={{width: hp(3), height: hp(3)}} resizeMode={"contain"} />
+
                                             </View>
 
                                             <View style={{marginHorizontal: wp("3"), flexDirection: "row", flex: 1}}>

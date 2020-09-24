@@ -44,19 +44,20 @@ let Styles = {
     title: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.H7,
-        color: "#3B3B43",
+        color: colors.textColorBlack1,
         marginBottom: hp("0.5")
     },
     weightText: {
         fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P3,
-        color: "#8B97A9",
+        color: colors.textColorGrey3,
         marginBottom: hp("0.5")
     },
     detailText: {
         fontFamily: Fonts.RUBIK_LIGHT,
         fontSize: Typography.P4,
         lineHeight: hp("3%"),
+        color: colors.textColorGrey1
     },
     cartCounter: {
         width: "100%",
@@ -68,16 +69,18 @@ let Styles = {
     },
     cartCounterText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
-        color: "#697281",
+        color: colors.textColorGrey1,
         marginLeft: "5%"
     },
     ratingText: {
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P3
+        fontSize: Typography.P3,
+        colors: colors.textColorBlack1
     },
     reviewText: {
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4
+        fontSize: Typography.P4,
+        color: colors.textColorGrey1
     }
 }
 
