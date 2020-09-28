@@ -39,11 +39,11 @@ export default class ProfileMenu extends  Component {
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
 
-                                    <Image source={assets.user_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.user_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
 
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"About Me"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"About Me"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -52,10 +52,10 @@ export default class ProfileMenu extends  Component {
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
-                                    <Image source={assets.order_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.order_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"My Orders"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Orders"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -66,10 +66,10 @@ export default class ProfileMenu extends  Component {
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
-                                    <Image source={assets.heart_regular_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.heart_regular_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"My Favourites"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Favourites"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -82,10 +82,10 @@ export default class ProfileMenu extends  Component {
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
-                                    <Image source={assets.map_marker_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.map_marker_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"My Address"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Address"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -94,10 +94,10 @@ export default class ProfileMenu extends  Component {
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
-                                    <Image source={assets.credit_card_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.credit_card_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"Credit Cards"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Credit Cards"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -106,10 +106,10 @@ export default class ProfileMenu extends  Component {
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
-                                    <Image source={assets.transaction_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.transaction_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"Transactions"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Transactions"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -122,10 +122,10 @@ export default class ProfileMenu extends  Component {
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
-                                    <Image source={assets.notification_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.notification_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"Notifications"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Notifications"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -134,10 +134,10 @@ export default class ProfileMenu extends  Component {
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
-                                    <Image source={assets.categories_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.categories_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"Categories"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Categories"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -146,10 +146,10 @@ export default class ProfileMenu extends  Component {
 
                             <View style={Styles.paymentMethodInnerContainer}>
                                 <View style={Styles.profileItemCircle}>
-                                    <Image source={assets.sign_out_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                    <Image source={assets.sign_out_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P4, color: colors.textColorGrey1}}>{"Sign Out"}</Text>
+                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Sign Out"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>

@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import {Button, Image, Input} from 'react-native-elements';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen'
 import {ViewPropTypes} from "react-native";
+import Typography from "../../../../branding/carter/styles/Typography";
+import fonts from "../../../../branding/carter/assets/Fonts";
 
 const PropTypes = require('prop-types');
 
@@ -89,7 +91,7 @@ class TextInput extends Component {
                 inputComponent={inputComponent}
                 keyboardType={keyboardType}
 
-                inputStyle={inputStyle}
+                inputStyle={[{fontFamily:fonts.RUBIK_REGULAR, fontSize: Typography.P4}, inputStyle]}
                 label={label}
                 labelStyle={[labelStyle]}
                 labelProps={labelProps}

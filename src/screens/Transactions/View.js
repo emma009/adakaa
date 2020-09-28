@@ -22,6 +22,7 @@ const styles = AppConfig.styling.default;
 
 const transactions = [
     {
+        isDefault: true,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
@@ -29,6 +30,7 @@ const transactions = [
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
@@ -36,6 +38,7 @@ const transactions = [
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
@@ -43,6 +46,7 @@ const transactions = [
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
@@ -50,6 +54,7 @@ const transactions = [
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
@@ -57,60 +62,70 @@ const transactions = [
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
 
     },
     {
+        isDefault: false,
         type: 'Master Card',
         date: "Dec 10, 2020 at 10:00 PM",
         price: "$16.99",
@@ -127,12 +142,6 @@ export default class Transactions extends Component {
         };
 
     }
-
-    renderCreditCardsHeader = section => {
-
-    };
-
-
 
     render(){
         return(
@@ -152,20 +161,36 @@ export default class Transactions extends Component {
                                     return (
                                         <View style={Styles.foodItemContainer}>
 
-                                            <View style={Styles.profileItemCircle}>
-                                                <Image source={item.type === "Master Card" ? assets.master_card_icon : assets.visa_icon} style={{width: hp(3), height: hp(3)}} resizeMode={"contain"} />
+                                            {item.isDefault && <View style={{position: "absolute", backgroundColor: colors.secondaryGreenColor, width: "18%", height: hp(2.5),
+                                                justifyContent: "center", alignItems: "center", borderTopRightRadius: hp(0.5), borderBottomRightRadius: hp(0.5)
+                                            }}>
+                                                <Text style={{
+                                                    color: colors.primaryGreenColor,
+                                                    fontFamily: fonts.RUBIK_MEDIUM,
+                                                    fontSize: Typography.P8
 
-                                            </View>
+                                                }}>{"DEFAULT"}</Text>
+                                            </View>}
 
-                                            <View style={{marginHorizontal: wp("3"), flexDirection: "row", flex: 1}}>
-                                                <View>
-                                                    <Text style={Styles.nameTitle}>{item.type}</Text>
-                                                    <Text style={Styles.addressTitle}>{item.date}</Text>
+                                            <View style={{flex: 1,flexDirection: "row",
+                                                alignItems: "center",}}>
+                                                <View style={Styles.profileItemCircle}>
+                                                    <Image source={item.type === "Master Card" ? assets.master_card_icon : assets.visa_icon} style={{width: hp(3), height: hp(3)}} resizeMode={"contain"} />
+
                                                 </View>
 
-                                                <Text style={Styles.priceTitle}>{item.price}</Text>
+                                                <View style={{marginHorizontal: wp("3"), flexDirection: "row", flex: 1}}>
+                                                    <View>
+                                                        <Text style={Styles.nameTitle}>{item.type}</Text>
+                                                        <Text style={Styles.addressTitle}>{item.date}</Text>
+                                                    </View>
 
+                                                    <Text style={Styles.priceTitle}>{item.price}</Text>
+
+                                                </View>
                                             </View>
+
+
 
                                         </View>
                                     );

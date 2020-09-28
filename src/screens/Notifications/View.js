@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Image, ScrollView, View, ViewComponent} from 'react-native';
+import {FlatList, Image, ScrollView, Switch, View, ViewComponent} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
@@ -57,6 +57,20 @@ export default class Notifications extends Component {
 
                                     </View>
 
+                                    <View style={{width: "25%"}}>
+                                        <Switch
+                                            trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
+                                            style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                                            thumbColor={this.state.isDefault ? colors.primaryGreenColor : colors.iconColorGrey1}
+                                            onValueChange={(value) => {
+                                                this.setState({
+                                                    isDefault: value
+                                                })
+                                            }}
+                                            value={this.state.isDefault}
+                                        />
+                                    </View>
+
                                 </View>
 
                                 <View style={Styles.foodItemContainer}>
@@ -66,6 +80,20 @@ export default class Notifications extends Component {
                                         <Text style={Styles.nameTitle}>{"Email Notifications"}</Text>
                                         <Text style={Styles.addressTitle}>{"Get notifications via email about our latest deals and seasonal discounts"}</Text>
 
+                                    </View>
+
+                                    <View style={{width: "25%"}}>
+                                        <Switch
+                                            trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
+                                            style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                                            thumbColor={this.state.isDefault1 ? colors.primaryGreenColor : colors.iconColorGrey1}
+                                            onValueChange={(value) => {
+                                                this.setState({
+                                                    isDefault1: value
+                                                })
+                                            }}
+                                            value={this.state.isDefault1}
+                                        />
                                     </View>
 
                                 </View>
@@ -79,6 +107,20 @@ export default class Notifications extends Component {
 
                                     </View>
 
+                                    <View style={{width: "25%"}}>
+                                        <Switch
+                                            trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
+                                            style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                                            thumbColor={this.state.isDefault2 ? colors.primaryGreenColor : colors.iconColorGrey1}
+                                            onValueChange={(value) => {
+                                                this.setState({
+                                                    isDefault2: value
+                                                })
+                                            }}
+                                            value={this.state.isDefault2}
+                                        />
+                                    </View>
+
                                 </View>
 
                                 <View style={Styles.foodItemContainer}>
@@ -90,6 +132,20 @@ export default class Notifications extends Component {
 
                                     </View>
 
+
+                                    <View style={{width: "25%"}}>
+                                        <Switch
+                                            trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
+                                            style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                                            thumbColor={this.state.isDefault3 ? colors.primaryGreenColor : colors.iconColorGrey1}
+                                            onValueChange={(value) => {
+                                                this.setState({
+                                                    isDefault3: value
+                                                })
+                                            }}
+                                            value={this.state.isDefault3}
+                                        />
+                                    </View>
                                 </View>
 
                             </ScrollView>
@@ -99,7 +155,7 @@ export default class Notifications extends Component {
                             <Button
                                 buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                 title={'Save Settings'}
-                                titleStyle={styles.buttonFontStyle}
+                                titleStyle={styles.buttonStyle}
                                 onPress={() => {
 
                                 }}/>

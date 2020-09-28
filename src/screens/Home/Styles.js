@@ -12,6 +12,8 @@ let Styles = {
     mainWrapper: {
         flex: 1,
         alignSelf: "center",
+        width: styles.gridWidth,
+        backgroundColor: colors.textColorGrey2,
         paddingBottom: hp("3"),
     },
 
@@ -20,13 +22,13 @@ let Styles = {
         flexDirection: "row",
         alignItem: "center",
         justifyContent: "space-between",
-        paddingVertical: hp("2"),
+        paddingVertical: hp("1"),
         marginTop: hp("1"),
     },
 
     sectionHeadingText: {
         fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H9,
+        fontSize: Typography.P2,
         color: colors.textColorBlack1
     },
 

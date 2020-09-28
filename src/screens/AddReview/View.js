@@ -56,7 +56,7 @@ export default class AddReview extends  Component {
                                 <Button
                                         buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                         title={'Submit'}
-                                        titleStyle={styles.buttonFontStyle}
+                                        titleStyle={styles.buttonStyle}
                                         onPress={() => {
                                             // this.props.navigation.dispatch(
                                             //     StackActions.replace(Routes.LOGIN_SCREEN)

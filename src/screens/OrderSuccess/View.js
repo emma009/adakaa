@@ -46,9 +46,9 @@ export default class CheckoutDelivery extends Component {
 
                                 <Image source={assets.cart_regular_icon} style={{width: hp(8), height: hp(8), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
 
-                                <Text style={{fontFamily: fonts.RUBIK_MEDIUM, color: colors.textColorBlack1, fontSize: Typography.H7, textAlign: "center", marginTop: hp("3")}}>Your Order was successful!</Text>
+                                <Text style={{fontFamily: fonts.RUBIK_MEDIUM, color: colors.textColorBlack1, fontSize: Typography.H8, textAlign: "center", marginTop: hp("3")}}>Your Order was successful!</Text>
 
-                                <Text style={{fontFamily: fonts.RUBIK_LIGHT, color: colors.textColorGrey1, fontSize: Typography.P4, textAlign: "center", marginTop: hp("3")}}>You'll get a response within a few minutes</Text>
+                                <Text style={{fontFamily: fonts.RUBIK_LIGHT, color: colors.textColorGrey1, fontSize: Typography.P4, lineHeight: hp(4), textAlign: "center", marginTop: hp("3")}}>You'll get a response within a few minutes</Text>
 
                             </View>
 
@@ -59,7 +59,7 @@ export default class CheckoutDelivery extends Component {
                                 <Button
                                     buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                     title={'Track Order'}
-                                    titleStyle={styles.buttonFontStyle}
+                                    titleStyle={styles.buttonStyle}
                                     onPress={() => {
                                         this.props.navigation.navigate(Routes.TRACK_ORDERS)
                                     }}/>

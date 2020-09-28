@@ -9,11 +9,11 @@ const colors = AppConfig.colors.default;
 let Styles = {
     buttonContainer: {
         width: styles.gridWidth,
-        height: 40,
+        height: hp(5),
         backgroundColor: "white",
         flexDirection: "row",
         alignItems: "center",
-        marginVertical: hp("1"),
+        marginVertical: hp("1.5"),
         borderRadius: hp(0.3)
     },
     leftIcon: {

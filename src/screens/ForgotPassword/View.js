@@ -45,7 +45,7 @@ export default class LoginFormScreen extends Component {
                     return [this.inputRef];
                 }}
                 showsVerticalScrollIndicator={false}>
-            <View style={{flex: 1, alignItems: 'center'}}>
+            <View style={{flex: 1, alignItems: 'center', backgroundColor: colors.textColorGrey2}}>
 
                 <Image source={assets.login_header} style={Style.headerImage} />
 
@@ -73,7 +73,7 @@ export default class LoginFormScreen extends Component {
                     <Button containerStyle={Style.loginButton}
                             buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                             title={'Forgot Password'}
-                            titleStyle={styles.buttonFontStyle}
+                            titleStyle={styles.buttonStyle}
                             onPress={() => {
                                 this.onForgotPasswordPress()
                             }}/>

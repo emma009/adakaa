@@ -88,9 +88,10 @@ export default class IntroScreen1 extends Component {
                         activeDotIndex={this.state.activeSlideIndex}
                         dotColor={colors.paginationDotActiveColor}
                         inactiveDotColor={colors.paginationDotInActiveColor}
-                        inactiveDotOpacity={0.4}
-                        inactiveDotScale={0.4}
+                        inactiveDotOpacity={0.5}
+                        inactiveDotScale={0.5}
                         carouselRef={this._carousel}
+
                     />
 
                 </View>

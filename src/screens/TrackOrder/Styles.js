@@ -33,12 +33,12 @@ let Styles = {
         marginRight: wp("2")
     },
     orderNo: {
-        fontSize: Typography.P1,
+        fontSize: Typography.P2,
         fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.textColorBlack1
     },
     dateTime: {
-        fontSize: Typography.P4,
+        fontSize: Typography.P6,
         fontFamily: Fonts.RUBIK_REGULAR,
         marginVertical: hp("0.5"),
         color: colors.textColorGrey1

@@ -44,23 +44,6 @@ export default class CategoryItem extends Component {
 
             </TouchableWithoutFeedback>
 
-            // <Button
-            //
-            //     onPress={() => {
-            //         this.props.navigation.navigate(Routes.CATEGORY_ITEMS, {
-            //             category: primaryTitle
-            //         });
-            //     }}
-            //
-            //     ViewComponent={() => {
-            //
-            //         return (
-            //
-            //         );
-            //
-            //     }}
-            //
-            // />
         );
     }
 }

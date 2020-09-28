@@ -33,12 +33,12 @@ let Styles = {
         marginRight: wp("2")
     },
     orderNo: {
-        fontSize: Typography.P1,
+        fontSize: Typography.P2,
         fontFamily: Fonts.RUBIK_MEDIUM,
-        color: colors.textColorBlack1
+        // color: colors.textColorBlack1
     },
     dateTime: {
-        fontSize: Typography.P4,
+        fontSize: Typography.P6,
         fontFamily: Fonts.RUBIK_REGULAR,
         marginVertical: hp("0.5"),
         color: colors.textColorGrey1
@@ -69,7 +69,7 @@ let Styles = {
     orderProgressCircle: {
         width: hp("2"),
         height: hp("2"),
-        borderRadius: hp("2") / 2,
+        borderRadius: hp("1"),
     },
 
     orderProgressLine: {
@@ -85,7 +85,7 @@ let Styles = {
     orderProgressTitle: {
         flex: 0.5,
         fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
+        fontSize: Typography.P5,
         color: colors.textColorBlack1
     },
 

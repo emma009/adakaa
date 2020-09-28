@@ -29,11 +29,11 @@ let Styles = {
     secondaryTitle: {
         textTransform: "uppercase",
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6
+        fontSize: Typography.P10
     },
     icon: {
-        width: 70,
-        height: 70,
+        width: hp(9),
+        height: hp(9),
     }
 }
 

@@ -46,24 +46,24 @@ export default class TrackOrder extends  Component {
 
                                     <View style={{flexDirection: "row", alignItems: "center"}}>
                                         <Text style={{
-                                            fontSize: Typography.P5,
+                                            fontSize: Typography.P6,
                                             fontFamily: fonts.RUBIK_LIGHT,
                                             color: colors.textColorGrey1
                                         }}>{"Items: "}</Text>
                                         <Text style={{
                                             fontSize: Typography.P4,
-                                            fontFamily: fonts.RUBIK_REGULAR,
+                                            fontFamily: fonts.RUBIK_MEDIUM,
                                             color: colors.textColorBlack1,
                                             marginRight: wp(2)
                                         }}>{"10"}</Text>
                                         <Text style={{
-                                            fontSize: Typography.P5,
+                                            fontSize: Typography.P6,
                                             fontFamily: fonts.RUBIK_LIGHT,
                                             color: colors.textColorGrey1
                                         }}>{"Total: "}</Text>
                                         <Text style={{
                                             fontSize: Typography.P4,
-                                            fontFamily: fonts.RUBIK_REGULAR,
+                                            fontFamily: fonts.RUBIK_MEDIUM,
                                             color: colors.textColorBlack1
                                         }}>{"$ 16.99"}</Text>
                                     </View>

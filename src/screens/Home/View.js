@@ -178,14 +178,14 @@ export default class Home extends Component {
                     activeDotIndex={this.state.activeSlideIndex}
                     dotColor={colors.paginationDotActiveColor}
                     dotStyle={{
-                        width: 20
+                        width: hp(2), height: hp(0.8), marginRight: -hp(1)
                     }}
                     inactiveDotStyle={{
-                        width: 5
+                        width: hp(0.8), height: hp(0.8)
                     }}
-                    inactiveDotColor={colors.paginationDotInActiveColor}
+                    inactiveDotColor={"white"}
                     inactiveDotOpacity={0.4}
-                    inactiveDotScale={0.4}
+                    inactiveDotScale={1}
                     carouselRef={this._carousel}
                     containerStyle={{position: "absolute", bottom: 0,zIndex: 1}}
                 />
@@ -199,7 +199,7 @@ export default class Home extends Component {
 
         return(
 
-            <View  style={[Styles.mainWrapper, styles.gridSize, {marginTop: Globals.SAFE_AREA_INSET.top}]}>
+            <View  style={[Styles.mainWrapper, {marginTop: Globals.SAFE_AREA_INSET.top}]}>
 
                 <StatusBar barStyle={Platform.OS === 'ios' ? "dark-content": "light-content"} />
 

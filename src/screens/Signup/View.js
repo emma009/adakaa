@@ -38,7 +38,7 @@ export default class SignupFormScreen extends Component {
                 }}
                 showsVerticalScrollIndicator={false}>
 
-            <View style={{flex: 1, alignItems: 'center'}}>
+            <View style={{flex: 1, alignItems: 'center', backgroundColor: colors.textColorGrey2}}>
 
 
                     <Image source={assets.login_header} style={Style.headerImage} />
@@ -89,10 +89,10 @@ export default class SignupFormScreen extends Component {
 
 
 
-                    <Button containerStyle={Style.signupButton}
+                    <Button containerStyle={[Style.signupButton]}
                             buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                             title={'Signup'}
-                            titleStyle={styles.buttonFontStyle}
+                            titleStyle={styles.buttonStyle}
                             onPress={() => {
                                 this.onSignUpPress()
                             }}/>

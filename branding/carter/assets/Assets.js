@@ -58,6 +58,7 @@ const assets = {
     sign_out_icon :      require('./images/sign_out_icon.png'),
     master_card_icon :      require('./images/mastercard_icon.png'),
     visa_icon :      require('./images/visa_icon.png'),
+    drop_down_icon :      require('./images/drop_down_icon.png'),
 
 };
 

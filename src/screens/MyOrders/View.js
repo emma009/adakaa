@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Image, ScrollView, View, ViewComponent} from 'react-native';
+import {Animated, FlatList, Image, ScrollView, View, ViewComponent} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
@@ -14,6 +14,7 @@ import Swipeable from "react-native-gesture-handler/Swipeable";
 import fonts from "../../../branding/carter/assets/Fonts";
 import Typography from "../../../branding/carter/styles/Typography";
 import assets from "../../../branding/carter/assets/Assets";
+import Easing from "react-native/Libraries/Animated/src/Easing";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -37,6 +38,8 @@ const orders = [
         outOfDelivery: "Pending",
         isOrderDelivered: false,
         orderDelivered: "Pending",
+
+        spinValue: new Animated.Value(0)
     },
     {
         title: 'First',
@@ -55,6 +58,9 @@ const orders = [
         outOfDelivery: "Pending",
         isOrderDelivered: false,
         orderDelivered: "Pending",
+
+        spinValue: new Animated.Value(0)
+
     },
     {
         title: 'First',
@@ -73,6 +79,9 @@ const orders = [
         outOfDelivery: "Pending",
         isOrderDelivered: false,
         orderDelivered: "Pending",
+
+        spinValue: new Animated.Value(0)
+
     },
     {
         title: 'First',
@@ -91,6 +100,9 @@ const orders = [
         outOfDelivery: "Pending",
         isOrderDelivered: false,
         orderDelivered: "Pending",
+
+        spinValue: new Animated.Value(0)
+
     },
     {
         title: 'First',
@@ -109,6 +121,9 @@ const orders = [
         outOfDelivery: "Pending",
         isOrderDelivered: false,
         orderDelivered: "Pending",
+
+        spinValue: new Animated.Value(0)
+
     },
     {
         title: 'First',
@@ -127,6 +142,9 @@ const orders = [
         outOfDelivery: "Pending",
         isOrderDelivered: false,
         orderDelivered: "Pending",
+
+        spinValue: new Animated.Value(0)
+
     },
     {
         title: 'First',
@@ -141,10 +159,13 @@ const orders = [
         orderConfirmed: "Dec 10, 2020",
         isOrderShipped: true,
         orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
+        isOrderOutOfDelivery: true,
+        outOfDelivery: "Dec 10, 2020",
+        isOrderDelivered: true,
+        orderDelivered: "Dec 10, 2020",
+
+        spinValue: new Animated.Value(0)
+
     },
     {
         title: 'First',
@@ -159,10 +180,13 @@ const orders = [
         orderConfirmed: "Dec 10, 2020",
         isOrderShipped: true,
         orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
+        isOrderOutOfDelivery: true,
+        outOfDelivery: "Dec 10, 2020",
+        isOrderDelivered: true,
+        orderDelivered: "Dec 10, 2020",
+
+        spinValue: new Animated.Value(0)
+
     },
     {
         title: 'First',
@@ -171,67 +195,143 @@ const orders = [
         items: '10',
         total: '$16.99',
 
+
         isOrderPlaced: true,
         orderPlaced: "Dec 10, 2020",
         isOrderConfirmed: true,
         orderConfirmed: "Dec 10, 2020",
         isOrderShipped: true,
         orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
+        isOrderOutOfDelivery: true,
+        outOfDelivery: "Dec 10, 2020",
+        isOrderDelivered: true,
+        orderDelivered: "Dec 10, 2020",
+
+
+        spinValue: new Animated.Value(0)
+
     },
 ];
+
 
 export default class MyOrders extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            activeSections: [],
+            activeSections: [0],
         };
 
     }
 
-    renderOrdersHeader = section => {
+    renderOrdersHeader = (section, index, isActive) => {
+
+        const spin = section.spinValue.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['0deg', '180deg']
+        });
+
+        if (isActive) {
+            Animated.timing(
+                section.spinValue,
+                {
+                    toValue: 1,
+                    duration: 300,
+                    easing: Easing.linear,
+                    useNativeDriver: true  // To make use of native driver for performance
+                }
+            ).start()
+        }
+        else {
+            Animated.timing(
+                section.spinValue,
+                {
+                    toValue: 0,
+                    duration: 300,
+                    easing: Easing.linear,
+                    useNativeDriver: true  // To make use of native driver for performance
+                }
+            ).start()
+        }
+
+
+
         return (
-            <View style={Styles.foodItemContainer}>
+            <View>
+                <View style={Styles.foodItemContainer}>
 
-                <View style={Styles.profileItemCircle}>
-                    <Image source={assets.order_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-                </View>
+                    <View style={[Styles.profileItemCircle, section.isOrderDelivered && {backgroundColor: colors.textColorGrey2}]}>
+                        <Image source={assets.order_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: section.isOrderDelivered ? colors.textColorGrey1 : colors.primaryGreenColor}} resizeMode={"contain"} />
+                    </View>
 
-                <View style={{marginLeft: wp("3")}}>
-                    <Text style={Styles.orderNo}>{section.orderNo}</Text>
-                    <Text style={Styles.dateTime}>{section.dateTime}</Text>
-                    <View style={{flexDirection: "row", alignItems: "center"}}>
-                        <Text style={{
-                            fontSize: Typography.P5,
-                            fontFamily: fonts.RUBIK_LIGHT,
-                            color: colors.textColorGrey1
-                        }}>{"Items: "}</Text>
-                        <Text style={{
-                            fontSize: Typography.P4,
-                            fontFamily: fonts.RUBIK_REGULAR,
-                            color: colors.textColorBlack1,
-                            marginRight: wp(2)
-                        }}>{"10"}</Text>
-                        <Text style={{
-                            fontSize: Typography.P5,
-                            fontFamily: fonts.RUBIK_LIGHT,
-                            color: colors.textColorGrey1
-                        }}>{"Total: "}</Text>
-                        <Text style={{
-                            fontSize: Typography.P4,
-                            fontFamily: fonts.RUBIK_REGULAR,
-                            color: colors.textColorBlack1
-                        }}>{"$ 16.99"}</Text>
+                    <View style={{marginLeft: wp("3")}}>
+                        <Text style={[Styles.orderNo, section.isOrderDelivered && {color: colors.textColorGrey1}]}>{section.orderNo}</Text>
+                        <Text style={[Styles.dateTime, section.isOrderDelivered && {color: colors.textColorGrey1}]}>{section.dateTime}</Text>
+                        <View style={{flexDirection: "row", alignItems: "center"}}>
+                            <Text style={{
+                                fontSize: Typography.P6,
+                                fontFamily: fonts.RUBIK_LIGHT,
+                                color: colors.textColorGrey1
+                            }}>{"Items: "}</Text>
+                            <Text style={{
+                                fontSize: Typography.P4,
+                                fontFamily: fonts.RUBIK_MEDIUM,
+                                color: section.isOrderDelivered ? colors.textColorGrey1 : colors.textColorBlack1,
+                                marginRight: wp(2)
+                            }}>{"10"}</Text>
+                            <Text style={{
+                                fontSize: Typography.P6,
+                                fontFamily: fonts.RUBIK_LIGHT,
+                                color: colors.textColorGrey1
+                            }}>{"Total: "}</Text>
+                            <Text style={{
+                                fontSize: Typography.P4,
+                                fontFamily: fonts.RUBIK_MEDIUM,
+                                color: section.isOrderDelivered ? colors.textColorGrey1 : colors.textColorBlack1
+                            }}>{"$ 16.99"}</Text>
+
+
+                        </View>
+
+
+                    </View>
+
+                    <View style={{flex: 1, alignItems: "flex-end", paddingRight: wp("5"),}}>
+                        <Animated.Image source={assets.drop_down_icon} style={{transform: [{rotate: spin}], width: hp(3), height: hp(3), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                     </View>
 
                 </View>
 
+                {
+                    section.isOrderDelivered && !isActive &&
+                    <View style={{flexDirection: "row", height: hp(5), paddingLeft: wp("5"), alignItems: "center" , backgroundColor: "white"}}>
+
+                        <View style={[{backgroundColor: colors.iconColorGrey1,
+                            width: hp("1.2"),
+                            height: hp("1.2"),
+                            borderRadius: hp("0.6"),
+                            marginRight: wp("2")
+                        }]} />
+
+                        <Text style={{
+                            fontFamily: fonts.RUBIK_REGULAR,
+                            fontSize: Typography.P5,
+                            color: colors.textColorGrey1
+                        }}>{"Orders Placed"}</Text>
+
+                        <Text style={{
+                            flex: 1,
+                            fontFamily: fonts.RUBIK_REGULAR,
+                            fontSize: Typography.P5,
+                            color: colors.textColorGrey1,
+                            textAlign: "right", paddingRight: wp("5")
+                        }}>{"Dec 10, 2020"}</Text>
+
+                    </View>
+                }
+
             </View>
+
         );
     };
 
@@ -315,6 +415,7 @@ export default class MyOrders extends Component {
                                 activeSections={this.state.activeSections}
                                 renderHeader={this.renderOrdersHeader}
                                 renderContent={this.renderOrdersContent}
+                                expandMultiple={false}
                                 sectionContainerStyle={{marginBottom: hp("1")}}
                                 onChange={this._updateSections}
                             />

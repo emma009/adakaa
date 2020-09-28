@@ -107,7 +107,7 @@ export default class CheckoutDelivery extends Component {
                                 <Button
                                     buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                     title={'Save Settings'}
-                                    titleStyle={styles.buttonFontStyle}
+                                    titleStyle={styles.buttonStyle}
                                     onPress={() => {
 
                                     }}/>

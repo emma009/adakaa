@@ -19,7 +19,9 @@ const colors = {
     iconColorGrey1: "#B3BCCA",
     iconColorGrey2: "#DDE4EB",
     iconColorRed1: "#FF595A",
-    iconColorRed2: "#E4455A"
+    iconColorRed2: "#E4455A",
+    iconColorRed3: "#FF4344",
+    iconColorRed4: "#FFE6E6",
 
 
 

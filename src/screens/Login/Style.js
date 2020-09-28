@@ -16,19 +16,20 @@ let style = {
     bottomContainer: {
         flex: 1,
         width: styles.gridWidth,
-        paddingVertical: hp("2")
+        paddingTop: hp("3"),
     },
 
     welcomeHeader: {
         fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H8,
-        marginBottom: hp("2"),
+        fontSize: Typography.H9,
+        marginBottom: hp("1"),
         color: colors.textColorBlack1
     },
 
     welcomeDescription: {
         fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P3,
+        fontSize: Typography.P4,
+        lineHeight: 20,
         marginBottom: hp("4"),
         color: colors.textColorGrey1
     },
@@ -48,7 +49,7 @@ let style = {
     accountBottomContainer: {
         flexDirection:"row",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
     },
 
     accountText: {
@@ -59,7 +60,9 @@ let style = {
     },
 
     loginButton: {
-        color: colors.textColorBlack1
+        color: colors.textColorBlack1,
+        fontFamily: fonts.RUBIK_MEDIUM,
+        fontSize: Typography.P3,
     }
 
 }

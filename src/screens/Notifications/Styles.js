@@ -36,9 +36,10 @@ let Styles = {
         marginRight: wp("2")
     },
     nameTitle: {
-        fontSize: Typography.P1,
+        fontSize: Typography.P2,
         fontFamily: Fonts.RUBIK_MEDIUM,
-        color: colors.textColorBlack1
+        color: colors.textColorBlack1,
+        marginBottom: hp(1)
     },
     addressTitle: {
         fontSize: Typography.P5,

@@ -9,7 +9,7 @@ const styles = {
     },
 
     socialButton: {
-        height: 40,
+        height: hp(5.5),
         flexDirection: "row",
         alignItems: 'center',
     },
@@ -19,6 +19,11 @@ const styles = {
         fontSize: Typography.P3,
         width: "100%",
         textAlign: "center"
+    },
+
+    buttonStyle: {
+        fontFamily: fonts.RUBIK_MEDIUM,
+        fontSize: Typography.P4,
     },
 
     buttonShadow: {
@@ -36,10 +41,7 @@ const styles = {
     actualWidth: wp("90%"),
 
     gridWidth: wp("90%"),
-
-    gridSize: {
-        width: wp("90%")
-    },
+    gridWidth1: wp("80%"),
 
 };
 

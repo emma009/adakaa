@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Image, ScrollView, TouchableWithoutFeedback, View, ViewComponent} from 'react-native';
+import {FlatList, Image, ScrollView, Switch, TouchableWithoutFeedback, View, ViewComponent} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import BaseView from "../BaseView"
@@ -30,6 +30,9 @@ export default class CheckoutDelivery extends Component {
             isPayPalSelected: false,
             isCreditCardSelected: true,
             isApplePaySelected: false,
+
+
+            saveCard: true
         }
     }
 
@@ -81,7 +84,7 @@ export default class CheckoutDelivery extends Component {
 
                                         <View style={[Styles.paymentMethodInnerContainer, {backgroundColor: "white"}, isPayPalSelected && {borderWidth: 1, borderColor: colors.buttonGreenColor}]}>
                                             <Image source={assets.paypal_icon} style={{width: hp(3), height: hp(3), tintColor: isPayPalSelected ? colors.primaryGreenColor : colors.iconColorGrey1}} resizeMode={"contain"} />
-                                            <Text style={{fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P3, color: isPayPalSelected ? colors.textColorBlack1 : colors.textColorGrey1, marginTop: hp("1")}}>{"Paypal"}</Text>
+                                            <Text style={{fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: isPayPalSelected ? colors.textColorBlack1 : colors.textColorGrey1, marginTop: hp("1")}}>{"Paypal"}</Text>
                                         </View>
 
                                     </TouchableWithoutFeedback>
@@ -96,7 +99,7 @@ export default class CheckoutDelivery extends Component {
 
                                         <View style={[Styles.paymentMethodInnerContainer, {backgroundColor: "white"}, isCreditCardSelected && {borderWidth: 1, borderColor: colors.buttonGreenColor}]}>
                                             <Image source={assets.credit_card_icon} style={{width: hp(3), height: hp(3), tintColor: isCreditCardSelected ? colors.primaryGreenColor : colors.iconColorGrey1}} resizeMode={"contain"} />
-                                            <Text style={{fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P3, color: isCreditCardSelected ? colors.textColorBlack1 : colors.textColorGrey1, marginTop: hp("1")}}>{"Credit Card"}</Text>
+                                            <Text style={{fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: isCreditCardSelected ? colors.textColorBlack1 : colors.textColorGrey1, marginTop: hp("1")}}>{"Credit Card"}</Text>
                                         </View>
 
                                     </TouchableWithoutFeedback>
@@ -111,7 +114,7 @@ export default class CheckoutDelivery extends Component {
 
                                         <View style={[Styles.paymentMethodInnerContainer, {backgroundColor: "white"}, isApplePaySelected && {borderWidth: 1, borderColor: colors.buttonGreenColor}]}>
                                             <Image source={assets.apple_pay_icon} style={{width: hp(4), height: hp(3), tintColor: isApplePaySelected ? colors.primaryGreenColor : colors.iconColorGrey1}} resizeMode={"contain"} />
-                                            <Text style={{fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P3, color: isApplePaySelected ? colors.textColorBlack1 : colors.textColorGrey1, marginTop: hp("1")}}>{"Apple Pay"}</Text>
+                                            <Text style={{fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: isApplePaySelected ? colors.textColorBlack1 : colors.textColorGrey1, marginTop: hp("1")}}>{"Apple Pay"}</Text>
                                         </View>
 
                                     </TouchableWithoutFeedback>
@@ -192,11 +195,27 @@ export default class CheckoutDelivery extends Component {
                                         }}
                                     />
 
+
+
                                 </View>
 
+                                <View style={{justifyContent: "flex-start", flexDirection: "row"}}>
+                                    <Switch
+                                        trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
+                                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                                        thumbColor={this.state.saveCard ? colors.primaryGreenColor : colors.iconColorGrey1}
+                                        onValueChange={(value) => {
+                                            this.setState({
+                                                saveCard: value
+                                            })
+                                        }}
+                                        value={this.state.saveCard}
+                                    />
 
-
-
+                                    <Text style={{alignSelf: "center",fontFamily: fonts.RUBIK_REGULAR,
+                                        fontSize: Typography.P4,
+                                        color: colors.textColorGrey1}}>{"Save this address"}</Text>
+                                </View>
 
                                 {/*</ScrollView>*/}
 
@@ -209,7 +228,7 @@ export default class CheckoutDelivery extends Component {
                                 <Button
                                     buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                     title={'Make Payment'}
-                                    titleStyle={styles.buttonFontStyle}
+                                    titleStyle={styles.buttonStyle}
                                     onPress={() => {
                                         this.props.navigation.navigate(Routes.ORDER_SUCCESS)
                                     }}/>

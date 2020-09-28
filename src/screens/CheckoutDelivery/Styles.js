@@ -11,7 +11,7 @@ const styles = AppConfig.styling.default;
 let Styles = {
 
     deliveryContainer: {
-        height: hp("15"),
+        height: hp("14"),
         backgroundColor: "white",
         flexDirection: "row",
         alignItems: "center",
@@ -29,7 +29,7 @@ let Styles = {
 
     deliveryDescription: {
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5,
+        fontSize: Typography.P6,
         lineHeight: Typography.P3,
         color: colors.textColorGrey1
     },

@@ -96,7 +96,7 @@ export default class CheckoutDelivery extends Component {
                             <Button
                                 buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                 title={'Next'}
-                                titleStyle={styles.buttonFontStyle}
+                                titleStyle={styles.buttonStyle}
                                 onPress={() => {
                                     this.props.navigation.navigate(Routes.CHECKOUT_ADDRESS)
                                 }}/>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, ScrollView, View, ViewComponent} from 'react-native';
+import {FlatList, ScrollView, Switch, View, ViewComponent} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import BaseView from "../BaseView"
@@ -11,6 +11,8 @@ import Styles from "./Styles";
 import AppInput from "../../components/Application/AppInput/View";
 import assets from "../../../branding/carter/assets/Assets";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
+import fonts from "../../../branding/carter/assets/Fonts";
+import Typography from "../../../branding/carter/styles/Typography";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -22,6 +24,11 @@ export default class CheckoutDelivery extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            saveAddress: true
+        }
+
     }
 
     render(){
@@ -114,6 +121,29 @@ export default class CheckoutDelivery extends Component {
                                     onChangeText={(value) => {}}
                                 />
 
+
+
+                                <View style={{justifyContent: "flex-start", flexDirection: "row"}}>
+                                    <Switch
+                                        trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
+                                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                                        thumbColor={this.state.saveAddress ? colors.primaryGreenColor : colors.iconColorGrey1}
+                                        onValueChange={(value) => {
+                                            this.setState({
+                                                saveAddress: value
+                                            })
+                                        }}
+                                        value={this.state.saveAddress}
+                                    />
+
+                                    <Text style={{alignSelf: "center",fontFamily: fonts.RUBIK_REGULAR,
+                                        fontSize: Typography.P4,
+                                        color: colors.textColorGrey1}}>{"Save this address"}</Text>
+                                </View>
+
+
+
+
                             </View>
                             </KeyboardAwareScrollView>
 
@@ -123,7 +153,7 @@ export default class CheckoutDelivery extends Component {
                                 <Button
                                     buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                     title={'Next'}
-                                    titleStyle={styles.buttonFontStyle}
+                                    titleStyle={styles.buttonStyle}
                                     onPress={() => {
                                         this.props.navigation.navigate(Routes.CHECKOUT_PAYMENT)
                                     }}/>

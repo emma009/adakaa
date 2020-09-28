@@ -65,8 +65,8 @@ export default class FoodItem extends Component {
 
                     <View style={Styles.topContainer}>
                         <View style={{width: "50%"}}>
-                            {discount && <View style={{backgroundColor: "#FFE6E6", width: "60%", height: 30,
-                                justifyContent: "center", alignItems: "center"
+                            {discount && <View style={{backgroundColor: colors.iconColorRed4, width: "60%", height: hp(3),
+                                justifyContent: "center", alignItems: "center", borderTopRightRadius: hp(0.5), borderBottomRightRadius: hp(0.5)
                             }}>
                                 <Text style={Styles.discountText}>- {discount}</Text>
                             </View>}

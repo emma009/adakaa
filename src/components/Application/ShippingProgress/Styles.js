@@ -9,20 +9,20 @@ let Styles = {
 
     numberText: {
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P3,
+        fontSize: Typography.P2,
     },
 
     numberCircle: {
-        width: hp("7"),
-        height: hp("7"),
-        borderRadius: hp("3.5"),
+        width: hp("5"),
+        height: hp("5"),
+        borderRadius: hp("2.5"),
         justifyContent: "center",
         alignItems: "center"
     },
 
     bottomText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P6,
+        fontSize: Typography.P8,
         marginTop: hp("0.5"),
         color: colors.textColorBlack1
     }

@@ -13,13 +13,11 @@ let Styles = {
 
     foodItemContainer: {
 
-        height: hp("10"),
+        height: hp("12"),
 
         backgroundColor: "white",
 
-        flexDirection: "row",
 
-        alignItems: "center",
 
         paddingLeft: wp("5"),
 

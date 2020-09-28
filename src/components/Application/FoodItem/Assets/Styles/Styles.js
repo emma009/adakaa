@@ -14,14 +14,14 @@ let Styles = {
         borderRadius: 5,
         flexDirection: "column",
 
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 3,
+        // shadowColor: "#000",
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 1,
+        // },
+        // shadowOpacity: 0.22,
+        // shadowRadius: 2.22,
+        // elevation: 3,
 
         marginRight: hp("1.5"),
         marginBottom: hp("1.5"),
@@ -41,8 +41,9 @@ let Styles = {
         height: hp("13"),
     },
     discountText: {
-        color: "#FF4344",
-        fontFamily: Fonts.RUBIK_MEDIUM
+        color: colors.iconColorRed3,
+        fontFamily: Fonts.RUBIK_MEDIUM,
+        fontSize: Typography.P7
     },
     priceText: {
         fontFamily: Fonts.RUBIK_MEDIUM,

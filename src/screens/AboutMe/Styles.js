@@ -12,7 +12,7 @@ let Styles = {
 
     typeHeader: {
         fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H9,
+        fontSize: Typography.P1,
         color: colors.textColorBlack1,
         marginVertical: hp("2")
     }

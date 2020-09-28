@@ -159,7 +159,7 @@ export default class Review extends Component {
                     <Button
                         buttonStyle={[{width: styles.gridWidth, alignSelf: "center", backgroundColor: colors.buttonGreenColor, marginTop: hp("1")}, styles.buttonShadow]}
                         title={'Checkout'}
-                        titleStyle={styles.buttonFontStyle}
+                        titleStyle={styles.buttonStyle}
                         onPress={() => {
                             this.props.navigation.navigate(Routes.CHECKOUT_DELIVERY)
                         }}/>

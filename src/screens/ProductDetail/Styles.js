@@ -43,13 +43,13 @@ let Styles = {
     },
     title: {
         fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H7,
+        fontSize: Typography.H8,
         color: colors.textColorBlack1,
         marginBottom: hp("0.5")
     },
     weightText: {
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P3,
+        fontSize: Typography.P4,
         color: colors.textColorGrey3,
         marginBottom: hp("0.5")
     },

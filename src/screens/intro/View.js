@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Image, View,} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Button, Text} from 'react-native-elements';
 import AppConfig from '../../../branding/App_config';
 import Routes from '../../navigation/Routes';
@@ -89,15 +89,21 @@ export default class IntroScreen extends Component {
                         dotColor={colors.paginationDotActiveColor}
                         inactiveDotColor={colors.paginationDotInActiveColor}
                         inactiveDotOpacity={0.4}
-                        inactiveDotScale={0.4}
+                        inactiveDotScale={1}
                         carouselRef={this._carousel}
+                        dotStyle={{
+                            width: hp(0.8), height: hp(0.8), marginRight: -hp(1)
+                        }}
+                        inactiveDotStyle={{
+                            width: hp(0.8), height: hp(0.8)
+                        }}
                     />
 
                 </View>
 
                 <View style={Style.introLowerContainer}>
 
-                    <Button containerStyle={{width: styles.gridWidth}}
+                    <Button containerStyle={{width: styles.gridWidth1}}
                             buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                             title={'Get Started'}
                             titleStyle={styles.buttonFontStyle}

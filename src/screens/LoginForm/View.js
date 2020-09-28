@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {
     View,
-    TouchableOpacity,
+    TouchableOpacity, Switch,
 } from 'react-native';
 import {Header, Icon, Image, Text, Button, CheckBox} from 'react-native-elements';
 import AppConfig from '../../../branding/App_config';
@@ -12,6 +12,8 @@ import Style from "./Style";
 import {StackActions} from "@react-navigation/native";
 import AppHeader from "../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
+import fonts from "../../../branding/carter/assets/Fonts";
+import Typography from "../../../branding/carter/styles/Typography";
 
 
 const assets = AppConfig.assets.default;
@@ -26,6 +28,7 @@ export default class LoginFormScreen extends Component {
 
         this.state = {
             checked: false,
+            rememberMe:false
         }
 
     }
@@ -45,7 +48,7 @@ export default class LoginFormScreen extends Component {
                     return [this.inputRef];
                 }}
                 showsVerticalScrollIndicator={false}>
-            <View style={{flex: 1, alignItems: 'center'}}>
+            <View style={{flex: 1, alignItems: 'center', backgroundColor: colors.textColorGrey2}}>
 
                 <Image source={assets.login_header} style={Style.headerImage} />
 
@@ -58,7 +61,7 @@ export default class LoginFormScreen extends Component {
 
 
                 <View style={[Style.bottomContainer]}>
-                    <Text style={Style.welcomeHeader}>{"Welcome"}</Text>
+                    <Text style={Style.welcomeHeader}>{"Welcome Back!"}</Text>
 
                     <Text style={Style.welcomeDescription}>{"Sign in to your account"}</Text>
 
@@ -83,20 +86,42 @@ export default class LoginFormScreen extends Component {
 
                     <View style={Style.forgotPasswordContainer}>
 
-                        <Button
-                            title={"Forgot Password"}
-                            type={"clear"}
-                            titleStyle={Style.forgotPasswordButton}
-                            onPress={() =>
-                                this.onForgotPasswordPress()
-                            }
-                        />
+
+                            <Switch
+                                trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
+                                style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                                thumbColor={this.state.rememberMe ? colors.primaryGreenColor : colors.iconColorGrey1}
+                                onValueChange={(value) => {
+                                    this.setState({
+                                        rememberMe: value
+                                    })
+                                }}
+                                value={this.state.rememberMe}
+                            />
+
+                        <Text style={[Style.accountText, {alignSelf: "center"}]}>{"Remember me"}</Text>
+
+
+
+
+                        <View style={{flex: 1,alignItems: "flex-end"}}>
+                            <Button
+                                title={"Forgot Password"}
+                                type={"clear"}
+                                containerStyle={{}}
+                                titleStyle={Style.forgotPasswordButton}
+                                onPress={() =>
+                                    this.onForgotPasswordPress()
+                                }
+                            />
+                        </View>
+
                     </View>
 
                     <Button containerStyle={Style.loginButton}
                             buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                             title={'LOGIN'}
-                            titleStyle={styles.buttonFontStyle}
+                            titleStyle={styles.buttonStyle}
                             onPress={() => {
                                 this.onLoginPress()
                             }}/>

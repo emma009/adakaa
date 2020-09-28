@@ -25,7 +25,7 @@ let Styles = {
 
     paymentMethodInnerContainer: {
         flex: 0.3,
-        height: hp("13"),
+        height: hp("14"),
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "white",

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Image, ScrollView, View, ViewComponent} from 'react-native';
+import {Animated, FlatList, Image, ScrollView, Switch, View, ViewComponent} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
@@ -15,6 +15,7 @@ import fonts from "../../../branding/carter/assets/Fonts";
 import Typography from "../../../branding/carter/styles/Typography";
 import assets from "../../../branding/carter/assets/Assets";
 import TextInput from "../../components/Global/TextInput/View";
+import Easing from "react-native/Libraries/Animated/src/Easing";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -22,6 +23,7 @@ const styles = AppConfig.styling.default;
 
 const addresses = [
     {
+        isDefault: true,
         name: 'William Crown',
         address: "2811 Crescent Day, LA Port California, United States, 77511",
         phone: "+1 122 541 1234",
@@ -30,8 +32,10 @@ const addresses = [
         state: "United States",
         postalCode: "77547",
 
+        spinValue: new Animated.Value(0)
     },
     {
+        isDefault: false,
         name: 'John Doe',
         address: "2811 Crescent Day, LA Port California, United States, 77511",
         phone: "+1 122 541 1234",
@@ -40,8 +44,11 @@ const addresses = [
         state: "United States",
         postalCode: "77547",
 
+        spinValue: new Animated.Value(0)
+
     },
     {
+        isDefault: false,
         name: 'William Crown',
         address: "2811 Crescent Day, LA Port California, United States, 77511",
         phone: "+1 122 541 1234",
@@ -50,8 +57,11 @@ const addresses = [
         state: "United States",
         postalCode: "77547",
 
+        spinValue: new Animated.Value(0)
+
     },
     {
+        isDefault: false,
         name: 'John Doe',
         address: "2811 Crescent Day, LA Port California, United States, 77511",
         phone: "+1 122 541 1234",
@@ -60,8 +70,10 @@ const addresses = [
         state: "United States",
         postalCode: "77547",
 
+        spinValue: new Animated.Value(0)
     },
     {
+        isDefault: false,
         name: 'William Crown',
         address: "2811 Crescent Day, LA Port California, United States, 77511",
         phone: "+1 122 541 1234",
@@ -70,8 +82,10 @@ const addresses = [
         state: "United States",
         postalCode: "77547",
 
+        spinValue: new Animated.Value(0)
     },
     {
+        isDefault: false,
         name: 'John Doe',
         address: "2811 Crescent Day, LA Port California, United States, 77511",
         phone: "+1 122 541 1234",
@@ -80,6 +94,7 @@ const addresses = [
         state: "United States",
         postalCode: "77547",
 
+        spinValue: new Animated.Value(0)
     }
 ];
 
@@ -88,25 +103,81 @@ export default class MyAddress extends Component {
         super(props);
 
         this.state = {
-            activeSections: [],
+            activeSections: [0],
         };
 
     }
 
-    renderAdressesHeader = section => {
+    renderAdressesHeader = (section, index, isActive) => {
+
+        const spin = section.spinValue.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['0deg', '180deg']
+        });
+
+        if (isActive) {
+            Animated.timing(
+                section.spinValue,
+                {
+                    toValue: 1,
+                    duration: 300,
+                    easing: Easing.linear,
+                    useNativeDriver: true  // To make use of native driver for performance
+                }
+            ).start()
+        }
+        else {
+            Animated.timing(
+                section.spinValue,
+                {
+                    toValue: 0,
+                    duration: 300,
+                    easing: Easing.linear,
+                    useNativeDriver: true  // To make use of native driver for performance
+                }
+            ).start()
+        }
+
+
+
+
         return (
             <View style={Styles.foodItemContainer}>
 
-                <View style={Styles.profileItemCircle}>
-                    <Image source={assets.map_marker_icon} style={{width: hp(3.5), height: hp(3.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                {section.isDefault && <View style={{position: "absolute", backgroundColor: colors.secondaryGreenColor, width: "18%", height: hp(2.5),
+                    justifyContent: "center", alignItems: "center", borderTopRightRadius: hp(0.5), borderBottomRightRadius: hp(0.5)
+                }}>
+                    <Text style={{
+                        color: colors.primaryGreenColor,
+                        fontFamily: fonts.RUBIK_MEDIUM,
+                        fontSize: Typography.P8
+
+                    }}>{"DEFAULT"}</Text>
+                </View>}
+
+                <View style={{
+                    flex: 1,
+                    flexDirection: "row",
+                    alignItems: "center",
+                }}>
+                    <View style={Styles.profileItemCircle}>
+                        <Image source={assets.map_marker_icon} style={{width: hp(3.5), height: hp(3.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+
+                    </View>
+
+                    <View style={{marginLeft: wp("3")}}>
+                        <Text style={Styles.nameTitle}>{section.name}</Text>
+                        <Text style={Styles.addressTitle} numberOfLines={2}>{section.address}</Text>
+                        <Text style={Styles.phoneTitle}>{section.phone}</Text>
+
+                    </View>
+
+
 
                 </View>
 
-                <View style={{marginLeft: wp("3")}}>
-                    <Text style={Styles.nameTitle}>{section.name}</Text>
-                    <Text style={Styles.addressTitle} numberOfLines={2}>{section.address}</Text>
-                    <Text style={Styles.phoneTitle}>{section.phone}</Text>
-
+                <View style={{flex: 1, justifyContent: "center", alignItems: "flex-end", paddingRight: wp("5")}}>
+                    <Animated.Image source={assets.drop_down_icon} style={{transform: [{rotate: spin}], width: hp(3), height: hp(3), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                 </View>
 
             </View>
@@ -208,6 +279,23 @@ export default class MyAddress extends Component {
                         onChangeText={(value) => {}}
                     />
 
+                    <View style={{flexDirection: "row", alignSelf: "flex-start"}}>
+                        <Switch
+                            trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
+                            style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                            thumbColor={section.isDefault ? colors.primaryGreenColor : colors.iconColorGrey1}
+                            onValueChange={(value) => {
+                                this.setState({
+                                    isDefault: value
+                                })
+                            }}
+                            value={section.isDefault}
+                        />
+
+                        <Text style={{alignSelf: "center",fontFamily: fonts.RUBIK_REGULAR,
+                            fontSize: Typography.P4,
+                            color: colors.textColorGrey1}}>{"Save this address"}</Text>
+                    </View>
 
 
                 </View>
@@ -242,6 +330,7 @@ export default class MyAddress extends Component {
                                     activeSections={this.state.activeSections}
                                     renderHeader={this.renderAdressesHeader}
                                     renderContent={this.renderAddressesContent}
+                                    expandMultiple={false}
                                     sectionContainerStyle={{marginBottom: hp("1")}}
                                     onChange={this._updateSections}
                                 />
@@ -254,7 +343,7 @@ export default class MyAddress extends Component {
                             <Button
                                 buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                 title={'Save Settings'}
-                                titleStyle={styles.buttonFontStyle}
+                                titleStyle={styles.buttonStyle}
                                 onPress={() => {
 
                                 }}/>

@@ -47,10 +47,11 @@ import Transactions from "../screens/Transactions/View";
 import Notifications from "../screens/Notifications/View";
 import ApplyFilters from "../screens/ApplyFilters/View";
 import TrackOrder from "../screens/TrackOrder/View";
+import { TransitionPresets } from "@react-navigation/stack";
 import assets from "../../branding/carter/assets/Assets";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
-const images = AppConfig.assets.default;
+const styles = AppConfig.styling.default;
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,7 +60,11 @@ const Tab = createBottomTabNavigator();
 export function RootStack() {
     return (
 
-        <Stack.Navigator initialRouteName={Routes.INTRO_SCREEN} headerMode={'none'}>
+        <Stack.Navigator
+            initialRouteName={Routes.INTRO_SCREEN}
+            headerMode={'none'}
+            screenOptions={{ ...(Platform.OS === "android" && TransitionPresets.SlideFromRightIOS) }}
+        >
             <Stack.Screen name={Routes.SPLASH_SCREEN} component={SplashScreen} />
             <Stack.Screen name={Routes.INTRO_SCREEN} component={IntroScreen} />
             <Stack.Screen name={Routes.INTRO_SCREEN1} component={IntroScreen1} />
@@ -162,39 +167,33 @@ function MyTabBar({ state, descriptors, navigation }) {
                                 testID={options.tabBarTestID}
                                 onPress={onPress}
                                 onLongPress={onLongPress}
-                                style={{ flex: 1, height: 40, backgroundColor: "white", justifyContent: "center", alignItems: "center", marginBottom: Globals.SAFE_AREA_INSET.bottom}}
+                                style={{ flex: 1, height: hp(6), backgroundColor: "white", justifyContent: "center", alignItems: "center", marginBottom: Globals.SAFE_AREA_INSET.bottom}}
                             >
 
-                                <View style={{width: hp(7), height: hp(7),
-                                    bottom: 10,
-                                    borderWidth: 5,
-                                    borderRadius: hp(3.5),
+                                <View style={[
+                                    // styles.buttonShadow,
+                                    {
+                                    width: hp(8.5),
+                                    height: hp(8.5),
+                                    bottom: hp(1.5),
+                                    borderWidth: hp(0.6),
+                                    borderRadius: hp(4.3),
                                     borderColor: "white",
-                                    backgroundColor: colors.buttonGreenColor,
                                     justifyContent: "center",
-                                    alignItems: "center"
-                                }}>
-                                    <Image source={assets.cart_regular_icon} style={{width: hp(3), height: hp(3), tintColor: "white" }} resizeMode={"contain"} />
+                                    alignItems: "center",
+                                }]}>
+                                    <View style={[styles.buttonShadow,{
+                                        width: hp(7),
+                                        height: hp(7),
+                                        borderRadius: hp(3.5),
+                                        backgroundColor: colors.buttonGreenColor,
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }]}>
+                                        <Image source={assets.cart_regular_icon} style={{width: hp(3), height: hp(3), tintColor: "white" }} resizeMode={"contain"} />
+
+                                    </View>
                                 </View>
-
-                                {/*<Avatar*/}
-                                {/*    rounded*/}
-                                {/*    size={"medium"}*/}
-                                {/*    ImageComponent={() => {*/}
-                                {/*        return(*/}
-                                {/*            */}
-                                {/*        );*/}
-                                {/*    }}*/}
-                                {/*    containerStyle= {{*/}
-                                {/*        bottom: 10,*/}
-                                {/*        borderWidth: 5,*/}
-                                {/*        borderColor: "white"*/}
-                                {/*    }}*/}
-                                {/*    avatarStyle={{*/}
-                                {/*        backgroundColor: colors.buttonGreenColor*/}
-                                {/*    }}*/}
-                                {/*/>*/}
-
 
                             </TouchableOpacity>
                         );
@@ -226,9 +225,10 @@ function MyTabBar({ state, descriptors, navigation }) {
                                 accessibilityStates={isFocused ? ['selected'] : []}
                                 accessibilityLabel={options.tabBarAccessibilityLabel}
                                 testID={options.tabBarTestID}
+                                activeOpacity={0.8}
                                 onPress={onPress}
                                 onLongPress={onLongPress}
-                                style={{flex: 1, height: 40, backgroundColor: "white", justifyContent: "center", alignItems: "center", marginBottom: Globals.SAFE_AREA_INSET.bottom}}>
+                                style={{flex: 1, height: hp(6), backgroundColor: "white", justifyContent: "center", alignItems: "center", marginBottom: Globals.SAFE_AREA_INSET.bottom}}>
 
 
                                 {/*isFocused is selected*/}

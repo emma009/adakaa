@@ -6,6 +6,8 @@ import AppConfig from '../../../branding/App_config';
 import Routes from '../../navigation/Routes';
 import Style from "./Style"
 import AppHeader from "../../components/Application/AppHeader/View"
+import fonts from "../../../branding/carter/assets/Fonts";
+import Typography from "../../../branding/carter/styles/Typography";
 
 const assets = AppConfig.assets.default;
 const styles = AppConfig.styling.default;
@@ -21,7 +23,7 @@ export default class LoginScreen extends Component {
     render () {
 
         return (
-            <View style={{flex: 1, alignItems: 'center'}}>
+            <View style={{flex: 1, alignItems: 'center', backgroundColor: colors.textColorGrey2}}>
 
                 <Image source={assets.login_header} style={Style.headerImage} />
 
@@ -49,7 +51,11 @@ export default class LoginScreen extends Component {
                                 color="red"
                                 containerStyle={{position: "absolute", left: wp("5")}}
                             />
-                            <Text style={[styles.socialButtonText, {color: colors.textColorGrey1}]}>{"Connect using Google"}</Text>
+                            <Text style={[styles.buttonStyle, {
+                                color: colors.textColorGrey1,
+                                width: "100%",
+                                textAlign: "center"
+                            }]}>{"Connect using Google"}</Text>
 
 
                         </View>
@@ -63,9 +69,13 @@ export default class LoginScreen extends Component {
                     }}>
                         <View style={[styles.socialButton, Style.signUpButton,{borderRadius: hp(0.3)}]}>
 
-                            <Image source={assets.account_icon} containerStyle={{width: hp(2), height: hp(2), position: "absolute",left: wp("5")}} resizeMode={"contain"} />
+                            <Image source={assets.account_icon} containerStyle={{width: hp(2), height: hp(2), position: "absolute", left: wp("5")}} resizeMode={"contain"} />
 
-                            <Text style={[styles.socialButtonText, Style.signUpButtonText]}>{"Create an account"}</Text>
+                            <Text style={[styles.buttonStyle, {
+                                color: "white",
+                                width: "100%",
+                                textAlign: "center"
+                            }]}>{"Create an account"}</Text>
                         </View>
                     </TouchableOpacity>
 
