@@ -258,10 +258,10 @@ export default class MyOrders extends Component {
 
         return (
             <View>
-                <View style={Styles.foodItemContainer}>
+                <View style={[Styles.foodItemContainer, isActive && {borderBottomWidth: 1, borderBottomColor: colors.borderColorLight}]}>
 
                     <View style={[Styles.profileItemCircle, section.isOrderDelivered && {backgroundColor: colors.textColorGrey2}]}>
-                        <Image source={assets.order_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: section.isOrderDelivered ? colors.textColorGrey1 : colors.primaryGreenColor}} resizeMode={"contain"} />
+                        <Image source={assets.box_open_icon} style={{width: hp(3.5), height: hp(3.5), tintColor: section.isOrderDelivered ? colors.textColorGrey1 : colors.primaryGreenColor}} resizeMode={"contain"} />
                     </View>
 
                     <View style={{marginLeft: wp("3")}}>
@@ -297,7 +297,7 @@ export default class MyOrders extends Component {
                     </View>
 
                     <View style={{flex: 1, alignItems: "flex-end", paddingRight: wp("5"),}}>
-                        <Animated.Image source={assets.drop_down_icon} style={{transform: [{rotate: spin}], width: hp(3), height: hp(3), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                        <Animated.Image source={assets.drop_down_icon} style={{transform: [{rotate: spin}], width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                     </View>
 
                 </View>
@@ -317,7 +317,7 @@ export default class MyOrders extends Component {
                             fontFamily: fonts.RUBIK_REGULAR,
                             fontSize: Typography.P5,
                             color: colors.textColorGrey1
-                        }}>{"Orders Placed"}</Text>
+                        }}>{"Order Delivered"}</Text>
 
                         <Text style={{
                             flex: 1,
@@ -377,15 +377,15 @@ export default class MyOrders extends Component {
 
                             <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
                         </View>
-                        <Text style={Styles.orderProgressTitle}>{"Out of Delivery"}</Text>
-                        <Text style={Styles.orderProgressSubTitle}>{section.outOfDelivery}</Text>
+                        <Text style={[Styles.orderProgressTitle,{color: section.isOrderOutOfDelivery ? colors.textColorBlack1: colors.textColorGrey1}]}>{"Out of Delivery"}</Text>
+                        <Text style={[Styles.orderProgressSubTitle]}>{section.outOfDelivery}</Text>
                     </View>
 
                     <View style={{flexDirection: "row"}}>
                         <View style={{alignItems: "center", marginRight: wp("2")}}>
                             <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderDelivered ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
                         </View>
-                        <Text style={Styles.orderProgressTitle}>{"Order Delivered"}</Text>
+                        <Text style={[Styles.orderProgressTitle,{color: section.isOrderOutOfDelivery ? colors.textColorBlack1: colors.textColorGrey1}]}>{"Order Delivered"}</Text>
                         <Text style={Styles.orderProgressSubTitle}>{section.orderDelivered}</Text>
                     </View>
 

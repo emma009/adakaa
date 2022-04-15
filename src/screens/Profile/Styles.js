@@ -12,7 +12,7 @@ let Styles = {
 
 
     paymentMethodMainContainer: {
-        width: styles.gridWidth,
+        width: styles.gridWidth2,
         flexDirection: "row",
         justifyContent: "space-between",
         marginTop: hp(2)

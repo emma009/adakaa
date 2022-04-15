@@ -5,6 +5,7 @@ import ReviewItem from "../../components/Application/ReviewItem/View";
 import BaseView from "../BaseView"
 import Routes from "../../navigation/Routes";
 import assets from "../../../branding/carter/assets/Assets";
+import Globals from "../../utils/Globals";
 
 export default class Review extends Component {
 
@@ -13,46 +14,46 @@ export default class Review extends Component {
 
         this.state = {
 
-            reviews: [
+            reviews : [
                 {
                     id: 0,
-                    profileImage: require('./Assets/Images/img.png'),
+                    profileImage: require('./Assets/Images/review_author_img1.png'),
                     fullName: "David Martin",
                     reviewTime: "32 minutes ago",
                     rating: 2.5,
-                    comment: "Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items."
+                    comment: "Carter team is fast and always deliver fresh fruits. Highly Recommend!"
                 },
                 {
                     id: 1,
-                    profileImage: require('./Assets/Images/img.png'),
+                    profileImage: require('./Assets/Images/review_author_img2.png'),
                     fullName: "David Martin",
                     reviewTime: "32 minutes ago",
                     rating: 2.5,
-                    comment: "Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items."
+                    comment: "Best apples on the market hands down. I almost order them everyday."
                 },
                 {
                     id: 2,
-                    profileImage: require('./Assets/Images/img.png'),
+                    profileImage: require('./Assets/Images/review_author_img3.png'),
                     fullName: "David Martin",
                     reviewTime: "32 minutes ago",
                     rating: 2.5,
-                    comment: "Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items."
+                    comment: "Carter team is fast and always deliver fresh fruits. Highly Recommend!"
                 },
                 {
                     id: 3,
-                    profileImage: require('./Assets/Images/img.png'),
+                    profileImage: require('./Assets/Images/review_author_img4.png'),
                     fullName: "David Martin",
                     reviewTime: "32 minutes ago",
                     rating: 2.5,
-                    comment: "Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items."
+                    comment: "Best apples on the market hands down. I almost order them everyday."
                 },
                 {
                     id: 4,
-                    profileImage: require('./Assets/Images/img.png'),
+                    profileImage: require('./Assets/Images/review_author_img1.png'),
                     fullName: "David Martin",
                     reviewTime: "32 minutes ago",
                     rating: 2.5,
-                    comment: "Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items. Carter team is fast and always deliver fresh items."
+                    comment: "Carter team is fast and always deliver fresh fruits. Highly Recommend!"
                 }
 
 

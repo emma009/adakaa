@@ -8,7 +8,7 @@ const colors = AppConfig.colors.default;
 
 let Styles = {
     buttonContainer: {
-        width: styles.gridWidth,
+        width: styles.gridWidth2,
         height: hp(5),
         backgroundColor: "white",
         flexDirection: "row",

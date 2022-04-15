@@ -15,7 +15,7 @@ let Styles = {
     },
     counterText: {
         fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
+        fontSize: Typography.P1,
         color: colors.textColorBlack1
     },
 

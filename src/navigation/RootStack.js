@@ -3,19 +3,31 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Image
+    Image, StatusBar
 } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Routes from './Routes';
 import SplashScreen from '../screens/Splash/View';
-import IntroScreen from '../screens/Intro/View';
-import IntroScreen1 from '../screens/intro1/View';
-import IntroScreen2 from '../screens/intro2/View';
-import LoginScreen from '../screens/Login/View';
-import LoginFormScreen from '../screens/LoginForm/View';
-import SignupFormScreen from '../screens/Signup/View';
-import ForgotPasswordFormScreen from '../screens/ForgotPassword/View';
+import IntroScreen from '../screens/Variant1/Intro/View';
+import IntroScreen1 from '../screens/Variant2/intro1/View';
+import IntroScreen2 from '../screens/Variant3/intro2/View';
+
+import LoginScreen from '../screens/Variant1/Login/View';
+import LoginFormScreen from '../screens/Variant1/LoginForm/View';
+import SignupFormScreen from '../screens/Variant1/Signup/View';
+import ForgotPasswordFormScreen from '../screens/Variant1/ForgotPassword/View';
+
+import LoginScreen1 from '../screens/Variant2/Login/View';
+import LoginFormScreen1 from '../screens/Variant2/LoginForm/View';
+import SignupFormScreen1 from '../screens/Variant2/Signup/View';
+import ForgotPasswordFormScreen1 from '../screens/Variant2/ForgotPassword/View';
+
+import LoginScreen2 from '../screens/Variant3/Login/View';
+import LoginFormScreen2 from '../screens/Variant3/LoginForm/View';
+import SignupFormScreen2 from '../screens/Variant3/Signup/View';
+import ForgotPasswordFormScreen2 from '../screens/Variant3/ForgotPassword/View';
+
 import Testing from "../screens/Testing";
 import ProductDetail from "../screens/ProductDetail/View";
 import review from "../screens/ReviewList/View";
@@ -50,6 +62,10 @@ import TrackOrder from "../screens/TrackOrder/View";
 import { TransitionPresets } from "@react-navigation/stack";
 import assets from "../../branding/carter/assets/Assets";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import CheckoutSelectCard from "../screens/CheckoutSelectCard/View";
+import CheckoutSelectAccount from "../screens/CheckoutSelectAccount/View";
+import SelfPickup from "../screens/SelfPickup/View";
+import CartSummary from "../screens/CartSummary/View";
 
 const styles = AppConfig.styling.default;
 
@@ -61,18 +77,37 @@ export function RootStack() {
     return (
 
         <Stack.Navigator
-            initialRouteName={Routes.INTRO_SCREEN}
+            initialRouteName={Routes.INTRO_SCREEN2}
             headerMode={'none'}
             screenOptions={{ ...(Platform.OS === "android" && TransitionPresets.SlideFromRightIOS) }}
         >
             <Stack.Screen name={Routes.SPLASH_SCREEN} component={SplashScreen} />
+
+            {/*Variant1*/}
             <Stack.Screen name={Routes.INTRO_SCREEN} component={IntroScreen} />
-            <Stack.Screen name={Routes.INTRO_SCREEN1} component={IntroScreen1} />
-            <Stack.Screen name={Routes.INTRO_SCREEN2} component={IntroScreen2} />
+
             <Stack.Screen name={Routes.LOGIN_SCREEN} component={LoginScreen} />
             <Stack.Screen name={Routes.LOGIN_FORM_SCREEN} component={LoginFormScreen} />
             <Stack.Screen name={Routes.SIGNUP_FORM_SCREEN} component={SignupFormScreen} />
             <Stack.Screen name={Routes.FORGOT_PASSWORD_FORM_SCREEN} component={ForgotPasswordFormScreen} />
+
+            {/*Variant2*/}
+            <Stack.Screen name={Routes.INTRO_SCREEN1} component={IntroScreen1} />
+
+            <Stack.Screen name={Routes.LOGIN_SCREEN1} component={LoginScreen1} />
+            <Stack.Screen name={Routes.LOGIN_FORM_SCREEN1} component={LoginFormScreen1} />
+            <Stack.Screen name={Routes.SIGNUP_FORM_SCREEN1} component={SignupFormScreen1} />
+            <Stack.Screen name={Routes.FORGOT_PASSWORD_FORM_SCREEN1} component={ForgotPasswordFormScreen1} />
+
+
+            {/*Variant3*/}
+            <Stack.Screen name={Routes.INTRO_SCREEN2} component={IntroScreen2} />
+
+            <Stack.Screen name={Routes.LOGIN_SCREEN2} component={LoginScreen2} />
+            <Stack.Screen name={Routes.LOGIN_FORM_SCREEN2} component={LoginFormScreen2} />
+            <Stack.Screen name={Routes.SIGNUP_FORM_SCREEN2} component={SignupFormScreen2} />
+            <Stack.Screen name={Routes.FORGOT_PASSWORD_FORM_SCREEN2} component={ForgotPasswordFormScreen2} />
+
 
             <Stack.Screen name={Routes.HOME} component={bottomTabs} />
 
@@ -89,6 +124,10 @@ export function RootStack() {
             <Stack.Screen name={Routes.CHECKOUT_DELIVERY} component={CheckoutDelivery} />
             <Stack.Screen name={Routes.CHECKOUT_ADDRESS} component={CheckoutAddress} />
             <Stack.Screen name={Routes.CHECKOUT_PAYMENT} component={CheckoutPayment} />
+            <Stack.Screen name={Routes.CHECKOUT_SELECT_CARD} component={CheckoutSelectCard} />
+            <Stack.Screen name={Routes.CHECKOUT_SELECT_ACCOUNT} component={CheckoutSelectAccount} />
+            <Stack.Screen name={Routes.SELF_PICKUP} component={SelfPickup} />
+            <Stack.Screen name={Routes.CART_SUMMARY} component={CartSummary} />
             <Stack.Screen name={Routes.TRACK_ORDERS} component={TrackOrder} />
 
 
@@ -132,7 +171,20 @@ function bottomTabs() {
 function MyTabBar({ state, descriptors, navigation }) {
     return (
 
-            <View style={{ flexDirection: 'row', backgroundColor: "#fff" }}>
+            <View style={{ flexDirection: 'row', backgroundColor: "#fff",
+
+                shadowColor: colors.primaryGreenColor,
+                shadowOffset: {
+                    width: 0,
+                    height: 1,
+                },
+                shadowOpacity: 0.4,
+                shadowRadius: 2.22,
+
+                elevation: 3,
+
+            }}>
+
                 {state.routes.map((route, index) => {
                     const { options } = descriptors[route.key];
 
@@ -190,7 +242,7 @@ function MyTabBar({ state, descriptors, navigation }) {
                                         justifyContent: "center",
                                         alignItems: "center",
                                     }]}>
-                                        <Image source={assets.cart_regular_icon} style={{width: hp(3), height: hp(3), tintColor: "white" }} resizeMode={"contain"} />
+                                        <Image source={assets.cart_regular_icon} style={{width: hp(3.4), height: hp(3.4), tintColor: "white" }} resizeMode={"contain"} />
 
                                     </View>
                                 </View>
@@ -233,7 +285,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
                                 {/*isFocused is selected*/}
 
-                                <Image source={icon} style={{width: hp(3), height: hp(3), tintColor: isFocused ? colors.textColorBlack1: colors.iconColorGrey1}} resizeMode={"contain"} />
+                                <Image source={icon} style={{width: hp(3.4), height: hp(3.4), tintColor: isFocused ? colors.textColorBlack1: colors.iconColorGrey1}} resizeMode={"contain"} />
 
                             </TouchableOpacity>
                         );

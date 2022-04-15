@@ -50,14 +50,14 @@ export default class Notifications extends Component {
 
                                 <View style={[Styles.foodItemContainer, {marginBottom: hp(1)}]}>
 
-                                    <View style={{width: "75%"}}>
+                                    <View style={{width: "80%"}}>
 
                                         <Text style={Styles.nameTitle}>{"Allow Notifications"}</Text>
                                         <Text style={Styles.addressTitle}>{"Get notifications about what is coming up in the future on Carter"}</Text>
 
                                     </View>
 
-                                    <View style={{width: "25%"}}>
+                                    <View style={{width: "20%"}}>
                                         <Switch
                                             trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
                                             style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
@@ -73,16 +73,18 @@ export default class Notifications extends Component {
 
                                 </View>
 
-                                <View style={Styles.foodItemContainer}>
+                                <View style={[Styles.foodItemContainer, {
+                                    borderBottomWidth: 1,
+                                    borderBottomColor: colors.borderColorLight}]}>
 
-                                    <View style={{width: "75%"}}>
+                                    <View style={{width: "80%"}}>
 
                                         <Text style={Styles.nameTitle}>{"Email Notifications"}</Text>
                                         <Text style={Styles.addressTitle}>{"Get notifications via email about our latest deals and seasonal discounts"}</Text>
 
                                     </View>
 
-                                    <View style={{width: "25%"}}>
+                                    <View style={{width: "20%"}}>
                                         <Switch
                                             trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
                                             style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
@@ -98,16 +100,18 @@ export default class Notifications extends Component {
 
                                 </View>
 
-                                <View style={Styles.foodItemContainer}>
+                                <View style={[Styles.foodItemContainer, {
+                                    borderBottomWidth: 1,
+                                    borderBottomColor: colors.borderColorLight}]}>
 
-                                    <View style={{width: "75%"}}>
+                                    <View style={{width: "80%"}}>
 
                                         <Text style={Styles.nameTitle}>{"Order Notifications"}</Text>
                                         <Text style={Styles.addressTitle}>{"Get Timely notifications about your orders and there status on delivery"}</Text>
 
                                     </View>
 
-                                    <View style={{width: "25%"}}>
+                                    <View style={{width: "20%"}}>
                                         <Switch
                                             trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
                                             style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
@@ -123,9 +127,9 @@ export default class Notifications extends Component {
 
                                 </View>
 
-                                <View style={Styles.foodItemContainer}>
+                                <View style={[Styles.foodItemContainer]}>
 
-                                    <View style={{width: "75%"}}>
+                                    <View style={{width: "80%"}}>
 
                                         <Text style={Styles.nameTitle}>{"General Notifications"}</Text>
                                         <Text style={Styles.addressTitle}>{"Get notifications as soon as you perform something on the app i.e: add a product to favourites"}</Text>
@@ -133,7 +137,7 @@ export default class Notifications extends Component {
                                     </View>
 
 
-                                    <View style={{width: "25%"}}>
+                                    <View style={{width: "20%"}}>
                                         <Switch
                                             trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
                                             style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}

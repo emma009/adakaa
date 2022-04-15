@@ -38,7 +38,7 @@ export default class CheckoutDelivery extends Component {
             }}>
                 <View style={[Styles.deliveryContainer, this.state.selectedDeliveryIndex === index && {borderWidth: 1, borderColor: colors.primaryGreenColor}]}>
 
-                    <View style={{flex: 0.8, height: "80%", paddingLeft: wp("5")}}>
+                    <View style={{flex: 0.85, height: "80%", paddingLeft: wp("5")}}>
                         <Text style={Styles.deliveryHeader}>{title}</Text>
                         <Text style={Styles.deliveryDescription}>{description}</Text>
 
@@ -66,8 +66,8 @@ export default class CheckoutDelivery extends Component {
 
                         <View style={{flex: 1}}>
 
-                           <ShippingAddress
-                           />
+                           {/*<ShippingAddress*/}
+                           {/*/>*/}
 
                             {this.renderDeliveryContainer(
                                 "Standard Delivery",

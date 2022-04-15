@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ScrollView, TouchableOpacity, View} from 'react-native';
+import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
 import {Button, Icon, Rating, Text} from 'react-native-elements';
 import Routes from "../../navigation/Routes";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
@@ -12,6 +12,9 @@ import AppConfig from "../../../branding/App_config";
 import Typography from "../../../branding/carter/styles/Typography";
 import Fonts from "../../../branding/carter/assets/Fonts";
 import TextInput from "../../components/Global/TextInput/View";
+import assets from "../../../branding/carter/assets/Assets";
+import StarRating from "react-native-star-rating";
+import Globals from "../../utils/Globals";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -40,25 +43,19 @@ export default class ApplyFilters extends  Component {
                             <ScrollView>
 
                                 <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), borderBottomWidth: 1,
-                                    borderBottomColor: "#dadada"}}>
+                                    borderBottomColor: colors.borderColorLight}}>
 
                                     <Text style={{
                                         fontSize: Typography.P3,
                                         fontFamily: Fonts.RUBIK_MEDIUM,
-                                        marginBottom: hp(1)
+                                        marginVertical: hp(1),
+                                        color: colors.textColorBlack1
                                     }}>{"Price Range"}</Text>
 
-                                    <View style={{flexDirection: "row", justifyContent: "space-between", paddingVertical: hp(1)}}>
+                                    <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: hp(2)}}>
                                         <TextInput
                                             placeholder={"Min"}
-                                            placeholderTextColor={"black"}
-                                            leftIcon={
-                                                <Icon
-                                                    name={"google"}
-                                                    type='font-awesome'
-                                                    size={15}
-                                                    color={"#697281"}
-                                                />}
+                                            placeholderTextColor={colors.textColorGrey1}
                                             containerStyle={[
                                                 {
                                                     backgroundColor: "#F3F5F8",
@@ -66,9 +63,6 @@ export default class ApplyFilters extends  Component {
                                                 },
 
                                             ]}
-                                            leftIconContainerStyle={{
-                                                paddingRight: wp('5')
-                                            }}
                                             onChangeText={(value) => {
 
                                             }}
@@ -76,14 +70,7 @@ export default class ApplyFilters extends  Component {
 
                                         <TextInput
                                             placeholder={"Max"}
-                                            placeholderTextColor={"black"}
-                                            leftIcon={
-                                                <Icon
-                                                    name={"google"}
-                                                    type='font-awesome'
-                                                    size={15}
-                                                    color={"#697281"}
-                                                />}
+                                            placeholderTextColor={colors.textColorGrey1}
                                             containerStyle={[
                                                 {
                                                     backgroundColor: "#F3F5F8",
@@ -91,9 +78,6 @@ export default class ApplyFilters extends  Component {
                                                 },
 
                                             ]}
-                                            leftIconContainerStyle={{
-                                                paddingRight: wp('5')
-                                            }}
                                             onChangeText={(value) => {
 
                                             }}
@@ -103,32 +87,32 @@ export default class ApplyFilters extends  Component {
                                 </View>
 
                                 <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), borderBottomWidth: 1,
-                                    borderBottomColor: "#dadada"}}>
+                                    borderBottomColor: colors.borderColorLight}}>
 
                                     <Text style={{
                                         fontSize: Typography.P3,
                                         fontFamily: Fonts.RUBIK_MEDIUM,
-                                        marginBottom: hp(1)
+                                        marginVertical: hp(1),
+                                        color: colors.textColorBlack1
                                     }}>{"Star Rating"}</Text>
 
 
-                                    <View style={{flexDirection: "row", alignItems: "center", backgroundColor: "#F3F5F8", marginVertical: hp(1), paddingVertical: hp(0.5), paddingHorizontal: wp(2)}}>
+                                    <View style={{flexDirection: "row", alignItems: "center", backgroundColor: colors.textColorGrey2, marginBottom: hp(2), paddingVertical: hp(1.5), paddingHorizontal: wp(2)}}>
 
-                                        <Rating
-                                            defaultRating={0}
-                                            startingValue={2}
-                                            // onFinishRating={(rating) => { console.log(rating) }}
-                                            imageSize={hp(3)}
-                                            type={"custom"}
-                                            ratingBackgroundColor={"transparent"}
-                                            style={{
-                                                alignSelf: "flex-start",
-                                            }}
+                                        <StarRating
+                                            disabled={false}
+                                            maxStars={5}
+                                            rating={2}
+                                            starSize={hp(3)}
+                                            fullStarColor={colors.iconColorOrange1}
+                                            emptyStarColor={colors.borderColorLight}
+                                            selectedStar={(rating) => {}}
                                         />
 
                                         <Text style={{
                                             fontSize: Typography.P5,
                                             fontFamily: Fonts.RUBIK_REGULAR,
+                                            color: colors.textColorGrey1,
                                             flex: 1,
                                             textAlign: "right"
                                         }}>{"3 Stars"}</Text>
@@ -139,130 +123,98 @@ export default class ApplyFilters extends  Component {
 
                                 </View>
 
-                                <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), borderBottomWidth: 1,
-                                    borderBottomColor: "#dadada"}}>
+                                <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), marginBottom: hp(2)}}>
 
                                     <Text style={{
                                         fontSize: Typography.P3,
                                         fontFamily: Fonts.RUBIK_MEDIUM,
-                                        marginBottom: hp(1)
+                                        marginVertical: hp(1),
+                                        color: colors.textColorBlack1
                                     }}>{"Others"}</Text>
 
                                     <TouchableOpacity onPress={() => {}} style={{
                                         backgroundColor: "white",
                                         flexDirection: "row",
                                         alignItems: "center",
-                                        marginVertical: hp("0.5"),
-                                        paddingVertical: hp(0.5),
+                                        paddingVertical: hp("1.5"),
                                         borderBottomWidth: 1,
-                                        borderBottomColor: "#dadada"
+                                        borderBottomColor: colors.borderColorLight
                                     }}>
-                                        <Icon
-                                            name='search'
-                                            type='font-awesome'
-                                            color='#b3bcca'
-                                            size={15}
-                                        />
+
+                                        <Image source={assets.discount_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                         <Text style={{
                                             marginHorizontal: wp(3),
                                             fontFamily: Fonts.RUBIK_REGULAR,
                                             fontSize: Typography.P4,
-                                            color: "#697281"
+                                            color: colors.textColorBlack1
                                         }}>Discount</Text>
-                                        <Icon
-                                            name='google'
-                                            type='font-awesome'
-                                            color='#b3bcca'
-                                            size={15}
-                                            containerStyle={{
-                                                position: "absolute",
-                                                right: "5%"
-                                            }}
-                                        />
+
+                                        <Image source={assets.check_circle_icon} style={{position: "absolute",
+                                            right: "5%", width: hp(2), height: hp(2), tintColor: colors.borderColorLight}} resizeMode={"contain"} />
+
                                     </TouchableOpacity>
 
                                     <TouchableOpacity onPress={() => {}} style={{
                                         backgroundColor: "white",
                                         flexDirection: "row",
                                         alignItems: "center",
-                                        marginVertical: hp("0.5"),
-                                        paddingVertical: hp(0.5),
+                                        paddingVertical: hp("1.5"),
                                         borderBottomWidth: 1,
-                                        borderBottomColor: "#dadada"
+                                        borderBottomColor: colors.borderColorLight
                                     }}>
-                                        <Icon
-                                            name='search'
-                                            type='font-awesome'
-                                            color='#b3bcca'
-                                            size={15}
-                                        />
+                                        <Image source={assets.shipping_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                         <Text style={{
                                             marginHorizontal: wp(3),
                                             fontFamily: Fonts.RUBIK_REGULAR,
                                             fontSize: Typography.P4,
-                                            color: "#697281"
+                                            color: colors.textColorBlack1
                                         }}>Free Shipping</Text>
-                                        <Icon
-                                            name='google'
-                                            type='font-awesome'
-                                            color='#b3bcca'
-                                            size={15}
-                                            containerStyle={{
-                                                position: "absolute",
-                                                right: "5%"
-                                            }}
-                                        />
+
+                                        <Image source={assets.check_circle_icon} style={{position: "absolute",
+                                            right: "5%", width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+
                                     </TouchableOpacity>
 
                                     <TouchableOpacity onPress={() => {}} style={{
                                         backgroundColor: "white",
                                         flexDirection: "row",
                                         alignItems: "center",
-                                        marginVertical: hp("0.5"),
-                                        paddingVertical: hp(0.5)
+                                        paddingVertical: hp("1.5"),
                                     }}>
-                                        <Icon
-                                            name='search'
-                                            type='font-awesome'
-                                            color='#b3bcca'
-                                            size={15}
-                                        />
+                                        <Image source={assets.same_day_delivery_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                         <Text style={{
                                             marginHorizontal: wp(3),
                                             fontFamily: Fonts.RUBIK_REGULAR,
                                             fontSize: Typography.P4,
-                                            color: "#697281"
+                                            color: colors.textColorBlack1
                                         }}>Same Day Delivery</Text>
-                                        <Icon
-                                            name='google'
-                                            type='font-awesome'
-                                            color='#b3bcca'
-                                            size={15}
-                                            containerStyle={{
-                                                position: "absolute",
-                                                right: "5%"
-                                            }}
-                                        />
+
+                                        <Image source={assets.check_circle_icon} style={{position: "absolute",
+                                            right: "5%", width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+
                                     </TouchableOpacity>
 
 
                                 </View>
 
-                                <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), borderBottomWidth: 1,
-                                    borderBottomColor: "#dadada"}}>
+                                <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), marginBottom: hp(3)}}>
 
                                     <Text style={{
                                         fontSize: Typography.P3,
                                         fontFamily: Fonts.RUBIK_MEDIUM,
-                                        marginBottom: hp(1)
+                                        marginVertical: hp(1),
+                                        color: colors.textColorBlack1
                                     }}>{"Categories"}</Text>
 
                                     <View style={{
                                         flexDirection: "row",
                                         justifyContent: "space-between",
-                                        paddingVertical: hp(0.5),
+                                        paddingVertical: hp(1),
                                         borderBottomWidth: 1,
-                                        borderBottomColor: "#dadada"
+                                        borderBottomColor: colors.borderColorLight
                                     }}>
 
 
@@ -270,20 +222,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
+                                            flex: 0.55
 
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.fruits_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
+                                                color: colors.textColorBlack1
                                             }}>Fresh Fruits</Text>
 
                                         </TouchableOpacity>
@@ -292,20 +240,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
+                                            flex: 0.45
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.chicken_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Free Chicken</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Fresh Chicken</Text>
                                         </TouchableOpacity>
 
                                     </View>
@@ -313,9 +257,9 @@ export default class ApplyFilters extends  Component {
                                     <View style={{
                                         flexDirection: "row",
                                         justifyContent: "space-between",
-                                        paddingVertical: hp(0.5),
+                                        paddingVertical: hp(1),
                                         borderBottomWidth: 1,
-                                        borderBottomColor: "#dadada"
+                                        borderBottomColor: colors.borderColorLight
                                     }}>
 
 
@@ -323,21 +267,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
-
+                                            flex: 0.55
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.dairy_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Fresh Fruits</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Fresh Dairy</Text>
 
                                         </TouchableOpacity>
 
@@ -345,20 +284,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
+                                            flex: 0.45
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.fishes_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Free Chicken</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Fresh Fishes</Text>
                                         </TouchableOpacity>
 
                                     </View>
@@ -367,9 +302,9 @@ export default class ApplyFilters extends  Component {
                                     <View style={{
                                         flexDirection: "row",
                                         justifyContent: "space-between",
-                                        paddingVertical: hp(0.5),
+                                        paddingVertical: hp(1),
                                         borderBottomWidth: 1,
-                                        borderBottomColor: "#dadada"
+                                        borderBottomColor: colors.borderColorLight
                                     }}>
 
 
@@ -377,21 +312,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
-
+                                            flex: 0.55
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.vegetables_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Fresh Fruits</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Fresh Vegetables</Text>
 
                                         </TouchableOpacity>
 
@@ -399,20 +329,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
+                                            flex: 0.45
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.salad_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Free Chicken</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Organic Salads</Text>
                                         </TouchableOpacity>
 
                                     </View>
@@ -420,9 +346,9 @@ export default class ApplyFilters extends  Component {
                                     <View style={{
                                         flexDirection: "row",
                                         justifyContent: "space-between",
-                                        paddingVertical: hp(0.5),
+                                        paddingVertical: hp(1),
                                         borderBottomWidth: 1,
-                                        borderBottomColor: "#dadada"
+                                        borderBottomColor: colors.borderColorLight
                                     }}>
 
 
@@ -430,21 +356,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
-
+                                            flex: 0.55
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.salad_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Fresh Fruits</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Original Medicine</Text>
 
                                         </TouchableOpacity>
 
@@ -452,20 +373,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
+                                            flex: 0.45
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.pets_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Free Chicken</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Pet Foods</Text>
                                         </TouchableOpacity>
 
                                     </View>
@@ -473,9 +390,9 @@ export default class ApplyFilters extends  Component {
                                     <View style={{
                                         flexDirection: "row",
                                         justifyContent: "space-between",
-                                        paddingVertical: hp(0.5),
+                                        paddingVertical: hp(1),
                                         borderBottomWidth: 1,
-                                        borderBottomColor: "#dadada"
+                                        borderBottomColor: colors.borderColorLight
                                     }}>
 
 
@@ -483,21 +400,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
-
+                                            flex: 0.55
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.bakery_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Fresh Fruits</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Quality Bakery</Text>
 
                                         </TouchableOpacity>
 
@@ -505,20 +417,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
+                                            flex: 0.45
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.pizza_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Free Chicken</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Quality Pizzas</Text>
                                         </TouchableOpacity>
 
                                     </View>
@@ -526,9 +434,7 @@ export default class ApplyFilters extends  Component {
                                     <View style={{
                                         flexDirection: "row",
                                         justifyContent: "space-between",
-                                        paddingVertical: hp(0.5),
-                                        borderBottomWidth: 1,
-                                        borderBottomColor: "#dadada"
+                                        paddingVertical: hp(1),
                                     }}>
 
 
@@ -536,21 +442,16 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
-
+                                            flex: 0.55
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.baby_products_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Fresh Fruits</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Baby Products</Text>
 
                                         </TouchableOpacity>
 
@@ -558,75 +459,19 @@ export default class ApplyFilters extends  Component {
                                             backgroundColor: "white",
                                             flexDirection: "row",
                                             alignItems: "center",
-                                            marginVertical: hp("0.5"),
+                                            flex: 0.45
                                         }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
+                                            <Image source={assets.sports_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
+
                                             <Text style={{
                                                 marginHorizontal: wp(3),
                                                 fontFamily: Fonts.RUBIK_REGULAR,
                                                 fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Free Chicken</Text>
+                                                color: colors.textColorBlack1
+                                            }}>Sport Goods</Text>
                                         </TouchableOpacity>
 
                                     </View>
-
-                                    <View style={{
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        paddingVertical: hp(0.5),
-                                    }}>
-
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            marginVertical: hp("0.5"),
-
-                                        }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Fresh Fruits</Text>
-
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            marginVertical: hp("0.5"),
-                                        }}>
-                                            <Icon
-                                                name='search'
-                                                type='font-awesome'
-                                                color='#b3bcca'
-                                                size={15}
-                                            />
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: "#697281"
-                                            }}>Free Chicken</Text>
-                                        </TouchableOpacity>
-
-                                    </View>
-
 
                                 </View>
 
@@ -637,9 +482,10 @@ export default class ApplyFilters extends  Component {
 
 
                             <Button
+                                containerStyle={{marginBottom: Globals.SAFE_AREA_INSET.bottom + hp(1)}}
                                 buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                 title={'Apply Filters'}
-                                titleStyle={styles.buttonFontStyle}
+                                titleStyle={styles.buttonStyle}
                                 onPress={() => {
 
                                 }}/>

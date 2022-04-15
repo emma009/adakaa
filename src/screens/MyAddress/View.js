@@ -142,7 +142,7 @@ export default class MyAddress extends Component {
 
 
         return (
-            <View style={Styles.foodItemContainer}>
+            <View style={[Styles.foodItemContainer, isActive && {borderBottomWidth: 1, borderBottomColor: colors.borderColorLight}]}>
 
                 {section.isDefault && <View style={{position: "absolute", backgroundColor: colors.secondaryGreenColor, width: "18%", height: hp(2.5),
                     justifyContent: "center", alignItems: "center", borderTopRightRadius: hp(0.5), borderBottomRightRadius: hp(0.5)
@@ -177,7 +177,7 @@ export default class MyAddress extends Component {
                 </View>
 
                 <View style={{flex: 1, justifyContent: "center", alignItems: "flex-end", paddingRight: wp("5")}}>
-                    <Animated.Image source={assets.drop_down_icon} style={{transform: [{rotate: spin}], width: hp(3), height: hp(3), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                    <Animated.Image source={assets.drop_down_icon} style={{transform: [{rotate: spin}], width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                 </View>
 
             </View>

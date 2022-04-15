@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, Image, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
+import {FlatList, Image, StatusBar, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import FoodItem from "../../components/Application/FoodItem/View";
@@ -12,11 +12,11 @@ import Routes from "../../navigation/Routes";
 import Typography from "../../../branding/carter/styles/Typography";
 import fonts from "../../../branding/carter/assets/Fonts";
 import assets from "../../../branding/carter/assets/Assets";
-import colors from "../../../branding/carter/styles/Colors";
 
 import AppConfig from "../../../branding/App_config";
 
 const styles = AppConfig.styling.default;
+const colors = AppConfig.colors.default;
 
 
 const searchHistoryArray = [
@@ -40,7 +40,8 @@ export default class Search extends Component {
     render(){
         return(
 
-            <View  style={[{flex: 1}]}>
+            <View  style={[{flex: 1,backgroundColor: colors.textColorGrey2}]}>
+                <StatusBar backgroundColor={"white"} barStyle="dark-content" />
 
                 <View style={{paddingTop: Globals.SAFE_AREA_INSET.top + hp (1), paddingRight: wp(5), backgroundColor: "white", flexDirection: "row", paddingVertical: hp(1)}}>
 
@@ -55,6 +56,12 @@ export default class Search extends Component {
                     <TextInput
                         placeholder={"Search"}
                         placeholderTextColor={colors.textColorBlack1}
+                        rightIconSource={
+                            assets.filter_icon
+                        }
+                        rightIconPress={() => {
+                            this.props.navigation.navigate(Routes.APPLY_FILTERS)
+                        }}
                         leftIcon={
                             <Image source={assets.search_icon}
                                    resizeMode={"contain"}
@@ -81,7 +88,7 @@ export default class Search extends Component {
 
 
                 <View style={{alignItems: "center"}}>
-                    <TouchableOpacity  onPress={() => {this.props.navigation.navigate(Routes.APPLY_FILTERS)}}>
+                    <TouchableOpacity  onPress={() => {}}>
                         <View style={{
                             width: styles.gridWidth,
                             flexDirection: "row",

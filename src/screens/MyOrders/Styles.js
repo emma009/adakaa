@@ -23,9 +23,6 @@ let Styles = {
 
         paddingLeft: wp("5"),
 
-        borderBottomWidth: 1,
-        borderBottomColor: "#dadada"
-
     },
     foodItemImage: {
         width: hp("10"),
@@ -58,11 +55,11 @@ let Styles = {
         fontSize: Typography.P5,
     },
     profileItemCircle: {
-        width: hp("6"),
-        height: hp("6"),
+        width: hp("7"),
+        height: hp("7"),
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: hp("3"),
+        borderRadius: hp("3.5"),
         backgroundColor: colors.secondaryGreenColor
     },
 
@@ -85,7 +82,7 @@ let Styles = {
     orderProgressTitle: {
         flex: 0.5,
         fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P5,
+        fontSize: Typography.P6,
         color: colors.textColorBlack1
     },
 
@@ -93,7 +90,7 @@ let Styles = {
         flex: 0.5,
         textAlign: "right",
         fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5,
+        fontSize: Typography.P6,
         color: colors.textColorGrey1
     }
 

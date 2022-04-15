@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {View, Text, TouchableWithoutFeedback, Image} from 'react-native';
+import {View, Text, TouchableWithoutFeedback, Image, StatusBar} from 'react-native';
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import {Avatar, Button, Icon} from 'react-native-elements';
+import {Avatar} from 'react-native-elements';
 
 import Routes from "../../navigation/Routes";
 import Styles from "./Styles";
@@ -21,7 +21,7 @@ export default class ProfileMenu extends  Component {
     render(){
         return(
             <View style={{flex: 1}}>
-
+                <StatusBar backgroundColor={"white"} barStyle="dark-content" />
 
                 <View style={{width: "100%", height: hp("20"), backgroundColor: "white"}}/>
 
@@ -43,7 +43,7 @@ export default class ProfileMenu extends  Component {
 
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"About Me"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"About Me"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -55,7 +55,7 @@ export default class ProfileMenu extends  Component {
                                     <Image source={assets.order_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Orders"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Orders"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -69,7 +69,7 @@ export default class ProfileMenu extends  Component {
                                     <Image source={assets.heart_regular_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Favourites"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Favourites"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -85,7 +85,7 @@ export default class ProfileMenu extends  Component {
                                     <Image source={assets.map_marker_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Address"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"My Address"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -97,7 +97,7 @@ export default class ProfileMenu extends  Component {
                                     <Image source={assets.credit_card_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Credit Cards"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Credit Cards"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -109,7 +109,7 @@ export default class ProfileMenu extends  Component {
                                     <Image source={assets.transaction_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Transactions"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Transactions"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -125,7 +125,7 @@ export default class ProfileMenu extends  Component {
                                     <Image source={assets.notification_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Notifications"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Notifications"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -137,7 +137,7 @@ export default class ProfileMenu extends  Component {
                                     <Image source={assets.categories_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Categories"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Categories"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -149,7 +149,7 @@ export default class ProfileMenu extends  Component {
                                     <Image source={assets.sign_out_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
                                 </View>
 
-                                <Text style={{marginTop: hp("1"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Sign Out"}</Text>
+                                <Text style={{marginTop: hp("2"), fontFamily: fonts.RUBIK_REGULAR, fontSize: Typography.P5, color: colors.textColorGrey1}}>{"Sign Out"}</Text>
                             </View>
 
                         </TouchableWithoutFeedback>
@@ -163,13 +163,10 @@ export default class ProfileMenu extends  Component {
 
                 <Avatar
                     rounded
-                    source={{
-                        uri:
-                            'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                    }}
+                    source={assets.profile_image}
                     size={hp("13")}
                     containerStyle={{position: "absolute", top: hp("13"), alignSelf: "center"}}
-                />
+                 />
 
             </View>
         );
@@ -177,18 +174,3 @@ export default class ProfileMenu extends  Component {
 
 
 }
-
-// <View style={{alignItems: "center", paddingTop: hp("10%")}}>
-//     <Avatar
-//         rounded
-//         size={"large"}
-//     />
-// </View>
-// <View style={{width: wp("100%"), height: "100%", backgroundColor: "grey", alignItems: "center"}}>
-//     <View style={{width: wp("85%"), height: "100%", paddingTop: hp("5%")}}>
-//         <ProfileMenuItem
-//             source={require("./Assets/Images/icon.png")}
-//             onPress={() => { this.props.navigation.navigate(Routes.ABOUT_ME) }}
-//         />
-//     </View>
-// </View>

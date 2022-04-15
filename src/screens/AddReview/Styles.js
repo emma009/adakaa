@@ -18,10 +18,11 @@ let Styles = {
     },
 
     secondaryText: {
-        fontFamily: Fonts.RUBIK_LIGHT,
-        fontSize: Typography.P2,
+        fontFamily: Fonts.RUBIK_REGULAR,
+        fontSize: Typography.P3,
         textAlign: "center",
-        color: colors.textColorGrey1
+        color: colors.textColorGrey1,
+        width: "80%"
     },
 
     rating: {

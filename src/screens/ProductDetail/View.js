@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {
-    View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image
+    View, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, Image, StatusBar
 } from 'react-native';
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
@@ -13,7 +13,11 @@ import {StackActions} from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
 import Globals from "../../utils/Globals";
 import assets from "../../../branding/carter/assets/Assets";
-import Style from "../Login/Style";
+import Style from "../Variant1/Login/Style";
+import StarRating from "react-native-star-rating";
+import FavouritesBottomSheetComponent
+    from "../../components/Application/FavouritesBottomSheetComponent/FavouritesBottomSheetComponent";
+import RBSheet from "react-native-raw-bottom-sheet";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -42,6 +46,7 @@ export default class SingleGroceryItem extends Component {
         const { item } = this.props.route.params;
         return(
            <View style={[Styles.mainContainer, {paddingBottom: Globals.SAFE_AREA_INSET.bottom}]}>
+               <StatusBar backgroundColor={"white"} barStyle="dark-content" />
 
                <View style={[Styles.upperImageContainer, {paddingTop: Globals.SAFE_AREA_INSET.top}]}>
 
@@ -70,7 +75,11 @@ export default class SingleGroceryItem extends Component {
                        <Text style={Styles.priceText}>{item.price}</Text>
                        <View style={{width: "50%", height: hp(2), justifyContent: "center", alignItems: "flex-end"}}>
                            <TouchableOpacity onPress={() => {
-                               this.setState({favourite: !this.state.favourite})
+                               this.setState({favourite: !this.state.favourite}, () => {
+                                   if (this.state.favourite) {
+                                       this.RBSheet.open()
+                                   }
+                               })
                            }}>
                                <View>
 
@@ -95,12 +104,19 @@ export default class SingleGroceryItem extends Component {
 
                        <View style={{flexDirection: "row", alignItems: "center", marginBottom: hp("2")}}>
                            <Text style={Styles.ratingText}>{this.state.rating}</Text>
-                           <Rating
-                               readonly
-                               defaultRating={this.state.rating}
-                               imageSize={20}
-                               type={"custom"}
-                               style={{marginHorizontal: wp("1")}}
+
+
+                           <StarRating
+                               disabled={true}
+                               maxStars={5}
+                               rating={2}
+                               starSize={hp(2)}
+                               fullStarColor={colors.iconColorOrange1}
+                               emptyStarColor={colors.borderColorLight}
+                               selectedStar={(rating) => {}}
+                               containerStyle={{
+                                   marginHorizontal: wp("1")
+                               }}
                            />
                            <View style={{flexDirection: "row"}}>
                                <Text style={Styles.reviewText}>[</Text>
@@ -115,7 +131,7 @@ export default class SingleGroceryItem extends Component {
 
                    <Text style={Styles.detailText} numberOfLines={4}>{item.detail}</Text>
 
-                   <View style={{flex: 1, justifyContent: "center"}}>
+                   <View style={{flex: 1, justifyContent: "flex-end"}}>
 
                        <View style={Styles.cartCounter}>
                            <Text style={Styles.cartCounterText }>QUANTITY</Text>
@@ -127,7 +143,11 @@ export default class SingleGroceryItem extends Component {
                        <Button containerStyle={{width: "100%"}}
                                buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
                                title={'Add To Cart'}
-                               titleStyle={styles.buttonStyle}
+                               iconRight
+                               icon={
+                                   <Image source={assets.cart_regular_icon} style={{position: "absolute", right: wp(5), width: hp(2), height: hp(2), tintColor: "white"}} resizeMode={"contain"} />
+                               }
+                               titleStyle={[styles.buttonStyle, {width: "100%"}]}
                                onPress={() => {
 
                                }}/>
@@ -136,6 +156,17 @@ export default class SingleGroceryItem extends Component {
 
 
                </View>
+
+               <RBSheet
+                   ref={ref => {
+                       this.RBSheet = ref;
+                   }}
+                   height={hp(42)}
+               >
+
+                   <FavouritesBottomSheetComponent />
+
+               </RBSheet>
 
 
            </View>

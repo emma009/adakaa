@@ -20,10 +20,6 @@ let Styles = {
 
         flexDirection: "row",
 
-
-        borderBottomWidth: 1,
-        borderBottomColor: "#dadada"
-
     },
     foodItemImage: {
         width: hp("10"),
@@ -31,12 +27,12 @@ let Styles = {
         marginRight: wp("2")
     },
     nameTitle: {
-        fontSize: Typography.P2,
+        fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.textColorBlack1
     },
     addressTitle: {
-        fontSize: Typography.P5,
+        fontSize: Typography.P6,
         fontFamily: Fonts.RUBIK_REGULAR,
         marginVertical: hp("0.5"),
         lineHeight: hp(2.5),
@@ -48,7 +44,7 @@ let Styles = {
         fontFamily: Fonts.RUBIK_LIGHT,
     },
     phoneTitle: {
-        fontSize: Typography.P4,
+        fontSize: Typography.P5,
         fontFamily: Fonts.RUBIK_MEDIUM,
         marginRight: wp("5"),
         color: colors.textColorBlack1

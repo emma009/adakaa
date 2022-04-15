@@ -3,6 +3,7 @@ const assets = {
     intro2 :            require('./images/intro1_header_img2.png'),
     intro3 :            require('./images/intro1_header_img3.png'),
     intro4 :            require('./images/intro1_header_img4.png'),
+
     intro1_img1 :       require('./images/intro2_header_img1.png'),
     intro1_img2 :       require('./images/intro2_header_img2.png'),
     intro1_img3 :       require('./images/intro2_header_img3.png'),
@@ -11,9 +12,17 @@ const assets = {
     intro2_img2 :       require('./images/intro3_bg_img2.png'),
     intro2_img3 :       require('./images/intro3_bg_img3.png'),
     intro2_img4 :       require('./images/intro3_bg_img4.png'),
-    login_header :      require('./images/login_header.png'),
 
+    login_header1 :      require('./images/login_header_1.png'),
+    login_form_header1 :      require('./images/login_form_header1.png'),
+    signup_form_header1 :      require('./images/signup_header_1.png'),
 
+    login_form_header2 :      require('./images/login_form_header_2.png'),
+    signup_form_header2 :      require('./images/signup_header_2.png'),
+
+    login_header3 :      require('./images/login_header_3.png'),
+    login_form_header3 :      require('./images/login_form_header_3.png'),
+    signup_form_header3 :      require('./images/signup_header_3.png'),
 
     account_icon :      require('./images/account_icon.png'),
     arrow_left_icon :      require('./images/arrow_left_icon.png'),
@@ -42,8 +51,10 @@ const assets = {
     map_icon :      require('./images/map_icon.png'),
     globe_icon :      require('./images/globe_icon.png'),
     paypal_icon :      require('./images/paypal_icon.png'),
+    paypal_coloured_icon :      require('./images/paypal_coloured_icon.png'),
     credit_card_icon :      require('./images/credit_card_icon.png'),
     apple_pay_icon :      require('./images/apple_pay_icon.png'),
+    apple_icon :      require('./images/apple_icon.png'),
     calendar_icon :      require('./images/calendar_icon.png'),
     order_icon :      require('./images/order_icon.png'),
     order_placed_icon :      require('./images/order_placed_icon.png'),
@@ -52,6 +63,7 @@ const assets = {
     out_for_delivery_icon :      require('./images/out_for_delivery_icon.png'),
     order_delivered_icon :      require('./images/order_delivered_icon.png'),
     user_icon :      require('./images/user_icon.png'),
+    profile_image :      require('./images/profile_image.png'),
     transaction_icon :      require('./images/transaction_icon.png'),
     notification_icon :      require('./images/notifications_icon.png'),
     categories_icon :      require('./images/categories_icon.png'),
@@ -59,6 +71,29 @@ const assets = {
     master_card_icon :      require('./images/mastercard_icon.png'),
     visa_icon :      require('./images/visa_icon.png'),
     drop_down_icon :      require('./images/drop_down_icon.png'),
+
+    eye_icon :      require('./images/eye_icon.png'),
+    eye_slash_icon :      require('./images/eye_slash_icon.png'),
+    box_open_icon :      require('./images/box_open_icon.png'),
+    baby_products_icon :      require('./images/baby_products_icon.png'),
+    bakery_icon :      require('./images/bakery_icon.png'),
+    chicken_icon :      require('./images/chicken_icon.png'),
+    dairy_icon :      require('./images/dairy_icon.png'),
+    discount_icon :      require('./images/discount_icon.png'),
+    fishes_icon :      require('./images/fishes_icon.png'),
+    fruits_icon :      require('./images/fruits_icon.png'),
+    medicine_icon :      require('./images/medicine_icon.png'),
+    pets_icon :      require('./images/pets_icon.png'),
+    pizza_icon :      require('./images/pizza_icon.png'),
+    salad_icon :      require('./images/salad_icon.png'),
+    same_day_delivery_icon :      require('./images/same_day_delivery_icon.png'),
+    shipping_icon :      require('./images/shipping_icon.png'),
+    sports_icon :      require('./images/sports_icon.png'),
+    vegetables_icon :      require('./images/vegetables_icon.png'),
+    check_circle_icon :      require('./images/check_circle_icon.png'),
+    calendar_icon2 :      require('./images/calendar_icon2.png'),
+    clock_icon :      require('./images/clock_icon.png'),
+
 
 };
 

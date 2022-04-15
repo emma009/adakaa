@@ -29,7 +29,8 @@ class AppHeader extends Component {
             blackIcons,
             whiteHeader,
             rightIcon,
-            onRightIconPress
+            onRightIconPress,
+            isTranslucent,
         } = this.props;
 
         return (
@@ -38,16 +39,10 @@ class AppHeader extends Component {
                 leftComponent={
                     headerWithBack &&
                         <TouchableWithoutFeedback onPress={() => {navigation.goBack();}}>
-                            <View style={{width: wp("10"), height: "100%", justifyContent: "center", zIndex: 1}}>
+                            <View style={{width: wp("10"), height: "100%", justifyContent: "center", zIndex: 1, alignItems: "center"}}>
                                 <Image source={assets.arrow_left_icon}
                                        resizeMode={"contain"}
                                        style={{width: hp(2.5), height: hp (2.5), tintColor: (blackIcons || whiteHeader) ? colors.textColorBlack1: "white"}} />
-                                {/*<Icon*/}
-                                {/*    name="google"*/}
-                                {/*    type='font-awesome'*/}
-                                {/*    size={hp("3")}*/}
-                                {/*    color={(blackIcons || whiteHeader) ? "black": "white"}*/}
-                                {/*/>*/}
                             </View>
                         </TouchableWithoutFeedback>
                 }
@@ -57,7 +52,7 @@ class AppHeader extends Component {
                 rightComponent={
                     rightIcon !== "" &&
                     <TouchableWithoutFeedback onPress={() => {onRightIconPress();}}>
-                        <View style={{width: wp("10"), height: "100%", justifyContent: "center", zIndex: 1}}>
+                        <View style={{width: wp("10"), height: "100%", justifyContent: "center", zIndex: 1, alignItems: "center"}}>
                             <Image source={rightIcon}
                                    resizeMode={"contain"}
                                    style={{width: hp(2.5), height: hp (2.5), tintColor: (blackIcons || whiteHeader) ? colors.textColorBlack1: "white"}} />
@@ -65,7 +60,7 @@ class AppHeader extends Component {
                     </TouchableWithoutFeedback>
                 }
 
-                containerStyle={[transparentHeader && Style.transparentHeader, whiteHeader && Style.whiteHeader, {marginBottom: hp("2")}, Platform.OS === 'android' && {marginTop: -22}]}
+                containerStyle={[whiteHeader && Style.whiteHeader, transparentHeader && Style.transparentHeader , {marginBottom: hp("2"), borderBottomWidth: 0}, Platform.OS === 'android' && {marginTop: isTranslucent ? -10 : 0}]}
 
             />
 
@@ -85,6 +80,7 @@ AppHeader.propTypes = {
     transparentHeader: PropTypes.bool,
     blackIcons:  PropTypes.bool,
     whiteHeader: PropTypes.bool,
+    isTranslucent: PropTypes.bool,
 
     rightIcon: PropTypes.string,
     onRightIconPress: PropTypes.func,
@@ -98,6 +94,7 @@ AppHeader.defaultProps = {
     transparentHeader: false,
     whiteHeader: false,
     blackIcons: false,
+    isTranslucent: false,
     rightIcon: ""
 };
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, StatusBar, View} from 'react-native';
 import ReviewItem from "../../components/Application/ReviewItem/View";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
@@ -101,7 +101,9 @@ export default class Review extends Component {
 
         return (
 
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: colors.textColorGrey2}}>
+
+                <StatusBar backgroundColor={colors.textColorGrey2} barStyle="dark-content" />
                 <View style={Styles.flatListContainer}>
                     <BaseView
                         showAppHeader={false}
@@ -149,7 +151,7 @@ export default class Review extends Component {
                         <Text style={Styles.subtotalValueText}>$16.99</Text>
                     </View>
 
-                    <Divider style={{width: styles.gridWidth, alignSelf: "center", marginBottom: hp("1"), backgroundColor: colors.borderColorLight}} />
+                    <Divider style={{width: styles.gridWidth, height: 1, alignSelf: "center", marginBottom: hp("1"), backgroundColor: colors.borderColorLight}} />
 
                     <View style={Styles.totalContainer}>
                         <Text style={Styles.totalLabelText}>Total</Text>

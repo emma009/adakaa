@@ -10,6 +10,7 @@ import Styles from "./Styles";
 import {StackActions} from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
 import assets from "../../../branding/carter/assets/Assets";
+import StarRating from "react-native-star-rating";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
@@ -17,6 +18,12 @@ const styles = AppConfig.styling.default;
 export default class AddReview extends  Component {
 
 
+    constructor() {
+        super();
+
+        this.state = {}
+
+    }
 
 
     render(){
@@ -34,19 +41,27 @@ export default class AddReview extends  Component {
                             <Text style={Styles.primaryText}>What do you think?</Text>
                             <Text style={Styles.secondaryText}>Please give your rating by clicking on the stars below.</Text>
 
-                            <Rating
-                                defaultRating={0}
-                                startingValue={2}
-                                // onFinishRating={(rating) => { console.log(rating) }}
-                                imageSize={40}
-                                type={"custom"}
-                                ratingBackgroundColor={"transparent"}
-                                style={Styles.rating}
+                            <StarRating
+                                disabled={false}
+                                maxStars={5}
+                                rating={this.state.rating}
+                                starSize={hp(5.5)}
+                                fullStarColor={colors.iconColorOrange1}
+                                emptyStarColor={colors.borderColorLight}
+                                selectedStar={(rating) => {
+                                    this.setState({
+                                        rating
+                                    })
+                                }}
+                                containerStyle={{
+                                    paddingVertical: hp("2")
+                                }}
                             />
 
                             <AppInput
-                                multiline
+                                multilineInput
                                 leftIcon={assets.pencil_icon}
+                                leftIconColor={colors.iconColorGrey1}
                                 placeholder={"Tell us about your experience"}
                                 placeholderTextColor={colors.textColorGrey1}
                                 onChangeText={(value) => {}}

@@ -11,16 +11,16 @@ const styles = AppConfig.styling.default;
 let Styles = {
     mainContainer: {
         flex: 1,
-        backgroundColor: "#F3F5F8",
+        backgroundColor: colors.textColorGrey2
     },
     upperImageContainer: {
         width: wp("100%"),
-        height: hp("50%"),
+        height: hp("55%"),
         backgroundColor: "#fff",
     },
     upperImage: {
-        width: "80%",
-        height: "80%",
+        width: "70%",
+        height: "70%",
     },
     bottomContainer: {
         flex: 1,
@@ -65,7 +65,7 @@ let Styles = {
         justifyContent:"space-between",
         alignItems: "center",
         backgroundColor: "white",
-        marginVertical: hp("1")
+        marginVertical: hp("1.5")
     },
     cartCounterText: {
         fontFamily: Fonts.RUBIK_MEDIUM,

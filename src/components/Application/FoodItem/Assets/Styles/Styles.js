@@ -8,7 +8,7 @@ const Fonts = AppConfig.fonts.default;
 
 let Styles = {
     foodItemContainer: {
-        width: wp("43%"),
+        width: wp("44%"),
 
         backgroundColor: "white",
         borderRadius: 5,
@@ -29,12 +29,10 @@ let Styles = {
     },
     topContainer: {
         flexDirection: "row",
-        position: "absolute",
     },
     mainContainer: {
         flex: 1,
         alignItems: "center",
-        paddingTop: hp("3"),
     },
     foodItemImage: {
         width: hp("13"),

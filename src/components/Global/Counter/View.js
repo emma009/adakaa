@@ -158,7 +158,7 @@ Counter.propTypes = {
 };
 
 Counter.defaultProps = {
-    spacing: wp("10"),
+    spacing: wp("12"),
     borderWidth: 1,
     borderColor: colors.borderColorLight,
     outerBorder: false,

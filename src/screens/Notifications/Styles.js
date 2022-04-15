@@ -25,8 +25,6 @@ let Styles = {
 
         paddingVertical: hp("2"),
 
-        borderBottomWidth: 1,
-        borderBottomColor: "#dadada"
 
 
     },
@@ -36,14 +34,15 @@ let Styles = {
         marginRight: wp("2")
     },
     nameTitle: {
-        fontSize: Typography.P2,
+        fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.textColorBlack1,
         marginBottom: hp(1)
     },
     addressTitle: {
-        fontSize: Typography.P5,
+        fontSize: Typography.P6,
         fontFamily: Fonts.RUBIK_REGULAR,
+        lineHeight: hp(2.5),
         marginVertical: hp("0.5"),
         color: colors.textColorGrey1
     },

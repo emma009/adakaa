@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import AppHeader from "../components/Application/AppHeader/View";
 import styles from "../../branding/carter/styles/Style";
 import Globals from "../utils/Globals";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
+import AppConfig from "../../branding/App_config";
+const colors = AppConfig.colors.default;
+
 const PropTypes = require('prop-types');
 
 class BaseView extends Component {
     constructor(props) {
         super(props);
-
 
     }
 
@@ -26,7 +28,13 @@ class BaseView extends Component {
         } = this.props;
 
         return(
-            <View style={[{flex: 1}, !showAppHeader && {marginTop: Globals.SAFE_AREA_INSET.top}]}>
+            <View style={[{flex: 1, backgroundColor: colors.textColorGrey2}, !showAppHeader && {marginTop: Globals.SAFE_AREA_INSET.top}]}>
+
+                {
+                    showAppHeader &&
+                    <StatusBar backgroundColor={"white"} barStyle="dark-content" />
+
+                }
 
                 {
                     showAppHeader &&
@@ -42,7 +50,7 @@ class BaseView extends Component {
 
                 }
 
-                <View style={[{flex: 1, width: styles.gridWidth, alignSelf:"center", marginBottom: applyBottomSafeArea ? Globals.SAFE_AREA_INSET.bottom: 0},]}>
+                <View style={[{flex: 1, width: styles.gridWidth2, alignSelf:"center", marginBottom: applyBottomSafeArea ? Globals.SAFE_AREA_INSET.bottom: 0},]}>
                     {childView()}
                 </View>
 

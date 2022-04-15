@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 
-import {Button, Image, Input} from 'react-native-elements';
+import {Button, Input} from 'react-native-elements';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen'
-import {ViewPropTypes} from "react-native";
+import {TouchableOpacity, ViewPropTypes, Image} from "react-native";
 import Typography from "../../../../branding/carter/styles/Typography";
 import fonts from "../../../../branding/carter/assets/Fonts";
+import assets from "../../../../branding/carter/assets/Assets";
 
 const PropTypes = require('prop-types');
 
-const normalEyeIcon = require("./images/Eye_password.png");
-const slashEyeIcon = require("./images/Eye_line.png");
 
 class TextInput extends Component {
 
@@ -27,10 +26,10 @@ class TextInput extends Component {
         const {showObscureText} = this.state;
 
         if (showObscureText) {
-            return slashEyeIcon;
+            return assets.eye_slash_icon;
         }
         else {
-            return normalEyeIcon;
+            return assets.eye_icon;
         }
 
     };
@@ -64,7 +63,10 @@ class TextInput extends Component {
             isPasswordField,
             value,
             keyboardType,
-            textInputRef
+            textInputRef,
+            rightIconPress,
+            rightIconSource,
+            rightIconTintColor
         } = this.props;
 
 
@@ -97,20 +99,26 @@ class TextInput extends Component {
                 labelProps={labelProps}
                 leftIcon={leftIcon}
                 leftIconContainerStyle={leftIconContainerStyle}
+
+
                 rightIcon={(isPasswordField  && showPassword ) ? () => {
                     return (
-                        <Button
-                            ViewComponent={() => {
-                                return (
-                                    <Image source={eyeIcon} style={{width:wp(5),height:wp(5)}} resizeMode={"contain"}/>
-                                );
-                            }}
-                            onPress={() => {
-                                this.setState({showObscureText:!showObscureText})
-                            }}
-                        />
+                        <TouchableOpacity onPress={()=>this.setState({showObscureText:!showObscureText})} >
+                            <Image source={eyeIcon} style={{width:wp(5),height:wp(5),tintColor: "#B3BCCA"}} resizeMode={"contain"}/>
+                        </TouchableOpacity>
+                    );
+                } : rightIconSource ? () => {
+
+                        return (
+                            <TouchableOpacity onPress={()=> {rightIconPress ? rightIconPress():{}}} >
+                                <Image source={rightIconSource} style={{width:wp(5),height:wp(5),tintColor:rightIconTintColor,resizeMode:'contain'}} />
+                            </TouchableOpacity>
                         );
-                } : rightIcon}
+
+
+                } : () => {
+                    return null
+                }}
 
                 secureTextEntry={isPasswordField? showPassword ? showObscureText :  true :false }
 
@@ -145,7 +153,8 @@ TextInput.propTypes = {
     labelProps: PropTypes.any,
     leftIcon: PropTypes.any,
     leftIconContainerStyle: ViewPropTypes.style,
-    rightIcon: PropTypes.any,
+    rightIconSource: PropTypes.any,
+    rightIconPress: PropTypes.func,
     rightIconContainerStyle: ViewPropTypes.style,
     isPasswordField: PropTypes.bool,
     showPassword: PropTypes.bool,
@@ -159,6 +168,7 @@ TextInput.defaultProps = {
     inputContainerStyle: {borderBottomWidth: 0},
     isPasswordField: false,
     showPassword: false,
+    rightIconPress:()=>{}
 };
 
 module.exports = TextInput;

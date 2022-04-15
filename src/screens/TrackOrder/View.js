@@ -83,7 +83,7 @@ export default class TrackOrder extends  Component {
 
                                             <Divider style={[Styles.orderProgressLine, {backgroundColor: colors.primaryGreenColor}]} />
                                         </View>
-                                        <View>
+                                        <View style={{}}>
                                             <Text style={Styles.orderProgressTitle}>{"Orders Placed"}</Text>
                                             <Text style={Styles.orderProgressSubTitle}>{"Dec 10, 2020"}</Text>
                                         </View>

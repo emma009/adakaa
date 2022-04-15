@@ -12,18 +12,19 @@ let Styles = {
     mainWrapper: {
         flex: 1,
         alignSelf: "center",
-        width: styles.gridWidth,
+        justifyContent: "center",
+        width: styles.gridWidth2,
         backgroundColor: colors.textColorGrey2,
-        paddingBottom: hp("3"),
+        // paddingBottom: hp("3"),
     },
 
     sectionHeading: {
-        width: styles.gridWidth,
+        width: styles.gridWidth2,
         flexDirection: "row",
         alignItem: "center",
         justifyContent: "space-between",
         paddingVertical: hp("1"),
-        marginTop: hp("1"),
+        marginVertical: hp("1"),
     },
 
     sectionHeadingText: {

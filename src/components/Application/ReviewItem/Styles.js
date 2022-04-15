@@ -37,14 +37,16 @@ let Styles = {
 
     ratingText: {
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P2,
-        color: colors.textColorBlack1
+        fontSize: Typography.P4,
+        color: colors.textColorBlack1,
+        marginRight: wp(1)
     },
 
     commentText: {
         fontFamily: Fonts.RUBIK_LIGHT,
         fontSize: Typography.P5,
         paddingTop: hp(1),
+        lineHeight: hp(2.5),
         color: colors.textColorGrey1
     }
 

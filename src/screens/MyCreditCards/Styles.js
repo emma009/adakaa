@@ -19,8 +19,7 @@ let Styles = {
 
         flexDirection: "row",
 
-        borderBottomWidth: 1,
-        borderBottomColor: "#dadada"
+
 
     },
     foodItemImage: {
@@ -29,12 +28,12 @@ let Styles = {
         marginRight: wp("2")
     },
     nameTitle: {
-        fontSize: Typography.P2,
+        fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.textColorBlack1
     },
     addressTitle: {
-        fontSize: Typography.P6,
+        fontSize: Typography.P7,
         fontFamily: Fonts.RUBIK_REGULAR,
         marginVertical: hp("0.5"),
         color: colors.textColorGrey1

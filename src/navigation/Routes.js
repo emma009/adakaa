@@ -1,12 +1,25 @@
 const Routes = {
     SPLASH_SCREEN: "splash",
+
+    //Variant1
     INTRO_SCREEN: "intro",
-    INTRO_SCREEN1: "intro1",
-    INTRO_SCREEN2: "intro2",
     LOGIN_SCREEN: "login",
     LOGIN_FORM_SCREEN: "login_form",
     SIGNUP_FORM_SCREEN: "signup_form",
     FORGOT_PASSWORD_FORM_SCREEN: "forgot_password_form",
+    //Variant2
+    INTRO_SCREEN1: "intro1",
+    LOGIN_SCREEN1: "login1",
+    LOGIN_FORM_SCREEN1: "login_form1",
+    SIGNUP_FORM_SCREEN1: "signup_form1",
+    FORGOT_PASSWORD_FORM_SCREEN1: "forgot_password_form1",
+
+    //Variant3
+    INTRO_SCREEN2: "intro2",
+    LOGIN_SCREEN2: "login2",
+    LOGIN_FORM_SCREEN2: "login_form2",
+    SIGNUP_FORM_SCREEN2: "signup_form2",
+    FORGOT_PASSWORD_FORM_SCREEN2: "forgot_password_form2",
 
     HOME: "home",
 
@@ -23,6 +36,10 @@ const Routes = {
     CHECKOUT_DELIVERY: "checkout_delivery",
     CHECKOUT_ADDRESS: "checkout_address",
     CHECKOUT_PAYMENT: "checkout_payment",
+    CHECKOUT_SELECT_CARD: "checkout_select_card",
+    CHECKOUT_SELECT_ACCOUNT: "checkout_select_account",
+    SELF_PICKUP: "self_pickup",
+    CART_SUMMARY: "cart_summary",
 
     ORDER_SUCCESS: "order_success",
 

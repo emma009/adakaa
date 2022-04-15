@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from "react-native"
+import {StatusBar, View} from "react-native"
 import {NavigationContainer} from '@react-navigation/native';
 import {RootStack} from './src/navigation/RootStack';
 import {SafeAreaProvider, SafeAreaConsumer} from "react-native-safe-area-context";
@@ -11,6 +11,8 @@ export default class App extends Component {
       super();
       console.disableYellowBox = true;
     }
+
+
 
   render() {
 
@@ -27,7 +29,8 @@ export default class App extends Component {
 
                         return (
 
-                                <RootStack/>
+                            <RootStack/>
+
 
 
                         );

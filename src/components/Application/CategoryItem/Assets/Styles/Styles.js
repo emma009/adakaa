@@ -8,7 +8,7 @@ const Fonts = AppConfig.fonts.default;
 let Styles = {
     categoryItemContainer: {
         width: wp("29%"),
-        height: hp("16"),
+        height: hp("18"),
         marginRight: wp("2"),
         marginBottom: wp("2"),
     },
@@ -25,6 +25,7 @@ let Styles = {
         textTransform: "uppercase",
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.P5,
+        marginBottom: hp(1)
     },
     secondaryTitle: {
         textTransform: "uppercase",

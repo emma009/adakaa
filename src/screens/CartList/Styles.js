@@ -19,7 +19,7 @@ let Styles = {
         flex: 0.23,
         backgroundColor: "white",
         justifyContent: "flex-end",
-        marginBottom: hp("3")
+        paddingBottom: hp("3"),
     },
     totalContainer: {
         alignSelf: "center",

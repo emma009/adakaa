@@ -81,6 +81,16 @@ export default class CheckoutDelivery extends Component {
                                 textInputRef={r => (this.inputRef = r)}
                                 leftIcon={assets.lock_icon}
                                 leftIconColor={colors.iconColorGrey1}
+                                placeholder={"Current Password"}
+                                placeholderTextColor={colors.textColorGrey1}
+                                isPasswordField
+                                onChangeText={(value) => {}}
+                            />
+
+                            <AppInput
+                                textInputRef={r => (this.inputRef = r)}
+                                leftIcon={assets.lock_icon}
+                                leftIconColor={colors.iconColorGrey1}
                                 placeholder={"Password"}
                                 placeholderTextColor={colors.textColorGrey1}
                                 isPasswordField

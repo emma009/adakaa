@@ -37,18 +37,12 @@ export default class CheckoutDelivery extends Component {
 
 
                             <View style={{flex: 0.9, width: wp ("55"), alignSelf: "center", alignItems: "center", justifyContent: "center"}}>
-                                {/*<Icon*/}
-                                {/*    name="google"*/}
-                                {/*    type='font-awesome'*/}
-                                {/*    size={50}*/}
-                                {/*    color={colors.buttonGreenColor}*/}
-                                {/*/>*/}
 
                                 <Image source={assets.cart_regular_icon} style={{width: hp(8), height: hp(8), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
 
                                 <Text style={{fontFamily: fonts.RUBIK_MEDIUM, color: colors.textColorBlack1, fontSize: Typography.H8, textAlign: "center", marginTop: hp("3")}}>Your Order was successful!</Text>
 
-                                <Text style={{fontFamily: fonts.RUBIK_LIGHT, color: colors.textColorGrey1, fontSize: Typography.P4, lineHeight: hp(4), textAlign: "center", marginTop: hp("3")}}>You'll get a response within a few minutes</Text>
+                                <Text style={{fontFamily: fonts.RUBIK_LIGHT, color: colors.textColorGrey1, fontSize: Typography.P4, lineHeight: hp(3), textAlign: "center", marginTop: hp("3")}}>You'll get a response within a few minutes</Text>
 
                             </View>
 

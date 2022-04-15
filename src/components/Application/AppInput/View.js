@@ -24,7 +24,7 @@ class AppInput extends Component {
             isPasswordField,
             backgroundColor,
             value,
-            multiline,
+            multilineInput,
             keyboardType
         } = this.props;
 
@@ -44,11 +44,11 @@ class AppInput extends Component {
                         backgroundColor: backgroundColor,
                         marginVertical: hp("0.5"),
                     },
-                    multiline && {height: hp("30")},
+                    multilineInput && {height: hp("30")},
 
                     ]}
                 leftIconContainerStyle={{
-                    paddingRight: wp('3')
+                    paddingRight: wp('3'),
                 }}
                 onChangeText={(value) => {
                     onChangeText(value)
@@ -83,7 +83,7 @@ AppInput.propTypes = {
 
     isPasswordField: PropTypes.bool,
 
-    multiline: PropTypes.bool,
+    multilineInput: PropTypes.bool,
 
     keyboardType:PropTypes.string
 };
@@ -94,7 +94,7 @@ AppInput.defaultProps = {
     leftIconColor: "#697281",
     backgroundColor: "#fff",
     isPasswordField: false,
-    multiline: false
+    multilineInput: false
 };
 
 module.exports = AppInput;

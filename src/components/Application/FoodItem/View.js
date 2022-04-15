@@ -53,14 +53,7 @@ export default class FoodItem extends Component {
         } = this.props;
         return(
 
-            <TouchableWithoutFeedback onPress={() => {
-                navigation.navigate(
-                    Routes.PRODUCT_DETAIL, {
-                           item: this.props,
-                           itemState: this.state
-                           }
-                       );
-            }}>
+            <View >
                 <View style={Styles.foodItemContainer}>
 
                     <View style={Styles.topContainer}>
@@ -71,7 +64,7 @@ export default class FoodItem extends Component {
                                 <Text style={Styles.discountText}>- {discount}</Text>
                             </View>}
                         </View>
-                        <View style={{width: "50%", height: hp(2), paddingTop: wp(2), paddingEnd: wp(2), justifyContent: "center", alignItems: "flex-end"}}>
+                        <View style={{width: "50%", paddingTop: wp(2), paddingEnd: wp(2), justifyContent: "center", alignItems: "flex-end"}}>
                             <TouchableOpacity onPress={() => {
                                 this._favouriteChange()
                             }}>
@@ -87,7 +80,16 @@ export default class FoodItem extends Component {
                         </View>
                     </View>
 
-                    <View style={Styles.mainContainer}>
+                    <TouchableWithoutFeedback
+                        onPress={() => {
+                            navigation.navigate(
+                                Routes.PRODUCT_DETAIL, {
+                                    item: this.props,
+                                    itemState: this.state
+                                }
+                            );
+                        }}>
+                        <View style={[Styles.mainContainer]}>
                         <Image
                             source={image}
                             style={Styles.foodItemImage}
@@ -105,7 +107,7 @@ export default class FoodItem extends Component {
                                     titleStyle={Styles.addCartText}
                                     type={"clear"}
                                     icon={
-                                       <Image source={assets.cart_light_icon} style={{width: hp(1.5), height: hp(1.5), tintColor: colors.primaryGreenColor, marginRight: wp(1)}} resizeMode={"contain"} />
+                                       <Image source={assets.cart_regular_icon} style={{width: hp(2), height: hp(1.85), tintColor: colors.primaryGreenColor, marginRight: wp(1)}} resizeMode={"contain"} />
                                     }
                                     onPress={() => this._cartCountChange("add") }
                                 />
@@ -126,19 +128,6 @@ export default class FoodItem extends Component {
 
                                     </TouchableOpacity>
 
-                                    {/*<Button*/}
-                                    {/*    icon={*/}
-                                    {/*        <Icon*/}
-                                    {/*            name="minus"*/}
-                                    {/*            type="font-awesome"*/}
-                                    {/*            size={15}*/}
-                                    {/*            color={Styles.AddSubtractText}*/}
-                                    {/*        />*/}
-                                    {/*    }*/}
-                                    {/*    type={"clear"}*/}
-                                    {/*    onPress={() => this._cartCountChange("subtract") }*/}
-                                    {/*    containerStyle={Styles.AddButton}*/}
-                                    {/*/>*/}
                                     <Text style={Styles.cartNumberText}>{this.state.cartCount}</Text>
 
                                     <TouchableOpacity style={{
@@ -155,58 +144,16 @@ export default class FoodItem extends Component {
                                         <Image source={assets.plus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
 
                                     </TouchableOpacity>
-                                    {/*<Button*/}
-                                    {/*    icon={*/}
-                                    {/*        <Icon*/}
-                                    {/*            name="plus"*/}
-                                    {/*            type="font-awesome"*/}
-                                    {/*            size={15}*/}
-                                    {/*            color={Styles.AddSubtractText}*/}
-                                    {/*        />*/}
-                                    {/*    }*/}
-                                    {/*    type={"clear"}*/}
-                                    {/*    onPress={() => this._cartCountChange("add") }*/}
-                                    {/*    containerStyle={Styles.subtractButton}*/}
-                                    {/*/>*/}
+
                                 </View>
                             }
                         </View>
-                    </View>
+                        </View>
+                    </TouchableWithoutFeedback>
 
                 </View>
-            </TouchableWithoutFeedback>
+            </View>
 
-
-
-
-
-            // <Button
-            //     onPress={() => {
-            //         navigation.navigate(Routes.PRODUCT_DETAIL, {
-            //                item: this.props,
-            //                itemState: this.state
-            //                }
-            //            );
-            //     }}
-            //     ViewComponent={() => {
-            //
-            //         return (
-            //
-            //         );
-            //
-            //     }}
-            //     />
-
-            // <TouchableOpacity style={Styles.FoodItemContainer}
-            //     onPress={() => {
-            //        navigation.navigate(Routes.SINGLE_GROCERY_ITEM, {
-            //            item: this.props,
-            //            itemState: this.state
-            //            }
-            //        );
-            //     }}>
-            //
-            //         </TouchableOpacity>
         );
     }
 }
