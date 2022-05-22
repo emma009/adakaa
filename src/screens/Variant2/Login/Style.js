@@ -1,16 +1,29 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import fonts from "../../../../branding/carter/assets/Fonts";
-import Typography from "../../../../branding/carter/styles/Typography";
 import AppConfig from "../../../../branding/App_config";
 
 const colors = AppConfig.colors.default;
+const fonts = AppConfig.fonts.default;
+const Typography = AppConfig.typography.default;
 const styles = AppConfig.styling.default;
 
 let style = {
 
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: colors.white
+    },
+
+    imageContainer: {
+        width: wp('100%'),
+        height: hp('55%'),
+        alignItems: "center"
+    },
+
     headerImage: {
-        width: wp('65%'),
-        height: hp('50%')
+        width: hp('40%'),
+        height: hp('40%'),
+        resizeMode: "contain",
     },
 
     bottomContainer: {
@@ -19,31 +32,18 @@ let style = {
         paddingTop: hp("3"),
     },
 
-    welcomeHeader: {
+    titleText: {
         fontFamily: fonts.RUBIK_MEDIUM,
         fontSize: Typography.H9,
-        marginBottom: hp("1"),
+        marginBottom: hp("0.5"),
         color: colors.textColorBlack1
     },
 
-    welcomeDescription: {
+    subtitleText: {
         fontFamily: fonts.RUBIK_REGULAR,
         fontSize: Typography.P4,
-        lineHeight: 20,
         marginBottom: hp("4"),
         color: colors.textColorGrey1
-    },
-
-    signUpButton: {
-        backgroundColor: colors.buttonGreenColor
-    },
-
-    signUpButtonText: {
-        color: "#ffffff"
-    },
-
-    googleSignInButton: {
-        backgroundColor: colors.textColorGrey2,
     },
 
     accountBottomContainer: {

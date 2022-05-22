@@ -1,137 +1,119 @@
-import React, {Component} from 'react';
-import {FlatList, ScrollView, View, ViewComponent} from 'react-native';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import React from 'react';
+import {View} from 'react-native';
 
 import BaseView from "../BaseView"
-import {Button, Divider, Text} from "react-native-elements";
-import AppConfig from "../../../branding/App_config";
-import Routes from "../../navigation/Routes";
-import ShippingAddress from "../../components/Application/ShippingProgress/View"
+import {Text} from "react-native-elements";
 import Styles from "./Styles";
+import screenStyles from "./Styles";
 import AppInput from "../../components/Application/AppInput/View";
 import assets from "../../../branding/carter/assets/Assets";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
+import AppButton from "../../components/Application/AppButton/View";
 
-const colors = AppConfig.colors.default;
-const styles = AppConfig.styling.default;
+export const AboutMe = (props) => {
+
+    let inputRef = React.createRef();
 
 
-export default class CheckoutDelivery extends Component {
+    return (
 
-    inputRef = React.createRef();
+        <BaseView
+            navigation={props.navigation}
+            title={"About Me"}
+            childView={() => {
+                return (
 
-    constructor(props) {
-        super(props);
-    }
-
-    render(){
-        return(
-
-            <BaseView
-                navigation={this.props.navigation}
-                title={"About Me"}
-                childView={() => {
-                    return (
-
-                        <View style={{flex: 1}}>
+                    <View style={screenStyles.mainContainer}>
 
 
                         <KeyboardAwareScrollView
                             keyboardShouldPersistTaps={'never'}
-                            // style={{flex: 1}}
                             getTextInputRefs={() => {
-                                return [this.inputRef];
+                                return [inputRef];
                             }}
                             showsVerticalScrollIndicator={false}>
 
-                        <View style={{flex: 1}}>
+                            <View style={screenStyles.mainContainer}>
 
-                            <Text style={Styles.typeHeader}>{"Personal Details"}</Text>
+                                <Text style={Styles.typeHeader}>{"Personal Details"}</Text>
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.account_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Name"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.account_icon}
+                                    placeholder={"Name"}
+                                    onChangeText={(value) => {
+                                    }}
+                                />
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.envelop_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Email Address"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.envelop_icon}
+                                    placeholder={"Email Address"}
+                                    onChangeText={(value) => {
+                                    }}
+                                />
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.phone_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Phone"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.phone_icon}
+                                    placeholder={"Phone"}
+                                    onChangeText={(value) => {
+                                    }}
+                                />
 
-                            <Text style={Styles.typeHeader}>{"Change Password"}</Text>
+                                <Text style={Styles.typeHeader}>{"Change Password"}</Text>
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.lock_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Current Password"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                isPasswordField
-                                onChangeText={(value) => {}}
-                            />
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.lock_icon}
+                                    placeholder={"Current Password"}
+                                    isPasswordField
+                                    onChangeText={(value) => {
+                                    }}
+                                />
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.lock_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Password"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                isPasswordField
-                                onChangeText={(value) => {}}
-                            />
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.lock_icon}
+                                    placeholder={"Password"}
+                                    isPasswordField
+                                    onChangeText={(value) => {
+                                    }}
+                                />
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.lock_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Confirm Password"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                isPasswordField
-                                onChangeText={(value) => {}}
-                            />
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.lock_icon}
+                                    placeholder={"Confirm Password"}
+                                    isPasswordField
+                                    onChangeText={(value) => {
+                                    }}
+                                />
 
-
-
-                        </View>
-
-                        </KeyboardAwareScrollView>
-                            <View style={{flex: 1, justifyContent: "flex-end", marginBottom: hp("1")}}>
-
-                                <Button
-                                    buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                                    title={'Save Settings'}
-                                    titleStyle={styles.buttonStyle}
-                                    onPress={() => {
-
-                                    }}/>
 
                             </View>
 
+                        </KeyboardAwareScrollView>
+
+                        <View style={screenStyles.bottomButton}>
+
+                            <AppButton
+                                title={'Save Changes'}
+                                onPress={() => {
+
+                                }}
+                            />
 
                         </View>
 
 
-                    );
-                }}
-            />
+                    </View>
 
-        );
-    }
+
+                );
+            }}
+        />
+
+    );
+
 }

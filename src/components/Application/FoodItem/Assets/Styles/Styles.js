@@ -1,102 +1,137 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import Typography from "../../../../../../branding/carter/styles/Typography";
 
 import AppConfig from "../../../../../../branding/App_config";
 
+const Typography = AppConfig.typography.default;
 const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
 
 let Styles = {
-    foodItemContainer: {
-        width: wp("44%"),
 
+    container: {
+        width: wp("44%"),
         backgroundColor: "white",
         borderRadius: 5,
         flexDirection: "column",
-
-        // shadowColor: "#000",
-        // shadowOffset: {
-        //     width: 0,
-        //     height: 1,
-        // },
-        // shadowOpacity: 0.22,
-        // shadowRadius: 2.22,
-        // elevation: 3,
-
         marginRight: hp("1.5"),
         marginBottom: hp("1.5"),
+    },
 
-    },
-    topContainer: {
-        flexDirection: "row",
-    },
-    mainContainer: {
-        flex: 1,
+    discountBanner: {
+        backgroundColor: colors.iconColorRed4,
+        width: "60%",
+        height: hp(3),
+        justifyContent: "center",
         alignItems: "center",
+        borderTopRightRadius: hp(0.5),
+        borderBottomRightRadius: hp(0.5)
     },
-    foodItemImage: {
-        width: hp("13"),
-        height: hp("13"),
-    },
+
     discountText: {
         color: colors.iconColorRed3,
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.P7
     },
+
+    favouriteContainer: {
+        width: "50%",
+        paddingTop: wp(2),
+        paddingEnd: wp(2),
+        justifyContent: "center",
+        alignItems: "flex-end"
+    },
+
+    favouriteIcon: {
+        width: hp(2),
+        height: hp(2),
+        resizeMode: "contain"
+    },
+
+    mainContainer: {
+        flex: 1,
+        alignItems: "center",
+    },
+
+    foodItemImage: {
+        width: hp("13"),
+        height: hp("13"),
+        resizeMode: "contain"
+    },
+
+    infoContainer: {
+        alignItems: "center",
+        marginVertical: hp("2")
+    },
+
     priceText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.primaryGreenColor,
         fontSize: Typography.P6
     },
-    itemTitle: {
+
+    titleText: {
         fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.textColorBlack1,
         marginVertical: hp("0.5")
     },
+
     weightText: {
         fontSize: Typography.P6,
         color: colors.textColorGrey1,
         fontFamily: Fonts.RUBIK_REGULAR
     },
-    itemBottomContainer: {
+
+    bottomContainer: {
         borderTopColor: colors.borderColorLight,
         width: "100%",
         height: hp("5.5"),
         justifyContent: "center",
         borderTopWidth: 1,
     },
+
+
     addCartText: {
         color: colors.textColorGrey1,
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4,
+        fontSize: Typography.P3,
+    },
 
-    },
     addCartIcon: {
-        color: colors.primaryGreenColor,
-        marginRight: "5%"
+        width: hp(2),
+        height: hp(1.6),
+        tintColor: colors.primaryGreenColor,
+        marginRight: wp(1),
+        resizeMode: "contain"
     },
-    AddSubtractText: {
-        color: colors.primaryGreenColor
-    },
-    AddButton: {
-        flex: 0.3,
+
+    cartUpdateContainer: {
         height: "100%",
-        justifyContent: "center",
-        borderRightColor: colors.borderColorLight,
-        borderRightWidth: 1
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center"
     },
-    subtractButton: {
+
+    cartUpdateActionContainer: {
         flex: 0.3,
-        borderLeftColor: colors.borderColorLight ,
-        height: "100%",
         justifyContent: "center",
-        borderLeftWidth: 1
+        alignItems: "center",
+        borderColor: colors.borderColorLight,
+        height: "100%",
     },
+
+    cartUpdateIcon: {
+        width: hp(2),
+        height: hp(2),
+        tintColor: colors.primaryGreenColor,
+        resizeMode: "contain"
+    },
+
     cartNumberText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.textColorBlack1
     }
+
 }
 
 export default Styles;

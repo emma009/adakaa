@@ -1,30 +1,63 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../branding/App_config";
-import Globals from "../../utils/Globals";
 import Typography from "../../../branding/carter/styles/Typography";
 
 const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
-const styles = AppConfig.styling.default;
 
 let Styles = {
 
-    primaryText: {
+    mainContainer: {
+        flex: 1
+    },
+
+    cardContainerStyle: {
+        width: "100%",
+        backgroundColor: "white",
+        paddingHorizontal: wp(4),
+        paddingTop: hp(2),
+        paddingBottom: hp(2),
+        borderBottomWidth: 1,
+        borderBottomColor: colors.borderColorLight
+    },
+
+    titleStyle: {
+        fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H8,
-        paddingVertical: hp("3")
+        marginBottom: hp(1),
+        color: colors.textColorBlack1
     },
 
-    secondaryText: {
-        fontFamily: Fonts.RUBIK_LIGHT,
-        fontSize: Typography.P2,
-        textAlign: "center",
+    inputContainerStyle: {
+        width: wp(40),
+        backgroundColor: colors.textColorGrey2,
+        justifyContent: "center"
     },
 
-    rating: {
-        paddingVertical: hp("2")
-    }
+    ratingContainerStyle: {
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: colors.textColorGrey2,
+        height: hp(5.5),
+        paddingHorizontal: wp(2)
+    },
+
+    ratingTextStyle: {
+        fontSize: Typography.P5,
+        fontFamily: Fonts.RUBIK_REGULAR,
+        color: colors.textColorGrey1,
+        flex: 1,
+        textAlign: "right"
+    },
+
+    othersItemContainerStyle: {
+        backgroundColor: "white",
+        flexDirection: "row",
+        alignItems: "center",
+        paddingVertical: hp("1.5"),
+        borderBottomColor: colors.borderColorLight
+    },
 
 }
 

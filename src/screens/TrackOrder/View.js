@@ -1,171 +1,170 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Image, View} from 'react-native';
-import {Button, Divider, Icon, Rating, Text} from 'react-native-elements';
-import Routes from "../../navigation/Routes";
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {Divider, Text} from 'react-native-elements';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import BaseView from "../BaseView";
-import AppInput from "../../components/Application/AppInput/View"
 import Styles from "./Styles";
-import {StackActions} from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
 import assets from "../../../branding/carter/assets/Assets";
-import Typography from "../../../branding/carter/styles/Typography";
-import fonts from "../../../branding/carter/assets/Fonts";
+import AppButton from "../../components/Application/AppButton/View";
+import Routes from "../../navigation/Routes";
+import {StackActions} from "@react-navigation/native";
+import Config from "../../../branding/carter/configuration/Config";
 
 const colors = AppConfig.colors.default;
-const styles = AppConfig.styling.default;
 
-export default class TrackOrder extends  Component {
+export const TrackOrder = (props) => {
 
+    const renderOrderHeader = () => {
+        return <View style={Styles.headerContainer}>
 
+            <View style={Styles.headerLeftIconContainer}>
 
+                <Image source={assets.order_icon} style={Styles.headerLeftIcon}/>
 
-    render(){
-        return(
+            </View>
 
-            <BaseView
-                navigation={this.props.navigation}
-                title={"Track Order"}
-                childView={() => {
+            <View>
+                <Text style={Styles.headerTitleText}>{"Order # 44698"}</Text>
+                <Text style={Styles.subtitleText}>{"Placed on December 15, 2020"}</Text>
 
-                    return (
+                <View style={{flexDirection: "row", alignItems: "center"}}>
+                    <Text style={Styles.subtitleText}>{"Items: "}</Text>
+                    <Text style={[
+                        {marginRight: wp(2)},
+                        Styles.subtitleValueText
+                    ]}>{"10"}</Text>
+                    <Text style={Styles.subtitleText}>{"Total: "}</Text>
+                    <Text style={Styles.subtitleValueText}>{"$ 16.99"}</Text>
+                </View>
+            </View>
 
-                        <View style={{flex: 1}}>
-                            <View style={Styles.foodItemContainer}>
+        </View>
+    }
 
-                                <View style={[Styles.orderProgressCircle, {backgroundColor: colors.secondaryGreenColor}]}>
+    const renderOrderContent = () => {
+        return <View style={Styles.contentContainer}>
 
-                                    <Image source={assets.order_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+            <View style={Styles.orderStatusItemContainer}>
+                <View style={Styles.orderStatusLeftContainer}>
+                    <View style={[Styles.orderStatusLeftIconContainer, {backgroundColor: colors.secondaryGreenColor}]}>
+                        <Image source={assets.order_placed_icon}
+                               style={[Styles.orderStatusLeftIcon, {tintColor: colors.primaryGreenColor}]}/>
+                    </View>
 
-                                </View>
+                    <Divider style={[Styles.orderStatusLine, {backgroundColor: colors.primaryGreenColor}]}/>
+                </View>
+                <View>
+                    <Text style={Styles.orderStatusTitle}>{"Orders Placed"}</Text>
+                    <Text style={Styles.orderStatusSubtitle}>{"Dec 10, 2020"}</Text>
+                </View>
 
-                                <View style={{marginLeft: wp("3")}}>
-                                    <Text style={Styles.orderNo}>{"Order # 44698"}</Text>
-                                    <Text style={Styles.dateTime}>{"Placed on December 15, 2020"}</Text>
+            </View>
 
-                                    <View style={{flexDirection: "row", alignItems: "center"}}>
-                                        <Text style={{
-                                            fontSize: Typography.P6,
-                                            fontFamily: fonts.RUBIK_LIGHT,
-                                            color: colors.textColorGrey1
-                                        }}>{"Items: "}</Text>
-                                        <Text style={{
-                                            fontSize: Typography.P4,
-                                            fontFamily: fonts.RUBIK_MEDIUM,
-                                            color: colors.textColorBlack1,
-                                            marginRight: wp(2)
-                                        }}>{"10"}</Text>
-                                        <Text style={{
-                                            fontSize: Typography.P6,
-                                            fontFamily: fonts.RUBIK_LIGHT,
-                                            color: colors.textColorGrey1
-                                        }}>{"Total: "}</Text>
-                                        <Text style={{
-                                            fontSize: Typography.P4,
-                                            fontFamily: fonts.RUBIK_MEDIUM,
-                                            color: colors.textColorBlack1
-                                        }}>{"$ 16.99"}</Text>
-                                    </View>
-                                </View>
+            <View style={Styles.orderStatusItemContainer}>
+                <View style={Styles.orderStatusLeftContainer}>
+                    <View style={[Styles.orderStatusLeftIconContainer, {backgroundColor: colors.secondaryGreenColor}]}>
+                        <Image source={assets.order_confirmed_icon}
+                               style={[Styles.orderStatusLeftIcon, {tintColor: colors.primaryGreenColor}]}/>
+                    </View>
 
-                            </View>
+                    <Divider style={[Styles.orderStatusLine, {backgroundColor: colors.primaryGreenColor}]}/>
+                </View>
+                <View>
+                    <Text style={Styles.orderStatusTitle}>{"Order Confirmed"}</Text>
+                    <Text style={Styles.orderStatusSubtitle}>{"Dec 10, 2020"}</Text>
+                </View>
 
-                            <View style={{flexDirection: "row", paddingHorizontal: wp ('3'), paddingVertical: hp("2"), marginTop: hp(1), backgroundColor: "white"}}>
+            </View>
 
-                                <View style={{flex: 1, alignItems: "center"}}>
+            <View style={Styles.orderStatusItemContainer}>
+                <View style={Styles.orderStatusLeftContainer}>
+                    <View style={[Styles.orderStatusLeftIconContainer, {backgroundColor: colors.secondaryGreenColor}]}>
+                        <Image source={assets.order_shipped_icon}
+                               style={[Styles.orderStatusLeftIcon, {tintColor: colors.primaryGreenColor}]}/>
+                    </View>
 
-                                    <View style={{width: "100%", flexDirection: "row"}}>
-                                        <View style={{alignItems: "center", marginRight: wp("3")}}>
-                                            <View style={[Styles.orderProgressCircle, {backgroundColor: colors.secondaryGreenColor}]} >
-                                                <Image source={assets.order_placed_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-                                            </View>
+                    <Divider style={[Styles.orderStatusLine, {backgroundColor: colors.borderColorLight1}]}/>
+                </View>
+                <View>
+                    <Text style={Styles.orderStatusTitle}>{"Order Shipped"}</Text>
+                    <Text style={Styles.orderStatusSubtitle}>{"Dec 10, 2020"}</Text>
+                </View>
 
-                                            <Divider style={[Styles.orderProgressLine, {backgroundColor: colors.primaryGreenColor}]} />
-                                        </View>
-                                        <View style={{}}>
-                                            <Text style={Styles.orderProgressTitle}>{"Orders Placed"}</Text>
-                                            <Text style={Styles.orderProgressSubTitle}>{"Dec 10, 2020"}</Text>
-                                        </View>
+            </View>
 
-                                    </View>
+            <View style={Styles.orderStatusItemContainer}>
+                <View style={Styles.orderStatusLeftContainer}>
+                    <View style={[Styles.orderStatusLeftIconContainer, {backgroundColor: colors.textColorGrey2}]}>
+                        <Image source={assets.out_for_delivery_icon}
+                               style={[Styles.orderStatusLeftIcon, {tintColor: colors.iconColorGrey1}]}/>
+                    </View>
 
-                                    <View style={{width: "100%", flexDirection: "row"}}>
-                                        <View style={{alignItems: "center", marginRight: wp("3")}}>
-                                            <View style={[Styles.orderProgressCircle, {backgroundColor: colors.secondaryGreenColor}]} >
-                                                <Image source={assets.order_confirmed_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-                                            </View>
+                    <Divider style={[Styles.orderStatusLine, {backgroundColor: colors.borderColorLight1}]}/>
+                </View>
+                <View>
+                    <Text style={Styles.orderStatusTitle}>{"Out of Delivery"}</Text>
+                    <Text style={Styles.orderStatusSubtitle}>{"Pending"}</Text>
+                </View>
 
-                                            <Divider style={[Styles.orderProgressLine, {backgroundColor:colors.primaryGreenColor}]} />
-                                        </View>
-                                        <View>
-                                            <Text style={Styles.orderProgressTitle}>{"Order Confirmed"}</Text>
-                                            <Text style={Styles.orderProgressSubTitle}>{"Dec 10, 2020"}</Text>
-                                        </View>
+            </View>
 
-                                    </View>
+            <View style={Styles.orderStatusItemContainer}>
+                <View style={Styles.orderStatusLeftContainer}>
+                    <View style={[Styles.orderStatusLeftIconContainer, {backgroundColor: colors.textColorGrey2}]}>
+                        <Image source={assets.order_delivered_icon}
+                               style={[Styles.orderStatusLeftIcon, {tintColor: colors.iconColorGrey1}]}/>
+                    </View>
+                </View>
+                <View>
+                    <Text style={Styles.orderStatusTitle}>{"Order Delivered"}</Text>
+                    <Text style={Styles.orderStatusSubtitle}>{"Pending"}</Text>
+                </View>
 
-                                    <View style={{width: "100%", flexDirection: "row"}}>
-                                        <View style={{alignItems: "center", marginRight: wp("3")}}>
-                                            <View style={[Styles.orderProgressCircle, {backgroundColor: colors.secondaryGreenColor}]} >
-                                                <Image source={assets.order_shipped_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-                                            </View>
+            </View>
 
-                                            <Divider style={[Styles.orderProgressLine, {backgroundColor: colors.borderColorLight1}]} />
-                                        </View>
-                                        <View>
-                                            <Text style={Styles.orderProgressTitle}>{"Order Shipped"}</Text>
-                                            <Text style={Styles.orderProgressSubTitle}>{"Dec 10, 2020"}</Text>
-                                        </View>
+        </View>
+    }
 
-                                    </View>
+    return (
 
-                                    <View style={{width: "100%", flexDirection: "row"}}>
-                                        <View style={{alignItems: "center", marginRight: wp("3")}}>
-                                            <View style={[Styles.orderProgressCircle, {backgroundColor: colors.textColorGrey2}]} >
-                                                <Image source={assets.out_for_delivery_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-                                            </View>
+        <BaseView
+            navigation={props.navigation}
+            title={"Track Order"}
+            childView={() => {
 
-                                            <Divider style={[Styles.orderProgressLine, {backgroundColor: colors.borderColorLight1}]} />
-                                        </View>
-                                        <View>
-                                            <Text style={Styles.orderProgressTitle}>{"Out of Delivery"}</Text>
-                                            <Text style={Styles.orderProgressSubTitle}>{"Pending"}</Text>
-                                        </View>
+                return (
 
-                                    </View>
+                    <View style={{flex: 1}}>
 
-                                    <View style={{width: "100%", flexDirection: "row"}}>
-                                        <View style={{alignItems: "center", marginRight: wp("3")}}>
-                                            <View style={[Styles.orderProgressCircle, {backgroundColor: colors.textColorGrey2}]} >
-                                                <Image source={assets.order_delivered_icon} style={{width: hp(2.5), height: hp(2.5), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-                                            </View>
-                                        </View>
-                                        <View>
-                                            <Text style={Styles.orderProgressTitle}>{"Order Delivered"}</Text>
-                                            <Text style={Styles.orderProgressSubTitle}>{"Pending"}</Text>
-                                        </View>
+                        {renderOrderHeader()}
 
-                                    </View>
+                        {renderOrderContent()}
 
-                                </View>
+                        <View style={{flex: 1, justifyContent: "flex-end"}}>
 
-                            </View>
+                            <AppButton
+                                title={'Go Back'}
+                                onPress={() => {
+                                    props.navigation.dispatch(
+                                        StackActions.replace(Config.SELECTED_VARIANT === Routes.INTRO_SCREEN1 ?
+                                        Routes.HOME_VARIANT1 : Config.SELECTED_VARIANT === Routes.INTRO_SCREEN1 ?
+                                        Routes.HOME_VARIANT2 :
+                                        Routes.HOME_VARIANT3)
+                                    );
+                                }}
+                            />
 
                         </View>
+                    </View>
 
+                );
 
+            }}
 
+        />
 
-                    );
+    );
 
-
-
-                }}
-
-            />
-
-
-        );
-    }
 }

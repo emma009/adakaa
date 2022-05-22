@@ -1,174 +1,132 @@
-import React, {Component} from 'react';
-import {Switch, View} from 'react-native';
-import {Button, Rating, Text} from 'react-native-elements';
-import Routes from "../../navigation/Routes";
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import React from 'react';
+import {View} from 'react-native';
+import {Text} from 'react-native-elements';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import BaseView from "../BaseView";
 import AppInput from "../../components/Application/AppInput/View"
-import Styles from "./Styles";
-import {StackActions} from "@react-navigation/native";
-import AppConfig from "../../../branding/App_config";
+import AppButton from "../../components/Application/AppButton/View"
 import assets from "../../../branding/carter/assets/Assets";
-import fonts from "../../../branding/carter/assets/Fonts";
-import Typography from "../../../branding/carter/styles/Typography";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
+import {CustomSwitch} from "../../components/Global/CustomSwitch/View";
+import screenStyles from "./Styles"
 
-const colors = AppConfig.colors.default;
-const styles = AppConfig.styling.default;
+export const AddAddress = (props) => {
 
-export default class AddAddress extends  Component {
-    inputRef = React.createRef();
+    let inputRef = React.createRef();
 
+    return(
 
-    constructor(props) {
-        super(props);
+        <BaseView
+            navigation={props.navigation}
+            title={"Add Address"}
+            childView={() => {
 
+                return (
 
-        this.state = {
-            isDefault: true
-        }
-    }
+                    <View style={screenStyles.mainContainer}>
 
+                        <KeyboardAwareScrollView
+                            keyboardShouldPersistTaps={'never'}
+                            getTextInputRefs={() => {
+                                return [inputRef];
+                            }}
+                            showsVerticalScrollIndicator={false}>
 
-    render(){
-        return(
+                            <View style={screenStyles.mainContainer}>
 
-            <BaseView
-                navigation={this.props.navigation}
-                title={"Add Address"}
-                childView={() => {
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.account_icon}
+                                    placeholder={"Name"}
+                                    onChangeText={(value) => {}}
+                                />
 
-                    return (
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.envelop_icon}
+                                    placeholder={"Email Address"}
+                                    onChangeText={(value) => {}}
+                                />
 
-                        <View style={{flex: 1}}>
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.phone_icon}
+                                    placeholder={"Phone"}
+                                    onChangeText={(value) => {}}
+                                />
 
-                            <KeyboardAwareScrollView
-                                keyboardShouldPersistTaps={'never'}
-                                // style={{flex: 1}}
-                                getTextInputRefs={() => {
-                                    return [this.inputRef];
-                                }}
-                                showsVerticalScrollIndicator={false}>
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.map_marker_icon}
+                                    placeholder={"Address"}
+                                    onChangeText={(value) => {}}
+                                />
 
-                                <View style={{flex: 1}}>
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.mailbox_icon}
+                                    placeholder={"Zip code"}
+                                    onChangeText={(value) => {}}
+                                />
 
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.map_icon}
+                                    placeholder={"City"}
+                                    onChangeText={(value) => {}}
+                                />
 
+                                <AppInput
+                                    textInputRef={r => (inputRef = r)}
+                                    leftIcon={assets.globe_icon}
+                                    placeholder={"Country"}
+                                    onChangeText={(value) => {}}
+                                />
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.account_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Name"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
+                                <View style={{flexDirection: "row", marginTop: hp(1)}}>
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.envelop_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Email Address"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
+                                    <CustomSwitch
+                                        initialValue={false}
+                                        onValueChange={(value) => {
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.phone_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Phone"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
+                                        }}
+                                    />
 
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.map_marker_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Address"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
-
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.mailbox_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Zip code"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
-
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.map_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"City"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
-
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.globe_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Country"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
-
-                                    <View style={{flexDirection: "row"}}>
-                                        <Switch
-                                            trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
-                                            style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
-                                            thumbColor={this.state.isDefault ? colors.primaryGreenColor : colors.iconColorGrey1}
-                                            onValueChange={(value) => {
-                                                this.setState({
-                                                    isDefault: value
-                                                })
-                                            }}
-                                            value={this.state.isDefault}
-                                        />
-
-                                        <Text style={{alignSelf: "center",fontFamily: fonts.RUBIK_REGULAR,
-                                            fontSize: Typography.P4,
-                                            color: colors.textColorGrey1}}>{"Make Default"}</Text>
-                                    </View>
+                                    <Text style={screenStyles.defaultText}>{"Make Default"}</Text>
                                 </View>
-
-
-
-                            </KeyboardAwareScrollView>
-
-
-
-
-                            <View style={{flex: 1, justifyContent: "flex-end", marginBottom: hp("1")}}>
-
-                                <Button
-                                    buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                                    title={'Add Address'}
-                                    titleStyle={styles.buttonStyle}
-                                    onPress={() => {
-
-                                    }}/>
-
                             </View>
 
+
+
+                        </KeyboardAwareScrollView>
+
+
+
+
+                        <View style={screenStyles.bottomButton}>
+
+                            <AppButton
+                                title={'Add Address'}
+                                onPress={() => {
+                                    props.navigation.goBack();
+                                }}
+                                />
 
                         </View>
 
 
-                    );
+                    </View>
+
+
+                );
 
 
 
-                }}
+            }}
 
-            />
+        />
 
 
-        );
-    }
+    );
 }

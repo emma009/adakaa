@@ -1,8 +1,8 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../../../../branding/App_config";
-import Typography from "../../../../../../branding/carter/styles/Typography";
 
+const Typography = AppConfig.typography.default;
 const Fonts = AppConfig.fonts.default;
 
 let Styles = {

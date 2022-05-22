@@ -1,98 +1,85 @@
-import React, {Component} from 'react';
+import React, {useRef, useState} from 'react';
 import {View} from 'react-native';
-import {Button, Rating, Text} from 'react-native-elements';
-import Routes from "../../navigation/Routes";
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {Text} from 'react-native-elements';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import BaseView from "../BaseView";
 import AppInput from "../../components/Application/AppInput/View"
 import Styles from "./Styles";
-import {StackActions} from "@react-navigation/native";
+import screenStyles from "./Styles";
 import AppConfig from "../../../branding/App_config";
 import assets from "../../../branding/carter/assets/Assets";
 import StarRating from "react-native-star-rating";
+import AppButton from "../../components/Application/AppButton/View";
 
-const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
 
-export default class AddReview extends  Component {
 
+export const AddReview = (props) => {
 
-    constructor() {
-        super();
+    const [rating, setRating] = useState(4.5);
 
-        this.state = {}
+    let inputRef = useRef();
 
-    }
+    return (
 
+        <BaseView
+            navigation={props.navigation}
+            title={"Write Review"}
+            childView={() => {
 
-    render(){
-        return(
+                return (
 
-            <BaseView
-                navigation={this.props.navigation}
-                title={"Write Review"}
-                childView={() => {
+                    <View style={screenStyles.mainContainer}>
 
-                    return (
+                        <Text style={Styles.primaryText}>What do you think?</Text>
+                        <Text style={Styles.secondaryText}>Please give your rating by clicking on the stars
+                            below.</Text>
 
-                        <View style={{flex: 1, alignItems: "center"}}>
+                        <StarRating
+                            disabled={false}
+                            maxStars={5}
+                            rating={rating}
+                            starSize={hp(5.5)}
+                            fullStarColor={styles.ratingStyle.fullStarColor}
+                            emptyStarColor={styles.ratingStyle.emptyStarColor}
+                            selectedStar={(rating) => {
+                                setRating(rating)
+                            }}
+                            containerStyle={screenStyles.ratingContainerStyle}
+                        />
 
-                            <Text style={Styles.primaryText}>What do you think?</Text>
-                            <Text style={Styles.secondaryText}>Please give your rating by clicking on the stars below.</Text>
+                        <AppInput
+                            multilineInput
+                            textInputRef= {r => (inputRef = r)}
+                            leftIcon={assets.pencil_icon}
+                            placeholder={"Tell us about your experience"}
+                            onChangeText={(value) => {
+                            }}
+                        />
 
-                            <StarRating
-                                disabled={false}
-                                maxStars={5}
-                                rating={this.state.rating}
-                                starSize={hp(5.5)}
-                                fullStarColor={colors.iconColorOrange1}
-                                emptyStarColor={colors.borderColorLight}
-                                selectedStar={(rating) => {
-                                    this.setState({
-                                        rating
-                                    })
-                                }}
-                                containerStyle={{
-                                    paddingVertical: hp("2")
+                        <View style={screenStyles.bottomButton}>
+
+                            <AppButton
+                                title={'Submit'}
+                                onPress={() => {
+                                    props.navigation.goBack();
                                 }}
                             />
-
-                            <AppInput
-                                multilineInput
-                                leftIcon={assets.pencil_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Tell us about your experience"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
-
-                            <View style={{flex: 1, width: "100%", justifyContent: "flex-end", marginBottom: hp("1")}}>
-                                <Button
-                                        buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                                        title={'Submit'}
-                                        titleStyle={styles.buttonStyle}
-                                        onPress={() => {
-                                            // this.props.navigation.dispatch(
-                                            //     StackActions.replace(Routes.LOGIN_SCREEN)
-                                            // );
-                                        }}/>
-
-                            </View>
-
 
                         </View>
 
-
-                    );
-
+                    </View>
 
 
-                }}
-
-            />
+                );
 
 
-        );
-    }
+            }}
+
+        />
+
+
+    );
+
 }

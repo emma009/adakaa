@@ -1,54 +1,40 @@
-import React, {Component} from 'react';
-import {
-    View,
-    TouchableOpacity, ImageBackground,
-} from 'react-native';
-import {Header, Icon, Image, Text, Button} from 'react-native-elements';
+import React, {useRef} from 'react';
+import {ImageBackground, View,} from 'react-native';
+import {Button, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Style from "./Style";
 import AppHeader from "../../../components/Application/AppHeader/View";
 import AppInput from "../../../components/Application/AppInput/View";
 import Routes from "../../../navigation/Routes";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
-import TextInput from "../../../components/Global/TextInput/View";
+import AppButton from "../../../components/Application/AppButton/View";
 
 
 const assets = AppConfig.assets.default;
-const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
 
+export const Variant3SignupScreen = (props) => {
 
-export default class SignupFormScreen extends Component {
-    inputRef = React.createRef();
-    componentDidMount(){
+    let inputRef = useRef();
 
-    }
-
-
-    render () {
-
-        return (
+    return (
 
 
-            <ImageBackground source={assets.signup_form_header3} style={{flex: 1}} resizeMode={"cover"}>
+        <ImageBackground source={assets.signup_form_header3} style={{flex: 1}} resizeMode={"cover"}>
 
             <KeyboardAwareScrollView
                 keyboardShouldPersistTaps={'never'}
-                // style={{flex: 1}}
                 getTextInputRefs={() => {
-                    return [this.inputRef];
+                    return [inputRef];
                 }}
                 showsVerticalScrollIndicator={false}>
 
-            <View style={{flex: 1, alignItems: 'center'}}>
-
-
-                    {/*<Image source={assets.login_header} style={Style.headerImage} />*/}
+                <View style={Style.container}>
 
                     <AppHeader
                         isTranslucent
-                        navigation={this.props.navigation}
+                        navigation={props.navigation}
                         transparentHeader
                         whiteHeader
                         headerWithBack
@@ -56,78 +42,69 @@ export default class SignupFormScreen extends Component {
                     />
 
 
-                <View style={[Style.bottomContainer]}>
-                    <Text style={Style.welcomeHeader}>{"Create Account!"}</Text>
+                    <View style={[Style.bottomContainer]}>
+                        <Text style={Style.titleText}>{"Create Account!"}</Text>
 
-                    <Text style={Style.welcomeDescription}>{"Quickly create account"}</Text>
-
-
-
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.envelop_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Email Address"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
-
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                leftIcon={assets.phone_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Phone"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
-
-                            <AppInput
-                                textInputRef={r => (this.inputRef = r)}
-                                isPasswordField
-                                leftIcon={assets.lock_icon}
-                                leftIconColor={colors.iconColorGrey1}
-                                placeholder={"Password"}
-                                placeholderTextColor={colors.textColorGrey1}
-                                onChangeText={(value) => {}}
-                            />
+                        <Text style={Style.subtitleText}>{"Quickly create account"}</Text>
 
 
-
-
-                    <Button containerStyle={[Style.signupButton]}
-                            buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                            title={'Signup'}
-                            titleStyle={styles.buttonStyle}
-                            onPress={() => {
-                                this.onSignUpPress()
-                            }}/>
-
-                    <View style={Style.accountBottomContainer}>
-                        <Text style={Style.accountText}>{"Already have an account?"}</Text>
-                        <Button
-                            title={"Login"}
-                            type={"clear"}
-                            titleStyle={Style.loginButton}
-                            onPress={() =>
-                                this.props.navigation.goBack()
-                            }
+                        <AppInput
+                            {...styles.secondaryInputStyle}
+                            textInputRef={r => (this.inputRef = r)}
+                            leftIcon={assets.envelop_icon}
+                            placeholder={"Email Address"}
+                            onChangeText={(value) => {
+                            }}
                         />
+
+                        <AppInput
+                            {...styles.secondaryInputStyle}
+                            textInputRef={r => (inputRef = r)}
+                            leftIcon={assets.phone_icon}
+                            placeholder={"Phone"}
+                            onChangeText={(value) => {
+                            }}
+                        />
+
+                        <AppInput
+                            {...styles.secondaryInputStyle}
+                            containerStyle={{marginBottom: hp(1)}}
+                            textInputRef={r => (inputRef = r)}
+                            isPasswordField
+                            leftIcon={assets.lock_icon}
+                            placeholder={"Password"}
+                            onChangeText={(value) => {
+                            }}
+                        />
+
+                        <AppButton
+                            title={"Signup"}
+                            onPress={() => {
+                                props.navigation.navigate(Routes.LOGIN_FORM_SCREEN3);
+                            }}
+                        />
+
+                        <View style={Style.accountBottomContainer}>
+                            <Text style={Style.accountText}>{"Already have an account?"}</Text>
+                            <Button
+
+                                title={"Login"}
+                                type={"clear"}
+                                titleStyle={Style.loginButton}
+                                onPress={() =>
+                                    props.navigation.goBack()
+                                }
+                            />
+                        </View>
                     </View>
+
+
                 </View>
-
-
-            </View>
 
             </KeyboardAwareScrollView>
 
-            </ImageBackground>
-        )
-
-    }
-
-
-    onSignUpPress = () => {
-        this.props.navigation.navigate(Routes.LOGIN_FORM_SCREEN2);
-    };
+        </ImageBackground>
+    )
 
 }
+

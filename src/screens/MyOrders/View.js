@@ -1,230 +1,24 @@
-import React, {Component} from 'react';
-import {Animated, FlatList, Image, ScrollView, View, ViewComponent} from 'react-native';
+import React, {useState} from 'react';
+import {Animated, Image, ScrollView, View} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
-import {Button, Divider, Icon, Text} from "react-native-elements";
+import {Divider, Text} from "react-native-elements";
 import AppConfig from "../../../branding/App_config";
-import Routes from "../../navigation/Routes";
-import ShippingAddress from "../../components/Application/ShippingProgress/View"
 import Styles from "./Styles";
-import AppInput from "../../components/Application/AppInput/View";
-import Counter from "../../components/Global/Counter/View";
-import Swipeable from "react-native-gesture-handler/Swipeable";
-import fonts from "../../../branding/carter/assets/Fonts";
-import Typography from "../../../branding/carter/styles/Typography";
 import assets from "../../../branding/carter/assets/Assets";
 import Easing from "react-native/Libraries/Animated/src/Easing";
+import Globals from "../../utils/Globals";
 
 const colors = AppConfig.colors.default;
-const styles = AppConfig.styling.default;
 
 
-const orders = [
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
+export const MyOrders = (props) => {
 
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
-
-        spinValue: new Animated.Value(0)
-    },
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
-
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
-
-        spinValue: new Animated.Value(0)
-
-    },
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
-
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
-
-        spinValue: new Animated.Value(0)
-
-    },
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
-
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
-
-        spinValue: new Animated.Value(0)
-
-    },
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
-
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
-
-        spinValue: new Animated.Value(0)
-
-    },
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
-
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: false,
-        outOfDelivery: "Pending",
-        isOrderDelivered: false,
-        orderDelivered: "Pending",
-
-        spinValue: new Animated.Value(0)
-
-    },
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
-
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: true,
-        outOfDelivery: "Dec 10, 2020",
-        isOrderDelivered: true,
-        orderDelivered: "Dec 10, 2020",
-
-        spinValue: new Animated.Value(0)
-
-    },
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
-
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: true,
-        outOfDelivery: "Dec 10, 2020",
-        isOrderDelivered: true,
-        orderDelivered: "Dec 10, 2020",
-
-        spinValue: new Animated.Value(0)
-
-    },
-    {
-        title: 'First',
-        orderNo: "Order # 44 698",
-        dateTime: "Placed on December 15, 2020",
-        items: '10',
-        total: '$16.99',
+    const [activeSections, setActiveSections] = useState([]);
 
 
-        isOrderPlaced: true,
-        orderPlaced: "Dec 10, 2020",
-        isOrderConfirmed: true,
-        orderConfirmed: "Dec 10, 2020",
-        isOrderShipped: true,
-        orderShipped: "Dec 10, 2020",
-        isOrderOutOfDelivery: true,
-        outOfDelivery: "Dec 10, 2020",
-        isOrderDelivered: true,
-        orderDelivered: "Dec 10, 2020",
-
-
-        spinValue: new Animated.Value(0)
-
-    },
-];
-
-
-export default class MyOrders extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            activeSections: [0],
-        };
-
-    }
-
-    renderOrdersHeader = (section, index, isActive) => {
+    const renderOrdersHeader = (section, index, isActive) => {
 
         const spin = section.spinValue.interpolate({
             inputRange: [0, 1],
@@ -238,57 +32,58 @@ export default class MyOrders extends Component {
                     toValue: 1,
                     duration: 300,
                     easing: Easing.linear,
-                    useNativeDriver: true  // To make use of native driver for performance
+                    useNativeDriver: true
                 }
             ).start()
-        }
-        else {
+        } else {
             Animated.timing(
                 section.spinValue,
                 {
                     toValue: 0,
                     duration: 300,
                     easing: Easing.linear,
-                    useNativeDriver: true  // To make use of native driver for performance
+                    useNativeDriver: true
                 }
             ).start()
         }
 
 
-
         return (
             <View>
-                <View style={[Styles.foodItemContainer, isActive && {borderBottomWidth: 1, borderBottomColor: colors.borderColorLight}]}>
+                <View style={[Styles.headerContainer, isActive && Styles.headerContainerActive]}>
 
-                    <View style={[Styles.profileItemCircle, section.isOrderDelivered && {backgroundColor: colors.textColorGrey2}]}>
-                        <Image source={assets.box_open_icon} style={{width: hp(3.5), height: hp(3.5), tintColor: section.isOrderDelivered ? colors.textColorGrey1 : colors.primaryGreenColor}} resizeMode={"contain"} />
+                    <View
+                        style={[Styles.headerLeftIconContainer,
+                            section.isOrderDelivered && {backgroundColor: colors.textColorGrey2}]}>
+                        <Image source={assets.box_open_icon} style={[
+                            Styles.headerLeftIcon,
+                            {tintColor: section.isOrderDelivered ? colors.textColorGrey1 : colors.primaryGreenColor}
+                        ]}/>
                     </View>
 
-                    <View style={{marginLeft: wp("3")}}>
-                        <Text style={[Styles.orderNo, section.isOrderDelivered && {color: colors.textColorGrey1}]}>{section.orderNo}</Text>
-                        <Text style={[Styles.dateTime, section.isOrderDelivered && {color: colors.textColorGrey1}]}>{section.dateTime}</Text>
+                    <View>
+                        <Text
+                            style={[
+                                Styles.headerTitleText,
+                                section.isOrderDelivered && {color: colors.textColorGrey1}
+                            ]}>{section.orderNo}</Text>
+                        <Text style={Styles.headerSubtitleText}>{section.dateTime}</Text>
                         <View style={{flexDirection: "row", alignItems: "center"}}>
-                            <Text style={{
-                                fontSize: Typography.P6,
-                                fontFamily: fonts.RUBIK_LIGHT,
-                                color: colors.textColorGrey1
-                            }}>{"Items: "}</Text>
-                            <Text style={{
-                                fontSize: Typography.P4,
-                                fontFamily: fonts.RUBIK_MEDIUM,
-                                color: section.isOrderDelivered ? colors.textColorGrey1 : colors.textColorBlack1,
-                                marginRight: wp(2)
-                            }}>{"10"}</Text>
-                            <Text style={{
-                                fontSize: Typography.P6,
-                                fontFamily: fonts.RUBIK_LIGHT,
-                                color: colors.textColorGrey1
-                            }}>{"Total: "}</Text>
-                            <Text style={{
-                                fontSize: Typography.P4,
-                                fontFamily: fonts.RUBIK_MEDIUM,
-                                color: section.isOrderDelivered ? colors.textColorGrey1 : colors.textColorBlack1
-                            }}>{"$ 16.99"}</Text>
+                            <Text style={Styles.headerSubtitleText}>{"Items: "}</Text>
+                            <Text style={[
+                                {
+                                    color: section.isOrderDelivered ? colors.textColorGrey1 : colors.textColorBlack1,
+                                    marginRight: wp(2)
+                                },
+                                Styles.headerSubtitleValueText
+                            ]}>{"10"}</Text>
+                            <Text style={Styles.headerSubtitleText}>{"Total: "}</Text>
+                            <Text style={[
+                                {
+                                    color: section.isOrderDelivered ? colors.textColorGrey1 : colors.textColorBlack1
+                                },
+                                Styles.headerSubtitleValueText
+                            ]}>{"$ 16.99"}</Text>
 
 
                         </View>
@@ -296,36 +91,24 @@ export default class MyOrders extends Component {
 
                     </View>
 
-                    <View style={{flex: 1, alignItems: "flex-end", paddingRight: wp("5"),}}>
-                        <Animated.Image source={assets.drop_down_icon} style={{transform: [{rotate: spin}], width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                    <View style={Styles.headerRightIconContainer}>
+                        <Animated.Image source={assets.drop_down_icon} style={[
+                            {transform: [{rotate: spin}]},
+                            Styles.headerRightIcon
+                        ]} resizeMode={"contain"}/>
                     </View>
 
                 </View>
 
                 {
                     section.isOrderDelivered && !isActive &&
-                    <View style={{flexDirection: "row", height: hp(5), paddingLeft: wp("5"), alignItems: "center" , backgroundColor: "white"}}>
+                    <View style={Styles.headerOrderDeliverContainer}>
 
-                        <View style={[{backgroundColor: colors.iconColorGrey1,
-                            width: hp("1.2"),
-                            height: hp("1.2"),
-                            borderRadius: hp("0.6"),
-                            marginRight: wp("2")
-                        }]} />
+                        <View style={Styles.headerOrderDeliverCircle}/>
 
-                        <Text style={{
-                            fontFamily: fonts.RUBIK_REGULAR,
-                            fontSize: Typography.P5,
-                            color: colors.textColorGrey1
-                        }}>{"Order Delivered"}</Text>
+                        <Text style={Styles.headerSubtitleText}>{"Order Delivered"}</Text>
 
-                        <Text style={{
-                            flex: 1,
-                            fontFamily: fonts.RUBIK_REGULAR,
-                            fontSize: Typography.P5,
-                            color: colors.textColorGrey1,
-                            textAlign: "right", paddingRight: wp("5")
-                        }}>{"Dec 10, 2020"}</Text>
+                        <Text style={Styles.headerOrderDeliverDateText}>{"Dec 10, 2020"}</Text>
 
                     </View>
                 }
@@ -335,98 +118,151 @@ export default class MyOrders extends Component {
         );
     };
 
-    renderOrdersContent = section => {
+    const renderOrdersContent = section => {
         return (
-            <View style={{flexDirection: "row", paddingHorizontal: wp ('3'), paddingVertical: hp("2"), backgroundColor: "white"}}>
+            <View style={Styles.contentContainerStyle}>
 
-                <View style={{flex: 1, alignItems: "center"}}>
+                <View style={Styles.contentItemContainer}>
+                    <View style={Styles.contentItemLeftContainer}>
+                        <View
+                            style={[
+                                Styles.contentItemCircle,
+                                {
+                                    backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
 
-                    <View style={{flexDirection: "row"}}>
-                        <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
-
-                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
-                        </View>
-                        <Text style={Styles.orderProgressTitle}>{"Orders Placed"}</Text>
-                        <Text style={Styles.orderProgressSubTitle}>{section.orderPlaced}</Text>
+                        <Divider
+                            style={[
+                                Styles.contentItemLine,
+                                {
+                                    backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
                     </View>
+                    <Text style={Styles.contentItemLeftText}>{"Orders Placed"}</Text>
+                    <Text style={Styles.contentItemRightText}>{section.orderPlaced}</Text>
+                </View>
 
-                    <View style={{flexDirection: "row"}}>
-                        <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
+                <View style={Styles.contentItemContainer}>
+                    <View style={Styles.contentItemLeftContainer}>
+                        <View
+                            style={[
+                                Styles.contentItemCircle,
+                                {
+                                    backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
 
-                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
-                        </View>
-                        <Text style={Styles.orderProgressTitle}>{"Order Confirmed"}</Text>
-                        <Text style={Styles.orderProgressSubTitle}>{section.orderConfirmed}</Text>
+                        <Divider
+                            style={[
+                                Styles.contentItemLine,
+                                {
+                                    backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
                     </View>
+                    <Text style={Styles.contentItemLeftText}>{"Order Confirmed"}</Text>
+                    <Text style={Styles.contentItemRightText}>{section.orderConfirmed}</Text>
+                </View>
 
-                    <View style={{flexDirection: "row"}}>
-                        <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
+                <View style={Styles.contentItemContainer}>
+                    <View style={Styles.contentItemLeftContainer}>
+                        <View
+                            style={[
+                                Styles.contentItemCircle,
+                                {
+                                    backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
 
-                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
-                        </View>
-                        <Text style={Styles.orderProgressTitle}>{"Order Shipped"}</Text>
-                        <Text style={Styles.orderProgressSubTitle}>{section.orderShipped}</Text>
+                        <Divider
+                            style={[
+                                Styles.contentItemLine,
+                                {
+                                    backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
                     </View>
+                    <Text style={Styles.contentItemLeftText}>{"Order Shipped"}</Text>
+                    <Text style={Styles.contentItemRightText}>{section.orderShipped}</Text>
+                </View>
 
-                    <View style={{flexDirection: "row"}}>
-                        <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
+                <View style={Styles.contentItemContainer}>
+                    <View style={Styles.contentItemLeftContainer}>
+                        <View
+                            style={[
+                                Styles.contentItemCircle,
+                                {
+                                    backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
 
-                            <Divider style={[Styles.orderProgressLine, {backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
-                        </View>
-                        <Text style={[Styles.orderProgressTitle,{color: section.isOrderOutOfDelivery ? colors.textColorBlack1: colors.textColorGrey1}]}>{"Out of Delivery"}</Text>
-                        <Text style={[Styles.orderProgressSubTitle]}>{section.outOfDelivery}</Text>
+                        <Divider
+                            style={[
+                                Styles.contentItemLine,
+                                {
+                                    backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
                     </View>
+                    <Text
+                        style={[Styles.contentItemLeftText, {color: section.isOrderOutOfDelivery ? colors.textColorBlack1 : colors.textColorGrey1}]}>{"Out of Delivery"}</Text>
+                    <Text style={[Styles.contentItemRightText]}>{section.outOfDelivery}</Text>
+                </View>
 
-                    <View style={{flexDirection: "row"}}>
-                        <View style={{alignItems: "center", marginRight: wp("2")}}>
-                            <View style={[Styles.orderProgressCircle, {backgroundColor: section.isOrderDelivered ? colors.buttonGreenColor : colors.iconColorGrey1}]} />
-                        </View>
-                        <Text style={[Styles.orderProgressTitle,{color: section.isOrderOutOfDelivery ? colors.textColorBlack1: colors.textColorGrey1}]}>{"Order Delivered"}</Text>
-                        <Text style={Styles.orderProgressSubTitle}>{section.orderDelivered}</Text>
+                <View style={Styles.contentItemContainer}>
+                    <View style={Styles.contentItemLeftContainer}>
+                        <View
+                            style={[
+                                Styles.contentItemCircle,
+                                {
+                                    backgroundColor: section.isOrderDelivered ? colors.buttonGreenColor : colors.iconColorGrey1
+                                }
+                            ]}/>
+
                     </View>
-
+                    <Text
+                        style={[Styles.contentItemLeftText, {color: section.isOrderOutOfDelivery ? colors.textColorBlack1 : colors.textColorGrey1}]}>{"Order Delivered"}</Text>
+                    <Text style={Styles.contentItemRightText}>{section.orderDelivered}</Text>
                 </View>
 
             </View>
         );
     };
 
-    _updateSections = activeSections => {
-        this.setState({ activeSections });
+    const _updateSections = allActiveSections => {
+        setActiveSections(allActiveSections)
     };
 
-    render(){
-        return(
+    return (
 
-            <BaseView
-                navigation={this.props.navigation}
-                title={"My Orders"}
-                childView={() => {
-                    return (
+        <BaseView
+            title={"My Orders"}
+            navigation={props.navigation}
+            showAppHeader={true}
+            headerWithBack={!props.hideBack}
+            childView={() => {
+                return (
 
-                        <ScrollView>
+                    <ScrollView>
 
-                            <Accordion
-                                sections={orders}
-                                activeSections={this.state.activeSections}
-                                renderHeader={this.renderOrdersHeader}
-                                renderContent={this.renderOrdersContent}
-                                expandMultiple={false}
-                                sectionContainerStyle={{marginBottom: hp("1")}}
-                                onChange={this._updateSections}
-                            />
+                        <Accordion
+                            sections={Globals.ordersItems}
+                            activeSections={activeSections}
+                            renderHeader={renderOrdersHeader}
+                            renderContent={renderOrdersContent}
+                            expandMultiple={false}
+                            sectionContainerStyle={{marginBottom: hp("1")}}
+                            onChange={_updateSections}
+                        />
 
+                    </ScrollView>
 
-                        </ScrollView>
+                );
+            }}
+        />
 
-                    );
-                }}
-            />
+    );
 
-        );
-    }
 }

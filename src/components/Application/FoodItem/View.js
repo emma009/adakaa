@@ -1,161 +1,157 @@
-import React, {Component} from 'react';
-import {
-    View, StyleSheet, TouchableOpacity, Image, TouchableWithoutFeedback
-} from 'react-native';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import React, {useEffect, useState} from 'react';
+import {Image, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
 
 
-import { Text, Button, Icon } from 'react-native-elements';
+import {Button, Text} from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Routes from "../../../navigation/Routes";
 import Styles from "./Assets/Styles/Styles";
-import assets from "../../../../branding/carter/assets/Assets";
-import colors from "../../../../branding/carter/styles/Colors";
+import AppConfig from "../../../../branding/App_config";
 
-export default class FoodItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            cartCount: this.props.cartCount,
-            favourite: this.props.isFavourite,
-        }
-    }
+const assets = AppConfig.assets.default;
+const colors = AppConfig.colors.default;
 
 
-    _favouriteChange= () => {
-        this.setState({favourite: !this.state.favourite},
-            () => { this.props.favouriteChange(this.state.favourite) })
+export const FoodItem = (props) => {
+
+    const [cartCount, setCartCount] = useState(props.cartCount);
+    const [favourite, setFavourite] = useState(props.isFavourite);
+
+    useEffect(() => {
+        props.favouriteChange(favourite)
+    }, [favourite])
+
+
+    useEffect(() => {
+        props.cartCountChange(cartCount)
+    }, [cartCount])
+
+    const _favouriteChange = () => {
+
+        setFavourite((favourite) => {
+            return !favourite;
+        })
+
     };
 
-    _cartCountChange = (behavior) => {
+    const _cartCountChange = (behavior) => {
         if (behavior === "add") {
-            this.setState({cartCount: this.state.cartCount + 1},
-            () => {
-                this.props.cartCountChange(this.state.cartCount);
+
+            setCartCount((cartCount) => {
+                return cartCount + 1
             })
-        } else if (behavior === "subtract" && !(this.state.cartCount === 0)) {
-            this.setState({cartCount: this.state.cartCount - 1},
-                () => {
-                    this.props.cartCountChange(this.state.cartCount);
-                })
+
+        } else if (behavior === "subtract" && !(cartCount === 0)) {
+            setCartCount((cartCount) => {
+                return cartCount - 1
+            })
         }
     };
 
-    render() {
-        const {
-            title,
-            image,
-            price,
-            weight,
-            discount,
-            cartCountChange,
-            navigation
-        } = this.props;
-        return(
+    const {
+        title,
+        image,
+        price,
+        weight,
+        discount,
+        cartCountChange,
+        navigation
+    } = props;
 
-            <View >
-                <View style={Styles.foodItemContainer}>
+    return (
 
-                    <View style={Styles.topContainer}>
-                        <View style={{width: "50%"}}>
-                            {discount && <View style={{backgroundColor: colors.iconColorRed4, width: "60%", height: hp(3),
-                                justifyContent: "center", alignItems: "center", borderTopRightRadius: hp(0.5), borderBottomRightRadius: hp(0.5)
-                            }}>
-                                <Text style={Styles.discountText}>- {discount}</Text>
-                            </View>}
-                        </View>
-                        <View style={{width: "50%", paddingTop: wp(2), paddingEnd: wp(2), justifyContent: "center", alignItems: "flex-end"}}>
-                            <TouchableOpacity onPress={() => {
-                                this._favouriteChange()
-                            }}>
-                                <View>
+        <View>
+            <View style={Styles.container}>
 
-                                    { !this.state.favourite && <Image source={assets.heart_light_empty_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} /> }
-                                    { this.state.favourite && <Image source={assets.heart_filled_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorRed1}} resizeMode={"contain"} /> }
-
-                                </View>
-
-                            </TouchableOpacity>
-
-                        </View>
+                <View style={{flexDirection: "row"}}>
+                    <View style={{width: "50%"}}>
+                        {discount && <View style={Styles.discountBanner}>
+                            <Text style={Styles.discountText}>- {discount}</Text>
+                        </View>}
                     </View>
-
-                    <TouchableWithoutFeedback
-                        onPress={() => {
-                            navigation.navigate(
-                                Routes.PRODUCT_DETAIL, {
-                                    item: this.props,
-                                    itemState: this.state
-                                }
-                            );
+                    <View style={Styles.favouriteContainer}>
+                        <TouchableOpacity onPress={() => {
+                            _favouriteChange()
                         }}>
-                        <View style={[Styles.mainContainer]}>
+                            <View>
+
+                                {!favourite && <Image source={assets.heart_light_empty_icon} style={[
+                                    Styles.favouriteIcon,
+                                    {tintColor: colors.iconColorGrey1}
+                                ]}/>}
+
+                                {favourite && <Image source={assets.heart_filled_icon} style={[
+                                    Styles.favouriteIcon,
+                                    {tintColor: colors.iconColorRed1}
+                                ]}/>}
+
+                            </View>
+
+                        </TouchableOpacity>
+
+                    </View>
+                </View>
+
+                <TouchableWithoutFeedback
+                    onPress={() => {
+                        navigation.navigate(
+                            Routes.PRODUCT_DETAIL, {
+                                item: props
+                            }
+                        );
+                    }}>
+                    <View style={[Styles.mainContainer]}>
                         <Image
                             source={image}
                             style={Styles.foodItemImage}
-                            resizeMode={"contain"}
                         />
-                        <View style={{alignItems: "center", marginVertical: hp("2")}}>
+                        <View style={Styles.infoContainer}>
                             <Text style={Styles.priceText}>{price}</Text>
-                            <Text style={Styles.itemTitle}>{title}</Text>
+                            <Text style={Styles.titleText}>{title}</Text>
                             <Text style={Styles.weightText}>{weight}</Text>
                         </View>
-                        <View style={Styles.itemBottomContainer}>
-                            {this.state.cartCount === 0 ?
+                        <View style={Styles.bottomContainer}>
+                            {cartCount === 0 ?
                                 <Button
                                     title={"Add to cart"}
                                     titleStyle={Styles.addCartText}
                                     type={"clear"}
                                     icon={
-                                       <Image source={assets.cart_regular_icon} style={{width: hp(2), height: hp(1.85), tintColor: colors.primaryGreenColor, marginRight: wp(1)}} resizeMode={"contain"} />
+                                        <Image source={assets.cart_regular_icon} style={Styles.addCartIcon}/>
                                     }
-                                    onPress={() => this._cartCountChange("add") }
+                                    onPress={() => _cartCountChange("add")}
                                 />
-                                : <View style={{ height: "100%",flexDirection: "row" ,justifyContent:"space-between",
-                                    alignItems: "center"}}>
-                                    <TouchableOpacity style={{
-                                        flex: 0.3,
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        borderRightColor: colors.borderColorLight,
-                                        borderRightWidth: 1,
-                                        height: "100%",
-                                    }} onPress={() => {
-                                        this._cartCountChange("subtract")
+                                : <View style={Styles.cartUpdateContainer}>
+                                    <TouchableOpacity style={[Styles.cartUpdateActionContainer, {borderRightWidth: 1}]} onPress={() => {
+                                        _cartCountChange("subtract")
                                     }}>
 
-                                        <Image source={assets.minus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                        <Image source={assets.minus_icon} style={Styles.cartUpdateIcon}/>
 
                                     </TouchableOpacity>
 
-                                    <Text style={Styles.cartNumberText}>{this.state.cartCount}</Text>
+                                    <Text style={Styles.cartNumberText}>{cartCount}</Text>
 
-                                    <TouchableOpacity style={{
-                                        flex: 0.3,
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        borderLeftColor: colors.borderColorLight,
-                                        borderLeftWidth: 1,
-                                        height: "100%",
-                                    }} onPress={() => {
-                                        this._cartCountChange("add")
+                                    <TouchableOpacity style={[Styles.cartUpdateActionContainer, {borderLeftWidth: 1,}]} onPress={() => {
+                                        _cartCountChange("add")
                                     }}>
 
-                                        <Image source={assets.plus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                                        <Image source={assets.plus_icon} style={Styles.cartUpdateIcon}/>
 
                                     </TouchableOpacity>
 
                                 </View>
                             }
                         </View>
-                        </View>
-                    </TouchableWithoutFeedback>
+                    </View>
+                </TouchableWithoutFeedback>
 
-                </View>
             </View>
+        </View>
 
-        );
-    }
+    );
+
+
 }
 
 FoodItem.propTypes = {

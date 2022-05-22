@@ -1,14 +1,23 @@
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../branding/App_config";
 import Typography from "../../../branding/carter/styles/Typography";
 
 const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
-const styles = AppConfig.styling.default;
 
 
 let Styles = {
+
+
+    mainContainer: {
+        flex: 1,
+    },
+
+    bottomButton: {
+        flex: 1,
+        justifyContent: "flex-end",
+    },
 
     typeHeader: {
         fontFamily: Fonts.RUBIK_MEDIUM,

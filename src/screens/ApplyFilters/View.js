@@ -1,508 +1,307 @@
-import React, {Component} from 'react';
-import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
-import {Button, Icon, Rating, Text} from 'react-native-elements';
-import Routes from "../../navigation/Routes";
+import React, {useState} from 'react';
+import {FlatList, Image, ScrollView, TouchableOpacity, View} from 'react-native';
+import {Text} from 'react-native-elements';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import BaseView from "../BaseView";
-import AppInput from "../../components/Application/AppInput/View"
-import Styles from "./Styles";
-import {StackActions} from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
 import Typography from "../../../branding/carter/styles/Typography";
 import Fonts from "../../../branding/carter/assets/Fonts";
-import TextInput from "../../components/Global/TextInput/View";
 import assets from "../../../branding/carter/assets/Assets";
 import StarRating from "react-native-star-rating";
-import Globals from "../../utils/Globals";
+import screenStyles from "./Styles"
+import AppInput from "../../components/Application/AppInput/View";
+import AppButton from "../../components/Application/AppButton/View";
 
 const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
 
-export default class ApplyFilters extends  Component {
 
-
-
-
-    render(){
-        return(
-
-            <BaseView
-                navigation={this.props.navigation}
-                title={"ApplyFilters"}
-                rightIcon={"google"}
-                onRightIconPress={() => {
-
-                }}
-                childView={() => {
-
-                    return (
-
-                        <View style={{flex: 1}}>
-
-                            <ScrollView>
-
-                                <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), borderBottomWidth: 1,
-                                    borderBottomColor: colors.borderColorLight}}>
-
-                                    <Text style={{
-                                        fontSize: Typography.P3,
-                                        fontFamily: Fonts.RUBIK_MEDIUM,
-                                        marginVertical: hp(1),
-                                        color: colors.textColorBlack1
-                                    }}>{"Price Range"}</Text>
-
-                                    <View style={{flexDirection: "row", justifyContent: "space-between", marginBottom: hp(2)}}>
-                                        <TextInput
-                                            placeholder={"Min"}
-                                            placeholderTextColor={colors.textColorGrey1}
-                                            containerStyle={[
-                                                {
-                                                    backgroundColor: "#F3F5F8",
-                                                    width: "49%"
-                                                },
-
-                                            ]}
-                                            onChangeText={(value) => {
-
-                                            }}
-                                        />
-
-                                        <TextInput
-                                            placeholder={"Max"}
-                                            placeholderTextColor={colors.textColorGrey1}
-                                            containerStyle={[
-                                                {
-                                                    backgroundColor: "#F3F5F8",
-                                                    width: "49%"
-                                                },
-
-                                            ]}
-                                            onChangeText={(value) => {
-
-                                            }}
-                                        />
-                                    </View>
-
-                                </View>
-
-                                <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), borderBottomWidth: 1,
-                                    borderBottomColor: colors.borderColorLight}}>
-
-                                    <Text style={{
-                                        fontSize: Typography.P3,
-                                        fontFamily: Fonts.RUBIK_MEDIUM,
-                                        marginVertical: hp(1),
-                                        color: colors.textColorBlack1
-                                    }}>{"Star Rating"}</Text>
-
-
-                                    <View style={{flexDirection: "row", alignItems: "center", backgroundColor: colors.textColorGrey2, marginBottom: hp(2), paddingVertical: hp(1.5), paddingHorizontal: wp(2)}}>
-
-                                        <StarRating
-                                            disabled={false}
-                                            maxStars={5}
-                                            rating={2}
-                                            starSize={hp(3)}
-                                            fullStarColor={colors.iconColorOrange1}
-                                            emptyStarColor={colors.borderColorLight}
-                                            selectedStar={(rating) => {}}
-                                        />
-
-                                        <Text style={{
-                                            fontSize: Typography.P5,
-                                            fontFamily: Fonts.RUBIK_REGULAR,
-                                            color: colors.textColorGrey1,
-                                            flex: 1,
-                                            textAlign: "right"
-                                        }}>{"3 Stars"}</Text>
-
-                                    </View>
-
-
-
-                                </View>
-
-                                <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), marginBottom: hp(2)}}>
-
-                                    <Text style={{
-                                        fontSize: Typography.P3,
-                                        fontFamily: Fonts.RUBIK_MEDIUM,
-                                        marginVertical: hp(1),
-                                        color: colors.textColorBlack1
-                                    }}>{"Others"}</Text>
-
-                                    <TouchableOpacity onPress={() => {}} style={{
-                                        backgroundColor: "white",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        paddingVertical: hp("1.5"),
-                                        borderBottomWidth: 1,
-                                        borderBottomColor: colors.borderColorLight
-                                    }}>
-
-                                        <Image source={assets.discount_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                        <Text style={{
-                                            marginHorizontal: wp(3),
-                                            fontFamily: Fonts.RUBIK_REGULAR,
-                                            fontSize: Typography.P4,
-                                            color: colors.textColorBlack1
-                                        }}>Discount</Text>
-
-                                        <Image source={assets.check_circle_icon} style={{position: "absolute",
-                                            right: "5%", width: hp(2), height: hp(2), tintColor: colors.borderColorLight}} resizeMode={"contain"} />
-
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity onPress={() => {}} style={{
-                                        backgroundColor: "white",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        paddingVertical: hp("1.5"),
-                                        borderBottomWidth: 1,
-                                        borderBottomColor: colors.borderColorLight
-                                    }}>
-                                        <Image source={assets.shipping_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                        <Text style={{
-                                            marginHorizontal: wp(3),
-                                            fontFamily: Fonts.RUBIK_REGULAR,
-                                            fontSize: Typography.P4,
-                                            color: colors.textColorBlack1
-                                        }}>Free Shipping</Text>
-
-                                        <Image source={assets.check_circle_icon} style={{position: "absolute",
-                                            right: "5%", width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-
-                                    </TouchableOpacity>
-
-                                    <TouchableOpacity onPress={() => {}} style={{
-                                        backgroundColor: "white",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        paddingVertical: hp("1.5"),
-                                    }}>
-                                        <Image source={assets.same_day_delivery_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                        <Text style={{
-                                            marginHorizontal: wp(3),
-                                            fontFamily: Fonts.RUBIK_REGULAR,
-                                            fontSize: Typography.P4,
-                                            color: colors.textColorBlack1
-                                        }}>Same Day Delivery</Text>
-
-                                        <Image source={assets.check_circle_icon} style={{position: "absolute",
-                                            right: "5%", width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-
-                                    </TouchableOpacity>
-
-
-                                </View>
-
-                                <View style={{width: "100%", backgroundColor: "white", paddingHorizontal: wp(4), paddingVertical: hp(1), marginBottom: hp(3)}}>
-
-                                    <Text style={{
-                                        fontSize: Typography.P3,
-                                        fontFamily: Fonts.RUBIK_MEDIUM,
-                                        marginVertical: hp(1),
-                                        color: colors.textColorBlack1
-                                    }}>{"Categories"}</Text>
-
-                                    <View style={{
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        paddingVertical: hp(1),
-                                        borderBottomWidth: 1,
-                                        borderBottomColor: colors.borderColorLight
-                                    }}>
-
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.55
-
-                                        }}>
-                                            <Image source={assets.fruits_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Fresh Fruits</Text>
-
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.45
-                                        }}>
-                                            <Image source={assets.chicken_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Fresh Chicken</Text>
-                                        </TouchableOpacity>
-
-                                    </View>
-
-                                    <View style={{
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        paddingVertical: hp(1),
-                                        borderBottomWidth: 1,
-                                        borderBottomColor: colors.borderColorLight
-                                    }}>
-
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.55
-                                        }}>
-                                            <Image source={assets.dairy_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Fresh Dairy</Text>
-
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.45
-                                        }}>
-                                            <Image source={assets.fishes_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Fresh Fishes</Text>
-                                        </TouchableOpacity>
-
-                                    </View>
-
-
-                                    <View style={{
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        paddingVertical: hp(1),
-                                        borderBottomWidth: 1,
-                                        borderBottomColor: colors.borderColorLight
-                                    }}>
-
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.55
-                                        }}>
-                                            <Image source={assets.vegetables_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Fresh Vegetables</Text>
-
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.45
-                                        }}>
-                                            <Image source={assets.salad_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Organic Salads</Text>
-                                        </TouchableOpacity>
-
-                                    </View>
-
-                                    <View style={{
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        paddingVertical: hp(1),
-                                        borderBottomWidth: 1,
-                                        borderBottomColor: colors.borderColorLight
-                                    }}>
-
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.55
-                                        }}>
-                                            <Image source={assets.salad_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Original Medicine</Text>
-
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.45
-                                        }}>
-                                            <Image source={assets.pets_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Pet Foods</Text>
-                                        </TouchableOpacity>
-
-                                    </View>
-
-                                    <View style={{
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        paddingVertical: hp(1),
-                                        borderBottomWidth: 1,
-                                        borderBottomColor: colors.borderColorLight
-                                    }}>
-
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.55
-                                        }}>
-                                            <Image source={assets.bakery_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Quality Bakery</Text>
-
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.45
-                                        }}>
-                                            <Image source={assets.pizza_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Quality Pizzas</Text>
-                                        </TouchableOpacity>
-
-                                    </View>
-
-                                    <View style={{
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        paddingVertical: hp(1),
-                                    }}>
-
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.55
-                                        }}>
-                                            <Image source={assets.baby_products_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Baby Products</Text>
-
-                                        </TouchableOpacity>
-
-                                        <TouchableOpacity onPress={() => {}} style={{
-                                            backgroundColor: "white",
-                                            flexDirection: "row",
-                                            alignItems: "center",
-                                            flex: 0.45
-                                        }}>
-                                            <Image source={assets.sports_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                                            <Text style={{
-                                                marginHorizontal: wp(3),
-                                                fontFamily: Fonts.RUBIK_REGULAR,
-                                                fontSize: Typography.P4,
-                                                color: colors.textColorBlack1
-                                            }}>Sport Goods</Text>
-                                        </TouchableOpacity>
-
-                                    </View>
-
-                                </View>
-
-
-
-                            </ScrollView>
-
-
-
-                            <Button
-                                containerStyle={{marginBottom: Globals.SAFE_AREA_INSET.bottom + hp(1)}}
-                                buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                                title={'Apply Filters'}
-                                titleStyle={styles.buttonStyle}
-                                onPress={() => {
-
-                                }}/>
-
-
-                        </View>
-
-
-                    );
-
-
-
-                }}
-
-            />
-
-
-        );
+export const ApplyFilters = (props) => {
+
+    const [rating, setRating] = useState(4.5);
+    const [otherItems, setOtherItems] = useState([
+        {
+            leftIcon: assets.discount_icon,
+            title: "Discount",
+            checked: false
+        },
+        {
+            leftIcon: assets.shipping_icon,
+            title: "Free Shipping",
+            checked: false
+        },
+        {
+            leftIcon: assets.same_day_delivery_icon,
+            title: "Same Day Delivery",
+            checked: false
+        }
+    ]);
+    const [categories, setCategories] = useState([
+        {
+            leftIcon: assets.fruits_icon,
+            title: "Fresh Fruits",
+            checked: false
+        },
+        {
+            leftIcon: assets.chicken_icon,
+            title: "Fresh Chicken",
+            checked: false
+        },
+        {
+            leftIcon: assets.dairy_icon,
+            title: "Fresh Dairy",
+            checked: false
+        },
+        {
+            leftIcon: assets.fishes_icon,
+            title: "Fresh Fishes",
+            checked: false
+        },
+        {
+            leftIcon: assets.vegetables_icon,
+            title: "Fresh Vegetables",
+            checked: false
+        },
+        {
+            leftIcon: assets.salad_icon,
+            title: "Organic Salads",
+            checked: false
+        },
+        {
+            leftIcon: assets.medicine_icon,
+            title: "Original Medicine",
+            checked: false
+        },
+        {
+            leftIcon: assets.pets_icon,
+            title: "Pet Foods",
+            checked: false
+        },
+        {
+            leftIcon: assets.bakery_icon,
+            title: "Quality Bakery",
+            checked: false
+        },
+        {
+            leftIcon: assets.pizza_icon,
+            title: "Quality Pizza",
+            checked: false
+        },
+        {
+            leftIcon: assets.baby_products_icon,
+            title: "Baby Products",
+            checked: false
+        },
+        {
+            leftIcon: assets.sports_icon,
+            title: "Sports Goods",
+            checked: false
+        }
+    ]);
+
+    const renderOthersItem = (item, index) => {
+        return <TouchableOpacity onPress={() => {
+
+
+            setOtherItems((otherItems) => {
+                otherItems[index].checked = !otherItems[index].checked
+                return [...otherItems];
+            })
+
+        }} style={[
+            screenStyles.othersItemContainerStyle,
+            {
+                borderBottomWidth: index === otherItems.length - 1 ? 0 : 1,
+            }]}>
+
+            <Image source={item.leftIcon} style={{
+                width: hp(2),
+                height: hp(2),
+                tintColor: item.checked ? colors.primaryGreenColor : colors.borderColorLight
+            }} resizeMode={"contain"}/>
+
+            <Text style={{
+                marginHorizontal: wp(3),
+                fontFamily: Fonts.RUBIK_REGULAR,
+                fontSize: Typography.P4,
+                color: colors.textColorBlack1
+            }}>{item.title}</Text>
+
+            <Image source={assets.check_circle_icon} style={{
+                position: "absolute",
+                right: "5%",
+                width: hp(2),
+                height: hp(2),
+                tintColor: item.checked ? colors.primaryGreenColor : colors.borderColorLight
+            }} resizeMode={"contain"}/>
+
+        </TouchableOpacity>
     }
+
+    const renderCategoryItem = (item, index, showBottomBorder) => {
+        return <TouchableOpacity onPress={() => {
+
+            setCategories((categories) => {
+                categories[index].checked = !categories[index].checked
+                return [...categories];
+            })
+
+        }} style={[{
+            backgroundColor: "white",
+            flexDirection: "row",
+            alignItems: "center",
+            flex: 0.55,
+            paddingVertical: hp("1.5"),
+        },
+            showBottomBorder && {
+                borderBottomWidth: 1,
+                borderBottomColor: colors.borderColorLight
+            }
+        ]}>
+            <Image source={item.leftIcon} style={{
+                width: hp(2),
+                height: hp(2),
+                tintColor: item.checked ? colors.primaryGreenColor : colors.iconColorGrey1
+            }} resizeMode={"contain"}/>
+
+            <Text style={{
+                marginHorizontal: wp(3),
+                fontFamily: Fonts.RUBIK_REGULAR,
+                fontSize: Typography.P4,
+                color: colors.textColorBlack1
+            }}>{item.title}</Text>
+
+        </TouchableOpacity>
+
+    }
+
+    return (
+
+        <BaseView
+            navigation={props.navigation}
+            title={"Apply Filters"}
+            childView={() => {
+
+                return (
+
+                    <View style={screenStyles.mainContainer}>
+
+                        <ScrollView
+                            showsVerticalScrollIndicator={false}
+                            style={{marginBottom: hp(1)}}
+                        >
+
+                            <View style={screenStyles.cardContainerStyle}>
+
+                                <Text style={screenStyles.titleStyle}>{"Price Range"}</Text>
+
+                                <View style={{
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                }}>
+
+                                    <AppInput
+                                        showLeftIcon={false}
+                                        placeholder={"Min"}
+                                        containerStyle={screenStyles.inputContainerStyle}
+                                        inputStyle={{
+                                            backgroundColor: colors.textColorGrey2,
+                                        }}
+                                        onChangeText={(value) => {
+                                        }}
+                                    />
+
+                                    <AppInput
+                                        showLeftIcon={false}
+                                        placeholder={"Max"}
+                                        containerStyle={screenStyles.inputContainerStyle}
+                                        inputStyle={{
+                                            backgroundColor: colors.textColorGrey2,
+                                        }}
+                                        onChangeText={(value) => {
+                                        }}
+                                    />
+
+                                </View>
+
+                            </View>
+
+                            <View style={screenStyles.cardContainerStyle}>
+
+                                <Text style={screenStyles.titleStyle}>{"Star Rating"}</Text>
+
+
+                                <View style={screenStyles.ratingContainerStyle}>
+
+                                    <StarRating
+                                        maxStars={5}
+                                        rating={rating}
+                                        starSize={hp(3)}
+                                        fullStarColor={styles.ratingStyle.fullStarColor}
+                                        emptyStarColor={styles.ratingStyle.emptyStarColor}
+                                        selectedStar={(rating) => {
+                                            setRating(rating)
+                                        }}
+                                    />
+
+                                    <Text style={screenStyles.ratingTextStyle}>{rating + " Stars"}</Text>
+
+                                </View>
+
+
+                            </View>
+
+                            <View style={screenStyles.cardContainerStyle}>
+
+                                <Text style={screenStyles.titleStyle}>{"Others"}</Text>
+
+                                <FlatList data={otherItems} renderItem={({item, index}) => {
+                                    return renderOthersItem(item, index);
+                                }}
+                                />
+
+                            </View>
+
+                            <View style={[screenStyles.cardContainerStyle, {borderBottomWidth: 0}]}>
+
+                                <Text style={screenStyles.titleStyle}>{"Categories"}</Text>
+
+
+                                <FlatList
+                                    data={categories}
+                                    numColumns={2}
+                                    renderItem={({item, index}) => {
+                                        return renderCategoryItem(
+                                            item, index, (!(index === categories.length - 2 || index === categories.length - 1))
+                                        )
+                                    }}
+                                />
+
+                            </View>
+
+
+                        </ScrollView>
+
+                        <AppButton
+                            title={'Apply Filters'}
+                            onPress={() => {
+                                props.navigation.goBack()
+                            }}
+                        />
+
+                    </View>
+
+
+                );
+
+
+            }}
+
+        />
+
+
+    );
+
+
 }

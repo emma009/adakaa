@@ -1,44 +1,38 @@
-import React, {Component} from 'react';
-import {FlatList, TouchableWithoutFeedback, View, ViewComponent} from 'react-native';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import React, {useState} from 'react';
+import {TouchableWithoutFeedback, View} from 'react-native';
 
 import BaseView from "../BaseView"
-import {Button, Divider, Text} from "react-native-elements";
+import {Text} from "react-native-elements";
 import AppConfig from "../../../branding/App_config";
 import Routes from "../../navigation/Routes";
-import ShippingAddress from "../../components/Application/ShippingProgress/View"
 import Styles from "./Styles";
+import AppButton from "../../components/Application/AppButton/View";
 
 const colors = AppConfig.colors.default;
-const styles = AppConfig.styling.default;
 
+export const CheckoutDelivery = (props) => {
 
-export default class CheckoutDelivery extends Component {
-    constructor(props) {
-        super(props);
+    const [selectedDeliveryIndex, setSelectedDeliveryIndex] = useState(1);
 
-        this.state = {
-            selectedDeliveryIndex: 1,
-        }
-
-    }
-
-    renderDeliveryContainer = (title, description, price, index) => {
+    const renderDeliveryContainer = (title, description, price, index) => {
 
         return (
 
             <TouchableWithoutFeedback onPress={() => {
-                if (this.state.selectedDeliveryIndex === index) {
-                    index = 0;
-                }
 
-                this.setState({
-                    selectedDeliveryIndex: index
+                setSelectedDeliveryIndex(selectedDeliveryIndex => {
+                    if (selectedDeliveryIndex === index)
+                        return 0
+                    else return index;
                 })
-            }}>
-                <View style={[Styles.deliveryContainer, this.state.selectedDeliveryIndex === index && {borderWidth: 1, borderColor: colors.primaryGreenColor}]}>
 
-                    <View style={{flex: 0.85, height: "80%", paddingLeft: wp("5")}}>
+            }}>
+                <View style={[Styles.deliveryContainer, selectedDeliveryIndex === index && {
+                    borderWidth: 1,
+                    borderColor: colors.primaryGreenColor
+                }]}>
+
+                    <View style={{width: "90%"}}>
                         <Text style={Styles.deliveryHeader}>{title}</Text>
                         <Text style={Styles.deliveryDescription}>{description}</Text>
 
@@ -55,61 +49,53 @@ export default class CheckoutDelivery extends Component {
 
     }
 
-    render(){
-        return(
+    return (
 
-            <BaseView
-                navigation={this.props.navigation}
-                title={"Shipping Method"}
-                childView={() => {
-                    return (
+        <BaseView
+            navigation={props.navigation}
+            title={"Shipping Method"}
+            childView={() => {
+                return (
 
-                        <View style={{flex: 1}}>
+                    <View style={{flex: 1}}>
 
-                           {/*<ShippingAddress*/}
-                           {/*/>*/}
+                        {renderDeliveryContainer(
+                            "Standard Delivery",
+                            "Order will be delivered between 3 - 5 business days straight to your doorstep.",
+                            "$15",
+                            1
+                        )}
 
-                            {this.renderDeliveryContainer(
-                                "Standard Delivery",
-                                "Order will be delivered between 3 - 5 business days straight to your doorstep.",
-                                "$15",
-                                1
-                            )}
+                        {renderDeliveryContainer(
+                            "Next Day Delivery",
+                            "Place your order before 6PM and your items will be delivered the next day.",
+                            "$5",
+                            2
+                        )}
 
-                            {this.renderDeliveryContainer(
-                                "Next Day Delivery",
-                                "Place your order before 6PM and your items will be delivered the next day.",
-                                "$5",
-                                2
-                            )}
+                        {renderDeliveryContainer(
+                            "Nominated Delivery",
+                            "Pick a particular date from the calendar and order will be delivered on selected data.",
+                            "$2",
+                            3
+                        )}
 
-                            {this.renderDeliveryContainer(
-                                "Nominated Delivery",
-                                "Pick a particular date from the calendar and order will be delivered on selected data.",
-                                "$2",
-                                3
-                            )}
+                        <View style={{flex: 1, justifyContent: "flex-end"}}>
 
-                            <View style={{flex: 1, justifyContent: "flex-end", marginBottom: hp("1")}}>
-
-
-                            <Button
-                                buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
+                            <AppButton
                                 title={'Next'}
-                                titleStyle={styles.buttonStyle}
                                 onPress={() => {
-                                    this.props.navigation.navigate(Routes.CHECKOUT_ADDRESS)
-                                }}/>
-
-                            </View>
+                                    props.navigation.navigate(Routes.CHECKOUT_ADDRESS)
+                                }}
+                            />
                         </View>
+                    </View>
 
-                    );
-                }}
-            />
+                );
+            }}
+        />
 
 
+    );
 
-        );
-    }
 }

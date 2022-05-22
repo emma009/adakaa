@@ -2,26 +2,33 @@ const Routes = {
     SPLASH_SCREEN: "splash",
 
     //Variant1
-    INTRO_SCREEN: "intro",
-    LOGIN_SCREEN: "login",
-    LOGIN_FORM_SCREEN: "login_form",
-    SIGNUP_FORM_SCREEN: "signup_form",
-    FORGOT_PASSWORD_FORM_SCREEN: "forgot_password_form",
-    //Variant2
     INTRO_SCREEN1: "intro1",
     LOGIN_SCREEN1: "login1",
     LOGIN_FORM_SCREEN1: "login_form1",
     SIGNUP_FORM_SCREEN1: "signup_form1",
     FORGOT_PASSWORD_FORM_SCREEN1: "forgot_password_form1",
-
-    //Variant3
+    //Variant2
     INTRO_SCREEN2: "intro2",
     LOGIN_SCREEN2: "login2",
     LOGIN_FORM_SCREEN2: "login_form2",
     SIGNUP_FORM_SCREEN2: "signup_form2",
     FORGOT_PASSWORD_FORM_SCREEN2: "forgot_password_form2",
 
-    HOME: "home",
+    //Variant3
+    INTRO_SCREEN3: "intro3",
+    LOGIN_SCREEN3: "login3",
+    LOGIN_FORM_SCREEN3: "login_form3",
+    SIGNUP_FORM_SCREEN3: "signup_form3",
+    FORGOT_PASSWORD_FORM_SCREEN3: "forgot_password_form3",
+
+    HOME_VARIANT1: "home1",
+    HOME_VARIANT2: "home2",
+    HOME_VARIANT3: "home3",
+    FAVOURITE: "favourite",
+    PROFILE1: "profile1",
+    PROFILE2: "profile2",
+    PROFILE3: "profile3",
+    CART: "cart",
 
     CATEGORY_LIST: "category_list",
     CATEGORY_ITEMS: "category_items",

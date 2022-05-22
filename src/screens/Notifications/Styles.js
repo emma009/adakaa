@@ -2,19 +2,14 @@ import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-nativ
 
 import AppConfig from "../../../branding/App_config";
 import Typography from "../../../branding/carter/styles/Typography";
-import fonts from "../../../branding/carter/assets/Fonts";
 
 const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
-const styles = AppConfig.styling.default;
 
 
 let Styles = {
 
-    foodItemContainer: {
-
-        // height: hp("10"),
-
+    notificationContainer: {
         backgroundColor: "white",
 
         flexDirection: "row",
@@ -24,85 +19,22 @@ let Styles = {
         paddingLeft: wp("5"),
 
         paddingVertical: hp("2"),
-
-
-
     },
-    foodItemImage: {
-        width: hp("10"),
-        height: hp("10"),
-        marginRight: wp("2")
-    },
-    nameTitle: {
+
+    titleText: {
         fontSize: Typography.P3,
         fontFamily: Fonts.RUBIK_MEDIUM,
         color: colors.textColorBlack1,
         marginBottom: hp(1)
     },
-    addressTitle: {
+
+    subtitleText: {
         fontSize: Typography.P6,
         fontFamily: Fonts.RUBIK_REGULAR,
         lineHeight: hp(2.5),
         marginVertical: hp("0.5"),
         color: colors.textColorGrey1
     },
-    priceTitle: {
-        flex: 1,
-        fontSize: Typography.H9,
-        fontFamily: Fonts.RUBIK_REGULAR,
-        textAlign: "right",
-        alignSelf: "center"
-    },
-    itemLabel: {
-        fontSize: Typography.P4,
-        fontFamily: Fonts.RUBIK_LIGHT,
-    },
-    phoneTitle: {
-        fontSize: Typography.P3,
-        fontFamily: Fonts.RUBIK_REGULAR,
-        marginRight: wp("5")
-    },
-    weightText: {
-        color: "#697281",
-        fontFamily: Fonts.RUBIK_LIGHT,
-        fontSize: Typography.P5,
-    },
-    profileItemCircle: {
-        width: hp("6"),
-        height: hp("6"),
-        backgroundColor: "#edf8e4",
-        justifyContent: "center",
-        borderRadius: hp("6") / 2
-    },
-
-    orderProgressCircle: {
-        width: hp("2"),
-        height: hp("2"),
-        borderRadius: hp("2") / 2,
-    },
-
-    orderProgressLine: {
-        width: 2,
-        height: hp("3")
-    },
-
-    orderProgressTitleContainer: {
-        flexDirection: "row",
-        marginTop: hp("2.7")
-    },
-
-    orderProgressTitle: {
-        flex: 0.5,
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4
-    },
-
-    orderProgressSubTitle: {
-        flex: 0.5,
-        textAlign: "right",
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5
-    }
 
 }
 

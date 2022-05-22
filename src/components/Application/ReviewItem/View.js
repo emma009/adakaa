@@ -1,69 +1,69 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {View,} from 'react-native';
-import {Avatar, Rating, Text} from 'react-native-elements';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {Avatar, Text} from 'react-native-elements';
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Styles from "./Styles";
 import StarRating from "react-native-star-rating";
-import colors from "../../../../branding/carter/styles/Colors";
+import AppConfig from "../../../../branding/App_config";
 
 const PropTypes = require('prop-types');
 
+const styles = AppConfig.styling.default;
 
-class ReviewItem extends Component {
 
+export const ReviewItem = (props) => {
 
-    render () {
-        const {
-            profileImage,
-            fullName,
-            reviewTime,
-            rating,
-            comment
-        } = this.props;
+    const {
+        profileImage,
+        fullName,
+        reviewTime,
+        rating,
+        comment
+    } = props;
 
-        return (
+    return (
 
-            <View style={{padding: hp(1.5), backgroundColor: "white", marginVertical: hp("0.5")}}>
+        <View style={Styles.container}>
 
-                <View style={Styles.upperContainer}>
-                    <Avatar
-                        rounded
-                        size={"medium"}
-                        source={profileImage}
+            <View style={Styles.upperContainer}>
+                <Avatar
+                    rounded
+                    size={"medium"}
+                    source={profileImage}
+                />
+
+                <View style={{marginLeft: wp(3)}}>
+                    <Text style={Styles.nameText}>{fullName}</Text>
+                    <Text style={Styles.timeText}>{reviewTime}</Text>
+                </View>
+            </View>
+
+            <View style={Styles.lowerContainer}>
+
+                <View style={Styles.ratingContainer}>
+                    <Text style={Styles.ratingText}>{rating}</Text>
+
+                    <StarRating
+                        disabled={true}
+                        maxStars={5}
+                        rating={rating}
+                        starSize={hp(1.8)}
+                        fullStarColor={styles.ratingStyle.fullStarColor}
+                        emptyStarColor={styles.ratingStyle.emptyStarColor}
+                        selectedStar={(rating) => {
+                        }}
                     />
-
-                    <View style={{marginLeft: "5%"}}>
-                        <Text style={Styles.name}>{fullName}</Text>
-                        <Text style={Styles.time}>{reviewTime}</Text>
-                    </View>
                 </View>
 
-                <View style={Styles.lowerContainer}>
-
-                    <View style={{flexDirection: "row", alignItems: "center"}}>
-                        <Text style={Styles.ratingText}>{rating}</Text>
-
-                        <StarRating
-                            disabled={true}
-                            maxStars={5}
-                            rating={2}
-                            starSize={hp(1.8)}
-                            fullStarColor={colors.iconColorOrange1}
-                            emptyStarColor={colors.borderColorLight}
-                            selectedStar={(rating) => {}}
-                        />
-                    </View>
-
-                    <Text style={Styles.commentText}>{comment}</Text>
-
-                </View>
+                <Text style={Styles.commentText}>{comment}</Text>
 
             </View>
-        )
 
-    }
+        </View>
+    )
 
 }
+
 
 ReviewItem.propTypes = {
 
@@ -75,8 +75,5 @@ ReviewItem.propTypes = {
 
 };
 
-ReviewItem.defaultProps = {
+ReviewItem.defaultProps = {};
 
-};
-
-module.exports = ReviewItem;

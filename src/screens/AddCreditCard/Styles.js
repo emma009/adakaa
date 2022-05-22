@@ -10,6 +10,30 @@ const styles = AppConfig.styling.default;
 
 let Styles = {
 
+    mainContainer: {
+        flex: 1
+    },
+
+    creditCardImageStyle: {
+        width: "100%",
+        height: hp("30")
+    },
+
+    defaultText: {
+        marginLeft: hp(1),
+        alignSelf: "center",
+        fontFamily: Fonts.RUBIK_REGULAR,
+        fontSize: Typography.P4,
+        color: colors.textColorGrey1
+    },
+
+
+    bottomButton: {
+        flex: 1,
+        justifyContent: "flex-end"
+    },
+
+
     primaryText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.H8,

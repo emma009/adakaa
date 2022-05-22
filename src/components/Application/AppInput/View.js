@@ -1,70 +1,75 @@
-import React, {Component} from 'react';
-
-import {Icon} from 'react-native-elements';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
-import TextInput from "../../Global/TextInput/View";
-import {Image, ViewPropTypes} from "react-native";
+import React from 'react';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen'
+import {TextInput} from "../../Global/TextInput/View";
+import {Image} from "react-native";
+import AppConfig from "../../../../branding/App_config";
 
 const PropTypes = require('prop-types');
 
-class AppInput extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const {
-            textInputRef,
-            placeholder,
-            placeholderTextColor,
-            onChangeText,
-            leftIcon,
-            leftIconColor,
-            isPasswordField,
-            backgroundColor,
-            value,
-            multilineInput,
-            keyboardType
-        } = this.props;
+const commonStyles = AppConfig.styling.default;
 
 
-        return (
 
-            <TextInput
-                {...this.props}
-                textInputRef={textInputRef}
-                placeholder={placeholder}
-                placeholderTextColor={placeholderTextColor}
-                leftIcon={
-                    <Image source={leftIcon} style={{width: hp(2), height: hp(2), tintColor: leftIconColor}} resizeMode={"contain"} />
-                }
-                containerStyle={[
-                    {
-                        backgroundColor: backgroundColor,
-                        marginVertical: hp("0.5"),
-                    },
-                    multilineInput && {height: hp("30")},
+const AppInput = (props) => {
 
-                    ]}
-                leftIconContainerStyle={{
-                    paddingRight: wp('3'),
+    const {
+        textInputRef,
+        placeholder,
+        placeholderTextColor,
+        onChangeText,
+        leftIcon,
+        leftIconColor,
+        isPasswordField,
+        backgroundColor,
+        value,
+        multilineInput,
+        keyboardType,
+        defaultContainerStyle,
+        containerStyle,
+        leftIconContainerStyle,
+        multilineInputHeight,
+        showLeftIcon
+    } = props;
+
+
+
+
+    return (
+
+        <TextInput
+            {...props}
+            textInputRef={textInputRef}
+            placeholder={placeholder}
+            placeholderTextColor={placeholderTextColor}
+            leftIcon={
+                showLeftIcon && <Image source={leftIcon} style={{
+                    width: hp(2),
+                    height: hp(2),
+                    tintColor: leftIconColor
                 }}
-                onChangeText={(value) => {
-                    onChangeText(value)
-                }}
-                value={value}
-                keyboardType={keyboardType}
-                showPassword={isPasswordField}
-                isPasswordField={isPasswordField}
-            />
+                                       resizeMode={"contain"} />
+            }
+            containerStyle={[
+                {
+                    backgroundColor: backgroundColor,
+                },
+                defaultContainerStyle,
+                containerStyle,
+                multilineInput && multilineInputHeight,
+            ]}
+            leftIconContainerStyle={leftIconContainerStyle}
+            onChangeText={(value) => {
+                onChangeText(value)
+            }}
+            value={value}
+            keyboardType={keyboardType}
+            showPassword={isPasswordField}
+            isPasswordField={isPasswordField}
+        />
 
 
 
-        )
-    }
-
-
+    )
 }
 
 AppInput.propTypes = {
@@ -73,7 +78,9 @@ AppInput.propTypes = {
     placeholderTextColor: PropTypes.string,
 
     value: PropTypes.string,
+    containerStyle: PropTypes.any,
 
+    showLeftIcon:  PropTypes.bool,
     leftIcon:  PropTypes.string,
     leftIconColor:  PropTypes.string,
 
@@ -89,13 +96,11 @@ AppInput.propTypes = {
 };
 
 AppInput.defaultProps = {
+    ...commonStyles.primaryInputStyle,
     placeholder: "Text",
-    placeholderTextColor: "#697281",
-    leftIconColor: "#697281",
-    backgroundColor: "#fff",
+    showLeftIcon: true,
     isPasswordField: false,
     multilineInput: false
 };
 
-module.exports = AppInput;
-
+export default AppInput;

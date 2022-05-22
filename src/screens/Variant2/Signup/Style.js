@@ -1,16 +1,29 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import fonts from "../../../../branding/carter/assets/Fonts";
-import Typography from "../../../../branding/carter/styles/Typography";
 import AppConfig from "../../../../branding/App_config";
 
 const colors = AppConfig.colors.default;
+const fonts = AppConfig.fonts.default;
+const Typography = AppConfig.typography.default;
 const styles = AppConfig.styling.default;
 
 let style = {
 
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: colors.white
+    },
+
+    imageContainer: {
+        width: wp('100%'),
+        height: hp('45%'),
+        alignItems: "center"
+    },
+
     headerImage: {
-        width: wp('65%'),
-        height: hp('40%')
+        width: hp('40%'),
+        height: hp('40%'),
+        resizeMode: "contain",
     },
 
     bottomContainer: {
@@ -19,7 +32,7 @@ let style = {
         paddingTop: hp("3"),
     },
 
-    welcomeHeader: {
+    titleText: {
         fontFamily: fonts.RUBIK_MEDIUM,
         fontSize: Typography.H9,
         marginBottom: hp("0.5"),
@@ -27,21 +40,12 @@ let style = {
         textAlign: "center"
     },
 
-    welcomeDescription: {
+    subtitleText: {
         fontFamily: fonts.RUBIK_REGULAR,
         fontSize: Typography.P4,
         marginBottom: hp("2"),
         color: colors.textColorGrey1,
         textAlign: "center"
-    },
-
-    signUpButton: {
-        backgroundColor: "#6cc51d"
-    },
-
-    forgotPasswordContainer: {
-        flexDirection:"row",
-        justifyContent: "flex-end"
     },
 
     accountBottomContainer: {
@@ -62,10 +66,6 @@ let style = {
         fontFamily: fonts.RUBIK_MEDIUM,
         fontSize: Typography.P4,
     },
-
-    signupButton: {
-        marginVertical: hp('0.5')
-    }
 
 }
 

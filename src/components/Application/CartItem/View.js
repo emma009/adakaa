@@ -1,126 +1,98 @@
-import React, {Component} from 'react';
-import {
-    View, StyleSheet, TouchableOpacity, Image
-} from 'react-native';
+import React from 'react';
+import {Image, TouchableOpacity, View} from 'react-native';
 
-import { Text, Button, Icon } from 'react-native-elements';
+import {Button, Text} from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Routes from "../../../navigation/Routes";
 
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import Styles from "./Assets/Styles/Styles";
-import Counter from "../../Global/Counter/View";
-import assets from "../../../../branding/carter/assets/Assets";
-import colors from "../../../../branding/carter/styles/Colors";
+import {Counter} from "../../Global/Counter/View";
+import Styles from "./Style"
+import AppConfig from "../../../../branding/App_config";
 
-export default class CartItem extends Component {
-    constructor(props) {
-        super(props);
+const assets = AppConfig.assets.default;
+const colors = AppConfig.colors.default;
 
-    }
+export const CartItem = (props) => {
 
-    renderRightActions = (progress, dragX) => {
-        const scale = dragX.interpolate({
-            inputRange: [-80, 0],
-            outputRange: [1, 0],
-            extrapolate: 'clamp',
-        });
+    const renderRightActions = (progress, dragX) => {
         return (
 
             <TouchableOpacity
-                onPress={() => {
+                onPress={() => {}}
+                style={{
+                    width: wp("20"),
+                    height: "100%",
+                    backgroundColor: colors.iconColorRed2,
+                    justifyContent: "center",
+                    alignItems: "center"
+            }}>
 
-                }}
-                style={{width: wp("20"), height: "100%", backgroundColor: colors.iconColorRed2, justifyContent: "center", alignItems: "center"}}
-            >
-
-                <Image source={assets.trash_icon} style={{width: hp(3), height: hp(3), tintColor: "white"}} resizeMode={"contain"} />
+                <Image
+                    source={assets.trash_icon}
+                    style={{
+                        width: hp(3),
+                        height: hp(3),
+                        tintColor: "white",
+                        resizeMode: "contain"
+                }} />
 
             </TouchableOpacity>
 
-            // <Button
-            //     onPress={() => {
-            //
-            //     }}
-            //     ViewComponent={() => {
-            //         return (
-            //             <View style={{width: wp("20"), height: "100%", backgroundColor: "red", justifyContent: "center"}}>
-            //                 <Icon
-            //                     name="google"
-            //                     type='font-awesome'
-            //                     size={15}
-            //                     color={"white"}
-            //                 />
-            //             </View>
-            //
-            //         );
-            //     }}
-            //     />
         );
     };
 
-    render() {
-        const {
-            title,
-            image,
-            price,
-            weight,
-            navigation
-        } = this.props;
-        return(
-            <Button
-                onPress={() => {
-                    // navigation.navigate(Routes.PRODUCT_DETAIL, {
-                    //        item: this.props,
-                    //        itemState: this.state
-                    //        }
-                    //    );
-                }}
-                ViewComponent={() => {
+    return(
+        <Button
+            onPress={() => {
+                props.navigation.navigate(Routes.PRODUCT_DETAIL, {
+                       item: props,
+                       }
+                   );
+            }}
+            ViewComponent={() => {
 
-                    return (
-                        <Swipeable
+                return (
+                    <Swipeable
+                        friction={2}
+                        leftThreshold={80}
+                        rightThreshold={40}
+                        renderRightActions={renderRightActions}
+                        containerStyle={{marginVertical: hp("0.5")}}>
 
-                            friction={2}
-                            leftThreshold={80}
-                            rightThreshold={40}
-                            renderRightActions={this.renderRightActions}
-                            containerStyle={{marginVertical: hp("0.5")}}>
+                        <View style={Styles.foodItemContainer}>
 
-                            <View style={Styles.foodItemContainer}>
-
-                                <Image
-                                    source={image}
-                                    style={Styles.foodItemImage}
-                                    resizeMode={"contain"}
-                                />
-                                <View style={{height: hp("7"), justifyContent: "space-between"}}>
-                                    <Text style={Styles.priceText}>{price}</Text>
-                                    <Text style={Styles.itemTitle}>{title}</Text>
-                                    <Text style={Styles.weightText}>{weight}</Text>
-                                </View>
-
-                                <View style={{flex: 1, height: "100%", alignItems: "flex-end", }}>
-                                    <Counter
-                                        isVertical
-                                        outerBorder
-                                        spacing={hp("5")}
-                                    />
-                                </View>
-
-
-
+                            <Image
+                                source={props.image}
+                                style={Styles.foodItemImage}
+                                resizeMode={"contain"}
+                            />
+                            <View>
+                                <Text style={Styles.priceText}>{props.price}</Text>
+                                <Text style={Styles.itemTitle}>{props.title}</Text>
+                                <Text style={Styles.weightText}>{props.weight}</Text>
                             </View>
 
-                        </Swipeable>
+                            <View style={{flex: 1, alignItems: "flex-end"}}>
+                                <Counter
+                                    isVertical
+                                    outerBorder
+                                    spacing={hp("5")}
+                                />
+                            </View>
 
-                    );
 
-                }}
-                />
-        );
-    }
+                        </View>
+
+                    </Swipeable>
+
+                );
+
+            }}
+        />
+    );
+
 }
 
 CartItem.propTypes = {

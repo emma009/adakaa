@@ -1,115 +1,77 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
-import {Button, Text} from 'react-native-elements';
+import {Text} from 'react-native-elements';
 import {Image, TouchableOpacity, View} from "react-native";
 import Styles from "./Styles";
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
-import colors from "../../../../branding/carter/styles/Colors";
-import assets from "../../../../branding/carter/assets/Assets";
+import AppConfig from "../../../../branding/App_config";
 
 const PropTypes = require('prop-types');
 
+const assets = AppConfig.assets.default;
+const colors = AppConfig.colors.default;
 
-class Counter extends Component {
 
-    constructor(props) {
-        super(props);
+export const Counter = (props) => {
 
-        this.state = {
-            cartCount: 0
-        }
+    const [cartCount, setCartCount] = useState(0);
 
-    }
-
-    _cartCountChange = (behavior) => {
+    const _cartCountChange = (behavior) => {
         if (behavior === "add") {
-            this.setState({cartCount: this.state.cartCount + 1})
-        } else if (behavior === "subtract" && !(this.state.cartCount === 0)) {
-            this.setState({cartCount: this.state.cartCount - 1} )
+            setCartCount((cartCount) => {
+                return cartCount + 1
+            })
+        } else if (behavior === "subtract" && !(cartCount === 0)) {
+            setCartCount((cartCount) => {
+                return cartCount - 1
+            })
         }
     };
 
-    getHorizontalCounter = () => {
-
-        const {
-            spacing,
-            borderWidth,
-            borderColor,
-            outerBorder,
-            height
-        } = this.props;
-
-        return (
-            <View style={{flexDirection: "row", borderWidth: outerBorder ? borderWidth : 0, borderColor}}>
-
-                <TouchableOpacity style={{
-                    width: spacing, height: spacing,borderRightColor: borderColor, borderRightWidth: borderWidth,
-                    justifyContent: "center",
-                    alignItems: "center",
-                }} onPress={() => {
-                    this._cartCountChange("subtract")
-                }}>
-
-                    <Image source={assets.minus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-
-                </TouchableOpacity>
-                <View style={{width: spacing, alignItems: "center", justifyContent: "center"}}>
-                    <Text style={Styles.counterText}>{this.state.cartCount}</Text>
-                </View>
-
-                <TouchableOpacity style={{
-                    width: spacing, height: spacing,borderLeftColor: borderColor, borderLeftWidth: borderWidth,
-                    justifyContent: "center",
-                    alignItems: "center",
-                }} onPress={() => {
-                    this._cartCountChange("add")
-                }}>
-
-                    <Image source={assets.plus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-
-                </TouchableOpacity>
-            </View>
-        );
-
-    }
-
-    getVerticalCounter = () => {
+    const getHorizontalCounter = () => {
 
         const {
             spacing,
             borderWidth,
             borderColor,
             outerBorder
-        } = this.props;
+        } = props;
 
         return (
-            <View style={{flexDirection: "column", alignItems: "center"}}>
+            <View style={{flexDirection: "row", borderWidth: outerBorder ? borderWidth : 0, borderColor}}>
 
                 <TouchableOpacity style={{
-                    width: spacing, height: spacing,borderBottomColor: borderColor, borderBottomWidth: borderWidth, borderLeftColor: borderColor, borderLeftWidth: borderWidth,
+                    width: spacing,
+                    height: spacing,
+                    borderRightColor: borderColor,
+                    borderRightWidth: borderWidth,
                     justifyContent: "center",
-                    alignItems: "center",
+                    alignItems: "center"
                 }} onPress={() => {
-                    this._cartCountChange("add")
+                    _cartCountChange("subtract")
                 }}>
 
-                    <Image source={assets.plus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                    <Image source={assets.minus_icon}
+                           style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}}
+                           resizeMode={"contain"}/>
 
                 </TouchableOpacity>
-                <View style={{width: spacing, height: spacing, justifyContent: "center", alignItems: "center",  borderLeftColor: borderColor, borderLeftWidth: borderWidth}}>
-                    <Text style={Styles.counterText}>{this.state.cartCount}</Text>
+                <View style={{width: spacing, alignItems: "center", justifyContent: "center"}}>
+                    <Text style={Styles.counterText}>{cartCount}</Text>
                 </View>
 
                 <TouchableOpacity style={{
-                    width: spacing, height: spacing,borderTopColor: borderColor, borderTopWidth: borderWidth, borderLeftColor: borderColor, borderLeftWidth: borderWidth,
+                    width: spacing, height: spacing, borderLeftColor: borderColor, borderLeftWidth: borderWidth,
                     justifyContent: "center",
                     alignItems: "center",
                 }} onPress={() => {
-                    this._cartCountChange("subtract")
+                    _cartCountChange("add")
                 }}>
 
-                    <Image source={assets.minus_icon} style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
+                    <Image source={assets.plus_icon}
+                           style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}}
+                           resizeMode={"contain"}/>
 
                 </TouchableOpacity>
             </View>
@@ -117,34 +79,86 @@ class Counter extends Component {
 
     }
 
-    render() {
-
-
+    const getVerticalCounter = () => {
 
         const {
-            isVertical
-        } = this.props;
+            spacing,
+            borderWidth,
+            borderColor,
+        } = props;
 
         return (
+            <View style={{flexDirection: "column", alignItems: "center"}}>
 
-            <View>
-                {
-                    isVertical ? (
-                            this.getVerticalCounter()
-                        )
-                        : (
-                            this.getHorizontalCounter()
-                        )
-                }
+                <TouchableOpacity style={{
+                    width: spacing,
+                    height: spacing,
+                    borderBottomColor: borderColor,
+                    borderBottomWidth: borderWidth,
+                    borderLeftColor: borderColor,
+                    borderLeftWidth: borderWidth,
+                    justifyContent: "center",
+                    alignItems: "center",
+                }} onPress={() => {
+                    _cartCountChange("add")
+                }}>
 
+                    <Image source={assets.plus_icon}
+                           style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}}
+                           resizeMode={"contain"}/>
+
+                </TouchableOpacity>
+                <View style={{
+                    width: spacing,
+                    height: spacing,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    borderLeftColor: borderColor,
+                    borderLeftWidth: borderWidth
+                }}>
+                    <Text style={Styles.counterText}>{cartCount}</Text>
+                </View>
+
+                <TouchableOpacity style={{
+                    width: spacing,
+                    height: spacing,
+                    borderTopColor: borderColor,
+                    borderTopWidth: borderWidth,
+                    borderLeftColor: borderColor,
+                    borderLeftWidth: borderWidth,
+                    justifyContent: "center",
+                    alignItems: "center",
+                }} onPress={() => {
+                    _cartCountChange("subtract")
+                }}>
+
+                    <Image source={assets.minus_icon}
+                           style={{width: hp(2), height: hp(2), tintColor: colors.primaryGreenColor}}
+                           resizeMode={"contain"}/>
+
+                </TouchableOpacity>
             </View>
+        );
 
-
-
-        )
     }
 
 
+    return (
+
+        <View>
+            {
+                props.isVertical ? (
+                        getVerticalCounter()
+                    )
+                    : (
+                        getHorizontalCounter()
+                    )
+            }
+
+        </View>
+
+
+    )
 }
 
 Counter.propTypes = {
@@ -164,6 +178,4 @@ Counter.defaultProps = {
     outerBorder: false,
     isVertical: false,
 };
-
-module.exports = Counter;
 

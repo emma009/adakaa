@@ -1,28 +1,56 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import fonts from "../../../../branding/carter/assets/Fonts";
-import Typography from "../../../../branding/carter/styles/Typography";
 import AppConfig from "../../../../branding/App_config";
-import Globals from "../../../utils/Globals";
+
 const colors = AppConfig.colors.default;
+const fonts = AppConfig.fonts.default;
+const styles = AppConfig.styling.default;
+const Typography = AppConfig.typography.default;
+
 
 let style = {
 
-    introUpperContainer: {
-        flex: 1
+
+    container: {
+        flex: 1,
+        backgroundColor: 'white'
+    },
+
+    paginationDotStyle: {
+        width: hp(0.8),
+        height: hp(0.8),
+        marginLeft: -hp(1)
+    },
+
+    paginationInactiveDotStyle: {
+        width: hp(0.8),
+        height: hp(0.8)
+    },
+
+    paginationContainerStyle: {
+        position: "absolute",
+        width: "100%",
+        alignItem: "center",
+        bottom: hp(10),
+        zIndex: 1
     },
 
     introLowerContainer: {
-        position: "absolute", bottom: hp(3),
-        width: "100%",
-        alignItems: 'center',
+        position: "absolute",
+        bottom: hp(3),
+        width: styles.gridWidth3,
+        alignSelf: "center",
+        justifyContent: 'center',
+
     },
 
-    headerImage: {
-        width: hp("40"),
-        height: hp("40")
+    introItemContainer: {
+        flex: 1,
+        alignItems: "center",
+        paddingTop: hp(15),
+        resizeMode: "cover"
     },
 
-    introUpperText: {
+    introItemTitle: {
         fontFamily: fonts.RUBIK_MEDIUM,
         fontSize: Typography.H7,
         width: wp("75"),
@@ -31,7 +59,7 @@ let style = {
         color: colors.textColorBlack1
     },
 
-    introLowerText: {
+    introItemSubtitle: {
         fontFamily: fonts.RUBIK_REGULAR,
         fontSize: Typography.P4,
         width: wp("75"),
@@ -40,7 +68,6 @@ let style = {
         lineHeight: hp(3),
         color: colors.textColorGrey1
     }
-
 
 }
 

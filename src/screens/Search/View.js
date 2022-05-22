@@ -1,16 +1,10 @@
-import React, {Component} from 'react';
-import {FlatList, Image, StatusBar, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-
-import FoodItem from "../../components/Application/FoodItem/View";
+import React, {useRef} from 'react';
+import {Image, StatusBar, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Styles from "./Styles";
 import Globals from "../../utils/Globals";
-import {Icon} from "react-native-elements";
-import AppInput from "../../components/Application/AppInput/View";
-import TextInput from "../../components/Global/TextInput/View";
+import {TextInput} from "../../components/Global/TextInput/View";
 import Routes from "../../navigation/Routes";
-import Typography from "../../../branding/carter/styles/Typography";
-import fonts from "../../../branding/carter/assets/Fonts";
 import assets from "../../../branding/carter/assets/Assets";
 
 import AppConfig from "../../../branding/App_config";
@@ -18,202 +12,142 @@ import AppConfig from "../../../branding/App_config";
 const styles = AppConfig.styling.default;
 const colors = AppConfig.colors.default;
 
+export const Search = (props) => {
 
-const searchHistoryArray = [
-    "Fresh Apricots",
-    "Frozen Pizza",
-    "Bananas",
-    "Cheetos",
-    "Discounted Items",
-    "Fresh Vegetables",
-]
+    let inputRef = useRef();
 
 
-export default class Search extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        };
+    const renderCategoryTitle = (title, rightBtnText) => {
+        return <TouchableOpacity onPress={() => {
+        }}>
+            <View style={Styles.categoryTitleContainer}>
+                <Text style={Styles.categoryTitleText}>{title}</Text>
+                <Text style={Styles.categoryBtnText}>{rightBtnText}</Text>
+            </View>
+        </TouchableOpacity>
     }
 
-    render(){
-        return(
-
-            <View  style={[{flex: 1,backgroundColor: colors.textColorGrey2}]}>
-                <StatusBar backgroundColor={"white"} barStyle="dark-content" />
-
-                <View style={{paddingTop: Globals.SAFE_AREA_INSET.top + hp (1), paddingRight: wp(5), backgroundColor: "white", flexDirection: "row", paddingVertical: hp(1)}}>
-
-                    <TouchableWithoutFeedback onPress={() => {this.props.navigation.goBack()}}>
-                        <View style={{width: wp("10"), justifyContent: "center", marginLeft: wp(2)}}>
-                            <Image source={assets.arrow_left_icon}
-                                   resizeMode={"contain"}
-                                   style={{width: hp(2.5), height: hp (2.5), tintColor: colors.textColorBlack1}} />
+    const renderHistoryItems = () => {
+        return <View style={Styles.historyItemContainer}>
+            {
+                Globals.searchHistoryItems.map(item => {
+                    return (
+                        <View
+                            style={Styles.historyItemTextContainer}>
+                            <Text
+                                ellipsizeMode={'tail'}
+                                style={Styles.historyItemText}>
+                                {item}
+                            </Text>
                         </View>
-                    </TouchableWithoutFeedback>
+                    );
+                })
+            }
+        </View>
+    }
 
-                    <TextInput
-                        placeholder={"Search"}
-                        placeholderTextColor={colors.textColorBlack1}
-                        rightIconSource={
-                            assets.filter_icon
-                        }
-                        rightIconPress={() => {
-                            this.props.navigation.navigate(Routes.APPLY_FILTERS)
-                        }}
-                        leftIcon={
-                            <Image source={assets.search_icon}
-                                   resizeMode={"contain"}
-                                   style={{width: hp(2), height: hp (2), tintColor: colors.textColorBlack1}} />
-                        }
-                        containerStyle={[
-                            {
-                                backgroundColor: colors.textColorGrey2,
-                                flex: 1
-                            },
+    return (
 
-                        ]}
-                        leftIconContainerStyle={{
-                            paddingRight: wp('5')
-                        }}
-                        onChangeText={(value) => {
+        <View style={Styles.container}>
+            <StatusBar backgroundColor={"white"} barStyle="dark-content"/>
 
-                        }}
-                    />
+            <View style={Styles.searchContainer}>
 
-
-
-                </View>
-
-
-                <View style={{alignItems: "center"}}>
-                    <TouchableOpacity  onPress={() => {}}>
-                        <View style={{
-                            width: styles.gridWidth,
-                            flexDirection: "row",
-                            alignItem: "center",
-                            justifyContent: "space-between",
-                            paddingVertical: hp("2"),
-                            marginTop: hp("1"),
-                        }}>
-                            <Text style={{
-                                fontFamily: fonts.RUBIK_MEDIUM,
-                                fontSize: Typography.P3,
-                                color: colors.textColorBlack1
-                            }}>Search History</Text>
-                            <Text style={{
-                                fontFamily: fonts.RUBIK_MEDIUM,
-                                fontSize: Typography.P5,
-                                color: colors.textColorBlue1
-                            }}>Clear</Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <View style={{flexDirection: 'row', flexShrink: 1, flexWrap: 'wrap'}}>
-                        {searchHistoryArray.map(item => {
-                            return (
-                                <View
-                                    style={{
-                                        backgroundColor: 'white',
-                                        padding: hp(1),
-                                        marginHorizontal: hp(1),
-                                        marginBottom: hp("0.5")
-                                    }}>
-                                    <Text
-                                        ellipsizeMode={'tail'}
-                                        style={{fontSize: Typography.P6, fontFamily: fonts.RUBIK_REGULAR, color: colors.textColorGrey1}}>
-                                        {item}
-                                    </Text>
-                                </View>
-                            );
-                        })}
+                <TouchableWithoutFeedback
+                    onPress={() => {
+                        props.navigation.goBack()
+                    }}
+                >
+                    <View style={Styles.searchLeftIconContainer}>
+                        <Image source={assets.arrow_left_icon}
+                               style={Styles.headerLeftIcon}/>
                     </View>
+                </TouchableWithoutFeedback>
 
-                    <TouchableOpacity  onPress={() => {}}>
-                        <View style={{
-                            width: styles.gridWidth,
-                            flexDirection: "row",
-                            alignItem: "center",
-                            justifyContent: "space-between",
-                            paddingVertical: hp("2"),
-                            marginTop: hp("1"),
-                        }}>
-                            <Text style={{
-                                fontFamily: fonts.RUBIK_MEDIUM,
-                                fontSize: Typography.P3,
-                                color: colors.textColorBlack1
-                            }}>Discover More</Text>
-                            <Text style={{
-                                fontFamily: fonts.RUBIK_MEDIUM,
-                                fontSize: Typography.P5,
-                                color: colors.textColorBlue1
-                            }}>Refresh</Text>
-                        </View>
-                    </TouchableOpacity>
+                <TextInput
+                    textInputRef={r => (inputRef = r)}
+                    placeholder={"Search"}
+                    placeholderTextColor={colors.textColorBlack1}
+                    rightIconSource={
+                        assets.filter_icon
+                    }
+                    rightIconPress={() => {
+                        props.navigation.navigate(Routes.APPLY_FILTERS)
+                    }}
+                    rightIconTintColor={colors.iconColorGrey1}
+                    leftIcon={
+                        <Image source={assets.search_icon}
+                               style={Styles.searchInputLeftIcon}/>
+                    }
+                    containerStyle={Styles.searchInputContainer}
+                    leftIconContainerStyle={Styles.searchInputLeftIconContainer}
+                    onChangeText={(value) => {
 
-                    <View style={{flexDirection: 'row', flexShrink: 1, flexWrap: 'wrap'}}>
-                        {searchHistoryArray.map(item => {
-                            return (
-                                <View
-                                    style={{
-                                        backgroundColor: 'white',
-                                        padding: hp(1),
-                                        marginHorizontal: hp(1),
-                                        marginBottom: hp("0.5")
-                                    }}>
-                                    <Text
-                                        ellipsizeMode={'tail'}
-                                        style={{fontSize: Typography.P6, fontFamily: fonts.RUBIK_REGULAR, color: colors.textColorGrey1}}>
-                                        {item}
-                                    </Text>
-                                </View>
-                            );
-                        })}
-                    </View>
-                </View>
-
-                <View style={{flexDirection: "row", justifyContent: "space-around", flex: 1, alignItems: "flex-end", marginBottom: Globals.SAFE_AREA_INSET.bottom + hp(2)}}>
-
-                    <TouchableOpacity onPress={() => {
-
-                    }}>
-                        <View style={[styles.socialButton,{borderRadius: hp(0.3), width: wp(46), justifyContent: "center", backgroundColor: "white"}]}>
-
-                            <Image source={assets.camera_regular_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                            <Text style={[{
-                                fontFamily: fonts.RUBIK_REGULAR,
-                                fontSize: Typography.P4,
-                                marginLeft: wp(2),
-                                color: colors.textColorBlack1
-                            }]}>{"Image Search"}</Text>
-                        </View>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity onPress={() => {
-
-                    }}>
-                        <View style={[styles.socialButton,{borderRadius: hp(0.3),width: wp(46), justifyContent: "center", backgroundColor: "white"}]}>
-
-                            <Image source={assets.microphone_regular_icon} style={{width: hp(2), height: hp(2), tintColor: colors.iconColorGrey1}} resizeMode={"contain"} />
-
-                            <Text style={[{
-                                fontFamily: fonts.RUBIK_REGULAR,
-                                fontSize: Typography.P4,
-                                marginLeft: wp(2),
-                                color: colors.textColorBlack1
-                            }]}>{"Voice Search"}</Text>
-                        </View>
-                    </TouchableOpacity>
-
-                </View>
-
-
+                    }}
+                />
 
 
             </View>
 
-        );
-    }
+
+            <View style={Styles.contentContainerStyle}>
+                {
+                    renderCategoryTitle("Search History", "Clear")
+                }
+
+                {renderHistoryItems()}
+
+                <View style={{flexDirection: 'row', width: styles.gridWidth, flexShrink: 1, flexWrap: 'wrap'}}>
+
+                </View>
+
+                {
+                    renderCategoryTitle("Discover More", "Refresh")
+                }
+
+                {renderHistoryItems()}
+
+            </View>
+
+            <View style={Styles.bottomButtonsContainer}>
+
+                <TouchableOpacity style={{
+                    flex: 0.5,
+                    marginRight: hp(1)
+                }} onPress={() => {
+
+                }}>
+
+                    <View style={Styles.buttonContainer}>
+
+                        <Image source={assets.camera_regular_icon} style={Styles.buttonIcon}/>
+
+                        <Text style={Styles.buttonText}>{"Image Search"}</Text>
+
+                    </View>
+
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{
+                    flex: 0.5
+                }} onPress={() => {
+
+                }}>
+
+                    <View style={Styles.buttonContainer}>
+
+                        <Image source={assets.microphone_regular_icon} style={Styles.buttonIcon}/>
+
+                        <Text style={Styles.buttonText}>{"Voice Search"}</Text>
+
+
+                    </View>
+                </TouchableOpacity>
+
+            </View>
+
+        </View>
+
+    );
+
 }

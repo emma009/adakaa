@@ -1,108 +1,49 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {FlatList,} from 'react-native';
-import ReviewItem from "../../components/Application/ReviewItem/View";
+import {ReviewItem} from "../../components/Application/ReviewItem/View";
 
 import BaseView from "../BaseView"
 import Routes from "../../navigation/Routes";
 import assets from "../../../branding/carter/assets/Assets";
 import Globals from "../../utils/Globals";
 
-export default class Review extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-
-            reviews : [
-                {
-                    id: 0,
-                    profileImage: require('./Assets/Images/review_author_img1.png'),
-                    fullName: "David Martin",
-                    reviewTime: "32 minutes ago",
-                    rating: 2.5,
-                    comment: "Carter team is fast and always deliver fresh fruits. Highly Recommend!"
-                },
-                {
-                    id: 1,
-                    profileImage: require('./Assets/Images/review_author_img2.png'),
-                    fullName: "David Martin",
-                    reviewTime: "32 minutes ago",
-                    rating: 2.5,
-                    comment: "Best apples on the market hands down. I almost order them everyday."
-                },
-                {
-                    id: 2,
-                    profileImage: require('./Assets/Images/review_author_img3.png'),
-                    fullName: "David Martin",
-                    reviewTime: "32 minutes ago",
-                    rating: 2.5,
-                    comment: "Carter team is fast and always deliver fresh fruits. Highly Recommend!"
-                },
-                {
-                    id: 3,
-                    profileImage: require('./Assets/Images/review_author_img4.png'),
-                    fullName: "David Martin",
-                    reviewTime: "32 minutes ago",
-                    rating: 2.5,
-                    comment: "Best apples on the market hands down. I almost order them everyday."
-                },
-                {
-                    id: 4,
-                    profileImage: require('./Assets/Images/review_author_img1.png'),
-                    fullName: "David Martin",
-                    reviewTime: "32 minutes ago",
-                    rating: 2.5,
-                    comment: "Carter team is fast and always deliver fresh fruits. Highly Recommend!"
-                }
+export const ReviewList = (props) => {
 
 
-            ]
+    return (
 
+        <BaseView
+            navigation={props.navigation}
+            title={"Reviews"}
+            rightIcon={assets.plus_circle_icon}
+            onRightIconPress={() => {
+                props.navigation.navigate(Routes.ADD_REVIEW)
+            }}
+            childView={() => {
 
+                return (
 
-        }
+                    <FlatList
+                        showsVerticalScrollIndicator={false}
+                        data={Globals.reviewsList}
 
-    }
+                        renderItem={({item}) =>
+                            <ReviewItem
+                                profileImage={item.profileImage}
+                                fullName={item.fullName}
+                                reviewTime={item.reviewTime}
+                                rating={item.rating}
+                                comment={item.comment}
+                            />
+                        }
+                    />
 
+                );
+            }}
 
-    render () {
+        />
 
-        return (
-
-            <BaseView
-                navigation={this.props.navigation}
-                title={"Reviews"}
-                rightIcon={assets.plus_circle_icon}
-                onRightIconPress={() => {
-                    this.props.navigation.navigate(Routes.ADD_REVIEW)
-                }}
-                childView={() => {
-
-                    return (
-
-                        <FlatList
-                            showsVerticalScrollIndicator={false}
-                            data={this.state.reviews}
-
-                            renderItem={({ item }) =>
-                                <ReviewItem
-                                   profileImage={item.profileImage}
-                                   fullName={item.fullName}
-                                   reviewTime={item.reviewTime}
-                                   rating={item.rating}
-                                   comment={item.comment}
-                                />
-                            }
-                        />
-
-                    );
-                }}
-
-                />
-
-        )
-
-    }
+    )
 
 }

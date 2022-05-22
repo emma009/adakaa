@@ -1,94 +1,65 @@
-import React, {Component} from 'react';
-import {
-    View,
-    TouchableOpacity, StatusBar,
-} from 'react-native';
-import {Header, Icon, Image, Text, Button, CheckBox} from 'react-native-elements';
+import React, {useRef} from 'react';
+import {StatusBar, View,} from 'react-native';
+import {Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import AppInput from "../../../components/Application/AppInput/View"
-import Routes from '../../../navigation/Routes';
 import Style from "./Style";
-import {StackActions} from "@react-navigation/native";
 import AppHeader from "../../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
+import AppButton from "../../../components/Application/AppButton/View";
 
 
 const assets = AppConfig.assets.default;
-const colors = AppConfig.colors.default;
-const styles = AppConfig.styling.default;
 
-export default class LoginFormScreen extends Component {
-    inputRef = React.createRef();
+export const Variant1ForgotPassword = (props) => {
 
-    constructor(props) {
-        super(props);
+    let inputRef = useRef();
 
-        this.state = {
-            checked: false,
-        }
+    return (
+        <KeyboardAwareScrollView
+            keyboardShouldPersistTaps={'never'}
+            getTextInputRefs={() => {
+                return [inputRef];
+            }}
+            showsVerticalScrollIndicator={false}>
+            <View style={Style.container}>
+                <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
 
-    }
-
-    componentDidMount(){
-
-    }
-
-
-    render () {
-
-        return (
-            <KeyboardAwareScrollView
-                keyboardShouldPersistTaps={'never'}
-                // style={{flex: 1}}
-                getTextInputRefs={() => {
-                    return [this.inputRef];
-                }}
-                showsVerticalScrollIndicator={false}>
-            <View style={{flex: 1, alignItems: 'center', backgroundColor: colors.textColorGrey2}}>
-                <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
-
-                <Image source={assets.signup_form_header1} style={Style.headerImage} />
+                <Image source={assets.signup_form_header1} style={Style.headerImage}/>
 
                 <AppHeader
                     isTranslucent
-                    navigation={this.props.navigation}
+                    navigation={props.navigation}
                     transparentHeader
                     headerWithBack
-                    title={"Forgot Passsword"}
+                    title={"Forgot Password"}
                 />
 
                 <View style={[Style.bottomContainer]}>
-                    <Text style={Style.welcomeHeader}>{"Forgot Password!"}</Text>
+                    <Text style={Style.titleText}>{"Forgot Password!"}</Text>
 
-                    <Text style={Style.welcomeDescription}>{"Quickly change password"}</Text>
+                    <Text style={Style.subtitleText}>{"Quickly change password"}</Text>
 
                     <AppInput
-                        textInputRef={r => (this.inputRef = r)}
+                        containerStyle={{marginBottom: hp(2)}}
+                        textInputRef={r => (inputRef = r)}
                         leftIcon={assets.envelop_icon}
-                        leftIconColor={colors.iconColorGrey1}
                         placeholder={"Email Address"}
-                        placeholderTextColor={colors.textColorGrey1}
-                        onChangeText={(value) => {}}
+                        onChangeText={(value) => {
+                        }}
                     />
 
-                    <Button containerStyle={Style.loginButton}
-                            buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                            title={'Forgot Password'}
-                            titleStyle={styles.buttonStyle}
-                            onPress={() => {
-                                this.onForgotPasswordPress()
-                            }}/>
+                    <AppButton
+                        title={'Forgot Password'}
+                        onPress={() => {
+                            props.navigation.goBack();
+                        }}
+                    />
 
                 </View>
             </View>
-            </KeyboardAwareScrollView>
-        )
-
-    }
-
-    onForgotPasswordPress = () => {
-        this.props.navigation.navigate(Routes.LOGIN_FORM_SCREEN);
-    };
+        </KeyboardAwareScrollView>
+    )
 
 }

@@ -1,29 +1,33 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../../branding/App_config";
-import Globals from "../../../utils/Globals";
-import Typography from "../../../../branding/carter/styles/Typography";
 
 const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
-const styles = AppConfig.styling.default;
+const Typography = AppConfig.typography.default;
 
 let Styles = {
+
+    container: {
+        paddingHorizontal: wp(5),
+        paddingVertical: hp(1.5),
+        backgroundColor: "white",
+        marginVertical: hp("0.5")
+    },
 
     upperContainer: {
         flexDirection: "row",
         alignItems: "center",
-        paddingBottom: "5%"
+        paddingBottom: hp(1.5)
     },
 
-    name: {
+    nameText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.P4,
         color: colors.textColorBlack1
     },
 
-
-    time: {
+    timeText: {
         fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P6,
         color: colors.textColorGrey1
@@ -32,7 +36,12 @@ let Styles = {
     lowerContainer: {
         borderTopWidth: 1,
         borderTopColor: colors.borderColorLight,
-        paddingTop: "5%"
+        paddingTop: hp(1.5),
+    },
+
+    ratingContainer: {
+        flexDirection: "row",
+        alignItems: "center"
     },
 
     ratingText: {

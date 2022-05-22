@@ -1,31 +1,3 @@
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-
-import AppConfig from "../../../branding/App_config";
-import Globals from "../../utils/Globals";
-import Typography from "../../../branding/carter/styles/Typography";
-
-const colors = AppConfig.colors.default;
-const Fonts = AppConfig.fonts.default;
-const styles = AppConfig.styling.default;
-
-let Styles = {
-
-    primaryText: {
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H8,
-        paddingVertical: hp("3")
-    },
-
-    secondaryText: {
-        fontFamily: Fonts.RUBIK_LIGHT,
-        fontSize: Typography.P2,
-        textAlign: "center",
-    },
-
-    rating: {
-        paddingVertical: hp("2")
-    }
-
-}
+let Styles = {}
 
 export default Styles;

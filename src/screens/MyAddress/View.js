@@ -1,260 +1,87 @@
-import React, {Component} from 'react';
-import {Animated, FlatList, Image, ScrollView, Switch, View, ViewComponent} from 'react-native';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import React, {useRef, useState} from 'react';
+import {ScrollView, View} from 'react-native';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
-import {Button, Divider, Icon, Text} from "react-native-elements";
+import {Text} from "react-native-elements";
 import AppConfig from "../../../branding/App_config";
 import Routes from "../../navigation/Routes";
-import ShippingAddress from "../../components/Application/ShippingProgress/View"
-import Styles from "./Styles";
 import AppInput from "../../components/Application/AppInput/View";
-import Counter from "../../components/Global/Counter/View";
-import Swipeable from "react-native-gesture-handler/Swipeable";
-import fonts from "../../../branding/carter/assets/Fonts";
-import Typography from "../../../branding/carter/styles/Typography";
+import {CustomSwitch} from "../../components/Global/CustomSwitch/View";
 import assets from "../../../branding/carter/assets/Assets";
-import TextInput from "../../components/Global/TextInput/View";
-import Easing from "react-native/Libraries/Animated/src/Easing";
+import Globals from "../../utils/Globals";
+import {AddressItem} from "../../components/Application/AddressItem/View";
+import AppButton from "../../components/Application/AppButton/View";
+import Styles from "./Styles";
 
-const colors = AppConfig.colors.default;
 const styles = AppConfig.styling.default;
 
 
-const addresses = [
-    {
-        isDefault: true,
-        name: 'William Crown',
-        address: "2811 Crescent Day, LA Port California, United States, 77511",
-        phone: "+1 122 541 1234",
+export const MyAddress = (props) => {
 
-        city: "California",
-        state: "United States",
-        postalCode: "77547",
+    const [activeSections, setActiveSections] = useState([]);
 
-        spinValue: new Animated.Value(0)
-    },
-    {
-        isDefault: false,
-        name: 'John Doe',
-        address: "2811 Crescent Day, LA Port California, United States, 77511",
-        phone: "+1 122 541 1234",
+    let inputRef = useRef();
 
-        city: "California",
-        state: "United States",
-        postalCode: "77547",
+    const renderAddressesHeader = (section, index, isActive) => {
 
-        spinValue: new Animated.Value(0)
+        return <AddressItem
+            isTouchable={false}
+            isActive={isActive}
+            showAnimatedIcon
+            item={section}
+        />
 
-    },
-    {
-        isDefault: false,
-        name: 'William Crown',
-        address: "2811 Crescent Day, LA Port California, United States, 77511",
-        phone: "+1 122 541 1234",
-
-        city: "California",
-        state: "United States",
-        postalCode: "77547",
-
-        spinValue: new Animated.Value(0)
-
-    },
-    {
-        isDefault: false,
-        name: 'John Doe',
-        address: "2811 Crescent Day, LA Port California, United States, 77511",
-        phone: "+1 122 541 1234",
-
-        city: "California",
-        state: "United States",
-        postalCode: "77547",
-
-        spinValue: new Animated.Value(0)
-    },
-    {
-        isDefault: false,
-        name: 'William Crown',
-        address: "2811 Crescent Day, LA Port California, United States, 77511",
-        phone: "+1 122 541 1234",
-
-        city: "California",
-        state: "United States",
-        postalCode: "77547",
-
-        spinValue: new Animated.Value(0)
-    },
-    {
-        isDefault: false,
-        name: 'John Doe',
-        address: "2811 Crescent Day, LA Port California, United States, 77511",
-        phone: "+1 122 541 1234",
-
-        city: "California",
-        state: "United States",
-        postalCode: "77547",
-
-        spinValue: new Animated.Value(0)
-    }
-];
-
-export default class MyAddress extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            activeSections: [0],
-        };
-
-    }
-
-    renderAdressesHeader = (section, index, isActive) => {
-
-        const spin = section.spinValue.interpolate({
-            inputRange: [0, 1],
-            outputRange: ['0deg', '180deg']
-        });
-
-        if (isActive) {
-            Animated.timing(
-                section.spinValue,
-                {
-                    toValue: 1,
-                    duration: 300,
-                    easing: Easing.linear,
-                    useNativeDriver: true  // To make use of native driver for performance
-                }
-            ).start()
-        }
-        else {
-            Animated.timing(
-                section.spinValue,
-                {
-                    toValue: 0,
-                    duration: 300,
-                    easing: Easing.linear,
-                    useNativeDriver: true  // To make use of native driver for performance
-                }
-            ).start()
-        }
-
-
-
-
-        return (
-            <View style={[Styles.foodItemContainer, isActive && {borderBottomWidth: 1, borderBottomColor: colors.borderColorLight}]}>
-
-                {section.isDefault && <View style={{position: "absolute", backgroundColor: colors.secondaryGreenColor, width: "18%", height: hp(2.5),
-                    justifyContent: "center", alignItems: "center", borderTopRightRadius: hp(0.5), borderBottomRightRadius: hp(0.5)
-                }}>
-                    <Text style={{
-                        color: colors.primaryGreenColor,
-                        fontFamily: fonts.RUBIK_MEDIUM,
-                        fontSize: Typography.P8
-
-                    }}>{"DEFAULT"}</Text>
-                </View>}
-
-                <View style={{
-                    flex: 1,
-                    flexDirection: "row",
-                    alignItems: "center",
-                }}>
-                    <View style={Styles.profileItemCircle}>
-                        <Image source={assets.map_marker_icon} style={{width: hp(3.5), height: hp(3.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-
-                    </View>
-
-                    <View style={{marginLeft: wp("3")}}>
-                        <Text style={Styles.nameTitle}>{section.name}</Text>
-                        <Text style={Styles.addressTitle} numberOfLines={2}>{section.address}</Text>
-                        <Text style={Styles.phoneTitle}>{section.phone}</Text>
-
-                    </View>
-
-
-
-                </View>
-
-                <View style={{flex: 1, justifyContent: "center", alignItems: "flex-end", paddingRight: wp("5")}}>
-                    <Animated.Image source={assets.drop_down_icon} style={{transform: [{rotate: spin}], width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}} resizeMode={"contain"} />
-                </View>
-
-            </View>
-        );
     };
 
-    renderAddressesContent = section => {
+    const renderAddressesContent = section => {
         return (
-            <View style={{flexDirection: "row", paddingHorizontal: wp ('3'), paddingVertical: hp("2"), backgroundColor: "white"}}>
+            <View style={Styles.contentContainer}>
 
-                <View style={{flex: 1, alignItems: "center"}}>
 
                     <AppInput
-                        backgroundColor={colors.textColorGrey2}
-                        placeholderTextColor={colors.textColorGrey1}
+                        textInputRef= {r => (inputRef = r)}
+                        {...styles.secondaryInputStyle}
                         leftIcon={assets.account_icon}
-                        leftIconColor={colors.iconColorGrey1}
                         placeholder={"Name"}
-                        onChangeText={(value) => {}}
+                        onChangeText={(value) => {
+                        }}
                     />
 
                     <AppInput
-                        backgroundColor={colors.textColorGrey2}
-                        placeholderTextColor={colors.textColorGrey1}
+                        textInputRef= {r => (inputRef = r)}
+                        {...styles.secondaryInputStyle}
                         leftIcon={assets.map_marker_icon}
-                        leftIconColor={colors.iconColorGrey1}
                         placeholder={"Address"}
-                        onChangeText={(value) => {}}
+                        onChangeText={(value) => {
+                        }}
                     />
 
                     <View style={{flexDirection: "row", width: "100%", justifyContent: "space-between"}}>
 
-                        <TextInput
+
+                        <AppInput
+                            textInputRef= {r => (inputRef = r)}
+                            {...styles.secondaryInputStyle}
+                            leftIcon={assets.map_marker_icon}
                             placeholder={"City"}
-                            placeholderTextColor={colors.textColorGrey1}
-                            leftIcon={
-                                <Image source={assets.map_marker_icon}
-                                       resizeMode={"contain"}
-                                       style={{width: hp(2), height: hp (2), tintColor: colors.iconColorGrey1}} />
-                            }
-                            containerStyle={[
-                                {
-                                    backgroundColor: colors.textColorGrey2,
-                                    width: "49%",
-                                    marginVertical: hp("0.5"),
-                                },
-
-                            ]}
-                            leftIconContainerStyle={{
-                                paddingRight: wp('3')
+                            containerStyle={{
+                                flex: 0.48
                             }}
                             onChangeText={(value) => {
-
                             }}
                         />
 
-                        <TextInput
+
+                        <AppInput
+                            textInputRef= {r => (inputRef = r)}
+                            {...styles.secondaryInputStyle}
+                            leftIcon={assets.mailbox_icon}
                             placeholder={"Zip Code"}
-                            placeholderTextColor={colors.textColorGrey1}
-                            leftIcon={
-                                <Image source={assets.mailbox_icon}
-                                       resizeMode={"contain"}
-                                       style={{width: hp(2), height: hp (2), tintColor: colors.iconColorGrey1}} />
-                            }
-                            containerStyle={[
-                                {
-                                    backgroundColor: colors.textColorGrey2,
-                                    width: "49%",
-                                    marginVertical: hp("0.5"),
-                                },
-
-                            ]}
-                            leftIconContainerStyle={{
-                                paddingRight: wp('3')
+                            containerStyle={{
+                                flex: 0.48
                             }}
                             onChangeText={(value) => {
-
                             }}
                         />
 
@@ -262,101 +89,87 @@ export default class MyAddress extends Component {
 
 
                     <AppInput
-                        backgroundColor={colors.textColorGrey2}
-                        placeholderTextColor={colors.textColorGrey1}
+                        textInputRef= {r => (inputRef = r)}
+                        {...styles.secondaryInputStyle}
                         leftIcon={assets.globe_icon}
-                        leftIconColor={colors.iconColorGrey1}
                         placeholder={"Country"}
-                        onChangeText={(value) => {}}
+                        onChangeText={(value) => {
+                        }}
                     />
 
                     <AppInput
-                        backgroundColor={colors.textColorGrey2}
-                        placeholderTextColor={colors.textColorGrey1}
+                        textInputRef= {r => (inputRef = r)}
+                        {...styles.secondaryInputStyle}
                         leftIcon={assets.phone_icon}
-                        leftIconColor={colors.iconColorGrey1}
                         placeholder={"Phone"}
-                        onChangeText={(value) => {}}
+                        onChangeText={(value) => {
+                        }}
                     />
 
-                    <View style={{flexDirection: "row", alignSelf: "flex-start"}}>
-                        <Switch
-                            trackColor={{ false: colors.iconColorGrey1, true: colors.primaryGreenColor }}
-                            style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
-                            thumbColor={section.isDefault ? colors.primaryGreenColor : colors.iconColorGrey1}
+                    <View style={{flexDirection: "row", marginTop: hp(1)}}>
+
+                        <CustomSwitch
+                            initialValue={false}
                             onValueChange={(value) => {
-                                this.setState({
-                                    isDefault: value
-                                })
                             }}
-                            value={section.isDefault}
                         />
 
-                        <Text style={{alignSelf: "center",fontFamily: fonts.RUBIK_REGULAR,
-                            fontSize: Typography.P4,
-                            color: colors.textColorGrey1}}>{"Save this address"}</Text>
+                        <Text style={Styles.defaultText}>{"Make Default"}</Text>
                     </View>
 
 
-                </View>
 
             </View>
         );
     };
 
-    _updateSections = activeSections => {
-        this.setState({ activeSections });
+    const _updateSections = allActiveSections => {
+        setActiveSections(allActiveSections)
     };
 
-    render(){
-        return(
 
-            <BaseView
-                navigation={this.props.navigation}
-                title={"My Address"}
-                rightIcon={assets.plus_circle_icon}
-                onRightIconPress={() => {
-                    this.props.navigation.navigate(Routes.Add_Address)
-                }}
-                childView={() => {
-                    return (
+    return (
 
-
-                        <View style={{flex: 1}}>
-                            <ScrollView style={{flex: 0.9}}>
-
-                                <Accordion
-                                    sections={addresses}
-                                    activeSections={this.state.activeSections}
-                                    renderHeader={this.renderAdressesHeader}
-                                    renderContent={this.renderAddressesContent}
-                                    expandMultiple={false}
-                                    sectionContainerStyle={{marginBottom: hp("1")}}
-                                    onChange={this._updateSections}
-                                />
+        <BaseView
+            navigation={props.navigation}
+            title={"My Address"}
+            rightIcon={assets.plus_circle_icon}
+            onRightIconPress={() => {
+                props.navigation.navigate(Routes.Add_Address)
+            }}
+            childView={() => {
+                return (
 
 
-                            </ScrollView>
+                    <View style={{flex: 1}}>
+                        <ScrollView style={{flex: 0.9}}>
 
-                            <View style={{flex: 0.1, justifyContent: "flex-end", marginBottom: hp("1")}}>
-
-                            <Button
-                                buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                                title={'Save Settings'}
-                                titleStyle={styles.buttonStyle}
-                                onPress={() => {
-
-                                }}/>
-
-                            </View>
-                        </View>
+                            <Accordion
+                                sections={Globals.addressItems}
+                                activeSections={activeSections}
+                                renderHeader={renderAddressesHeader}
+                                renderContent={renderAddressesContent}
+                                expandMultiple={false}
+                                sectionContainerStyle={{marginBottom: hp("1")}}
+                                onChange={_updateSections}
+                            />
 
 
+                        </ScrollView>
 
-                    );
-                }}
-            />
 
-        );
-    }
+                        <AppButton
+                            title={'Save Settings'}
+                            onPress={() => {
+                                props.navigation.goBack()
+                            }}
+                        />
+                    </View>
+
+
+                );
+            }}
+        />
+
+    );
 }

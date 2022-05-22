@@ -24,6 +24,9 @@ const assets = {
     login_form_header3 :      require('./images/login_form_header_3.png'),
     signup_form_header3 :      require('./images/signup_header_3.png'),
 
+    wallet_icon :      require('./images/wallet.png'),
+    star_icon :      require('./images/star.png'),
+    google_icon :      require('./images/google_icon.png'),
     account_icon :      require('./images/account_icon.png'),
     arrow_left_icon :      require('./images/arrow_left_icon.png'),
     envelop_icon :      require('./images/envelop_icon.png'),

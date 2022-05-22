@@ -1,34 +1,25 @@
-import React, {Component} from 'react';
-import {
-    View,
-    TouchableOpacity,
-    Text
-} from 'react-native';
-import Routes from '../../navigation/Routes';
-import { StackActions } from '@react-navigation/native';
+import React, {useEffect} from 'react';
+import {View,} from 'react-native';
+import {StackActions} from '@react-navigation/native';
+
+import Config from "../../../branding/carter/configuration/Config";
 
 
-export default class SplashScreen extends Component {
+export const SplashScreen = (props) => {
 
-    componentDidMount(){
+    useEffect(() => {
 
         setTimeout(() => {
-            this.props.navigation.dispatch(
-                StackActions.replace(Routes.INTRO_SCREEN)
+            props.navigation.dispatch(
+                StackActions.replace(Config.SELECTED_VARIANT)
             );
         }, 2000)
+    }, [])
 
-    }
+    return (
+        <View style={{flex: 1, backgroundColor: 'green'}}>
 
-
-    render () {
-
-        return (
-            <View style={{flex: 1, backgroundColor: 'green'}}>
-
-            </View>
-        )
-
-    }
+        </View>
+    )
 
 }

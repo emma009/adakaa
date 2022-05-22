@@ -1,43 +1,48 @@
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../branding/App_config";
-import Typography from "../../../branding/carter/styles/Typography";
 
 const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
+const Typography = AppConfig.typography.default;
 const styles = AppConfig.styling.default;
 
 
 let Styles = {
+
+    mainContainer: {
+        flex: 1,
+        backgroundColor: colors.white
+    },
+
     flatListContainer: {
-        flex: 0.77,
+        flex: 0.76,
         paddingBottom: hp("1"),
         paddingTop: hp("2")
 
     },
     bottomContainer: {
-        flex: 0.23,
+        flex: 0.24,
         backgroundColor: "white",
-        justifyContent: "flex-end",
-        paddingBottom: hp("3"),
+        justifyContent: "center",
+        alignSelf: "center",
+        paddingBottom: hp("5"),
+        width: styles.gridWidth,
     },
     totalContainer: {
-        alignSelf: "center",
         flexDirection: "row",
-        width: styles.gridWidth,
-        marginBottom: hp("1")
+        marginBottom: hp("1"),
     },
     subtotalLabelText: {
         fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P4,
-        flex: 0.5,
         color: colors.textColorGrey1
 
     },
     subtotalValueText: {
         fontFamily: Fonts.RUBIK_REGULAR,
         fontSize: Typography.P4,
-        flex: 0.5,
+        flex: 1,
         textAlign: "right",
         color: colors.textColorGrey1
     },

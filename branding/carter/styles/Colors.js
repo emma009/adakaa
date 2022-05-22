@@ -8,6 +8,8 @@ const colors = {
     paginationDotInActiveColor: "#000000",
     buttonGreenColor: "#6CC51D",
 
+    primaryButtonTextColor: "#fefefc",
+
 
     iconColorOrange1: "#FF9C00",
 
@@ -26,11 +28,13 @@ const colors = {
     iconColorRed2: "#E4455A",
     iconColorRed3: "#FF4344",
     iconColorRed4: "#FFE6E6",
+    iconColorRed5: "#e54459",
 
 
-    red: "#bf0d3f",
+    red: "#de5246",
     orange: "#f88e11",
     purple: "#b71dc5",
+    white: "#ffffff"
 
 
 

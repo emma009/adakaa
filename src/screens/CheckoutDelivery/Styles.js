@@ -15,7 +15,8 @@ let Styles = {
         backgroundColor: "white",
         flexDirection: "row",
         alignItems: "center",
-        marginTop: hp("2")
+        marginTop: hp("2"),
+        paddingHorizontal: wp(5)
     },
 
     deliveryHeader: {
@@ -23,7 +24,7 @@ let Styles = {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.P3,
         marginTop: hp("1"),
-        marginBottom: hp("2"),
+        marginBottom: hp("1.5"),
         color: colors.textColorBlack1
 
     },
@@ -38,9 +39,8 @@ let Styles = {
     deliveryPrice: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.P3,
-        flex: 0.15,
+        flex: 1,
         textAlign: "right",
-        paddingRight: wp("5"),
         color: colors.primaryGreenColor
     },
 
@@ -59,7 +59,7 @@ let Styles = {
     totalContainer: {
         alignSelf: "center",
         flexDirection: "row",
-        width: styles.gridWidth2,
+        width: styles.gridWidth,
         marginBottom: hp("1")
     },
     subtotalLabelText: {

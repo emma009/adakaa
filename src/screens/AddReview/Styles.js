@@ -10,6 +10,12 @@ const styles = AppConfig.styling.default;
 
 let Styles = {
 
+
+    mainContainer: {
+        flex: 1,
+        alignItems: "center"
+    },
+
     primaryText: {
         fontFamily: Fonts.RUBIK_MEDIUM,
         fontSize: Typography.H8,
@@ -25,9 +31,17 @@ let Styles = {
         width: "80%"
     },
 
-    rating: {
+    ratingContainerStyle: {
         paddingVertical: hp("2")
-    }
+    },
+
+
+    bottomButton: {
+        flex: 1,
+        width: "100%",
+        justifyContent: "flex-end"
+    },
+
 
 }
 

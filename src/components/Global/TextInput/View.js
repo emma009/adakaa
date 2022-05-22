@@ -1,137 +1,129 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 
-import {Button, Input} from 'react-native-elements';
-import {widthPercentageToDP as wp} from 'react-native-responsive-screen'
-import {TouchableOpacity, ViewPropTypes, Image} from "react-native";
-import Typography from "../../../../branding/carter/styles/Typography";
-import fonts from "../../../../branding/carter/assets/Fonts";
-import assets from "../../../../branding/carter/assets/Assets";
+import {Input} from 'react-native-elements';
+import {Image, TouchableOpacity, ViewPropTypes} from "react-native";
+import AppConfig from "../../../../branding/App_config";
+import Style from "./Styles"
 
 const PropTypes = require('prop-types');
 
+const colors = AppConfig.colors.default;
+const assets = AppConfig.assets.default;
 
-class TextInput extends Component {
 
-    constructor(props) {
-        super(props);
+export const TextInput = (props) => {
 
-        this.state = {
-            showObscureText: true,
-        }
+    const [showObscureText, setShowObscureText] = useState(true);
 
-    }
-
-    getEyeIcon = () => {
-
-        const {showObscureText} = this.state;
+    const getEyeIcon = () => {
 
         if (showObscureText) {
             return assets.eye_slash_icon;
-        }
-        else {
+        } else {
             return assets.eye_icon;
         }
 
     };
 
-    render() {
-
-        const {showObscureText} = this.state;
-
-
-        const {
-            placeholder,
-            placeholderTextColor,
-            onChangeText,
-            containerStyle,
-            disabled,
-            disabledInputStyle,
-            inputContainerStyle,
-            errorMessage,
-            errorStyle,
-            errorProps,
-            inputComponent,
-            inputStyle,
-            label,
-            labelStyle,
-            labelProps,
-            leftIcon,
-            leftIconContainerStyle,
-            rightIcon,
-            rightIconContainerStyle,
-            showPassword,
-            isPasswordField,
-            value,
-            keyboardType,
-            textInputRef,
-            rightIconPress,
-            rightIconSource,
-            rightIconTintColor
-        } = this.props;
+    const {
+        placeholder,
+        placeholderTextColor,
+        onChangeText,
+        containerStyle,
+        disabled,
+        disabledInputStyle,
+        inputContainerStyle,
+        errorMessage,
+        errorStyle,
+        errorProps,
+        inputComponent,
+        inputStyle,
+        label,
+        labelStyle,
+        labelProps,
+        leftIcon,
+        leftIconContainerStyle,
+        rightIcon,
+        rightIconContainerStyle,
+        showPassword,
+        isPasswordField,
+        value,
+        keyboardType,
+        textInputRef,
+        rightIconPress,
+        rightIconSource,
+        rightIconTintColor
+    } = props;
 
 
-        const eyeIcon = this.getEyeIcon();
+    return (
+
+        <Input
+            {...props}
+            ref={(r) => textInputRef(r)}
+            placeholder={placeholder}
+            placeholderTextColor={placeholderTextColor}
+            onChangeText={(text) => onChangeText(text)}
+            containerStyle={containerStyle}
+            disabled={disabled}
+            value={value}
+            disabledInputStyle={disabledInputStyle}
+            inputContainerStyle={inputContainerStyle}
+            errorMessage={errorMessage}
+            errorStyle={errorStyle}
+            errorProps={errorProps}
+            inputComponent={inputComponent}
+            keyboardType={keyboardType}
+
+            inputStyle={[Style.defaultInputStyles, inputStyle]}
+            label={label}
+            labelStyle={[labelStyle]}
+            labelProps={labelProps}
+            leftIcon={leftIcon}
+            leftIconContainerStyle={leftIconContainerStyle}
 
 
+            rightIcon={(isPasswordField && showPassword) ? () => {
+                return (
+                    <TouchableOpacity onPress={() => setShowObscureText((showObscureText) => {
+                        return !showObscureText
+                    })}>
+                        <Image source={getEyeIcon()} style={[
+                            Style.rightIcon,
+                            {tintColor: rightIconTintColor}
+                        ]}
+                               resizeMode={"contain"}/>
+                    </TouchableOpacity>
+                );
+            } : rightIconSource ? () => {
 
-        return (
-
-            <Input
-                {...this.props}
-                ref={textInputRef}
-                placeholder={placeholder}
-                placeholderTextColor={placeholderTextColor}
-                onChangeText={(text) => onChangeText(text)}
-                containerStyle={containerStyle}
-                disabled={disabled}
-                value={value}
-                disabledInputStyle={disabledInputStyle}
-                inputContainerStyle={inputContainerStyle}
-                errorMessage={errorMessage}
-                errorStyle={errorStyle}
-                errorProps={errorProps}
-                inputComponent={inputComponent}
-                keyboardType={keyboardType}
-
-                inputStyle={[{fontFamily:fonts.RUBIK_REGULAR, fontSize: Typography.P4}, inputStyle]}
-                label={label}
-                labelStyle={[labelStyle]}
-                labelProps={labelProps}
-                leftIcon={leftIcon}
-                leftIconContainerStyle={leftIconContainerStyle}
+                return (
+                    <TouchableOpacity onPress={() => {
+                        rightIconPress ? rightIconPress() : {}
+                    }}>
+                        <Image source={rightIconSource} style={[
+                            Style.rightIcon,
+                            {tintColor: rightIconTintColor}
+                        ]}/>
+                    </TouchableOpacity>
+                );
 
 
-                rightIcon={(isPasswordField  && showPassword ) ? () => {
-                    return (
-                        <TouchableOpacity onPress={()=>this.setState({showObscureText:!showObscureText})} >
-                            <Image source={eyeIcon} style={{width:wp(5),height:wp(5),tintColor: "#B3BCCA"}} resizeMode={"contain"}/>
-                        </TouchableOpacity>
-                    );
-                } : rightIconSource ? () => {
+            } : () => {
+                return null
+            }}
 
-                        return (
-                            <TouchableOpacity onPress={()=> {rightIconPress ? rightIconPress():{}}} >
-                                <Image source={rightIconSource} style={{width:wp(5),height:wp(5),tintColor:rightIconTintColor,resizeMode:'contain'}} />
-                            </TouchableOpacity>
-                        );
+            secureTextEntry={isPasswordField ? showPassword ? showObscureText : true : false}
+
+            rightIconContainerStyle={rightIconContainerStyle}
+
+        />
 
 
-                } : () => {
-                    return null
-                }}
-
-                secureTextEntry={isPasswordField? showPassword ? showObscureText :  true :false }
-
-                rightIconContainerStyle={rightIconContainerStyle}
-
-            />
-
-
-        )
-    }
-
+    )
 
 }
+
 
 TextInput.propTypes = {
 
@@ -158,8 +150,8 @@ TextInput.propTypes = {
     rightIconContainerStyle: ViewPropTypes.style,
     isPasswordField: PropTypes.bool,
     showPassword: PropTypes.bool,
-    value:PropTypes.string,
-    keyboardType:PropTypes.string
+    value: PropTypes.string,
+    keyboardType: PropTypes.string
 
 };
 
@@ -168,8 +160,8 @@ TextInput.defaultProps = {
     inputContainerStyle: {borderBottomWidth: 0},
     isPasswordField: false,
     showPassword: false,
-    rightIconPress:()=>{}
+    rightIconTintColor: colors.iconColorGrey1,
+    rightIconPress: () => {
+    }
 };
-
-module.exports = TextInput;
 

@@ -1,127 +1,80 @@
-import React, {Component} from 'react';
-import {Image, View, ImageBackground, StatusBar} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {ImageBackground, StatusBar, View} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import {Button, Text} from 'react-native-elements';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import Routes from '../../../navigation/Routes';
 import {StackActions} from '@react-navigation/native';
 import Style from "./Style"
 import Globals from "../../../utils/Globals";
+import AppButton from "../../../components/Application/AppButton/View";
 
-const assets = AppConfig.assets.default;
 const colors = AppConfig.colors.default;
-const styles = AppConfig.styling.default;
 
-export default class IntroScreen2 extends Component {
+export const Variant3Intro = (props) => {
 
-    _carousel;
+    let _carouselRef = useRef();
 
-    constructor(props) {
-    super(props);
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
-        this.state = {
-            entries: [
-                {
-                    id: 1,
-                    title: "Welcome to Carter grocery application",
-                    subtitle: "Carter online grocery store is the no. 1 grocery application in the world",
-                    headerImg: assets.intro2_img1
-                },
-                {
-                    id: 2,
-                    title: "Best quality grocery at your doorstep",
-                    subtitle: "Carter online grocery store where we deliver everything on time.",
-                    headerImg: assets.intro2_img2
-                },
-                {
-                    id: 3,
-                    title: "Peace of mind same day delivery guaranteed",
-                    subtitle: "We dispatch all the order within two hours of the order being placed.",
-                    headerImg: assets.intro2_img3
-                },
-                {
-                    id: 4,
-                    title: "Big savings with seasonal discounts in all products",
-                    subtitle: "We believe in providing best competitive prices to all of our customers.",
-                    headerImg: assets.intro2_img4
-                },
-            ],
-
-            activeSlideIndex: 0
-        }
-
-    }
-
-
-    _renderItem = ({item, index}) => {
+    const _renderItem = ({item, index}) => {
 
         return (
-            <ImageBackground source={item.headerImg} style={{flex: 1, alignItems: "center", paddingTop: hp(15)}} resizeMode={"cover"}>
+            <ImageBackground source={item.headerImg} style={Style.introItemContainer}>
 
-                {/*<Image source={item.headerImg} style={Style.headerImage}  resizeMode={'contain'}/>*/}
-
-
-                <Text style={Style.introUpperText}>{ item.title }</Text>
-                <Text style={Style.introLowerText}>{ item.subtitle }</Text>
-
-
-
+                <Text style={Style.introItemTitle}>{item.title}</Text>
+                <Text style={Style.introItemSubtitle}>{item.subtitle}</Text>
 
             </ImageBackground>
         );
     };
 
-    render () {
-        return (
+    return (
 
-            <View style={{flex: 1, backgroundColor: 'white'}}>
-                <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content" />
-                {/*<View style={Style.introUpperContainer}>*/}
+        <View style={Style.container}>
+            <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
-                    <Carousel
-                        ref={(c) => { this._carousel = c; }}
-                        data={this.state.entries}
-                        renderItem={this._renderItem}
-                        sliderWidth={wp('100%')}
-                        itemWidth={wp('100%')}
-                        onSnapToItem={(index) => this.setState({ activeSlideIndex: index })}
-                    />
+            <Carousel
+                ref={(c) => {
+                    _carouselRef = c;
+                }}
+                data={Globals.intro3Items}
+                renderItem={_renderItem}
+                sliderWidth={wp('100%')}
+                itemWidth={wp('100%')}
+                onSnapToItem={(index) => setActiveSlideIndex(index)}
+            />
 
-                    <Pagination
-                        dotsLength={this.state.entries.length}
-                        activeDotIndex={this.state.activeSlideIndex}
-                        dotColor={colors.paginationDotActiveColor}
-                        inactiveDotColor={"white"}
-                        inactiveDotOpacity={0.8}
-                        inactiveDotScale={1}
-                        carouselRef={this._carousel}
-                        dotStyle={{
-                            width: hp(0.8), height: hp(0.8), marginLeft: -hp(1)
-                        }}
-                        inactiveDotStyle={{
-                            width: hp(0.8), height: hp(0.8)
-                        }}
-                        containerStyle={{position: "absolute", width: "100%", alignItem: "center", bottom: hp(10),zIndex: 1}}
-                    />
+            <Pagination
+                dotsLength={Globals.intro3Items.length}
+                activeDotIndex={activeSlideIndex}
+                dotColor={colors.paginationDotActiveColor}
+                inactiveDotColor={"white"}
+                inactiveDotOpacity={0.8}
+                inactiveDotScale={1}
+                carouselRef={_carouselRef}
+                dotStyle={Style.paginationDotStyle}
+                inactiveDotStyle={Style.paginationInactiveDotStyle}
+                containerStyle={Style.paginationContainerStyle}
+            />
 
-                {/*</View>*/}
+            {/*</View>*/}
 
-                <View style={Style.introLowerContainer}>
-
-                    <Button containerStyle={{width: styles.gridWidth1}}
-                            buttonStyle={[{backgroundColor: colors.buttonGreenColor}, styles.buttonShadow]}
-                            title={this.state.activeSlideIndex === 0 ? "Get started" : 'Skip'}
-                            titleStyle={styles.buttonStyle}
-                            onPress={() => {
-                                this.props.navigation.dispatch(
-                                    StackActions.replace(Routes.LOGIN_SCREEN2)
-                                );
-                            }}/>
-                </View>
-
+            <View style={Style.introLowerContainer}>
+                <AppButton
+                    title={activeSlideIndex === 0 ? "Get started" : 'Skip'}
+                    onPress={() => {
+                        props.navigation.dispatch(
+                            StackActions.replace(Routes.LOGIN_SCREEN3)
+                        );
+                    }}
+                />
             </View>
 
-        );
-    }
+        </View>
+
+    );
+
+
 }
