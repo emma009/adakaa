@@ -1,46 +1,36 @@
 import React, {Component} from 'react';
-import {StatusBar, View} from "react-native"
 import {NavigationContainer} from '@react-navigation/native';
 import {RootStack} from './src/navigation/RootStack';
 import {SafeAreaProvider, SafeAreaConsumer} from "react-native-safe-area-context";
 import Globals from "./src/utils/Globals";
 
-export default class App extends Component {
+export const App = (props) => {
 
-    constructor() {
-      super();
-      console.disableYellowBox = true;
-    }
-
-
-    render() {
 
     return (
 
         <NavigationContainer>
             <SafeAreaProvider>
-            <SafeAreaConsumer>
+                <SafeAreaConsumer>
 
-                {
-                    insets => {
+                    {
+                        insets => {
 
-                        Globals.SAFE_AREA_INSET = insets;
+                            Globals.SAFE_AREA_INSET = insets;
 
-                        return (
+                            return (
 
-                            <RootStack/>
+                                <RootStack/>
 
 
 
-                        );
+                            );
+                        }
                     }
-                }
-            </SafeAreaConsumer>
+                </SafeAreaConsumer>
             </SafeAreaProvider>
         </NavigationContainer>
     );
 
-
-  }
 
 }
