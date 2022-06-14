@@ -1,63 +1,71 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../branding/App_config";
-import Typography from "../../../branding/carter/styles/Typography";
 
-const colors = AppConfig.colors.default;
+const Typography = AppConfig.typography.default;
 const Fonts = AppConfig.fonts.default;
 
-let Styles = {
+export const Styles = function(scheme, colors) {
 
-    mainContainer: {
-        flex: 1
-    },
 
-    cardContainerStyle: {
-        width: "100%",
-        backgroundColor: "white",
-        paddingHorizontal: wp(4),
-        paddingTop: hp(2),
-        paddingBottom: hp(2),
-        borderBottomWidth: 1,
-        borderBottomColor: colors.borderColorLight
-    },
+    return {
+        mainContainer: {
+            flex: 1
+        },
 
-    titleStyle: {
-        fontSize: Typography.P3,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        marginBottom: hp(1),
-        color: colors.textColorBlack1
-    },
+        cardContainerStyle: {
+            width: "100%",
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            paddingHorizontal: wp(4),
+            paddingTop: hp(2),
+            paddingBottom: hp(2),
+            borderBottomWidth: 1,
+            borderBottomColor: colors.borderColorLight
+        },
 
-    inputContainerStyle: {
-        width: wp(40),
-        backgroundColor: colors.textColorGrey2,
-        justifyContent: "center"
-    },
+        priceContainer: {
+            flexDirection: "row",
+            justifyContent: "space-between",
+        },
 
-    ratingContainerStyle: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: colors.textColorGrey2,
-        height: hp(5.5),
-        paddingHorizontal: wp(2)
-    },
+        titleStyle: {
+            fontSize: Typography.P3,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            marginBottom: hp(1),
+            color: colors.headingColor
+        },
 
-    ratingTextStyle: {
-        fontSize: Typography.P5,
-        fontFamily: Fonts.RUBIK_REGULAR,
-        color: colors.textColorGrey1,
-        flex: 1,
-        textAlign: "right"
-    },
+        inputContainerStyle: {
+            width: wp(40),
+            backgroundColor: colors.inputSecondaryBackground,
+            justifyContent: "center"
+        },
 
-    othersItemContainerStyle: {
-        backgroundColor: "white",
-        flexDirection: "row",
-        alignItems: "center",
-        paddingVertical: hp("1.5"),
-        borderBottomColor: colors.borderColorLight
-    },
+        ratingContainerStyle: {
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: colors.inputSecondaryBackground,
+            height: hp(5.5),
+            paddingHorizontal: wp(2)
+        },
+
+        ratingTextStyle: {
+            fontSize: Typography.P5,
+            fontFamily: Fonts.RUBIK_REGULAR,
+            color: colors.headingColor,
+            flex: 1,
+            textAlign: "right"
+        },
+
+        othersItemContainerStyle: {
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            flexDirection: "row",
+            alignItems: "center",
+            paddingVertical: hp("1.5"),
+            borderBottomColor: colors.borderColorLight
+        }
+    }
+
 
 }
 

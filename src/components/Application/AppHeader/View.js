@@ -1,36 +1,49 @@
 import React from 'react';
-import {Image, Platform, TouchableWithoutFeedback, View} from "react-native"
+import { Image, Platform, TouchableWithoutFeedback, useColorScheme, View, ViewPropTypes } from "react-native";
 import {Header} from 'react-native-elements';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen'
-import Style from "./Style"
 import AppConfig from "../../../../branding/App_config";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 const PropTypes = require('prop-types');
 
 const assets = AppConfig.assets.default;
-const colors = AppConfig.colors.default;
 const fonts = AppConfig.fonts.default;
+const lightColors = AppConfig.lightColors.default;
 const Typography = AppConfig.typography.default;
-const commonStyles = AppConfig.styling.default;
 
 
 const AppHeader = (props) => {
 
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
 
-    const {
-        navigation,
-        title,
-        transparentHeader,
-        headerWithBack,
-        blackIcons,
-        whiteHeader,
-        rightIcon,
-        onRightIconPress,
-        isTranslucent,
-        headerIconStyle,
-        headerIconContainerStyle,
-        centerContainerStyle
-    } = props;
+    const overrideTheme = props.overrideTheme || false;
+
+    const globalStyles = overrideTheme ?
+      (overrideTheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(lightColors)) :
+      (scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors));
+
+    const navigation = props.navigation || "";
+    const title = props.title || "Title";
+    const transparentHeader = props.transparentHeader || false;
+    const headerWithBack = props.headerWithBack || false;
+    const darkIcons = props.darkIcons || false;
+    const headerWithBackground = props.headerWithBackground || false;
+    const rightIcon = props.rightIcon || "";
+    const isTranslucent = props.isTranslucent || false;
+    const headerIconStyle = props.headerIconStyle || globalStyles.headerStyles.headerIconStyle;
+    const headerIconContainerStyle = props.headerIconContainerStyle || globalStyles.headerStyles.headerIconContainerStyle;
+    const centerContainerStyle = props.centerContainerStyle || globalStyles.headerStyles.centerContainerStyle;
+    const onRightIconPress = props.onRightIconPress || (() => {});
+    const containerStyle = props.containerStyle || globalStyles.headerStyles.containerStyle;
+    const containerShadow = props.containerShadow || globalStyles.headerStyles.headerShadowStyle;
+
+    const transparentContainerStyle = globalStyles.headerStyles.transparentContainerStyle;
+
 
     return (
 
@@ -46,7 +59,10 @@ const AppHeader = (props) => {
                         }
                                resizeMode={"contain"}
                                style={[{
-                                   tintColor: (blackIcons || whiteHeader) ? colors.textColorBlack1 : colors.white
+                                   tintColor: overrideTheme ?
+                                     (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
+                                     : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)
+
                                }, headerIconStyle]}
                         />
                     </View>
@@ -56,7 +72,9 @@ const AppHeader = (props) => {
             centerComponent={{
                 text: title,
                 style: {
-                    color: whiteHeader ? colors.textColorBlack1 : colors.white,
+                    color: overrideTheme ?
+                      (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
+                      : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white),
                     fontFamily: fonts.RUBIK_MEDIUM,
                     fontSize: Typography.P1
                 }
@@ -71,16 +89,18 @@ const AppHeader = (props) => {
                         <Image source={rightIcon}
                                resizeMode={"contain"}
                                style={[{
-                                   tintColor: (blackIcons || whiteHeader) ? colors.textColorBlack1 : colors.white
+                                   tintColor: overrideTheme ?
+                                     (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
+                                     : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white),
                                }, headerIconStyle]}
                         />
                     </View>
                 </TouchableWithoutFeedback>
             }
             containerStyle={[
-                !transparentHeader && Style.shadow,
-                whiteHeader && Style.whiteHeader,
-                transparentHeader && Style.transparentHeader,
+                !transparentHeader && containerShadow,
+                headerWithBackground && containerStyle,
+                transparentHeader && transparentContainerStyle,
                 {
                     marginBottom: hp("2"),
                     borderBottomWidth: 0
@@ -98,12 +118,13 @@ const AppHeader = (props) => {
 AppHeader.propTypes = {
 
     navigation: PropTypes.any,
+    containerStyle: ViewPropTypes.style,
 
     title: PropTypes.string,
     headerWithBack: PropTypes.bool,
     transparentHeader: PropTypes.bool,
-    blackIcons: PropTypes.bool,
-    whiteHeader: PropTypes.bool,
+    darkIcons: PropTypes.bool,
+    headerWithBackground: PropTypes.bool,
     isTranslucent: PropTypes.bool,
 
     rightIcon: PropTypes.string,
@@ -112,15 +133,5 @@ AppHeader.propTypes = {
 
 };
 
-AppHeader.defaultProps = {
-    ...commonStyles.headerStyles,
-    title: "Title",
-    headerWithBack: false,
-    transparentHeader: false,
-    whiteHeader: false,
-    blackIcons: false,
-    isTranslucent: false,
-    rightIcon: ""
-};
 
 export default AppHeader;

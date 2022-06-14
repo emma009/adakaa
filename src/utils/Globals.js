@@ -5,7 +5,7 @@ import assets from "../../branding/carter/assets/Assets";
 import {CommonActions} from "@react-navigation/native";
 import Config from "../../branding/carter/configuration/Config";
 
-const colors = AppConfig.colors.default;
+const colors = AppConfig.lightColors.default;
 
 class Globals {
 
@@ -649,9 +649,84 @@ class Globals {
                 spinValue: new Animated.Value(0)
 
             }
+        ],
+        paymentMethods: [
+            {
+                id: 1,
+                isActive: true,
+                icon: assets.credit_card_icon,
+                type: 'Credit Card',
+            },
+            {
+                id: 2,
+                isActive: false,
+                icon: assets.paypal_icon,
+                type: 'Paypal',
+            },
+            {
+                id: 3,
+                isActive: false,
+                icon: assets.apple_icon,
+                type: 'Apple Pay',
+            },
+            {
+                id: 4,
+                isActive: false,
+                icon: assets.transaction_icon,
+                type: 'Cash on Delivery',
+            },
+            {
+                id: 5,
+                isActive: false,
+                icon: assets.cart_regular_icon,
+                type: 'Self Pickup',
+            }
         ]
 
     }
+
+    static favouritesList = [
+        {
+            backgroundColor: "#6cc51d",
+            itemLabel: "Groceries",
+            selected: false
+        },
+        {
+            backgroundColor: "#bf0d3f",
+            itemLabel: "Sunday Snacks",
+            selected: true
+        },
+        {
+            backgroundColor: "#f88e11",
+            itemLabel: "Vegetables",
+            selected: false
+        },
+        {
+            backgroundColor: "#efb019",
+            itemLabel: "Snacks",
+            selected: false
+        },
+        {
+            backgroundColor: "#b71dc5",
+            itemLabel: "fruits",
+            selected: false
+        },
+        {
+            backgroundColor: "#1d68c5",
+            itemLabel: "Meat",
+            selected: false
+        },
+        {
+            backgroundColor: "#1dafc5",
+            itemLabel: "Dieting Plan",
+            selected: false
+        },
+        {
+            backgroundColor: "#ccb7cc",
+            itemLabel: "Sports",
+            selected: false
+        }
+    ]
 
     static favouriteItems = [
         {
@@ -659,7 +734,7 @@ class Globals {
             name: 'Groceries',
             totalItems: "4",
             addedOn: "11/07/2020",
-            color: colors.primaryGreenColor,
+            color: colors.activeColor,
 
             items: Globals.foodItems.slice(0, 4),
 
@@ -1072,48 +1147,101 @@ class Globals {
         ]
     }
 
-    static favouritesList = [
+    static otherFilters = [
         {
-            backgroundColor: "#6cc51d",
-            itemLabel: "Groceries",
-            selected: false
+            id: 1,
+            leftIcon: assets.discount_icon,
+            title: "Discount",
+            checked: false
         },
         {
-            backgroundColor: "#bf0d3f",
-            itemLabel: "Sunday Snacks",
-            selected: true
+            id: 2,
+            leftIcon: assets.shipping_icon,
+            title: "Free Shipping",
+            checked: false
         },
         {
-            backgroundColor: "#f88e11",
-            itemLabel: "Vegetables",
-            selected: false
-        },
-        {
-            backgroundColor: "#efb019",
-            itemLabel: "Snacks",
-            selected: false
-        },
-        {
-            backgroundColor: "#b71dc5",
-            itemLabel: "fruits",
-            selected: false
-        },
-        {
-            backgroundColor: "#1d68c5",
-            itemLabel: "Meat",
-            selected: false
-        },
-        {
-            backgroundColor: "#1dafc5",
-            itemLabel: "Dieting Plan",
-            selected: false
-        },
-        {
-            backgroundColor: "#ccb7cc",
-            itemLabel: "Sports",
-            selected: false
+            id: 3,
+            leftIcon: assets.same_day_delivery_icon,
+            title: "Same Day Delivery",
+            checked: false
         }
     ]
+
+    static filterCategories = [
+        {
+            id: 1,
+            leftIcon: assets.fruits_icon,
+            title: "Fresh Fruits",
+            checked: false
+        },
+        {
+            id: 2,
+            leftIcon: assets.chicken_icon,
+            title: "Fresh Chicken",
+            checked: false
+        },
+        {
+            id: 3,
+            leftIcon: assets.dairy_icon,
+            title: "Fresh Dairy",
+            checked: false
+        },
+        {
+            id: 4,
+            leftIcon: assets.fishes_icon,
+            title: "Fresh Fishes",
+            checked: false
+        },
+        {
+            id: 5,
+            leftIcon: assets.vegetables_icon,
+            title: "Fresh Vegetables",
+            checked: false
+        },
+        {
+            id: 6,
+            leftIcon: assets.salad_icon,
+            title: "Organic Salads",
+            checked: false
+        },
+        {
+            id: 7,
+            leftIcon: assets.medicine_icon,
+            title: "Original Medicine",
+            checked: false
+        },
+        {
+            id: 8,
+            leftIcon: assets.pets_icon,
+            title: "Pet Foods",
+            checked: false
+        },
+        {
+            id: 9,
+            leftIcon: assets.bakery_icon,
+            title: "Quality Bakery",
+            checked: false
+        },
+        {
+            id: 10,
+            leftIcon: assets.pizza_icon,
+            title: "Quality Pizza",
+            checked: false
+        },
+        {
+            id: 11,
+            leftIcon: assets.baby_products_icon,
+            title: "Baby Products",
+            checked: false
+        },
+        {
+            id: 12,
+            leftIcon: assets.sports_icon,
+            title: "Sports Goods",
+            checked: false
+        }
+    ];
 
 }
 

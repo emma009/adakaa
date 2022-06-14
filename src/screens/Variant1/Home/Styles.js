@@ -2,72 +2,70 @@ import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../../branding/App_config";
 
-const styles = AppConfig.styling.default;
 const fonts = AppConfig.fonts.default;
-const colors = AppConfig.colors.default;
 const Typography = AppConfig.typography.default;
 
-let Styles = {
-    mainWrapper: {
-        flex: 1,
-        alignSelf: "center",
-        justifyContent: "center",
-        width: styles.gridWidth,
-        backgroundColor: colors.textColorGrey2,
-    },
+export const Styles = function(styles, scheme, colors) {
 
-    sectionContainer: {
-        alignItems: "center"
-    },
+    return {
+        mainWrapper: {
+            flex: 1,
+            alignItems: "center",
+            backgroundColor: scheme ? colors.primaryBackground : colors.secondaryBackground,
+        },
 
-    sectionHeading: {
-        width: styles.gridWidth,
-        flexDirection: "row",
-        alignItem: "center",
-        justifyContent: "space-between",
-        paddingVertical: hp("1"),
-        marginVertical: hp("1"),
-    },
+        sectionContainer: {
+            width: styles.gridWidth,
+            alignItems: "center"
+        },
 
-    sectionHeadingText: {
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P2,
-        color: colors.textColorBlack1
-    },
+        sectionHeading: {
+            width: styles.gridWidth,
+            flexDirection: "row",
+            alignItem: "center",
+            justifyContent: "space-between",
+            paddingVertical: hp("1"),
+            marginVertical: hp("1"),
+        },
 
-    sectionRightIcon: {
-        width: hp(2),
-        height: hp(2),
-        tintColor: colors.textColorGrey1,
-        resizeMode: "contain"
-    },
+        sectionHeadingText: {
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P2,
+            color: colors.headingColor
+        },
 
-    sectionHeadingIcon: {
-        alignSelf: "center"
-    },
+        sectionRightIcon: {
+            width: hp(2),
+            height: hp(2),
+            tintColor: colors.subHeadingColor,
+            resizeMode: "contain"
+        },
 
-    promotionSliderContainer: {
-        width: "100%",
-        height: hp("30%")
-    },
+        sectionHeadingIcon: {
+            alignSelf: "center"
+        },
 
-    promotionSliderActiveDot: {
-        width: hp(2),
-        height: hp(0.8),
-        marginRight: -hp(1)
-    },
+        promotionSliderContainer: {
+            width: "100%",
+            height: hp("30%")
+        },
 
-    promotionSliderInActiveDot: {
-        width: hp(0.8),
-        height: hp(0.8)
-    },
+        promotionSliderActiveDot: {
+            width: hp(2),
+            height: hp(0.8),
+            marginRight: -hp(1)
+        },
 
-    promotionPaginationContainer: {
-        position: "absolute",
-        bottom: 0,
-        zIndex: 1
+        promotionSliderInActiveDot: {
+            width: hp(0.8),
+            height: hp(0.8)
+        },
+
+        promotionPaginationContainer: {
+            position: "absolute",
+            bottom: 0,
+            zIndex: 1
+        }
     }
 
 }
-
-export default Styles;

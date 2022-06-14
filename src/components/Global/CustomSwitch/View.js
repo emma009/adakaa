@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 
 import {Switch} from "react-native-switch";
-import AppConfig from "../../../../branding/App_config";
-
-const colors = AppConfig.colors.default;
+import { useTheme } from "@react-navigation/native";
 
 export const CustomSwitch = (props) => {
 
     const [checked, setChecked] = useState(false);
 
-    const {
+
+  const { colors } = useTheme();
+
+
+  const {
         onValueChange
     } = props;
 
@@ -25,20 +27,20 @@ export const CustomSwitch = (props) => {
             onValueChange={(val) => {
                 setChecked(val)
             }}
-            circleSize={17}
-            barHeight={20}
-            backgroundActive={colors.primaryGreenColor}
-            backgroundInactive={"white"}
-            circleActiveColor={"white"}
+            circleSize={14}
+            barHeight={16}
+            backgroundActive={colors.switchActiveBackground}
+            backgroundInactive={"transparent"}
+            circleActiveColor={colors.switchInActiveBackground}
             circleInActiveColor={"transparent"}
             containerStyle={{
-                borderWidth: 2,
-                borderColor: checked ? colors.primaryGreenColor : colors.iconColorGrey1
+                borderWidth: 1.5,
+                borderColor: checked ? colors.switchActiveBackground : colors.switchBorder
             }}
             changeValueImmediately={true}
             innerCircleStyle={{
-                borderWidth: checked ? 1 : 2,
-                borderColor: checked ? colors.primaryGreenColor : colors.iconColorGrey1
+                borderWidth: checked ? 1 : 1.5,
+                borderColor: checked ? colors.switchActiveBackground : colors.switchBorder
             }}
             renderActiveText={false}
             renderInActiveText={false}

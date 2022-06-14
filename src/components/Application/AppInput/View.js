@@ -1,37 +1,39 @@
 import React from 'react';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen'
 import {TextInput} from "../../Global/TextInput/View";
-import {Image} from "react-native";
-import AppConfig from "../../../../branding/App_config";
+import { Image, useColorScheme } from "react-native";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 const PropTypes = require('prop-types');
-
-const commonStyles = AppConfig.styling.default;
-
 
 
 const AppInput = (props) => {
 
-    const {
-        textInputRef,
-        placeholder,
-        placeholderTextColor,
-        onChangeText,
-        leftIcon,
-        leftIconColor,
-        isPasswordField,
-        backgroundColor,
-        value,
-        multilineInput,
-        keyboardType,
-        defaultContainerStyle,
-        containerStyle,
-        leftIconContainerStyle,
-        multilineInputHeight,
-        showLeftIcon
-    } = props;
+
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
 
+
+    const textInputRef = props.textInputRef || "";
+    const placeholder = props.placeholder || "Text";
+    const placeholderTextColor = props.placeholderTextColor || globalStyles.primaryInputStyle.placeholderTextColor;
+    const onChangeText = props.onChangeText || (() => {});
+    const leftIcon = props.leftIcon || "";
+    const leftIconColor = props.iconColor || globalStyles.primaryInputStyle.iconColor;
+    const isPasswordField = props.isPasswordField || false;
+    const backgroundColor = props.backgroundColor || globalStyles.primaryInputStyle.backgroundColor;
+    const value = props.value || "";
+    const multilineInput = props.multilineInput || false;
+    const keyboardType = props.keyboardType || "";
+    const defaultContainerStyle = props.defaultContainerStyle || globalStyles.primaryInputStyle.defaultContainerStyle;
+    const containerStyle = props.containerStyle || globalStyles.primaryInputStyle.containerStyle;
+    const leftIconContainerStyle = props.leftIconContainerStyle || globalStyles.primaryInputStyle.leftIconContainerStyle;
+    const multilineInputHeight = props.multilineInputHeight || { height: hp(30) };
+    const showLeftIcon = props.showLeftIcon || true;
 
 
     return (
@@ -45,9 +47,10 @@ const AppInput = (props) => {
                 showLeftIcon && <Image source={leftIcon} style={{
                     width: hp(2),
                     height: hp(2),
-                    tintColor: leftIconColor
+                    tintColor: leftIconColor,
+                resizeMode: "contain",
                 }}
-                                       resizeMode={"contain"} />
+               resizeMode={"contain"} />
             }
             containerStyle={[
                 {
@@ -58,6 +61,7 @@ const AppInput = (props) => {
                 multilineInput && multilineInputHeight,
             ]}
             leftIconContainerStyle={leftIconContainerStyle}
+            rightIconTintColor={leftIconColor}
             onChangeText={(value) => {
                 onChangeText(value)
             }}
@@ -93,14 +97,6 @@ AppInput.propTypes = {
     multilineInput: PropTypes.bool,
 
     keyboardType:PropTypes.string
-};
-
-AppInput.defaultProps = {
-    ...commonStyles.primaryInputStyle,
-    placeholder: "Text",
-    showLeftIcon: true,
-    isPasswordField: false,
-    multilineInput: false
 };
 
 export default AppInput;

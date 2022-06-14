@@ -2,80 +2,117 @@ import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-nativ
 import AppConfig from "../../../../branding/App_config";
 
 
-const colors = AppConfig.colors.default;
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
 
-let Style = {
+export const Styles = function(scheme, colors) {
 
-    container: {
-        height: hp("15"),
-        backgroundColor: "white",
-        flexDirection: "row",
-        marginBottom: hp(1)
-    },
+    return {
+        container: {
+            height: hp("15"),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            flexDirection: "row",
+            marginBottom: hp(1)
+        },
 
-    activeContainer: {
-        borderWidth: 1,
-        borderColor: colors.primaryGreenColor
-    },
+        swipeableContainerParent: {
+            width: "100%",
+            justifyContent: "center"
+        },
 
-    defaultContainer: {
-        position: "absolute",
-        backgroundColor: colors.secondaryGreenColor,
-        width: "18%",
-        height: hp(2.5),
-        justifyContent: "center",
-        alignItems: "center",
-        borderTopRightRadius: hp(0.5),
-        borderBottomRightRadius: hp(0.5)
-    },
+        swipeableContainer: {
+            flexDirection: "row",
+            height: "100%",
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+        },
+
+        swipeableMainContainer: {
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center"
+        },
+
+        rightSwipeContainer: {
+            width: wp("20"),
+            height: "100%",
+            backgroundColor: colors.rightSwipeBackground,
+            justifyContent: "center",
+            alignItems: "center"
+        },
+
+        rightSwipeIcon: {
+            width: hp(3),
+            height: hp(3),
+            tintColor: "white",
+            resizeMode: "contain"
+        },
+
+        activeContainer: {
+            borderWidth: 1,
+            borderColor: colors.activeColor
+        },
+
+        defaultContainer: {
+            position: "absolute",
+            backgroundColor: colors.tertiaryBackground,
+            width: "18%",
+            height: hp(2.5),
+            justifyContent: "center",
+            alignItems: "center",
+            borderTopRightRadius: hp(0.5),
+            borderBottomRightRadius: hp(0.5)
+        },
 
 
-    leftImageContainer: {
-        width: hp("8"),
-        height: hp("8"),
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: hp("4"),
-        marginLeft: wp("5"),
-        marginRight: wp(4),
-        backgroundColor: colors.secondaryGreenColor
-    },
+        leftImageContainer: {
+            width: hp("8"),
+            height: hp("8"),
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: hp("4"),
+            marginLeft: wp("5"),
+            marginRight: wp(4),
+            backgroundColor: colors.tertiaryBackground
+        },
 
-    leftImage: {
-        width: hp(3.5),
-        height: hp(3.5),
-        tintColor: colors.white
-    },
+        leftImage: {
+            width: hp(3.5),
+            height: hp(3.5),
+            tintColor: colors.white
+        },
 
-    titleText: {
-        fontSize: Typography.P3,
-        fontFamily: fonts.RUBIK_MEDIUM,
-        color: colors.textColorBlack1
-    },
+        titleText: {
+            fontSize: Typography.P3,
+            fontFamily: fonts.RUBIK_MEDIUM,
+            color: colors.headingColor
+        },
 
-    subtitleText: {
-        fontSize: Typography.P7,
-        fontFamily: fonts.RUBIK_REGULAR,
-        color: colors.textColorGrey1
-    },
+        subtitleText: {
+            fontSize: Typography.P7,
+            fontFamily: fonts.RUBIK_REGULAR,
+            color: colors.subHeadingColor
+        },
 
-    rightIconContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "flex-end",
-        paddingRight: wp("5")
-    },
+        rightIconContainer: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "flex-end",
+            paddingRight: wp("5")
+        },
 
-    rightIcon: {
-        width: hp(2.5),
-        height: hp(2.5),
-        tintColor: colors.primaryGreenColor
+        rightIcon: {
+            width: hp(2.5),
+            height: hp(2.5),
+            tintColor: colors.activeColor
+        },
+
+        childActiveContainer: {
+            borderBottomWidth: 1,
+            borderBottomColor: colors.borderColorLight
+        }
+
     }
 
 }
-
-export default Style;

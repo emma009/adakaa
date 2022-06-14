@@ -1,5 +1,5 @@
 import AppConfig from "../../../../branding/App_config";
-import {widthPercentageToDP as wp} from "react-native-responsive-screen";
+import {heightPercentageToDP as hp} from "react-native-responsive-screen";
 
 const Typography = AppConfig.typography.default;
 const fonts = AppConfig.fonts.default;
@@ -12,8 +12,8 @@ let Styles = {
     },
 
     rightIcon: {
-        width: wp(5),
-        height: wp(5),
+        width: hp(2),
+        height: hp(2),
         resizeMode: "contain"
     }
 

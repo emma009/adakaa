@@ -1,100 +1,110 @@
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-
 import AppConfig from "../../../../branding/App_config";
 
-const styles = AppConfig.styling.default;
 const fonts = AppConfig.fonts.default;
-const colors = AppConfig.colors.default;
 const Typography = AppConfig.typography.default;
 
-let Styles = {
-    mainWrapper: {
-        flex: 1,
-        alignSelf: "center",
-        justifyContent: "center",
-        width: styles.gridWidth,
-        backgroundColor: colors.textColorGrey2,
-    },
+export const Styles = function(styles, scheme, colors) {
 
-    sectionHeading: {
-        width: styles.gridWidth,
-        flexDirection: "row",
-        alignItem: "center",
-        justifyContent: "space-between",
-        paddingVertical: hp("1"),
-        marginVertical: hp("1"),
-    },
+    return {
+        mainWrapper: {
+            flex: 1,
+            alignItems: "center",
+            backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground
+        },
 
-    sectionHeadingText: {
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P2,
-        color: colors.textColorBlack1
-    },
+        categoryContainer: {
+            width: styles.gridWidth,
+            alignSelf: "center",
+            marginVertical: hp(2)
+        },
 
-    sectionHeadingIcon: {
-        alignSelf: "center"
-    },
+        container: {
+            width: styles.gridWidth,
+            alignSelf: "center"
+        },
 
-    sectionRightIcon: {
-        width: hp(2),
-        height: hp(2),
-        tintColor: colors.textColorGrey1,
-        resizeMode: "contain"
-    },
+        sectionHeading: {
+            width: styles.gridWidth,
+            flexDirection: "row",
+            alignItem: "center",
+            justifyContent: "space-between",
+            paddingVertical: hp("1"),
+            marginVertical: hp("1"),
+        },
 
-    categorySliderActiveText: {
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P2,
-        color: colors.textColorBlack1,
-        marginHorizontal: 30
-    },
+        sectionHeadingText: {
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P2,
+            color: colors.headingColor
+        },
 
-    categorySliderInActiveText: {
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P3,
-        color: colors.textColorBlack1,
-        marginHorizontal: 10
-    },
+        sectionHeadingIcon: {
+            alignSelf: "center"
+        },
 
-    sectionContainer: {
-        alignItems: "center"
-    },
+        sectionRightIcon: {
+            width: hp(2),
+            height: hp(2),
+            tintColor: colors.subHeadingColor,
+            resizeMode: "contain"
+        },
 
-    secondaryBannerContainer: {
-        width: "48.5%",
-        height: hp(30),
-        resizeMode: "cover"
-    },
+        categorySliderActiveText: {
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P2,
+            color: colors.headingColor,
+            marginHorizontal: 30
+        },
 
-    tertiaryBannerContainer: {
-        width: "100%",
-        height: hp(30),
-        marginBottom: hp("1"),
-        resizeMode: "cover"
-    },
+        categorySliderInActiveText: {
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P3,
+            color: colors.headingColor,
+            marginHorizontal: 10
+        },
 
-    promotionSliderContainer: {
-        width: "100%",
-        height: hp("30%")
-    },
+        sectionContainer: {
+            width: styles.gridWidth,
+            alignSelf: "center",
+        },
 
-    promotionSliderActiveDot: {
-        width: hp(2),
-        height: hp(0.8),
-        marginRight: -hp(1)
-    },
+        secondaryBannerContainer: {
+            width: "48.5%",
+            height: hp(30),
+            resizeMode: "cover"
+        },
 
-    promotionSliderInActiveDot: {
-        width: hp(0.8),
-        height: hp(0.8)
-    },
+        tertiaryBannerContainer: {
+            width: "100%",
+            height: hp(30),
+            marginBottom: hp("1"),
+            resizeMode: "cover"
+        },
 
-    promotionPaginationContainer: {
-        position: "absolute",
-        bottom: 0,
-        zIndex: 1
+        promotionSliderContainer: {
+            width: styles.gridWidth,
+            height: hp("30%"),
+            alignSelf: "center"
+        },
+
+        promotionSliderActiveDot: {
+            width: hp(2),
+            height: hp(0.8),
+            marginRight: -hp(1)
+        },
+
+        promotionSliderInActiveDot: {
+            width: hp(0.8),
+            height: hp(0.8)
+        },
+
+        promotionPaginationContainer: {
+            position: "absolute",
+            bottom: 0,
+            zIndex: 1
+        }
     }
 
-}
 
-export default Styles;
+}

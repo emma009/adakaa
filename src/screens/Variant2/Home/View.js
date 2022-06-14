@@ -1,61 +1,75 @@
 import React, {useRef, useState} from 'react';
-import {FlatList, Image, ScrollView, StatusBar, Text, TouchableOpacity, View} from 'react-native';
+import { FlatList, Image, ScrollView, StatusBar, Text, TouchableOpacity, useColorScheme, View } from "react-native";
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import {FoodItem} from "../../../components/Application/FoodItem/View";
-import {SearchButton} from "../../../components/Application/SearchButton/SearchButton";
+import {SearchButton} from "../../../components/Application/SearchButton/View";
 
-import Styles from "./Styles";
+import { Styles } from "./Styles";
 import Routes from "../../../navigation/Routes";
 import AppConfig from "../../../../branding/App_config";
 import Globals from "../../../utils/Globals";
 import RBSheet from "react-native-raw-bottom-sheet";
-import {FavouritesBottomSheetComponent}
-    from "../../../components/Application/FavouritesBottomSheetComponent/FavouritesBottomSheetComponent";
+import {FavouritesBottomSheet}
+    from "../../../components/Application/FavouritesBottomSheet/View";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 
-const colors = AppConfig.colors.default;
 const assets = AppConfig.assets.default;
-const styles = AppConfig.styling.default;
+
+//Constants
+const slider_data = [
+  {
+    img: require("./Assets/Images/slider_img_1.png")
+  },
+  {
+    img: require("./Assets/Images/slider_img_1.png")
+  },
+  {
+    img: require("./Assets/Images/slider_img_1.png")
+  },
+  {
+    img: require("./Assets/Images/slider_img_1.png")
+  },
+];
 
 export const Variant2Home = (props) => {
 
-    const slider_data = [
-        {
-            img: require("./Assets/Images/slider_img_1.png")
-        },
-        {
-            img: require("./Assets/Images/slider_img_1.png")
-        },
-        {
-            img: require("./Assets/Images/slider_img_1.png")
-        },
-        {
-            img: require("./Assets/Images/slider_img_1.png")
-        },
-    ];
 
+  //Theme based styling and colors
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+  const screenStyles = Styles(globalStyles, scheme, colors);
+
+
+  //Internal States
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+
+  //References
     const _carousel = useRef();
-    let _favouriteSheet;
+    let _favouriteSheet = useRef();
 
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
     const renderPromotionSlider = () => {
 
         return (
-            <View style={Styles.promotionSliderContainer}>
+            <View style={screenStyles.promotionSliderContainer}>
                 <Carousel
                     ref={_carousel}
                     data={slider_data}
                     renderItem={({item}) => <Image
                         source={item.img}
-                        style={Styles.promotionSliderContainer}
+                        style={screenStyles.promotionSliderContainer}
                         resizeMode={"cover"}
                     />}
-                    sliderWidth={styles.gridWidth}
-                    itemWidth={styles.gridWidth}
+                    sliderWidth={globalStyles.gridWidth}
+                    itemWidth={globalStyles.gridWidth}
                     onSnapToItem={(index) => setActiveSlideIndex(index)}
                     autoplay
                     autoplayInterval={5000}
@@ -65,13 +79,13 @@ export const Variant2Home = (props) => {
                     dotsLength={slider_data.length}
                     activeDotIndex={activeSlideIndex}
                     dotColor={colors.paginationDotActiveColor}
-                    dotStyle={Styles.promotionSliderActiveDot}
-                    inactiveDotStyle={Styles.promotionSliderInActiveDot}
-                    inactiveDotColor={"white"}
+                    dotStyle={screenStyles.promotionSliderActiveDot}
+                    inactiveDotStyle={screenStyles.promotionSliderInActiveDot}
+                    inactiveDotColor={colors.primaryBackground}
                     inactiveDotOpacity={0.4}
                     inactiveDotScale={1}
                     carouselRef={_carousel}
-                    containerStyle={Styles.promotionPaginationContainer}
+                    containerStyle={screenStyles.promotionPaginationContainer}
                 />
             </View>
         );
@@ -81,52 +95,52 @@ export const Variant2Home = (props) => {
 
     return (
 
-        <View style={[Styles.mainWrapper, {marginTop: Globals.SAFE_AREA_INSET.top}]}>
+        <View style={[screenStyles.mainWrapper, {paddingTop: Globals.SAFE_AREA_INSET.top}]}>
 
-            <StatusBar backgroundColor={colors.textColorGrey2} barStyle="dark-content"/>
+            <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
 
 
-            <SearchButton
-                onPress={() => props.navigation.navigate(Routes.SEARCH)}
-            />
+          <View style={screenStyles.searchContainer}>
+              <SearchButton
+                  onPress={() => props.navigation.navigate(Routes.SEARCH)}
+              />
+          </View>
 
-            <ScrollView style={{}} showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false}>
 
                 {renderPromotionSlider()}
 
-                <View style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    width: "100%",
-                    marginVertical: hp("1")
-                }}>
+                <View style={screenStyles.secondarySliderContainer}>
 
                     <Image
                         source={require("./Assets/Images/banner1.png")}
-                        style={Styles.secondaryBannerContainer}
+                        style={screenStyles.secondaryBannerContainer}
                     />
 
                     <Image
                         source={require("./Assets/Images/banner2.png")}
-                        style={Styles.secondaryBannerContainer}
+                        style={screenStyles.secondaryBannerContainer}
                     />
 
 
                 </View>
 
-                <Image
-                    source={require("./Assets/Images/banner3.png")}
-                    style={Styles.tertiaryBannerContainer}
-                />
+              <View style={screenStyles.sectionContainer}>
+                  <Image
+                      source={require("./Assets/Images/banner3.png")}
+                      style={screenStyles.tertiaryBannerContainer}
+                  />
 
-                <View style={Styles.sectionContainer}>
+              </View>
+
+                <View style={screenStyles.sectionContainer}>
 
                     <TouchableOpacity onPress={() => {
                         props.navigation.navigate(Routes.POPULAR_DEALS);
                     }}>
-                        <View style={Styles.sectionHeading}>
-                            <Text style={Styles.sectionHeadingText}>Popular Deals</Text>
-                            <Image source={assets.arrow_right_icon} style={Styles.sectionRightIcon}/>
+                        <View style={screenStyles.sectionHeading}>
+                            <Text style={screenStyles.sectionHeadingText}>Popular Deals</Text>
+                            <Image source={assets.arrow_right_icon} style={screenStyles.sectionRightIcon}/>
 
                         </View>
                     </TouchableOpacity>
@@ -174,7 +188,7 @@ export const Variant2Home = (props) => {
                 height={hp(42)}
             >
 
-                <FavouritesBottomSheetComponent
+                <FavouritesBottomSheet
                     onItemSelect={() => {
                         _favouriteSheet.close()
                     }}

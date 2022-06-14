@@ -1,42 +1,38 @@
 import React from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
+import { Image, TouchableOpacity, useColorScheme, View } from "react-native";
 
 import {Button, Text} from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Routes from "../../../navigation/Routes";
 
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Counter} from "../../Global/Counter/View";
-import Styles from "./Style"
+import { Styles } from "./Style"
 import AppConfig from "../../../../branding/App_config";
+import { useTheme } from "@react-navigation/native";
 
 const assets = AppConfig.assets.default;
-const colors = AppConfig.colors.default;
 
 export const CartItem = (props) => {
 
-    const renderRightActions = (progress, dragX) => {
+
+  //Theme based styling and colors
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const itemStyles = Styles(scheme, colors);
+
+
+  const renderRightActions = (progress, dragX) => {
         return (
 
             <TouchableOpacity
                 onPress={() => {}}
-                style={{
-                    width: wp("20"),
-                    height: "100%",
-                    backgroundColor: colors.iconColorRed2,
-                    justifyContent: "center",
-                    alignItems: "center"
-            }}>
+                style={itemStyles.rightSwipeContainer}>
 
                 <Image
                     source={assets.trash_icon}
-                    style={{
-                        width: hp(3),
-                        height: hp(3),
-                        tintColor: "white",
-                        resizeMode: "contain"
-                }} />
+                    style={itemStyles.rightSwipeIcon} />
 
             </TouchableOpacity>
 
@@ -61,17 +57,17 @@ export const CartItem = (props) => {
                         renderRightActions={renderRightActions}
                         containerStyle={{marginVertical: hp("0.5")}}>
 
-                        <View style={Styles.foodItemContainer}>
+                        <View style={itemStyles.foodItemContainer}>
 
                             <Image
                                 source={props.image}
-                                style={Styles.foodItemImage}
+                                style={itemStyles.foodItemImage}
                                 resizeMode={"contain"}
                             />
                             <View>
-                                <Text style={Styles.priceText}>{props.price}</Text>
-                                <Text style={Styles.itemTitle}>{props.title}</Text>
-                                <Text style={Styles.weightText}>{props.weight}</Text>
+                                <Text style={itemStyles.priceText}>{props.price}</Text>
+                                <Text style={itemStyles.itemTitle}>{props.title}</Text>
+                                <Text style={itemStyles.weightText}>{props.weight}</Text>
                             </View>
 
                             <View style={{flex: 1, alignItems: "flex-end"}}>
@@ -104,9 +100,4 @@ CartItem.propTypes = {
     cartCountChange: PropTypes.func,
     favouriteChange: PropTypes.func,
 };
-
-CartItem.defaultProps = {
-
-};
-
 

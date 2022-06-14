@@ -1,85 +1,112 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import AppConfig from "../../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
-const styles = AppConfig.styling.default;
 
-let style = {
+export const Styles = function(styles, colors) {
 
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: colors.white
-    },
+    return {
 
-    imageContainer: {
-        width: wp('100%'),
-        height: hp('45%'),
-        alignItems: "center"
-    },
 
-    headerImage: {
-        width: hp('40%'),
-        height: hp('40%'),
-        resizeMode: "contain",
-    },
+        scrollViewContainer: {
+            flex: 1,
+            backgroundColor: colors.primaryBackground
+        },
 
-    bottomContainer: {
-        flex: 1,
-        width: styles.gridWidth3,
-        paddingTop: hp("3"),
-    },
+        scrollViewContentContainer: {
+            flexGrow: 1,
+            backgroundColor: colors.primaryBackground
+        },
 
-    titleText: {
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H9,
-        marginBottom: hp("0.5"),
-        color: colors.textColorBlack1,
-        textAlign: "center"
-    },
+        container: {
+            flex: 1,
+            alignItems: 'center',
+            backgroundColor: colors.primaryBackground
+        },
 
-    subtitleText: {
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4,
-        marginBottom: hp("2"),
-        color: colors.textColorGrey1,
-        textAlign: "center"
-    },
+        headerContainer: {
+            backgroundColor: "transparent"
+        },
 
-    forgotPasswordContainer: {
-        flexDirection:"row",
-        marginBottom: hp(1)
-    },
+        imageContainer: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center"
+        },
 
-    accountBottomContainer: {
-        flexDirection:"row",
-        alignItems: "center",
-        justifyContent: "center"
-    },
+        headerImage: {
+            width: wp(85),
+            height: wp(85),
+            resizeMode: "contain",
+        },
 
-    accountText: {
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5,
-        color: colors.textColorGrey1,
-        alignSelf: "center",
-        marginLeft: hp(1)
-    },
+        bottomContainer: {
+            width: styles.gridWidth3,
+            paddingVertical: hp("3"),
+            justifyContent: "flex-end"
+        },
 
-    signupButton: {
-        color: colors.textColorBlack1,
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
+        titleText: {
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.H8,
+            marginBottom: hp("0.5"),
+            color: colors.headingColor,
+            textAlign: "center"
+        },
 
-    },
+        subtitleText: {
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P4,
+            lineHeight: Typography.H8,
+            marginBottom: hp("1.6"),
+            color: colors.subHeadingColor,
+            textAlign: "center"
+        },
 
-    forgotPasswordButton: {
-        color: colors.textColorBlue1,
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6
+        forgotPasswordContainer: {
+            flexDirection:"row",
+            marginBottom: hp(1)
+        },
+
+        accountBottomContainer: {
+            flexDirection:"row",
+            alignItems: "center",
+            justifyContent: "center"
+        },
+
+        accountText: {
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P5,
+            color: colors.subHeadingColor,
+            alignSelf: "center",
+            marginLeft: hp(1)
+        },
+
+        signupButton: {
+            color: colors.headingColor,
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P4,
+
+        },
+
+        forgotPasswordButton: {
+            color: colors.subHeadingQuaternaryColor,
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P6
+        },
+
+        switchContainer: {
+            justifyContent: "center"
+        },
+
+        bottomButtonContainer: {
+            flex: 1,
+            alignItems: "flex-end"
+        }
+
+
     }
 
-}
 
-export default style;
+}

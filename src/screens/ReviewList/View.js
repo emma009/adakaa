@@ -4,9 +4,10 @@ import {ReviewItem} from "../../components/Application/ReviewItem/View";
 
 import BaseView from "../BaseView"
 import Routes from "../../navigation/Routes";
-import assets from "../../../branding/carter/assets/Assets";
 import Globals from "../../utils/Globals";
+import AppConfig from "../../../branding/App_config";
 
+const assets = AppConfig.assets.default;
 
 export const ReviewList = (props) => {
 
@@ -20,6 +21,8 @@ export const ReviewList = (props) => {
             onRightIconPress={() => {
                 props.navigation.navigate(Routes.ADD_REVIEW)
             }}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
 
                 return (

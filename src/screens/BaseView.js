@@ -1,32 +1,34 @@
-import React from 'react';
-import {StatusBar, View} from 'react-native';
+import React from "react";
+import { StatusBar, useColorScheme, View } from "react-native";
 import AppHeader from "../components/Application/AppHeader/View";
 import Globals from "../utils/Globals";
-import AppConfig from "../../branding/App_config";
-import {heightPercentageToDP as hp} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { commonDarkStyles } from "../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../branding/carter/styles/light/Style";
+import { useTheme } from "@react-navigation/native";
 
 const PropTypes = require('prop-types');
 
-const colors = AppConfig.colors.default;
-const commonStyles = AppConfig.styling.default;
-
-
 const BaseView = (props) => {
 
-    let {
-        navigation,
-        showAppHeader,
-        title,
-        childView,
-        headerWithBack,
-        rightIcon,
-        onRightIconPress,
-        applyBottomSafeArea,
-        containerStyle,
-        childContainerStyle
-    } = props;
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
-    return (
+
+    const navigation = props.navigation || "";
+    const title = props.title || "";
+    const rightIcon = props.rightIcon || "";
+    const headerWithBack = props.headerWithBack || false;
+    const applyBottomSafeArea = props.applyBottomSafeArea || false;
+    const showAppHeader = props.showAppHeader || true;
+    const containerStyle = props.containerStyle || globalStyles.baseViewStyles.containerStyle;
+    const childContainerStyle = props.childContainerStyle || globalStyles.baseViewStyles.childContainerStyle;
+    const childView = props.childView || (<View></View>);
+    const onRightIconPress = props.onRightIconPress || (() => {});
+
+
+  return (
         <View style={[
             containerStyle,
             !showAppHeader && {
@@ -35,7 +37,7 @@ const BaseView = (props) => {
 
             {
                 showAppHeader &&
-                <StatusBar backgroundColor={colors.white} barStyle="dark-content"/>
+                <StatusBar backgroundColor={colors.primaryBackground} barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
 
             }
 
@@ -45,7 +47,7 @@ const BaseView = (props) => {
                 <AppHeader
                     navigation={navigation}
                     headerWithBack={headerWithBack}
-                    whiteHeader
+                    headerWithBackground
                     rightIcon={rightIcon}
                     onRightIconPress={() => rightIcon !== "" && onRightIconPress()}
                     title={title}
@@ -79,15 +81,6 @@ BaseView.propTypes = {
     onRightIconPress: PropTypes.func,
     applyBottomSafeArea: PropTypes.bool,
 
-};
-
-BaseView.defaultProps = {
-
-    ...commonStyles.baseViewStyles,
-    rightIcon: "",
-    headerWithBack: true,
-    applyBottomSafeArea: true,
-    showAppHeader: true,
 };
 
 export default BaseView;

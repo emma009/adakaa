@@ -2,139 +2,149 @@ import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-nativ
 
 import AppConfig from "../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-let Styles = {
+export const Styles = function(scheme, colors) {
 
-    headerContainer: {
-        height: hp("13"),
-        backgroundColor: "white",
-        flexDirection: "row",
-        alignItems: "center",
-        paddingLeft: wp("5"),
-    },
+    return {
+        headerContainer: {
+            height: hp("13"),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            flexDirection: "row",
+            alignItems: "center",
+            paddingLeft: wp("5"),
+        },
 
-    headerContainerActive: {
-        borderBottomWidth: 1,
-        borderBottomColor: colors.borderColorLight
-    },
+        headerContainerActive: {
+            borderBottomWidth: 1,
+            borderBottomColor: colors.borderColorLight
+        },
 
-    headerLeftIconContainer: {
-        width: hp("7"),
-        height: hp("7"),
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: hp("3.5"),
-        backgroundColor: colors.secondaryGreenColor,
-        marginRight: wp(3),
-    },
+        headerLeftIconContainer: {
+            width: hp("7"),
+            height: hp("7"),
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: hp("3.5"),
+            backgroundColor: colors.tertiaryBackground,
+            marginRight: wp(3),
+        },
 
-    headerLeftIcon: {
-        width: hp(3.5),
-        height: hp(3.5),
-        resizeMode: "contain"
-    },
+        headerLeftIcon: {
+            width: hp(3.5),
+            height: hp(3.5),
+            resizeMode: "contain"
+        },
 
-    headerTitleText: {
-        fontSize: Typography.P2,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-    },
+        itemsHorizontalContainer: {
+            flexDirection: "row",
+            alignItems: "center"
+        },
 
-    headerSubtitleText: {
-        fontSize: Typography.P6,
-        fontFamily: Fonts.RUBIK_REGULAR,
-        marginVertical: hp("0.5"),
-        color: colors.textColorGrey1
-    },
+        headerTitleText: {
+            fontSize: Typography.P2,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            color: colors.headingColor
+        },
 
-    headerSubtitleValueText: {
-        fontSize: Typography.P4,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-    },
+        headerSubtitleText: {
+            fontSize: Typography.P6,
+            fontFamily: Fonts.RUBIK_REGULAR,
+            marginVertical: hp("0.5"),
+            color: colors.subHeadingColor
+        },
 
-    headerRightIconContainer: {
-        flex: 1,
-        alignItems: "flex-end",
-        paddingRight: wp("5")
-    },
+        headerSubtitleValueText: {
+            fontSize: Typography.P4,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+        },
 
-    headerRightIcon: {
-        width: hp(2.5),
-        height: hp(2.5),
-        tintColor: colors.primaryGreenColor
-    },
+        headerRightIconContainer: {
+            flex: 1,
+            alignItems: "flex-end",
+            paddingRight: wp("5")
+        },
 
-    headerOrderDeliverContainer: {
-        flexDirection: "row",
-        height: hp(5),
-        paddingLeft: wp("5"),
-        alignItems: "center",
-        backgroundColor: "white"
-    },
+        headerRightIcon: {
+            width: hp(2.5),
+            height: hp(2.5),
+            tintColor: colors.activeColor
+        },
 
-    headerOrderDeliverCircle: {
-        backgroundColor: colors.iconColorGrey1,
-        width: hp("1.2"),
-        height: hp("1.2"),
-        borderRadius: hp("0.6"),
-        marginRight: wp("2")
-    },
+        headerOrderDeliverContainer: {
+            flexDirection: "row",
+            height: hp(5),
+            paddingLeft: wp("5"),
+            alignItems: "center",
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+        },
 
-    headerOrderDeliverDateText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5,
-        color: colors.textColorGrey1,
-        flex: 1,
-        textAlign: "right",
-        paddingRight: wp("5")
-    },
+        headerOrderDeliverCircle: {
+            backgroundColor: colors.inactiveColor,
+            width: hp("1.2"),
+            height: hp("1.2"),
+            borderRadius: hp("0.6"),
+            marginRight: wp("2")
+        },
 
-    contentContainerStyle: {
-        paddingHorizontal: wp('3'),
-        paddingVertical: hp("2"),
-        backgroundColor: "white",
-        flex: 1,
-        alignItems: "center"
-    },
+        headerOrderDeliverDateText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P5,
+            color: colors.subHeadingColor,
+            flex: 1,
+            textAlign: "right",
+            paddingRight: wp("5")
+        },
 
-    contentItemContainer: {
-        flexDirection: "row",
-    },
+        contentContainerStyle: {
+            paddingHorizontal: wp('3'),
+            paddingVertical: hp("2"),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            flex: 1,
+            alignItems: "center"
+        },
 
-    contentItemLeftContainer: {
-        alignItems: "center",
-        marginRight: wp("2")
-    },
+        contentItemContainer: {
+            flexDirection: "row",
+        },
 
-    contentItemCircle: {
-        width: hp("2"),
-        height: hp("2"),
-        borderRadius: hp("1"),
-    },
+        contentItemLeftContainer: {
+            alignItems: "center",
+            marginRight: wp("2")
+        },
 
-    contentItemLine: {
-        width: 2,
-        height: hp("3")
-    },
+        contentItemCircle: {
+            width: hp("2"),
+            height: hp("2"),
+            borderRadius: hp("1"),
+        },
 
-    contentItemLeftText: {
-        flex: 0.5,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P6,
-        color: colors.textColorBlack1
-    },
+        contentItemLine: {
+            width: 2,
+            height: hp("3")
+        },
 
-    contentItemRightText: {
-        flex: 0.5,
-        textAlign: "right",
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6,
-        color: colors.textColorGrey1
-    },
+        contentItemLeftText: {
+            flex: 0.5,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P6,
+            color: colors.headingColor
+        },
+
+        contentItemRightText: {
+            flex: 0.5,
+            textAlign: "right",
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P6,
+            color: colors.subHeadingColor
+        },
+
+        containerSpacing: {
+            marginBottom: hp("1")
+        }
+    }
 
 }
 
-export default Styles;

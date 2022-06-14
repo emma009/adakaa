@@ -1,14 +1,17 @@
-import React, {useRef} from 'react';
-import {View,} from 'react-native';
+import React, {useRef, useState} from 'react';
+import { useColorScheme, View } from "react-native";
 import {Button, Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
-import Style from "./Style";
+import { Styles } from "./Style";
 import AppHeader from "../../../components/Application/AppHeader/View";
 import AppInput from "../../../components/Application/AppInput/View";
 import Routes from "../../../navigation/Routes";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import AppButton from "../../../components/Application/AppButton/View";
 import {heightPercentageToDP as hp} from "react-native-responsive-screen";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 
 const assets = AppConfig.assets.default;
@@ -16,21 +19,37 @@ const assets = AppConfig.assets.default;
 
 export const Variant1SignupScreen = (props) => {
 
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, colors);
+
+    //Internal States
+    const [profileImage, setProfileImage] = useState("");
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
+    const [password, setPassword] = useState("")
+
+
+    //References
     let inputRef = useRef();
 
     return (
-
         <KeyboardAwareScrollView
             keyboardShouldPersistTaps={'never'}
             getTextInputRefs={() => {
                 return [inputRef];
             }}
+            style={screenStyles.scrollViewContainer}
+            contentContainerStyle={screenStyles.scrollViewContentContainer}
             showsVerticalScrollIndicator={false}>
 
-            <View style={Style.container}>
+            <View style={screenStyles.container}>
 
-
-                <Image source={assets.signup_form_header1} style={Style.headerImage}/>
+              <View style={screenStyles.headerContainer}>
+                <Image source={assets.signup_form_header1} style={screenStyles.headerImage}/>
+              </View>
 
                 <AppHeader
                     isTranslucent
@@ -40,37 +59,47 @@ export const Variant1SignupScreen = (props) => {
                     title={"Signup"}
                 />
 
+                <View style={[screenStyles.bottomContainer]}>
+                    <Text style={screenStyles.titleText}>{"Create Account!"}</Text>
 
-                <View style={[Style.bottomContainer]}>
-                    <Text style={Style.titleText}>{"Create Account!"}</Text>
-
-                    <Text style={Style.subtitleText}>{"Quickly create account"}</Text>
+                    <Text style={screenStyles.subtitleText}>{"Quickly create account"}</Text>
 
 
                     <AppInput
-                        textInputRef={r => (this.inputRef = r)}
+                      {...globalStyles.secondaryInputStyle}
+                      textInputRef={r => (inputRef = r)}
                         leftIcon={assets.envelop_icon}
                         placeholder={"Email Address"}
-                        onChangeText={(value) => {
-                        }}
+                      value={email}
+                      keyboardType={"email-address"}
+                      onChangeText={(email) => {
+                          setEmail(email)
+                      }}
                     />
 
                     <AppInput
-                        textInputRef={r => (inputRef = r)}
+                      {...globalStyles.secondaryInputStyle}
+                      textInputRef={r => (inputRef = r)}
                         leftIcon={assets.phone_icon}
                         placeholder={"Phone"}
-                        onChangeText={(value) => {
-                        }}
+                      value={phone}
+                      keyboardType={"phone-pad"}
+                      onChangeText={(phone) => {
+                          setPhone(phone)
+                      }}
                     />
 
                     <AppInput
-                        containerStyle={{marginBottom: hp(1)}}
+                      {...globalStyles.secondaryInputStyle}
+                      containerStyle={screenStyles.passwordInputContainer}
                         textInputRef={r => (inputRef = r)}
                         isPasswordField
                         leftIcon={assets.lock_icon}
                         placeholder={"Password"}
-                        onChangeText={(value) => {
-                        }}
+                      value={password}
+                      onChangeText={(password) => {
+                          setPassword(password)
+                      }}
                     />
 
                     <AppButton
@@ -80,13 +109,13 @@ export const Variant1SignupScreen = (props) => {
                         }}
                     />
 
-                    <View style={Style.accountBottomContainer}>
-                        <Text style={Style.accountText}>{"Already have an account?"}</Text>
+                    <View style={screenStyles.accountBottomContainer}>
+                        <Text style={screenStyles.accountText}>{"Already have an account?"}</Text>
                         <Button
 
                             title={"Login"}
                             type={"clear"}
-                            titleStyle={Style.loginButton}
+                            titleStyle={screenStyles.loginButton}
                             onPress={() =>
                                 props.navigation.goBack()
                             }

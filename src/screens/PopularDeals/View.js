@@ -11,6 +11,8 @@ export const PopularDeals = (props) => {
         <BaseView
             navigation={props.navigation}
             title={"Popular Deals"}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
                 return (
                     <FlatList

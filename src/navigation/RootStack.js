@@ -11,7 +11,7 @@ import Routes from './Routes';
 import {SplashScreen} from '../screens/Splash/View';
 import {Variant1Intro} from '../screens/Variant1/Intro/View';
 import {Variant2Intro} from '../screens/Variant2/intro/View';
-import {Variant3Intro} from '../screens/Variant3/intro2/View';
+import {Variant3Intro} from '../screens/Variant3/intro/View';
 
 import {Variant1LoginScreen} from '../screens/Variant1/Login/View';
 import {Variant1LoginFormScreen} from '../screens/Variant1/LoginForm/View';
@@ -51,7 +51,7 @@ import {CategoryList} from "../screens/CategoryList/View";
 import {CategoryItems} from "../screens/CategoryItems/View";
 import {Search} from "../screens/Search/View";
 import Globals from "../utils/Globals";
-import colors from "../../branding/carter/styles/Colors";
+import colors from "../../branding/carter/styles/light/Colors";
 import {AddAddress} from "../screens/AddAddress/View";
 import {MyAddress} from "../screens/MyAddress/View";
 import {MyCreditCards} from "../screens/MyCreditCards/View";
@@ -72,7 +72,6 @@ import {Variant1BottomTabBar} from "../components/Application/Variant1BottomTabB
 import {Variant2BottomTabBar} from "../components/Application/Variant2BottomTabBar/View";
 import {Variant3BottomTabBar} from "../components/Application/Variant3BottomTabBar/View";
 
-const styles = AppConfig.styling.default;
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();

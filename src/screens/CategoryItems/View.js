@@ -11,6 +11,8 @@ export const CategoryItems = (props) => {
         <BaseView
             navigation={props.navigation}
             title={props.route.params.category}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
                 return (
                     <FlatList
@@ -29,8 +31,8 @@ export const CategoryItems = (props) => {
                                 isFavourite={item.isFavourite}
                                 detail={item.detail}
                                 ratingValue={item.ratingValue}
-                                cartCountChange={(count) => { console.log(count) }}
-                                favouriteChange = {(favourite) => console.log(favourite)}
+                                cartCountChange={(count) => {  }}
+                                favouriteChange = {(favourite) => { }}
                                 navigation={props.navigation}
                             />
                         }

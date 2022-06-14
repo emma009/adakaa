@@ -1,23 +1,28 @@
 import React from 'react';
-import AppConfig from "../../../../branding/App_config";
 import {Button} from "react-native-elements";
+import { useColorScheme } from "react-native";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 const PropTypes = require('prop-types');
 
-const styles = AppConfig.styling.default;
-
-
 const AppButton = (props) => {
 
-    const {
-        title,
-        onPress,
-        buttonStyle,
-        titleStyle
-    } = props;
+
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
 
-    return (
+
+  const buttonStyle = props.buttonStyle || globalStyles.primaryButtonStyle;
+      const titleStyle = props.titleStyle || globalStyles.primaryButtonTextStyle;
+      const title = props.title || "Text"
+    const onPress = props.onPress || (() => {})
+
+
+  return (
 
         <Button
             buttonStyle={buttonStyle}
@@ -39,12 +44,6 @@ AppButton.propTypes = {
     buttonStyle: PropTypes.any,
 
     titleStyle: PropTypes.any,
-};
-
-AppButton.defaultProps = {
-    buttonStyle: styles.primaryButtonStyle,
-    titleStyle: styles.primaryButtonTextStyle,
-    title: "Text"
 };
 
 export default AppButton;

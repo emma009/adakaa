@@ -1,79 +1,96 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import AppConfig from "../../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
-const styles = AppConfig.styling.default;
 
-let style = {
+export const Styles = function(styles, darkColors, lightColors) {
 
-    container: {
-        flex: 1,
-        alignItems: 'center',
-    },
+    return {
 
-    headerImage: {
-        width: wp('65%'),
-        height: hp('45%'),
-        resizeMode: "contain",
-    },
+        mainContainer: {
+            flex: 1
+        },
 
-    bottomContainer: {
-        flex: 1,
-        width: styles.gridWidth3,
-        paddingTop: hp("3"),
-        marginTop: hp(20)
-    },
+        container: {
+            flex: 1,
+            alignItems: 'center',
+        },
 
-    titleText: {
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H9,
-        marginBottom: hp("0.5"),
-        color: colors.textColorBlack1,
-        textAlign: "center"
-    },
+        headerImage: {
+            width: wp('65%'),
+            height: hp('45%'),
+            resizeMode: "contain",
+        },
 
-    subtitleText: {
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4,
-        marginBottom: hp("2"),
-        color: colors.textColorGrey1,
-        textAlign: "center"
-    },
+        bottomContainer: {
+            flex: 1,
+            width: styles.gridWidth3,
+            paddingTop: hp("3"),
+            marginTop: hp(20)
+        },
 
-    forgotPasswordContainer: {
-        flexDirection:"row",
-        marginBottom: hp(1)
-    },
+        contentContainerStyle: {
+            marginTop: hp(5)
+        },
 
-    accountBottomContainer: {
-        flexDirection:"row",
-        alignItems: "center",
-        justifyContent: "center"
-    },
+        titleText: {
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.H8,
+            marginBottom: hp("0.5"),
+            color: lightColors.headingColor,
+            textAlign: "center"
+        },
 
-    accountText: {
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5,
-        color: colors.textColorGrey1,
-        alignSelf: "center",
-        marginLeft: hp(1)
-    },
+        subtitleText: {
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P4,
+            marginBottom: hp("2"),
+            color: lightColors.subHeadingColor,
+            textAlign: "center"
+        },
 
-    signupButton: {
-        color: colors.textColorBlack1,
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
+        forgotPasswordContainer: {
+            flexDirection:"row",
+            marginBottom: hp(1)
+        },
 
-    },
+        accountBottomContainer: {
+            flexDirection:"row",
+            alignItems: "center",
+            justifyContent: "center"
+        },
 
-    forgotPasswordButton: {
-        color: colors.textColorBlue1,
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6
+        accountText: {
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P5,
+            color: lightColors.subHeadingColor,
+            alignSelf: "center",
+            marginLeft: hp(1)
+        },
+
+        signupButton: {
+            color: lightColors.headingColor,
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P4,
+
+        },
+
+        switchContainer: {
+            justifyContent: "center"
+        },
+
+        bottomButtonContainer: {
+            flex: 1,
+            alignItems: "flex-end"
+        },
+
+        forgotPasswordButton: {
+            color: lightColors.subHeadingQuaternaryColor,
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P6
+        }
     }
 
 }
 
-export default style;

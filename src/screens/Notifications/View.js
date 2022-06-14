@@ -1,35 +1,36 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import { ScrollView, useColorScheme, View } from "react-native";
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import BaseView from "../BaseView"
 import {Text} from "react-native-elements";
-import AppConfig from "../../../branding/App_config";
-import Styles from "./Styles";
+import { Styles } from "./Styles";
 import {CustomSwitch} from "../../components/Global/CustomSwitch/View";
 import AppButton from "../../components/Application/AppButton/View";
+import { useTheme } from "@react-navigation/native";
 
-const colors = AppConfig.colors.default;
 
 export const Notifications = (props) => {
 
+  //Theme based styling and colors
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const screenStyles = Styles(scheme, colors);
+
     const renderNotificationRow = (bottomMargin, bottomBorder, title, subtitle) => {
         return <View style={[
-            Styles.notificationContainer,
+          screenStyles.notificationContainer,
             bottomMargin && {marginBottom: hp(1)},
-            bottomBorder && {
-                borderBottomWidth: 1,
-                borderBottomColor: colors.borderColorLight
-            }
+            bottomBorder && screenStyles.notificationBottomBorder
         ]}>
 
             <View style={{width: "80%"}}>
 
-                <Text style={Styles.titleText}>{title}</Text>
-                <Text style={Styles.subtitleText}>{subtitle}</Text>
+                <Text style={screenStyles.titleText}>{title}</Text>
+                <Text style={screenStyles.subtitleText}>{subtitle}</Text>
 
             </View>
 
-            <View style={{width: "20%", alignItems: "center"}}>
+            <View style={screenStyles.switchContainer}>
 
                 <CustomSwitch
                     initialValue={false}
@@ -47,10 +48,12 @@ export const Notifications = (props) => {
         <BaseView
             navigation={props.navigation}
             title={"Notifications"}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
                 return (
 
-                    <View style={{flex: 1}}>
+                    <View style={ screenStyles.container }>
 
                         <ScrollView>
 

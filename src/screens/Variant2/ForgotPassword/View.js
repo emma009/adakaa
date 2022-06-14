@@ -1,66 +1,80 @@
-import React, {useRef} from 'react';
-import {StatusBar, View,} from 'react-native';
+import React, {useRef, useState} from 'react';
+import { StatusBar, useColorScheme, View } from "react-native";
 import {Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import AppInput from "../../../components/Application/AppInput/View"
-import Style from "./Style";
+import { Styles } from "./Style";
 import AppHeader from "../../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import AppButton from "../../../components/Application/AppButton/View";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 
 const assets = AppConfig.assets.default;
-const styles = AppConfig.styling.default;
 
 export const Variant2ForgotPassword = (props) => {
 
-    let inputRef = useRef();
+  //Theme based styling and colors
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+  const screenStyles = Styles(globalStyles, colors);
+
+
+  //Internal States
+  const [email, setEmail] = useState("")
+
+  //References
+  let inputRef = useRef();
 
     return (
         <KeyboardAwareScrollView
             keyboardShouldPersistTaps={'never'}
-            style={{flex: 1, backgroundColor: "white"}}
+            style={screenStyles.scrollViewContainer}
+            contentContainerStyle={screenStyles.scrollViewContentContainer}
             getTextInputRefs={() => {
                 return [inputRef];
             }}
             showsVerticalScrollIndicator={false}>
-            <View style={Style.container}>
-                <StatusBar backgroundColor="white" barStyle="dark-content"/>
-
+            <View style={screenStyles.container}>
+              <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
                 <AppHeader
                     navigation={props.navigation}
                     isTranslucent
+                    transparentHeader
+                    containerStyle={screenStyles.headerContainer}
                     headerWithBack
-                    whiteHeader
-                    title={"Forgot Password"}
+                    headerWithBackground
+                    title={"Password Recovery"}
                 />
 
-                <View style={Style.imageContainer}>
-                    <Image source={assets.intro1_img4} style={Style.headerImage} />
+                <View style={screenStyles.imageContainer}>
+                    <Image source={assets.intro1_img4} style={screenStyles.headerImage} />
                 </View>
 
 
+                <View style={[screenStyles.bottomContainer]}>
+                    <Text style={screenStyles.titleText}>{"Forgot Password"}</Text>
 
-
-                <View style={[Style.bottomContainer]}>
-                    <Text style={Style.titleText}>{"Forgot Password!"}</Text>
-
-                    <Text style={Style.subtitleText}>{"Quickly change password"}</Text>
+                    <Text style={screenStyles.subtitleText}>{"Enter your email and we'll send you instructions on how to reset it."}</Text>
 
                     <AppInput
-                        {...styles.secondaryInputStyle}
-                        containerStyle={{marginBottom: hp(2)}}
+                        containerStyle={{marginBottom: hp(1)}}
                         textInputRef={r => (inputRef = r)}
                         leftIcon={assets.envelop_icon}
                         placeholder={"Email Address"}
-                        onChangeText={(value) => {
+                        value={email}
+                        onChangeText={(email) => {
+                          setEmail(email)
                         }}
                     />
 
                     <AppButton
-                        title={'Forgot Password'}
+                        title={'Send Link'}
                         onPress={() => {
                             props.navigation.goBack();
                         }}

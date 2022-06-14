@@ -1,26 +1,36 @@
 import React, {useRef, useState} from 'react';
-import {ScrollView, View} from 'react-native';
+import { ScrollView, useColorScheme, View } from "react-native";
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
 import {Text} from "react-native-elements";
-import AppConfig from "../../../branding/App_config";
 import Routes from "../../navigation/Routes";
-import Styles from "./Styles";
+import { Styles } from "./Styles";
 import AppInput from "../../components/Application/AppInput/View";
-import assets from "../../../branding/carter/assets/Assets";
 import {CustomSwitch} from "../../components/Global/CustomSwitch/View";
 import AppButton from "../../components/Application/AppButton/View";
 import Globals from "../../utils/Globals";
 import {CardItem} from "../../components/Application/CardItem/View";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
+import AppConfig from "../../../branding/App_config";
 
-const styles = AppConfig.styling.default;
+const assets = AppConfig.assets.default;
 
 
 export const MyCreditCards = (props) => {
 
-    const [activeSections, setActiveSections] = useState([]);
+  //Theme based styling and colors
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const screenStyles = Styles(scheme, colors);
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
+  //Internal states
+  const [activeSections, setActiveSections] = useState([]);
+
+  //References
     let inputRef = useRef();
 
     const renderCreditCardsHeader = (section, index, isActive) => {
@@ -36,11 +46,11 @@ export const MyCreditCards = (props) => {
 
     const renderCreditCardsContent = section => {
         return (
-            <View style={Styles.contentContainer}>
+            <View style={screenStyles.contentContainer}>
 
                 <AppInput
                     textInputRef= {r => (inputRef = r)}
-                    {...styles.secondaryInputStyle}
+                    {...globalStyles.secondaryInputStyle}
                     leftIcon={assets.account_icon}
                     placeholder={"Cardholder Name"}
                     onChangeText={(value) => {
@@ -49,7 +59,7 @@ export const MyCreditCards = (props) => {
 
                 <AppInput
                     textInputRef= {r => (inputRef = r)}
-                    {...styles.secondaryInputStyle}
+                    {...globalStyles.secondaryInputStyle}
                     leftIcon={assets.credit_card_icon}
                     placeholder={"Card Number"}
                     onChangeText={(value) => {
@@ -61,7 +71,7 @@ export const MyCreditCards = (props) => {
 
                     <AppInput
                         textInputRef= {r => (inputRef = r)}
-                        {...styles.secondaryInputStyle}
+                        {...globalStyles.secondaryInputStyle}
                         leftIcon={assets.calendar_icon}
                         placeholder={"Expiry"}
                         containerStyle={{
@@ -74,7 +84,7 @@ export const MyCreditCards = (props) => {
 
                     <AppInput
                         textInputRef= {r => (inputRef = r)}
-                        {...styles.secondaryInputStyle}
+                        {...globalStyles.secondaryInputStyle}
                         leftIcon={assets.lock_icon}
                         placeholder={"CVV"}
                         containerStyle={{
@@ -93,7 +103,7 @@ export const MyCreditCards = (props) => {
                         }}
                     />
 
-                    <Text style={Styles.defaultText}>{"Make Default"}</Text>
+                    <Text style={screenStyles.defaultText}>{"Make Default"}</Text>
                 </View>
 
 
@@ -114,12 +124,14 @@ export const MyCreditCards = (props) => {
             onRightIconPress={() => {
                 props.navigation.navigate(Routes.ADD_CREDIT_CARD)
             }}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
                 return (
 
-                    <View style={{flex: 1}}>
+                    <View style={ screenStyles.container }>
 
-                        <ScrollView style={{flex: 0.9}}>
+                        <ScrollView style={ screenStyles.scrollViewContainer }>
 
                             <Accordion
                                 sections={Globals.paymentMethodItems.cardItems}
@@ -127,10 +139,9 @@ export const MyCreditCards = (props) => {
                                 renderHeader={renderCreditCardsHeader}
                                 renderContent={renderCreditCardsContent}
                                 expandMultiple={false}
-                                sectionContainerStyle={{marginBottom: hp("1")}}
+                                sectionContainerStyle={screenStyles.containerSpacing}
                                 onChange={_updateSections}
                             />
-
 
                         </ScrollView>
 

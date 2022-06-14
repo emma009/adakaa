@@ -1,41 +1,54 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../branding/App_config";
-import Typography from "../../../branding/carter/styles/Typography";
 
-const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
+const Typography = AppConfig.typography.default;
 
 
-let Styles = {
+export const Styles = function(scheme, colors) {
 
-    notificationContainer: {
-        backgroundColor: "white",
+    return {
+        container: {
+            flex: 1
+        },
 
-        flexDirection: "row",
+        notificationContainer: {
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
 
-        alignItems: "center",
+            flexDirection: "row",
 
-        paddingLeft: wp("5"),
+            alignItems: "center",
 
-        paddingVertical: hp("2"),
-    },
+            paddingLeft: wp("5"),
 
-    titleText: {
-        fontSize: Typography.P3,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        color: colors.textColorBlack1,
-        marginBottom: hp(1)
-    },
+            paddingVertical: hp("2"),
+        },
 
-    subtitleText: {
-        fontSize: Typography.P6,
-        fontFamily: Fonts.RUBIK_REGULAR,
-        lineHeight: hp(2.5),
-        marginVertical: hp("0.5"),
-        color: colors.textColorGrey1
-    },
+        notificationBottomBorder: {
+            borderBottomWidth: 1,
+            borderBottomColor: colors.borderColorLight
+        },
+
+        switchContainer: {
+            width: "20%",
+            alignItems: "center"
+        },
+
+        titleText: {
+            fontSize: Typography.P3,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            color: colors.headingColor,
+            marginBottom: hp(1)
+        },
+
+        subtitleText: {
+            fontSize: Typography.P6,
+            fontFamily: Fonts.RUBIK_REGULAR,
+            lineHeight: hp(2.5),
+            marginVertical: hp("0.5"),
+            color: colors.subHeadingColor
+        },
+    }
 
 }
-
-export default Styles;

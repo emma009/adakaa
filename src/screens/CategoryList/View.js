@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {CategoryItem} from "../../components/Application/CategoryItem/CategoryItem";
+import {CategoryItem} from "../../components/Application/CategoryItem/View";
 import BaseView from "../BaseView";
 import Globals from "../../utils/Globals";
 
@@ -10,6 +10,8 @@ export const CategoryList = (props) => {
         <BaseView
             navigation={props.navigation}
             title={"Categories"}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
                 return (
 

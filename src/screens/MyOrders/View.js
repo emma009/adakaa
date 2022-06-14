@@ -1,22 +1,41 @@
 import React, {useState} from 'react';
-import {Animated, Image, ScrollView, View} from 'react-native';
+import { Animated, Image, ScrollView, useColorScheme, View } from "react-native";
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
 import {Divider, Text} from "react-native-elements";
-import AppConfig from "../../../branding/App_config";
-import Styles from "./Styles";
-import assets from "../../../branding/carter/assets/Assets";
+import { Styles } from "./Styles";
 import Easing from "react-native/Libraries/Animated/src/Easing";
 import Globals from "../../utils/Globals";
+import { useTheme } from "@react-navigation/native";
+import AppConfig from "../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
+const assets = AppConfig.assets.default;
 
+//Animation Constants
+const activeAnimConfig = {
+  toValue: 1,
+  duration: 300,
+  easing: Easing.linear,
+  useNativeDriver: true,
+};
 
+const deActiveAnimConfig = {
+  toValue: 0,
+  duration: 300,
+  easing: Easing.linear,
+  useNativeDriver: true,
+};
 export const MyOrders = (props) => {
 
-    const [activeSections, setActiveSections] = useState([]);
+  //Theme based styling and colors
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const screenStyles = Styles(scheme, colors);
 
+
+  //Internal States
+  const [activeSections, setActiveSections] = useState([]);
 
     const renderOrdersHeader = (section, index, isActive) => {
 
@@ -28,61 +47,50 @@ export const MyOrders = (props) => {
         if (isActive) {
             Animated.timing(
                 section.spinValue,
-                {
-                    toValue: 1,
-                    duration: 300,
-                    easing: Easing.linear,
-                    useNativeDriver: true
-                }
+                activeAnimConfig
             ).start()
         } else {
             Animated.timing(
                 section.spinValue,
-                {
-                    toValue: 0,
-                    duration: 300,
-                    easing: Easing.linear,
-                    useNativeDriver: true
-                }
+                deActiveAnimConfig
             ).start()
         }
 
-
         return (
             <View>
-                <View style={[Styles.headerContainer, isActive && Styles.headerContainerActive]}>
+                <View style={[screenStyles.headerContainer, isActive && screenStyles.headerContainerActive]}>
 
                     <View
-                        style={[Styles.headerLeftIconContainer,
-                            section.isOrderDelivered && {backgroundColor: colors.textColorGrey2}]}>
+                        style={[screenStyles.headerLeftIconContainer,
+                            section.isOrderDelivered && {backgroundColor: colors.subHeadingTertiaryColor}]}>
                         <Image source={assets.box_open_icon} style={[
-                            Styles.headerLeftIcon,
-                            {tintColor: section.isOrderDelivered ? colors.textColorGrey1 : colors.primaryGreenColor}
+                            screenStyles.headerLeftIcon,
+                            {tintColor: section.isOrderDelivered ? colors.subHeadingColor : colors.subHeadingSecondaryColor}
                         ]}/>
                     </View>
 
                     <View>
                         <Text
                             style={[
-                                Styles.headerTitleText,
-                                section.isOrderDelivered && {color: colors.textColorGrey1}
+                                screenStyles.headerTitleText,
+                                section.isOrderDelivered && {color: colors.subHeadingColor}
                             ]}>{section.orderNo}</Text>
-                        <Text style={Styles.headerSubtitleText}>{section.dateTime}</Text>
-                        <View style={{flexDirection: "row", alignItems: "center"}}>
-                            <Text style={Styles.headerSubtitleText}>{"Items: "}</Text>
+                        <Text style={screenStyles.headerSubtitleText}>{section.dateTime}</Text>
+                        <View style={ screenStyles.itemsHorizontalContainer }>
+                            <Text style={screenStyles.headerSubtitleText}>{"Items: "}</Text>
                             <Text style={[
                                 {
-                                    color: section.isOrderDelivered ? colors.textColorGrey1 : colors.textColorBlack1,
+                                    color: section.isOrderDelivered ? colors.subHeadingColor : colors.headingColor,
                                     marginRight: wp(2)
                                 },
-                                Styles.headerSubtitleValueText
+                                screenStyles.headerSubtitleValueText
                             ]}>{"10"}</Text>
-                            <Text style={Styles.headerSubtitleText}>{"Total: "}</Text>
+                            <Text style={screenStyles.headerSubtitleText}>{"Total: "}</Text>
                             <Text style={[
                                 {
-                                    color: section.isOrderDelivered ? colors.textColorGrey1 : colors.textColorBlack1
+                                    color: section.isOrderDelivered ? colors.subHeadingColor : colors.headingColor
                                 },
-                                Styles.headerSubtitleValueText
+                                screenStyles.headerSubtitleValueText
                             ]}>{"$ 16.99"}</Text>
 
 
@@ -91,10 +99,10 @@ export const MyOrders = (props) => {
 
                     </View>
 
-                    <View style={Styles.headerRightIconContainer}>
+                    <View style={screenStyles.headerRightIconContainer}>
                         <Animated.Image source={assets.drop_down_icon} style={[
                             {transform: [{rotate: spin}]},
-                            Styles.headerRightIcon
+                            screenStyles.headerRightIcon
                         ]} resizeMode={"contain"}/>
                     </View>
 
@@ -102,13 +110,13 @@ export const MyOrders = (props) => {
 
                 {
                     section.isOrderDelivered && !isActive &&
-                    <View style={Styles.headerOrderDeliverContainer}>
+                    <View style={screenStyles.headerOrderDeliverContainer}>
 
-                        <View style={Styles.headerOrderDeliverCircle}/>
+                        <View style={screenStyles.headerOrderDeliverCircle}/>
 
-                        <Text style={Styles.headerSubtitleText}>{"Order Delivered"}</Text>
+                        <Text style={screenStyles.headerSubtitleText}>{"Order Delivered"}</Text>
 
-                        <Text style={Styles.headerOrderDeliverDateText}>{"Dec 10, 2020"}</Text>
+                        <Text style={screenStyles.headerOrderDeliverDateText}>{"Dec 10, 2020"}</Text>
 
                     </View>
                 }
@@ -120,116 +128,117 @@ export const MyOrders = (props) => {
 
     const renderOrdersContent = section => {
         return (
-            <View style={Styles.contentContainerStyle}>
+            <View style={screenStyles.contentContainerStyle}>
 
-                <View style={Styles.contentItemContainer}>
-                    <View style={Styles.contentItemLeftContainer}>
+                <View style={screenStyles.contentItemContainer}>
+                    <View style={screenStyles.contentItemLeftContainer}>
                         <View
                             style={[
-                                Styles.contentItemCircle,
+                                screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderPlaced ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
 
                         <Divider
                             style={[
-                                Styles.contentItemLine,
+                                screenStyles.contentItemLine,
                                 {
-                                    backgroundColor: section.isOrderPlaced ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderPlaced ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
                     </View>
-                    <Text style={Styles.contentItemLeftText}>{"Orders Placed"}</Text>
-                    <Text style={Styles.contentItemRightText}>{section.orderPlaced}</Text>
+                    <Text style={screenStyles.contentItemLeftText}>{"Orders Placed"}</Text>
+                    <Text style={screenStyles.contentItemRightText}>{section.orderPlaced}</Text>
                 </View>
 
-                <View style={Styles.contentItemContainer}>
-                    <View style={Styles.contentItemLeftContainer}>
+                <View style={screenStyles.contentItemContainer}>
+                    <View style={screenStyles.contentItemLeftContainer}>
                         <View
                             style={[
-                                Styles.contentItemCircle,
+                                screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderConfirmed ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
 
                         <Divider
                             style={[
-                                Styles.contentItemLine,
+                                screenStyles.contentItemLine,
                                 {
-                                    backgroundColor: section.isOrderConfirmed ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderConfirmed ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
                     </View>
-                    <Text style={Styles.contentItemLeftText}>{"Order Confirmed"}</Text>
-                    <Text style={Styles.contentItemRightText}>{section.orderConfirmed}</Text>
+                    <Text style={screenStyles.contentItemLeftText}>{"Order Confirmed"}</Text>
+                    <Text style={screenStyles.contentItemRightText}>{section.orderConfirmed}</Text>
                 </View>
 
-                <View style={Styles.contentItemContainer}>
-                    <View style={Styles.contentItemLeftContainer}>
+                <View style={screenStyles.contentItemContainer}>
+                    <View style={screenStyles.contentItemLeftContainer}>
                         <View
                             style={[
-                                Styles.contentItemCircle,
+                                screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderShipped ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
 
                         <Divider
                             style={[
-                                Styles.contentItemLine,
+                                screenStyles.contentItemLine,
                                 {
-                                    backgroundColor: section.isOrderShipped ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderShipped ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
                     </View>
-                    <Text style={Styles.contentItemLeftText}>{"Order Shipped"}</Text>
-                    <Text style={Styles.contentItemRightText}>{section.orderShipped}</Text>
+                    <Text style={screenStyles.contentItemLeftText}>{"Order Shipped"}</Text>
+                    <Text style={screenStyles.contentItemRightText}>{section.orderShipped}</Text>
                 </View>
 
-                <View style={Styles.contentItemContainer}>
-                    <View style={Styles.contentItemLeftContainer}>
+                <View style={screenStyles.contentItemContainer}>
+                    <View style={screenStyles.contentItemLeftContainer}>
                         <View
                             style={[
-                                Styles.contentItemCircle,
+                                screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderOutOfDelivery ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
 
                         <Divider
                             style={[
-                                Styles.contentItemLine,
+                                screenStyles.contentItemLine,
                                 {
-                                    backgroundColor: section.isOrderOutOfDelivery ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderOutOfDelivery ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
                     </View>
                     <Text
-                        style={[Styles.contentItemLeftText, {color: section.isOrderOutOfDelivery ? colors.textColorBlack1 : colors.textColorGrey1}]}>{"Out of Delivery"}</Text>
-                    <Text style={[Styles.contentItemRightText]}>{section.outOfDelivery}</Text>
+                        style={[screenStyles.contentItemLeftText, {color: section.isOrderOutOfDelivery ? colors.headingColor : colors.subHeadingColor}]}>{"Out of Delivery"}</Text>
+                    <Text style={[screenStyles.contentItemRightText]}>{section.outOfDelivery}</Text>
                 </View>
 
-                <View style={Styles.contentItemContainer}>
-                    <View style={Styles.contentItemLeftContainer}>
+                <View style={screenStyles.contentItemContainer}>
+                    <View style={screenStyles.contentItemLeftContainer}>
                         <View
                             style={[
-                                Styles.contentItemCircle,
+                                screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderDelivered ? colors.buttonGreenColor : colors.iconColorGrey1
+                                    backgroundColor: section.isOrderDelivered ? colors.subHeadingSecondaryColor : colors.subHeadingColor
                                 }
                             ]}/>
 
                     </View>
                     <Text
-                        style={[Styles.contentItemLeftText, {color: section.isOrderOutOfDelivery ? colors.textColorBlack1 : colors.textColorGrey1}]}>{"Order Delivered"}</Text>
-                    <Text style={Styles.contentItemRightText}>{section.orderDelivered}</Text>
+                        style={[screenStyles.contentItemLeftText, {color: section.isOrderOutOfDelivery ? colors.headingColor : colors.subHeadingColor}]}>{"Order Delivered"}</Text>
+                    <Text style={screenStyles.contentItemRightText}>{section.orderDelivered}</Text>
                 </View>
 
             </View>
         );
     };
+
 
     const _updateSections = allActiveSections => {
         setActiveSections(allActiveSections)
@@ -242,9 +251,9 @@ export const MyOrders = (props) => {
             navigation={props.navigation}
             showAppHeader={true}
             headerWithBack={!props.hideBack}
+            applyBottomSafeArea
             childView={() => {
                 return (
-
                     <ScrollView>
 
                         <Accordion
@@ -253,7 +262,7 @@ export const MyOrders = (props) => {
                             renderHeader={renderOrdersHeader}
                             renderContent={renderOrdersContent}
                             expandMultiple={false}
-                            sectionContainerStyle={{marginBottom: hp("1")}}
+                            sectionContainerStyle={ screenStyles.containerSpacing }
                             onChange={_updateSections}
                         />
 
@@ -261,8 +270,8 @@ export const MyOrders = (props) => {
 
                 );
             }}
-        />
 
+        />
     );
 
 }

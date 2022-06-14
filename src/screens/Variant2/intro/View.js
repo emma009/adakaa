@@ -1,32 +1,40 @@
 import React, {useRef, useState} from 'react';
-import {Image, StatusBar, View,} from 'react-native';
+import { Image, StatusBar, useColorScheme, View } from "react-native";
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Text} from 'react-native-elements';
-import AppConfig from '../../../../branding/App_config';
 import Routes from '../../../navigation/Routes';
-import {StackActions} from '@react-navigation/native';
-import Style from "./Style"
+import { StackActions, useTheme } from "@react-navigation/native";
+import { Styles } from "./Style"
 import Globals from "../../../utils/Globals";
 import AppButton from "../../../components/Application/AppButton/View";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
-const colors = AppConfig.colors.default;
 
 export const Variant2Intro = (props) => {
 
-    let _carouselRef = useRef();
+  //Theme based styling and colors
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+  const screenStyles = Styles(globalStyles, colors);
 
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+  //Internal States
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+
+  //References
+  let _carouselRef = useRef();
 
     const _renderItem = ({item, index}) => {
 
         return (
-            <View style={Style.introItemContainer}>
+            <View style={screenStyles.introItemContainer}>
 
-                <Image source={item.headerImg} style={Style.introItemImage}/>
-                <Text style={Style.introItemTitle}>{item.title}</Text>
-                <Text style={Style.introItemSubtitle}>{item.subtitle}</Text>
-
+                <Image source={item.headerImg} style={screenStyles.introItemImage}/>
+                <Text style={screenStyles.introItemTitle}>{item.title}</Text>
+                <Text style={screenStyles.introItemSubtitle}>{item.subtitle}</Text>
 
             </View>
         );
@@ -34,9 +42,9 @@ export const Variant2Intro = (props) => {
 
     return (
 
-        <View style={Style.container}>
-            <StatusBar backgroundColor={"white"} barStyle="dark-content"/>
-            <View style={Style.introUpperContainer}>
+        <View style={screenStyles.container}>
+          <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content" />
+            <View style={screenStyles.introUpperContainer}>
 
                 <Carousel
                     ref={(c) => {
@@ -57,13 +65,13 @@ export const Variant2Intro = (props) => {
                     inactiveDotOpacity={0.4}
                     inactiveDotScale={1}
                     carouselRef={_carouselRef}
-                    dotStyle={Style.paginationDotStyle}
-                    inactiveDotStyle={Style.paginationInactiveDotStyle}
+                    dotStyle={screenStyles.paginationDotStyle}
+                    inactiveDotStyle={screenStyles.paginationInactiveDotStyle}
                 />
 
             </View>
 
-            <View style={Style.introLowerContainer}>
+            <View style={screenStyles.introLowerContainer}>
                 <AppButton
                     title={activeSlideIndex === 0 ? "Get started" : 'Skip'}
                     onPress={() => {

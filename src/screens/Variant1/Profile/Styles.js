@@ -2,145 +2,152 @@ import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-nativ
 
 import AppConfig from "../../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-let Styles = {
+export const Styles = function(styles, scheme, colors) {
 
-    upperWhiteContainer: {
-        width: "100%",
-        height: hp("20"),
-        backgroundColor: "white"
-    },
+    return {
 
-    container: {
-        width: "100%",
-        height: hp("80"),
-        backgroundColor: colors.textColorGrey2,
-        alignItems: "center"
-    },
+        mainContainer: {
+            flex: 1,
+        },
 
-    profileImageContainer: {
-        position: "absolute",
-        top: hp("14"),
-        alignSelf: "center"
-    },
+        upperContainer: {
+            width: "100%",
+            height: hp("20"),
+            backgroundColor: scheme? colors.secondaryBackground : colors.primaryBackground
+        },
 
-    profileImage: {
-        width: hp("14"),
-        height: hp("14"),
-        borderRadius: hp("7"),
-        resizeMode: "cover"
-    },
+        container: {
+            width: "100%",
+            height: hp("80"),
+            backgroundColor: scheme? colors.primaryBackground : colors.secondaryBackground,
+            alignItems: "center"
+        },
 
-    profileImageAccessoryViewContainer: {
-        width: hp("5"),
-        height: hp("5"),
-        backgroundColor: colors.primaryGreenColor,
-        borderRadius: hp("2.5"),
-        justifyContent: "center",
-        alignItems: "center",
-        position: "absolute",
-        top: hp(9.5),
-        left: hp(9.5),
-    },
+        profileImageContainer: {
+            position: "absolute",
+            top: hp("14"),
+            alignSelf: "center"
+        },
 
-    profileImageAccessoryViewImage: {
-        width: hp("2.5"),
-        height: hp("2.5"),
-        resizeMode: "contain",
-        tintColor: "white",
-    },
+        profileImage: {
+            width: hp("14"),
+            height: hp("14"),
+            borderRadius: hp("7"),
+            resizeMode: "cover"
+        },
 
-    infoContainer: {
-        alignItems: "center",
-        marginTop: hp("9")
-    },
+        profileImageAccessoryViewContainer: {
+            width: hp("5"),
+            height: hp("5"),
+            backgroundColor: colors.activeColor,
+            borderRadius: hp("2.5"),
+            justifyContent: "center",
+            alignItems: "center",
+            position: "absolute",
+            top: hp(9.5),
+            left: hp(9.5),
+        },
 
-    nameText: {
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P1,
-        color: colors.textColorBlack1
-    },
+        profileImageAccessoryViewImage: {
+            width: hp("2.5"),
+            height: hp("2.5"),
+            resizeMode: "contain",
+            tintColor: "white",
+        },
 
-    emailText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5,
-        color: colors.textColorGrey1
-    },
+        infoContainer: {
+            alignItems: "center",
+            marginTop: hp("9")
+        },
 
-    cardListContainer: {
-        width: "100%",
-        marginTop: hp(2)
-    },
+        nameText: {
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P1,
+            color: colors.headingColor
+        },
 
-    cardListingItemContainer: {
-        width: wp(27),
-        height: hp("14"),
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "white",
-        borderRadius: hp(1),
-        margin: hp(1),
-    },
+        emailText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P5,
+            color: colors.subHeadingColor
+        },
 
-    cardListingItemIconContainer: {
-        width: hp("6"),
-        height: hp("6"),
-        backgroundColor: colors.secondaryGreenColor,
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: hp("3")
-    },
+        cardListContainer: {
+            width: "100%",
+            marginTop: hp(2)
+        },
 
-    cardListingItemIcon: {
-        width: hp(2),
-        height: hp(2),
-        tintColor: colors.primaryGreenColor,
-        resizeMode: "contain"
-    },
+        cardListingItemContainer: {
+            width: wp(27),
+            height: hp("14"),
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: scheme? colors.secondaryBackground : colors.primaryBackground,
+            borderRadius: hp(1),
+            margin: hp(1),
+        },
 
-    cardListingItemText: {
-        marginTop: hp("2"),
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5,
-        color: colors.textColorGrey1
-    },
+        cardListingItemIconContainer: {
+            width: hp("6"),
+            height: hp("6"),
+            backgroundColor: colors.tertiaryBackground,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: hp("3")
+        },
 
-    listingContainer: {
-        width: "100%",
-        paddingHorizontal: wp(5),
-        marginVertical: hp(4)
-    },
+        cardListingItemIcon: {
+            width: hp(2),
+            height: hp(2),
+            tintColor: colors.activeColor,
+            resizeMode: "contain"
+        },
 
-    profileListingItemContainer: {
-        flexDirection: "row",
-        paddingVertical: hp(1)
-    },
+        cardListingItemText: {
+            marginTop: hp("2"),
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P5,
+            color: colors.subHeadingColor
+        },
 
-    profileListingItemLeftImage: {
-        width: hp(2.2),
-        height: hp(2.2),
-        tintColor: colors.primaryGreenColor,
-        marginRight: wp(5),
-        resizeMode: "contain"
-    },
+        listingContainer: {
+            width: "100%",
+            paddingHorizontal: wp(5),
+            marginVertical: hp(4)
+        },
 
-    profileListingItemText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P3,
-        color: colors.textColorGrey1
-    },
+        profileListingItemContainer: {
+            flexDirection: "row",
+            paddingVertical: hp(1)
+        },
 
-    profileListingItemRightContainer: {
-        flex: 1,
-        alignItems: "flex-end"
-    },
+        profileListingItemLeftImage: {
+            width: hp(2.2),
+            height: hp(2.2),
+            tintColor: colors.activeColor,
+            marginRight: wp(5),
+            resizeMode: "contain"
+        },
 
+        profileListingItemText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P3,
+            color: colors.subHeadingColor
+        },
 
+        profileListingItemRightContainer: {
+            flex: 1,
+            alignItems: "flex-end"
+        },
+
+        itemsContainer: {
+            alignItems: "center"
+        }
+
+    }
 
 }
-
-export default Styles;

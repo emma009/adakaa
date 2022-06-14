@@ -1,40 +1,36 @@
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import AppConfig from "../../../../branding/App_config";
-import Globals from "../../../utils/Globals";
+
+export const Styles = function(styles, scheme, colors) {
 
 
-const colors = AppConfig.colors.default;
+    return {
+        container: {
+            flexDirection: 'row',
+            backgroundColor: colors.activeColor,
+        },
 
+        bottomTabContainer: {
+            flex: 1,
+            height: hp(6.5),
+            backgroundColor: colors.activeColor,
+            justifyContent: "center",
+            alignItems: "center",
 
-let Style = {
+        },
 
-    container: {
-        flexDirection: 'row',
-        backgroundColor: colors.primaryGreenColor,
-    },
+        bottomTabItemContainer: {
+            borderRadius: hp(2.5),
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: colors.primaryBackground,
+        },
 
-    bottomTabContainer: {
-        flex: 1,
-        height: hp(6.5),
-        backgroundColor: colors.primaryGreenColor,
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: Globals.SAFE_AREA_INSET.bottom
-    },
-
-    bottomTabItemContainer: {
-        borderRadius: hp(2.5),
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "white"
-    },
-
-    bottomTabIcon: {
-        width: hp(3),
-        height: hp(3),
-        resizeMode: "contain"
+        bottomTabIcon: {
+            width: hp(3),
+            height: hp(3),
+            resizeMode: "contain"
+        }
     }
 
-}
 
-export default Style;
+}

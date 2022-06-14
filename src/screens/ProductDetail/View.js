@@ -1,45 +1,60 @@
-import React, {createRef, useState} from 'react';
-import {Image, ScrollView, StatusBar, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
+import React, { useRef, useState } from "react";
+import {
+    Image,
+    ScrollView,
+    StatusBar,
+    TouchableOpacity,
+    TouchableWithoutFeedback,
+    useColorScheme,
+    View,
+} from "react-native";
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Text} from 'react-native-elements';
 import Routes from "../../navigation/Routes";
-import Styles from "./Styles";
+import { Styles } from "./Styles";
 import AppHeader from "../../components/Application/AppHeader/View";
 import {Counter} from "../../components/Global/Counter/View"
 import AppConfig from "../../../branding/App_config";
 import StarRating from "react-native-star-rating";
-import {FavouritesBottomSheetComponent}
-    from "../../components/Application/FavouritesBottomSheetComponent/FavouritesBottomSheetComponent";
+import {FavouritesBottomSheet}
+    from "../../components/Application/FavouritesBottomSheet/View";
 import RBSheet from "react-native-raw-bottom-sheet";
 import ReadMore from "@fawazahmed/react-native-read-more";
 import AppButton from "../../components/Application/AppButton/View";
+import { useTheme } from "@react-navigation/native";
 
-const colors = AppConfig.colors.default;
 const assets = AppConfig.assets.default;
-const styles = AppConfig.styling.default;
 
 export const ProductDetail = (props) => {
 
-    let sheetRef = createRef();
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const screenStyles = Styles(scheme, colors);
 
+
+    //Internal states
     const [isFavourite, setIsFavourite] = useState(props.route.params.item.isFavourite);
 
+    //References
+    let sheetRef = useRef();
 
     const {
         item
     } = props.route.params
 
-    return (
-        <View style={Styles.container}>
-            <StatusBar backgroundColor={"white"} barStyle="dark-content"/>
 
-            <View style={Styles.imageContainer}>
+    return (
+        <View style={screenStyles.container}>
+            <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"} />
+
+            <View style={screenStyles.imageContainer}>
 
                 <Image
                     source={item.bigImage}
                     resizeMode={"contain"}
-                    style={Styles.mainImage}
+                    style={screenStyles.mainImage}
                 />
 
 
@@ -47,41 +62,41 @@ export const ProductDetail = (props) => {
                     navigation={props.navigation}
                     transparentHeader
                     headerWithBack
-                    blackIcons
-                    title={""}
+                    darkIcons
+                    title={" "}
                 />
             </View>
 
-            <View style={Styles.bottomContainer}>
+            <View style={screenStyles.bottomContainerMain}>
 
 
-                <View style={{flex: 0.65}}>
+                <View style={screenStyles.bottomContainerUpper}>
 
                     <ScrollView showsVerticalScrollIndicator={false}>
 
-                        <View style={Styles.infoContainer}>
-                            <Text style={Styles.priceText}>{item.price}</Text>
-                            <View style={Styles.favouriteContainer}>
+                        <View style={screenStyles.infoContainer}>
+                            <Text style={screenStyles.priceText}>{item.price}</Text>
+                            <View style={screenStyles.favouriteContainer}>
 
                                 <TouchableOpacity onPress={() => {
                                     setIsFavourite((isFavourite) => {
+                                        if (!isFavourite) {
+                                            sheetRef.open()
+                                        }
                                         return !isFavourite
                                     });
 
-                                    if (isFavourite) {
-                                        sheetRef.open()
-                                    }
+
 
                                 }}>
-
 
                                     <Image
                                         source={isFavourite ? assets.heart_filled_icon : assets.heart_light_empty_icon}
                                         style={[
                                             {
-                                                tintColor: isFavourite ? colors.iconColorRed1 : colors.iconColorGrey1
+                                                tintColor: isFavourite ? colors.heartRed : colors.iconColorGrey1
                                             },
-                                            Styles.favouriteIcon
+                                            screenStyles.favouriteIcon
                                         ]} resizeMode={"contain"}/>
 
                                 </TouchableOpacity>
@@ -90,16 +105,16 @@ export const ProductDetail = (props) => {
                         </View>
 
 
-                        <Text style={Styles.nameText}>{item.title}</Text>
-                        <Text style={Styles.weightText}>{item.weight}</Text>
+                        <Text style={screenStyles.nameText}>{item.title}</Text>
+                        <Text style={screenStyles.weightText}>{item.weight}</Text>
 
 
                         <TouchableWithoutFeedback onPress={() => {
                             props.navigation.navigate(Routes.REVIEW_LIST)
                         }}>
 
-                            <View style={Styles.ratingContainer}>
-                                <Text style={Styles.ratingText}>{item.ratingValue}</Text>
+                            <View style={screenStyles.ratingContainer}>
+                                <Text style={screenStyles.ratingText}>{item.ratingValue}</Text>
 
 
                                 <StarRating
@@ -107,8 +122,8 @@ export const ProductDetail = (props) => {
                                     maxStars={5}
                                     rating={item.ratingValue}
                                     starSize={hp(2)}
-                                    fullStarColor={styles.ratingStyle.fullStarColor}
-                                    emptyStarColor={styles.ratingStyle.emptyStarColor}
+                                    fullStarColor={colors.ratingActiveColor}
+                                    emptyStarColor={colors.ratingInActiveColor}
                                     selectedStar={(rating) => {
                                     }}
                                     containerStyle={{
@@ -116,9 +131,9 @@ export const ProductDetail = (props) => {
                                     }}
                                 />
                                 <View style={{flexDirection: "row"}}>
-                                    <Text style={Styles.reviewText}>[</Text>
-                                    <Text style={Styles.reviewText}>{"93 reviews"}</Text>
-                                    <Text style={Styles.reviewText}>]</Text>
+                                    <Text style={screenStyles.reviewText}>[</Text>
+                                    <Text style={screenStyles.reviewText}>{"93 reviews"}</Text>
+                                    <Text style={screenStyles.reviewText}>]</Text>
                                 </View>
 
                             </View>
@@ -126,15 +141,13 @@ export const ProductDetail = (props) => {
                         </TouchableWithoutFeedback>
 
 
-                        {/*<Text style={Styles.detailText} numberOfLines={3}>{item.detail}</Text>*/}
-
                         <ReadMore
                             seeMoreText={"more"}
                             seeLessText={"less"}
-                            seeMoreStyle={Styles.seeMoreStyle}
-                            seeLessStyle={Styles.seeMoreStyle}
+                            seeMoreStyle={screenStyles.seeMoreStyle}
+                            seeLessStyle={screenStyles.seeMoreStyle}
                             numberOfLines={3}
-                            style={Styles.detailText}>
+                            style={screenStyles.detailText}>
                             {item.detail + item.detail}
                         </ReadMore>
 
@@ -144,9 +157,9 @@ export const ProductDetail = (props) => {
 
                 </View>
 
-                <View style={{flex: 0.35}}>
-                    <View style={Styles.cartCounterContainer}>
-                        <Text style={Styles.cartCounterText}>QUANTITY</Text>
+                <View style={screenStyles.bottomContainerLower}>
+                    <View style={screenStyles.cartCounterContainer}>
+                        <Text style={screenStyles.cartCounterText}>QUANTITY</Text>
                         <Counter
                         />
 
@@ -170,7 +183,7 @@ export const ProductDetail = (props) => {
                 height={hp(42)}
             >
 
-                <FavouritesBottomSheetComponent
+                <FavouritesBottomSheet
                     onItemSelect={() => {
                         sheetRef.close()
                     }}

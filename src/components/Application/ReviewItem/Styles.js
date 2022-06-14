@@ -2,63 +2,66 @@ import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-nativ
 
 import AppConfig from "../../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
-let Styles = {
+export const Styles = function(scheme, colors) {
 
-    container: {
-        paddingHorizontal: wp(5),
-        paddingVertical: hp(1.5),
-        backgroundColor: "white",
-        marginVertical: hp("0.5")
-    },
+    return {
+        container: {
+            paddingHorizontal: wp(5),
+            paddingVertical: hp(1.5),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            marginVertical: hp("0.5")
+        },
 
-    upperContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        paddingBottom: hp(1.5)
-    },
+        upperContainer: {
+            flexDirection: "row",
+            alignItems: "center",
+            paddingBottom: hp(1.5),
+        },
 
-    nameText: {
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
-        color: colors.textColorBlack1
-    },
+        profileContainer: {
+            marginRight: wp(3)
+        },
 
-    timeText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6,
-        color: colors.textColorGrey1
-    },
+        nameText: {
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P4,
+            color: colors.headingColor
+        },
 
-    lowerContainer: {
-        borderTopWidth: 1,
-        borderTopColor: colors.borderColorLight,
-        paddingTop: hp(1.5),
-    },
+        timeText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P6,
+            color: colors.subHeadingColor
+        },
 
-    ratingContainer: {
-        flexDirection: "row",
-        alignItems: "center"
-    },
+        lowerContainer: {
+            borderTopWidth: 1,
+            borderTopColor: colors.borderColorLight,
+            paddingTop: hp(1.5),
+        },
 
-    ratingText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4,
-        color: colors.textColorBlack1,
-        marginRight: wp(1)
-    },
+        ratingContainer: {
+            flexDirection: "row",
+            alignItems: "center"
+        },
 
-    commentText: {
-        fontFamily: Fonts.RUBIK_LIGHT,
-        fontSize: Typography.P5,
-        paddingTop: hp(1),
-        lineHeight: hp(2.5),
-        color: colors.textColorGrey1
+        ratingText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P4,
+            color: colors.headingColor,
+            marginRight: wp(1)
+        },
+
+        commentText: {
+            fontFamily: Fonts.RUBIK_LIGHT,
+            fontSize: Typography.P5,
+            paddingTop: hp(1),
+            lineHeight: hp(2.5),
+            color: colors.subHeadingColor
+        }
     }
 
 }
-
-export default Styles;

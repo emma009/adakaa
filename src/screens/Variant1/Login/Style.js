@@ -1,64 +1,87 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import AppConfig from "../../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
-const styles = AppConfig.styling.default;
 
-let style = {
+export const Styles = function(styles, colors) {
 
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        backgroundColor: colors.textColorGrey2
-    },
+    return {
+        container: {
+            flex: 1,
+            alignItems: 'center',
+            backgroundColor: colors.secondaryBackground
+        },
 
-    headerImage: {
-        width: wp('100%'),
-        height: hp('65%'),
-        resizeMode: "cover"
-    },
+        headerContainer: {
+            flex: 1,
+        },
 
-    bottomContainer: {
-        flex: 1,
-        width: styles.gridWidth3,
-        paddingTop: hp("3"),
-    },
+        headerImage: {
+            flex: 1,
+            width: wp(100),
+            height: "100%",
+            resizeMode: "cover",
+        },
 
-    titleText: {
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.H9,
-        marginBottom: hp("0.5"),
-        color: colors.textColorBlack1
-    },
+        bottomContainer: {
+            // flex: 1,
+            width: styles.gridWidth3,
+            paddingVertical: hp("2"),
+            justifyContent: "flex-end"
+        },
 
-    subtitleText: {
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4,
-        marginBottom: hp("4"),
-        color: colors.textColorGrey1
-    },
+        titleText: {
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.H8,
+            marginBottom: hp("0.5"),
+            color: colors.headingColor
+        },
 
-    accountBottomContainer: {
-        flexDirection:"row",
-        alignItems: "center",
-        justifyContent: "center",
-    },
+        subtitleText: {
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P4,
+            marginBottom: hp("1.6"),
+            lineHeight: Typography.H8,
+            color: colors.subHeadingColor
+        },
 
-    accountText: {
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5 ,
-        color: colors.textColorGrey1
+        accountBottomContainer: {
+            flexDirection:"row",
+            alignItems: "center",
+            justifyContent: "center",
+        },
 
-    },
+        accountText: {
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P5 ,
+            color: colors.subHeadingColor
 
-    loginButton: {
-        color: colors.textColorBlack1,
-        fontFamily: fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
+        },
+
+        loginButton: {
+            color: colors.headingColor,
+            fontFamily: fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P4,
+        },
+
+        googleLoginButtonContainer: {
+            marginBottom: hp(1)
+        },
+
+        googleLoginButton: {
+            backgroundColor: colors.primaryBackground,
+        },
+
+        googleLoginButtonTitle: {
+            color: colors.subHeadingColor
+        },
+
+        googleLoginIcon: {
+            tintColor: colors.red
+        }
+
+
     }
 
 }
-
-export default style;

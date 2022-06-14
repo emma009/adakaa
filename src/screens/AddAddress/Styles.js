@@ -1,28 +1,35 @@
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../branding/App_config";
-import Typography from "../../../branding/carter/styles/Typography";
 
 const Fonts = AppConfig.fonts.default;
-const Colors = AppConfig.colors.default;
+const Typography = AppConfig.typography.default;
 
-let Styles = {
+export const Styles = function(colors){
 
-    mainContainer: {
-        flex: 1
-    },
+    return {
+        mainContainer: {
+            flex: 1
+        },
 
-    bottomButton: {
-        flex: 1,
-        justifyContent: "flex-end"
-    },
+        bottomButton: {
+            flex: 1,
+            justifyContent: "flex-end"
+        },
 
-    defaultText: {
-        marginLeft: hp(1),
-        alignSelf: "center",
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4,
-        color: Colors.textColorGrey1
+        defaultText: {
+            marginLeft: hp(1),
+            alignSelf: "center",
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P4,
+            color: colors.headingColor
+        },
+
+        switchContainer: {
+            flexDirection: "row",
+            marginTop: hp(1)
+        }
+
     }
 
 }

@@ -1,78 +1,73 @@
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import AppConfig from "../../../../branding/App_config";
-import Globals from "../../../utils/Globals";
 
+export const Styles = function(styles, scheme, colors) {
 
-const colors = AppConfig.colors.default;
+    return {
+        container: {
+            flexDirection: 'row',
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
 
-
-let Style = {
-
-    container: {
-        flexDirection: 'row',
-        backgroundColor: colors.white,
-
-        shadowOffset: {
-            width: 0,
-            height: 6,
+            shadowOffset: {
+                width: 0,
+                height: 6,
+            },
+            shadowColor: colors.subHeadingColor,
+            shadowOpacity: 0.58,
+            shadowRadius: 6.0,
+            elevation: 24,
+            zIndex: 0,
         },
-        shadowColor: colors.textColorGrey1,
-        shadowOpacity: 0.58,
-        shadowRadius: 6.0,
-        elevation: 24,
-        zIndex: 0,
-    },
 
-    bottomTabContainer: {
-        flex: 1,
-        height: hp(6.5),
-        backgroundColor: colors.white,
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: Globals.SAFE_AREA_INSET.bottom
-    },
-
-    bottomTabCartOuterContainer: {
-        width: hp(8.5),
-        height: hp(8.5),
-        bottom: hp(2),
-        borderWidth: hp(4.5),
-        borderRadius: hp(4.3),
-        borderColor: "transparent",
-        borderTopColor: "white",
-        borderLeftColor: "white",
-        borderRightColor: "white",
-        justifyContent: "center",
-        alignItems: "center",
-
-        shadowOffset: {
-            width: 0,
-            height: -25,
+        bottomTabContainer: {
+            flex: 1,
+            height: hp(6.5),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            justifyContent: "center",
+            alignItems: "center",
         },
-        shadowColor: colors.textColorGrey1,
-        shadowRadius: 10.0,
 
-        shadowOpacity: 0.1,
-        elevation: 24,
-        zIndex: 0,
-    },
+        bottomTabCartOuterContainer: {
+            width: hp(8.5),
+            height: hp(8.5),
+            bottom: hp(2),
+            borderWidth: hp(4.5),
+            borderRadius: hp(4.3),
+            borderColor: "transparent",
+            borderTopColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            borderLeftColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            borderRightColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            justifyContent: "center",
+            alignItems: "center",
 
-    bottomTabCartInnerContainer: {
-        width: hp(7),
-        height: hp(7),
-        borderRadius: hp(3.5),
-        backgroundColor: colors.buttonGreenColor,
-        justifyContent: "center",
-        alignItems: "center",
-    },
+            shadowOffset: {
+                width: 0,
+                height: -25,
+            },
+            shadowColor: colors.subHeadingColor,
+            shadowRadius: 10.0,
 
-    bottomTabIcon: {
-        width: hp(3),
-        height: hp(3),
-        resizeMode: "contain"
+            shadowOpacity: 0.1,
+            elevation: 24,
+            zIndex: 0,
+        },
+
+        bottomTabCartInnerContainer: {
+            width: hp(7),
+            height: hp(7),
+            borderRadius: hp(3.5),
+            backgroundColor: colors.activeColor,
+            justifyContent: "center",
+            alignItems: "center",
+        },
+
+        bottomTabIcon: {
+            width: hp(3),
+            height: hp(3),
+            resizeMode: "contain"
+        }
     }
 
 
-}
 
-export default Style;
+
+}

@@ -1,29 +1,47 @@
 import React, {useState} from 'react';
-import {FlatList, Image, StatusBar, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
+import {
+    FlatList,
+    Image,
+    StatusBar,
+    Text,
+    TouchableOpacity,
+    useColorScheme,
+    View,
+} from "react-native";
 import {Icon} from 'react-native-elements';
-import Styles from "./Styles";
+import { Styles } from "./Styles";
 import AppConfig from "../../../../branding/App_config";
 import Utilities from "../../../utils/UtilityMethods";
 import Globals from "../../../utils/Globals";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
-const colors = AppConfig.colors.default;
 const assets = AppConfig.assets.default;
-const styles = AppConfig.styling.default;
 
 export const Variant3Profile = (props) => {
 
+
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, scheme, colors);
+
+
+    //Internal States
     const [profileImage, setProfileImage] = useState("");
 
     const renderProfileListItem = (item, index) => {
         return <TouchableOpacity
             onPress={() => item.onPress()}
-            style={Styles.profileListingItemContainer}>
+            style={screenStyles.profileListingItemContainer}>
 
-            <Image source={item.icon} style={Styles.profileListingItemLeftImage}/>
+            <Image source={item.icon} style={screenStyles.profileListingItemLeftImage}/>
 
-            <Text style={Styles.profileListingItemText}>{item.title}</Text>
+            <Text style={screenStyles.profileListingItemText}>{item.title}</Text>
 
-            <View style={Styles.profileListingItemRightContainer}>
+            <View style={screenStyles.profileListingItemRightContainer}>
                 <Icon
                     name={"angle-right"}
                     type={"font-awesome"}
@@ -35,17 +53,17 @@ export const Variant3Profile = (props) => {
     }
 
     return (
-        <View style={{flex: 1}}>
-            <StatusBar backgroundColor={"white"} barStyle="dark-content"/>
+        <View style={screenStyles.mainContainer}>
+            <StatusBar backgroundColor={colors.primaryBackground} barStyle={"dark-content"} />
 
-            <View style={Styles.upperContainer} >
+            <View style={screenStyles.upperContainer} >
 
                 <View
-                    style={Styles.profileImageContainer}>
+                    style={screenStyles.profileImageContainer}>
 
                     <Image
                         source={profileImage ? {uri: profileImage.uri} : assets.profile_image}
-                        style={Styles.profileImage}
+                        style={screenStyles.profileImage}
                     />
 
                     <TouchableOpacity
@@ -56,14 +74,14 @@ export const Variant3Profile = (props) => {
                         }}
                         activeOpacity={0.8} style={
                         [
-                            styles.buttonShadow,
-                            Styles.profileImageAccessoryViewContainer
+                            globalStyles.buttonShadow,
+                            screenStyles.profileImageAccessoryViewContainer
                         ]
                     }>
 
                         <Image
                             source={assets.camera_regular_icon}
-                            style={Styles.profileImageAccessoryViewImage}
+                            style={screenStyles.profileImageAccessoryViewImage}
                         />
 
                     </TouchableOpacity>
@@ -71,65 +89,65 @@ export const Variant3Profile = (props) => {
 
                 </View>
 
-                <View style={Styles.infoContainer}>
-                    <Text style={Styles.nameText}>{"Jessica Simpson"}</Text>
-                    <Text style={Styles.emailText}>{"gfx.partner@gmail.com"}</Text>
+                <View style={screenStyles.infoContainer}>
+                    <Text style={screenStyles.nameText}>{"Jessica Simpson"}</Text>
+                    <Text style={screenStyles.emailText}>{"gfx.partner@gmail.com"}</Text>
                 </View>
 
 
             </View>
 
-            <View style={[Styles.overlayContainer]}>
+            <View style={[screenStyles.overlayContainer]}>
 
-                <Text style={Styles.ordersText}>{"Orders"}</Text>
+                <Text style={screenStyles.ordersText}>{"Orders"}</Text>
 
-                <View style={Styles.overlayNestedContainer}>
+                <View style={screenStyles.overlayNestedContainer}>
 
-                    <View style={Styles.nestedContainer}>
+                    <View style={screenStyles.nestedContainer}>
 
                         <Image
                             source={assets.wallet_icon}
-                            style={Styles.nestedContainerImage}
+                            style={screenStyles.nestedContainerImage}
                         />
 
-                        <Text style={Styles.nestedContainerText}>{"Unpaid"}</Text>
+                        <Text style={screenStyles.nestedContainerText}>{"Unpaid"}</Text>
 
                     </View>
 
-                    <View style={Styles.nestedContainer}>
+                    <View style={screenStyles.nestedContainer}>
 
                         <Image
                             source={assets.order_icon}
-                            style={Styles.nestedContainerImage}
+                            style={screenStyles.nestedContainerImage}
                         />
 
 
-                        <Text style={Styles.nestedContainerText}>{"Pending"}</Text>
+                        <Text style={screenStyles.nestedContainerText}>{"Pending"}</Text>
 
                     </View>
 
-                    <View style={Styles.nestedContainer}>
+                    <View style={screenStyles.nestedContainer}>
 
 
                         <Image
                             source={assets.shipping_icon}
-                            style={Styles.nestedContainerImage}
+                            style={screenStyles.nestedContainerImage}
                         />
 
 
-                        <Text style={Styles.nestedContainerText}>{"Shipped"}</Text>
+                        <Text style={screenStyles.nestedContainerText}>{"Shipped"}</Text>
 
                     </View>
 
-                    <View style={Styles.nestedContainer}>
+                    <View style={screenStyles.nestedContainer}>
 
 
                         <Image
                             source={assets.star_icon}
-                            style={Styles.nestedContainerImage}
+                            style={screenStyles.nestedContainerImage}
                         />
 
-                        <Text style={Styles.nestedContainerText}>{"Reviews"}</Text>
+                        <Text style={screenStyles.nestedContainerText}>{"Reviews"}</Text>
 
                     </View>
 
@@ -138,11 +156,10 @@ export const Variant3Profile = (props) => {
             </View>
 
 
-            <View style={Styles.container}>
-
+            <View style={screenStyles.container}>
 
                 <FlatList
-                    style={Styles.listingContainer}
+                    style={screenStyles.listingContainer}
                     data={Globals.profileList(props.navigation)}
                     renderItem={({item, index}) => {
                         return renderProfileListItem(item, index)

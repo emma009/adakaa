@@ -1,9 +1,8 @@
 //
 //  File.swift
-//  GroceryApp
+//  Carter
 //
-//  Created by Abdullah Hafeez on 4/21/22.
-//  Copyright © 2022 Facebook. All rights reserved.
+//  Created by Abdullah Hafeez on 5/27/22.
 //
 
 import Foundation

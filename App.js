@@ -3,34 +3,52 @@ import {NavigationContainer} from '@react-navigation/native';
 import {RootStack} from './src/navigation/RootStack';
 import {SafeAreaProvider, SafeAreaConsumer} from "react-native-safe-area-context";
 import Globals from "./src/utils/Globals";
+import { useColorScheme } from "react-native";
+import AppConfig from "./branding/App_config";
+
+
+const lightColors = AppConfig.lightColors.default;
+const darkColors = AppConfig.darkColors.default;
+
+
+const DarkTheme = {
+  dark: true,
+  colors: darkColors
+};
+
+
+const LightTheme = {
+  dark: false,
+  colors: lightColors
+};
+
 
 export const App = (props) => {
 
+  const scheme = useColorScheme();
 
-    return (
+  return (
 
-        <NavigationContainer>
-            <SafeAreaProvider>
-                <SafeAreaConsumer>
+    <NavigationContainer theme={scheme === 'dark' ? DarkTheme : LightTheme}>
+      <SafeAreaProvider>
+        <SafeAreaConsumer>
 
-                    {
-                        insets => {
+          {
+            insets => {
 
-                            Globals.SAFE_AREA_INSET = insets;
+              Globals.SAFE_AREA_INSET = insets;
 
-                            return (
+              return (
 
-                                <RootStack/>
+                <RootStack/>
 
-
-
-                            );
-                        }
-                    }
-                </SafeAreaConsumer>
-            </SafeAreaProvider>
-        </NavigationContainer>
-    );
+              );
+            }
+          }
+        </SafeAreaConsumer>
+      </SafeAreaProvider>
+    </NavigationContainer>
+  );
 
 
 }

@@ -2,28 +2,39 @@ import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-nativ
 
 import AppConfig from "../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
 const Typography = AppConfig.typography.default;
 const fonts = AppConfig.fonts.default;
 
 
-let Styles = {
+export const Styles = function(scheme, colors) {
 
-    contentContainer: {
-        paddingHorizontal: wp('3'),
-        paddingVertical: hp("2"),
-        backgroundColor: "white"
-    },
+    return {
 
-    defaultText: {
-        marginLeft: hp(1),
-        alignSelf: "center",
-        fontFamily: fonts.RUBIK_REGULAR,
-        fontSize: Typography.P4,
-        color: colors.textColorGrey1
-    },
+        container: {
+            flex: 1
+        },
 
+        scrollViewContainer: {
+            flex: 0.9
+        },
+
+        containerSpacing: {
+            marginBottom: hp("1")
+        },
+
+        contentContainer: {
+            paddingHorizontal: wp('3'),
+            paddingVertical: hp("2"),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+        },
+
+        defaultText: {
+            marginLeft: hp(1),
+            alignSelf: "center",
+            fontFamily: fonts.RUBIK_REGULAR,
+            fontSize: Typography.P4,
+            color: colors.subHeadingColor
+        },
+    }
 
 }
-
-export default Styles;

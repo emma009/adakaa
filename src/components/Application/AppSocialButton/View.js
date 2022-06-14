@@ -1,15 +1,21 @@
 import React from 'react';
-import AppConfig from "../../../../branding/App_config";
 import {Text} from "react-native-elements";
-import {Image, TouchableOpacity, View} from "react-native";
-import Style from "./Style";
+import { Image, TouchableOpacity, useColorScheme, View } from "react-native";
+import { Styles } from "./Style";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 const PropTypes = require('prop-types');
 
-const styles = AppConfig.styling.default;
+export const AppSocialButton = (props) => {
 
-
-const AppSocialButton = (props) => {
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const itemStyles = Styles(globalStyles, colors);
 
     const {
         icon,
@@ -25,26 +31,24 @@ const AppSocialButton = (props) => {
     return (
 
         <TouchableOpacity
-            style={containerStyle}
+            style={[containerStyle, {borderRadius: hp(1.75)}]}
             onPress={() => {
                 onPress();
             }}>
-            <View style={[
-                styles.primaryButtonStyle,
-                Style.container,
-                buttonStyle
-            ]}>
+            <View style={[globalStyles.primaryButtonStyle, itemStyles.container, buttonStyle, {
+                borderRadius: hp(0.75)
+            }]}>
 
 
                 <Image source={icon} style={[
-                    Style.icon,
+                    itemStyles.icon,
                     iconStyle
                 ]}
                 />
 
                 <Text style={[
-                    styles.primaryButtonTextStyle,
-                    Style.title,
+                    globalStyles.primaryButtonTextStyle,
+                    itemStyles.title,
                     titleStyle
                 ]}>{title}</Text>
             </View>
@@ -70,11 +74,4 @@ AppSocialButton.propTypes = {
     onPress: PropTypes.func.isRequired,
 
 };
-
-AppSocialButton.defaultProps = {
-    title: "Text",
-    icon: ""
-};
-
-export default AppSocialButton;
 

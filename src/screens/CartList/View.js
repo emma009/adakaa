@@ -1,27 +1,30 @@
 import React from 'react';
-import {FlatList, StatusBar, View} from 'react-native';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { FlatList, useColorScheme, View } from "react-native";
 
 import BaseView from "../BaseView"
 import Routes from "../../navigation/Routes";
 import {CartItem} from "../../components/Application/CartItem/View";
 import {Divider, Text} from "react-native-elements";
-import AppConfig from "../../../branding/App_config";
-import Styles from "./Styles";
+import { Styles } from "./Styles";
 import Globals from "../../utils/Globals";
 import AppButton from "../../components/Application/AppButton/View";
-
-const colors = AppConfig.colors.default;
-const styles = AppConfig.styling.default;
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 
 export const CartList = (props) => {
 
+  //Theme based styling and colors
+  const { colors } = useTheme();
+  const scheme = useColorScheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+  const screenStyles = Styles(globalStyles, colors);
+
     return (
 
-        <View style={Styles.mainContainer}>
+        <View style={screenStyles.mainContainer}>
 
-            <StatusBar backgroundColor={colors.textColorGrey2} barStyle="dark-content" />
-            <View style={[Styles.flatListContainer]}>
+            <View style={[screenStyles.flatListContainer]}>
                 <BaseView
                     showAppHeader={true}
                     title={"Shopping Cart"}
@@ -44,7 +47,7 @@ export const CartList = (props) => {
                                         weight={item.weight}
                                         discount={item.discount}
                                         cartCount={item.cartCount}
-                                        cartCountChange={(count) => { console.log(count) }}
+                                        cartCountChange={(count) => {  }}
                                         navigation={props.navigation}
                                     />
                                 }
@@ -57,37 +60,34 @@ export const CartList = (props) => {
                 />
             </View>
 
-            <View style={Styles.bottomContainer}>
+            <View style={screenStyles.bottomContainerParent}>
+              <View style={screenStyles.bottomContainer}>
 
-                <View style={Styles.totalContainer}>
-                    <Text style={Styles.subtotalLabelText}>SubTotal</Text>
-                    <Text style={Styles.subtotalValueText}>$16.99</Text>
+                <View style={screenStyles.totalContainer}>
+                  <Text style={screenStyles.subtotalLabelText}>SubTotal</Text>
+                  <Text style={screenStyles.subtotalValueText}>$16.99</Text>
                 </View>
 
-                <View style={Styles.totalContainer}>
-                    <Text style={Styles.subtotalLabelText}>Shipping</Text>
-                    <Text style={Styles.subtotalValueText}>$16.99</Text>
+                <View style={screenStyles.totalContainer}>
+                  <Text style={screenStyles.subtotalLabelText}>Shipping</Text>
+                  <Text style={screenStyles.subtotalValueText}>$16.99</Text>
                 </View>
 
-                <Divider style={{
-                    width: styles.gridWidth,
-                    height: 1,
-                    alignSelf: "center",
-                    marginBottom: hp("1"),
-                    backgroundColor: colors.borderColorLight}} />
+                <Divider style={screenStyles.horizontalDivider} />
 
-                <View style={Styles.totalContainer}>
-                    <Text style={Styles.totalLabelText}>Total</Text>
-                    <Text style={Styles.totalValueText}>$16.99</Text>
+                <View style={screenStyles.totalContainer}>
+                  <Text style={screenStyles.totalLabelText}>Total</Text>
+                  <Text style={screenStyles.totalValueText}>$16.99</Text>
                 </View>
 
                 <AppButton
-                    title={'Checkout'}
-                    onPress={() => {
-                        props.navigation.navigate(Routes.CHECKOUT_DELIVERY)
-                    }}
+                  title={'Checkout'}
+                  onPress={() => {
+                    props.navigation.navigate(Routes.CHECKOUT_DELIVERY)
+                  }}
                 />
 
+              </View>
             </View>
         </View>
 

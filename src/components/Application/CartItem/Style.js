@@ -1,44 +1,53 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import AppConfig from "../../../../branding/App_config";
 
-
-const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
+export const Styles = function(scheme, colors) {
 
-let Style = {
-    foodItemContainer: {
-
-        height: hp("15"),
-        backgroundColor: "white",
-        flexDirection: "row",
-        alignItems: "center",
-        paddingLeft: wp("5")
-
-    },
-    foodItemImage: {
-        width: hp("10"),
-        height: hp("10"),
-        marginRight: wp("2")
-    },
-    priceText: {
-        fontSize: Typography.P5,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        color: colors.primaryGreenColor
-    },
-    itemTitle: {
-        fontSize: Typography.P3,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        color: colors.textColorBlack1,
-        marginVertical: hp(0.5),
-    },
-    weightText: {
-        color: colors.textColorGrey1,
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5,
-    },
+    return {
+        foodItemContainer: {
+            height: hp("15"),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            flexDirection: "row",
+            alignItems: "center",
+            paddingLeft: wp("5")
+        },
+        foodItemImage: {
+            width: hp("10"),
+            height: hp("10"),
+            marginRight: wp("2")
+        },
+        priceText: {
+            fontSize: Typography.P5,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            color: colors.subHeadingSecondaryColor
+        },
+        itemTitle: {
+            fontSize: Typography.P3,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            color: colors.headingColor,
+            marginVertical: hp(0.5),
+        },
+        weightText: {
+            color: colors.subHeadingColor,
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P5,
+        },
+        rightSwipeContainer: {
+            width: wp("20"),
+            height: "100%",
+            backgroundColor: colors.rightSwipeBackground,
+            justifyContent: "center",
+            alignItems: "center"
+        },
+        rightSwipeIcon: {
+            width: hp(3),
+            height: hp(3),
+            tintColor: "white",
+            resizeMode: "contain"
+        }
+    }
 
 }
-
-export default Style;

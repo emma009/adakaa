@@ -1,19 +1,20 @@
 import React from 'react';
-import {Animated, Image, TouchableOpacity, View} from "react-native"
+import { Animated, Image, TouchableOpacity, useColorScheme, View } from "react-native";
 import {Text} from 'react-native-elements';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen'
-import Styles from "./Style"
+import { Styles } from "./Style"
 import AppConfig from "../../../../branding/App_config";
 import Easing from "react-native/Libraries/Animated/src/Easing";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 const PropTypes = require('prop-types');
 
 const assets = AppConfig.assets.default;
-const colors = AppConfig.colors.default;
-const globalStyles = AppConfig.styling.default;
 
-
+//Animation Constants
 const activeAnimConfig = {
     toValue: 1,
     duration: 300,
@@ -30,6 +31,12 @@ const deActiveAnimConfig = {
 
 export const CardItem = (props) => {
 
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+
+    const itemStyles = Styles(scheme, colors);
 
     const {
         isTouchable,
@@ -46,11 +53,8 @@ export const CardItem = (props) => {
             onPress={() => {
                 onPress()
             }}
-            style={[Styles.container, isActive && {
-                borderWidth: 1,
-                borderColor: colors.primaryGreenColor
-            }]}>
-            <View style={{ flex: 1}}>
+            style={[itemStyles.container, isActive && itemStyles.activeContainer]}>
+            <View style={ itemStyles.touchableChildContainer }>
                 {child}
             </View>
         </TouchableOpacity>
@@ -64,35 +68,23 @@ export const CardItem = (props) => {
                 onPress={() => {
 
                 }}
-                style={{
-                    width: wp("20"),
-                    height: "100%",
-                    backgroundColor: colors.iconColorRed2,
-                    justifyContent: "center",
-                    alignItems: "center"
-                }}>
+                style={itemStyles.rightSwipeableContainer}>
 
                 <Image
                     source={assets.trash_icon}
-                    style={{
-                        width: hp(3),
-                        height: hp(3),
-                        tintColor: "white",
-                        resizeMode: "contain"
-                    }} />
+                    style={itemStyles.rightSwipeableIcon} />
 
             </TouchableOpacity>
 
         );
     };
 
-
     const nonTouchableComponent = (child) => {
         return <View
             style={[
-                Styles.container,
+                itemStyles.container,
                 {marginBottom: 0},
-                isActive && {borderBottomWidth: 1, borderBottomColor: colors.borderColorLight}
+                isActive && itemStyles.nonTouchableContainer
             ]}>
             <Swipeable
                 key={item.key}
@@ -100,7 +92,7 @@ export const CardItem = (props) => {
                 leftThreshold={80}
                 rightThreshold={40}
                 renderRightActions={renderRightActions}
-                containerStyle={{width: "100%", justifyContent: 'center'}}>
+                containerStyle={itemStyles.swipeableContainer}>
                 {child}
             </Swipeable>
         </View>
@@ -135,40 +127,35 @@ export const CardItem = (props) => {
             ).start()
         }
 
-        return <View style={{flexDirection: "row", height: "100%", backgroundColor: colors.white}}>
-            {item.isDefault && <View style={Styles.defaultContainer}>
+        return <View style={itemStyles.childContainer}>
+            {item.isDefault && <View style={itemStyles.defaultContainer}>
                 <Text style={globalStyles.promotionalTextStyle}>{"DEFAULT"}</Text>
             </View>}
 
-            <View style={{
-                flex: 1,
-                flexDirection: "row",
-                alignItems: "center",
-            }}>
-                <View style={Styles.leftImageContainer}>
+            <View style={itemStyles.childInnerContainer}>
+                <View style={itemStyles.leftImageContainer}>
                     <Image
                         source={icon}
-                        style={Styles.leftImage} resizeMode={"contain"}/>
+                        style={itemStyles.leftImage} resizeMode={"contain"}/>
                 </View>
 
-                <View style={{marginLeft: wp("3")}}>
-                    <Text style={Styles.titleText}>{item.type === "Paypal" ? item.name : item.type}</Text>
-                    <Text style={[Styles.subtitleText, {marginVertical: hp(0.5)}]}>{item.type === "Paypal" ? item.email : item.cardNo}</Text>
+                <View>
+                    <Text style={itemStyles.titleText}>{item.type === "Paypal" ? item.name : item.type}</Text>
+                    <Text style={[itemStyles.subtitleText, {marginVertical: hp(0.5)}]}>{item.type === "Paypal" ? item.email : item.cardNo}</Text>
 
-                    <View style={{flexDirection: "row", alignItems: "center"}}>
-
+                    <View style={itemStyles.centerTextContainer}>
 
                         {
                             item.type !== "Paypal" &&
                             <>
 
-                                <Text style={Styles.subtitleText}>{"Expiry: "}</Text>
+                                <Text style={itemStyles.subtitleText}>{"Expiry: "}</Text>
                                 <Text style={[
-                                    Styles.subtitleText,
+                                    itemStyles.subtitleText,
                                     {marginRight: wp(2)}
                                 ]}>{item.expiry}</Text>
-                                <Text style={Styles.subtitleText}>{"CVV: "}</Text>
-                                <Text style={Styles.subtitleText}>{item.CVV}</Text>
+                                <Text style={itemStyles.subtitleText}>{"CVV: "}</Text>
+                                <Text style={itemStyles.subtitleText}>{item.CVV}</Text>
 
                             </>
                         }
@@ -176,11 +163,10 @@ export const CardItem = (props) => {
                         {
                             item.type === "Paypal" &&
                             <>
-                            <Text style={Styles.subtitleText}>{"Added on: "}</Text>
-                            <Text style={Styles.subtitleText}>{item.addedOn}</Text>
+                            <Text style={itemStyles.subtitleText}>{"Added on: "}</Text>
+                            <Text style={itemStyles.subtitleText}>{item.addedOn}</Text>
                             </>
                         }
-
 
                     </View>
 
@@ -191,10 +177,10 @@ export const CardItem = (props) => {
 
             {
                 (showActiveIcon && isActive) &&
-                <View style={Styles.rightIconContainer}>
+                <View style={itemStyles.rightIconContainer}>
                     <Image
                         source={assets.check_circle_icon}
-                        style={Styles.rightIcon}
+                        style={itemStyles.rightIcon}
                         resizeMode={"contain"}/>
                 </View>
             }
@@ -202,10 +188,10 @@ export const CardItem = (props) => {
 
             {
                 showAnimatedIcon &&
-                <View style={Styles.rightIconContainer}>
+                <View style={itemStyles.rightIconContainer}>
                     <Animated.Image source={assets.drop_down_icon} style={[
                         {transform: [{rotate: spin}]},
-                        Styles.rightIcon
+                        itemStyles.rightIcon
                     ]} resizeMode={"contain"}/>
                 </View>
             }

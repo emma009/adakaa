@@ -1,17 +1,20 @@
 import React from 'react';
-import {View,} from 'react-native';
+import { useColorScheme, View } from "react-native";
 import {Avatar, Text} from 'react-native-elements';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
-import Styles from "./Styles";
+import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { Styles } from "./Styles";
 import StarRating from "react-native-star-rating";
-import AppConfig from "../../../../branding/App_config";
+import { useTheme } from "@react-navigation/native";
 
 const PropTypes = require('prop-types');
 
-const styles = AppConfig.styling.default;
-
-
 export const ReviewItem = (props) => {
+
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const itemStyles = Styles(scheme, colors);
+
 
     const {
         profileImage,
@@ -23,39 +26,40 @@ export const ReviewItem = (props) => {
 
     return (
 
-        <View style={Styles.container}>
+        <View style={itemStyles.container}>
 
-            <View style={Styles.upperContainer}>
+            <View style={itemStyles.upperContainer}>
                 <Avatar
                     rounded
                     size={"medium"}
                     source={profileImage}
+                    containerStyle={itemStyles.profileContainer}
                 />
 
-                <View style={{marginLeft: wp(3)}}>
-                    <Text style={Styles.nameText}>{fullName}</Text>
-                    <Text style={Styles.timeText}>{reviewTime}</Text>
+                <View>
+                    <Text style={itemStyles.nameText}>{fullName}</Text>
+                    <Text style={itemStyles.timeText}>{reviewTime}</Text>
                 </View>
             </View>
 
-            <View style={Styles.lowerContainer}>
+            <View style={itemStyles.lowerContainer}>
 
-                <View style={Styles.ratingContainer}>
-                    <Text style={Styles.ratingText}>{rating}</Text>
+                <View style={itemStyles.ratingContainer}>
+                    <Text style={itemStyles.ratingText}>{rating}</Text>
 
                     <StarRating
                         disabled={true}
                         maxStars={5}
                         rating={rating}
                         starSize={hp(1.8)}
-                        fullStarColor={styles.ratingStyle.fullStarColor}
-                        emptyStarColor={styles.ratingStyle.emptyStarColor}
+                        fullStarColor={colors.ratingActiveColor}
+                        emptyStarColor={colors.ratingInActiveColor}
                         selectedStar={(rating) => {
                         }}
                     />
                 </View>
 
-                <Text style={Styles.commentText}>{comment}</Text>
+                <Text style={itemStyles.commentText}>{comment}</Text>
 
             </View>
 
@@ -74,6 +78,3 @@ ReviewItem.propTypes = {
     comment: PropTypes.string
 
 };
-
-ReviewItem.defaultProps = {};
-

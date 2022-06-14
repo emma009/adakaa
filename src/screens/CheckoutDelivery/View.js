@@ -1,18 +1,27 @@
 import React, {useState} from 'react';
-import {TouchableWithoutFeedback, View} from 'react-native';
+import { TouchableWithoutFeedback, useColorScheme, View } from "react-native";
 
 import BaseView from "../BaseView"
 import {Text} from "react-native-elements";
-import AppConfig from "../../../branding/App_config";
 import Routes from "../../navigation/Routes";
-import Styles from "./Styles";
+import { Styles } from "./Styles";
 import AppButton from "../../components/Application/AppButton/View";
-
-const colors = AppConfig.colors.default;
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 
 export const CheckoutDelivery = (props) => {
 
-    const [selectedDeliveryIndex, setSelectedDeliveryIndex] = useState(1);
+  //Theme based styling and colors
+  const scheme = useColorScheme();
+  const { colors } = useTheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+
+  const screenStyles = Styles(scheme, globalStyles, colors);
+
+  //Internal states
+  const [selectedDeliveryIndex, setSelectedDeliveryIndex] = useState(1);
+
 
     const renderDeliveryContainer = (title, description, price, index) => {
 
@@ -27,18 +36,18 @@ export const CheckoutDelivery = (props) => {
                 })
 
             }}>
-                <View style={[Styles.deliveryContainer, selectedDeliveryIndex === index && {
-                    borderWidth: 1,
-                    borderColor: colors.primaryGreenColor
+                <View style={[screenStyles.deliveryContainer, selectedDeliveryIndex === index && {
+                  borderWidth: 1,
+                  borderColor: colors.activeColor
                 }]}>
 
                     <View style={{width: "90%"}}>
-                        <Text style={Styles.deliveryHeader}>{title}</Text>
-                        <Text style={Styles.deliveryDescription}>{description}</Text>
+                        <Text style={screenStyles.deliveryHeader}>{title}</Text>
+                        <Text style={screenStyles.deliveryDescription}>{description}</Text>
 
                     </View>
 
-                    <Text style={Styles.deliveryPrice}>{price}</Text>
+                    <Text style={screenStyles.deliveryPrice}>{price}</Text>
 
                 </View>
 
@@ -54,10 +63,12 @@ export const CheckoutDelivery = (props) => {
         <BaseView
             navigation={props.navigation}
             title={"Shipping Method"}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
                 return (
 
-                    <View style={{flex: 1}}>
+                    <View style={screenStyles.container}>
 
                         {renderDeliveryContainer(
                             "Standard Delivery",
@@ -80,7 +91,7 @@ export const CheckoutDelivery = (props) => {
                             3
                         )}
 
-                        <View style={{flex: 1, justifyContent: "flex-end"}}>
+                        <View style={screenStyles.bottomContainer}>
 
                             <AppButton
                                 title={'Next'}

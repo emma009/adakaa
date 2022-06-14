@@ -1,26 +1,38 @@
-import React, {useRef} from 'react';
-import {ImageBackground, StatusBar, View,} from 'react-native';
+import React, {useRef, useState} from 'react';
+import { ImageBackground, StatusBar, useColorScheme, View } from "react-native";
 import {Button, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import AppInput from "../../../components/Application/AppInput/View"
 import Routes from '../../../navigation/Routes';
-import Style from "./Style";
-import {StackActions} from "@react-navigation/native";
+import { Styles } from "./Style";
+import { StackActions, useTheme } from "@react-navigation/native";
 import AppHeader from "../../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import {CustomSwitch} from "../../../components/Global/CustomSwitch/View";
 import AppButton from "../../../components/Application/AppButton/View";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 
 const assets = AppConfig.assets.default;
-const styles = AppConfig.styling.default;
+const lightColors = AppConfig.lightColors.default;
 
 export const Variant3LoginFormScreen = (props) => {
 
+    //Theme based styling and colors
+    const { colors } = useTheme();
+    const globalStyles = commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, colors, lightColors);
+
+    //Internal States
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+
+    //References
     let inputRef = useRef();
 
     return (
-        <ImageBackground source={assets.login_form_header3} style={{flex: 1}} resizeMode={"cover"}>
+        <ImageBackground source={assets.login_form_header3} style={screenStyles.mainContainer} resizeMode={"cover"}>
 
             <KeyboardAwareScrollView
                 keyboardShouldPersistTaps={'never'}
@@ -28,46 +40,53 @@ export const Variant3LoginFormScreen = (props) => {
                     return [inputRef];
                 }}
                 showsVerticalScrollIndicator={false}>
-                <View style={Style.container}>
-                    <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+                <View style={screenStyles.container}>
+                    <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
 
                     <AppHeader
+                      overrideTheme={"light"}
                         isTranslucent
                         navigation={props.navigation}
                         transparentHeader
-                        whiteHeader
+                        headerWithBackground
                         headerWithBack
                         title={"Login"}
                     />
 
 
-                    <View style={[Style.bottomContainer]}>
-                        <Text style={Style.titleText}>{"Welcome Back!"}</Text>
+                    <View style={[screenStyles.bottomContainer]}>
+                        <Text style={screenStyles.titleText}>{"Welcome Back!"}</Text>
 
-                        <Text style={Style.subtitleText}>{"Sign in to your account"}</Text>
+                        <Text style={screenStyles.subtitleText}>{"Sign in to your account"}</Text>
 
+                        <View style={screenStyles.contentContainerStyle}>
                         <AppInput
-                            {...styles.secondaryInputStyle}
+                            {...globalStyles.secondaryInputStyle}
                             textInputRef={r => (inputRef = r)}
                             leftIcon={assets.envelop_icon}
                             placeholder={"Email Address"}
-                            onChangeText={(value) => {
+                            value={email}
+                            keyboardType={"email-address"}
+                            onChangeText={(email) => {
+                                setEmail(email)
                             }}
                         />
 
                         <AppInput
-                            {...styles.secondaryInputStyle}
+                            {...globalStyles.secondaryInputStyle}
                             textInputRef={r => (inputRef = r)}
                             isPasswordField
                             leftIcon={assets.lock_icon}
                             placeholder={"Password"}
-                            onChangeText={(value) => {
+                            value={password}
+                            onChangeText={(password) => {
+                                setPassword(password)
                             }}
                         />
 
-                        <View style={Style.forgotPasswordContainer}>
+                        <View style={screenStyles.forgotPasswordContainer}>
 
-                            <View style={{justifyContent: "center"}}>
+                            <View style={screenStyles.switchContainer}>
                                 <CustomSwitch
                                     initialValue={false}
                                     onValueChange={(value) => {
@@ -76,14 +95,14 @@ export const Variant3LoginFormScreen = (props) => {
                             </View>
 
                             <Text
-                                style={Style.accountText}>{"Remember me"}</Text>
+                                style={screenStyles.accountText}>{"Remember me"}</Text>
 
-                            <View style={{flex: 1, alignItems: "flex-end"}}>
+                            <View style={screenStyles.bottomButtonContainer}>
                                 <Button
                                     title={"Forgot Password"}
                                     type={"clear"}
                                     containerStyle={{}}
-                                    titleStyle={Style.forgotPasswordButton}
+                                    titleStyle={screenStyles.forgotPasswordButton}
                                     onPress={() =>
                                         props.navigation.navigate(Routes.FORGOT_PASSWORD_FORM_SCREEN3)
                                     }
@@ -102,16 +121,19 @@ export const Variant3LoginFormScreen = (props) => {
                             }}
                         />
 
-                        <View style={Style.accountBottomContainer}>
-                            <Text style={Style.accountText}>{"Don't have an account?"}</Text>
+                        <View style={screenStyles.accountBottomContainer}>
+                            <Text style={screenStyles.accountText}>{"Don't have an account?"}</Text>
                             <Button
                                 title={"Signup"}
                                 type={"clear"}
-                                titleStyle={Style.signupButton}
+                                titleStyle={screenStyles.signupButton}
                                 onPress={() =>
                                     props.navigation.navigate(Routes.SIGNUP_FORM_SCREEN3)
                                 }
                             />
+                        </View>
+
+
                         </View>
                     </View>
                 </View>

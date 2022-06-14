@@ -2,143 +2,147 @@ import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-nativ
 
 import AppConfig from "../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
-const styles = AppConfig.styling.default;
 
 
-let Styles = {
+export const Styles = function(scheme, colors) {
 
-    container: {
-        flex: 1,
-        backgroundColor: colors.textColorGrey2
-    },
+    return {
+        container: {
+            flex: 1,
+        },
 
-    bottomContainer: {
-        paddingVertical: hp(2),
-        paddingHorizontal: wp(5),
-        marginVertical: hp(1),
-        backgroundColor: "white",
-    },
+        listContainer: {
+        },
 
-    receiptItemContainer: {
-        flexDirection: "row",
-        width: "100%",
-        marginBottom: hp("1")
-    },
+        bottomContainer: {
+            // flex: 0.3,
+            paddingVertical: hp(2),
+            justifyContent: "center",
+            paddingHorizontal: wp(5),
+            marginVertical: hp(1),
+            backgroundColor: colors.primaryBackground
+        },
 
-    receiptItemDivider: {
-        width: "100%",
-        height: 1,
-        alignSelf: "center",
-        marginBottom: hp("1"),
-        backgroundColor: colors.borderColorLight
-    },
+        receiptItemContainer: {
+            flexDirection: "row",
+            width: "100%",
+            marginBottom: hp("1")
+        },
 
-    boldLabelText: {
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
-        color: colors.textColorBlack1
-    },
+        receiptItemDivider: {
+            width: "100%",
+            height: 1,
+            alignSelf: "center",
+            marginBottom: hp("1"),
+            backgroundColor: colors.borderColorLight
+        },
 
-    boldLabelValueText: {
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
-        flex: 1,
-        textAlign: "right",
-        color: colors.primaryGreenColor
-    },
+        boldLabelText: {
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P4,
+            color: colors.headingColor
+        },
 
-    normalLabelText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6,
-        color: colors.textColorGrey1
-    },
+        boldLabelValueText: {
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P4,
+            flex: 1,
+            textAlign: "right",
+            color: colors.subHeadingSecondaryColor
+        },
 
-    normalLabelValueText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6,
-        flex: 1,
-        textAlign: "right",
-        color: colors.textColorGrey1,
-    },
+        normalLabelText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P6,
+            color: colors.subHeadingColor
+        },
 
-    cartItemContainer: {
-        height: hp("12"),
-        backgroundColor: "white",
-        flexDirection: "row",
-        alignItems: "center",
-        paddingLeft: wp("5"),
-    },
+        normalLabelValueText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P6,
+            flex: 1,
+            textAlign: "right",
+            color: colors.subHeadingColor,
+        },
 
-    cartItemLeftImage: {
-        width: hp("6"),
-        height: hp("6"),
-        marginRight: wp("2"),
-        resizeMode: "contain"
-    },
+        cartItemContainer: {
+            height: hp("12"),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            flexDirection: "row",
+            alignItems: "center",
+            paddingLeft: wp("5"),
+        },
 
-    cartItemNameText: {
-        fontSize: Typography.P3,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        color: colors.textColorBlack1,
-        marginBottom: hp(0.5)
-    },
+        cartItemLeftImage: {
+            width: hp("6"),
+            height: hp("6"),
+            marginRight: wp("2"),
+            resizeMode: "contain"
+        },
 
-    cartItemWeightText: {
-        color: colors.textColorGrey1,
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P5
-    },
+        cartItemNameText: {
+            fontSize: Typography.P3,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            color: colors.headingColor,
+            marginBottom: hp(0.5)
+        },
 
-    cartItemPriceText: {
-        flex: 1,
-        textAlign: "right",
-        fontSize: Typography.P5,
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        color: colors.primaryGreenColor,
-        marginRight: wp(5)
-    },
+        cartItemWeightText: {
+            color: colors.subHeadingColor,
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P5
+        },
+
+        cartItemPriceText: {
+            flex: 1,
+            textAlign: "right",
+            fontSize: Typography.P5,
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            color: colors.activeColor,
+            marginRight: wp(5)
+        },
 
 
 
-    flatListContainer: {
-        height: "68%",
-        paddingBottom: hp("1"),
+        flatListContainer: {
+            height: "68%",
+            paddingBottom: hp("1"),
 
-    },
+        },
 
-    totalContainer: {
-        flexDirection: "row",
-        width: "100%",
-        marginBottom: hp("1")
-    },
-    subtotalLabelText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6,
-        color: colors.textColorGrey1
+        totalContainer: {
+            flexDirection: "row",
+            width: "100%",
+            marginBottom: hp("1")
+        },
+        subtotalLabelText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P6,
+            color: colors.subHeadingColor
 
-    },
-    subtotalValueText: {
-        fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P6,
-        flex: 1,
-        textAlign: "right",
-        color: colors.textColorGrey1,
-    },
-    totalLabelText: {
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
-        color: colors.textColorBlack1
-    },
-    totalValueText: {
-        fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P4,
-        flex: 1,
-        textAlign: "right",
-        color: colors.primaryGreenColor
-    },
+        },
+        subtotalValueText: {
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P6,
+            flex: 1,
+            textAlign: "right",
+            color: colors.subHeadingColor,
+        },
+        totalLabelText: {
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P4,
+            color: colors.headingColor
+        },
+        totalValueText: {
+            fontFamily: Fonts.RUBIK_MEDIUM,
+            fontSize: Typography.P4,
+            flex: 1,
+            textAlign: "right",
+            color: colors.subHeadingSecondaryColor
+        }
+    }
 
 }
 

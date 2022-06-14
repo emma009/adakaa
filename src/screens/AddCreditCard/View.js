@@ -1,126 +1,153 @@
-import React from 'react';
-import {Image, View} from 'react-native';
-import {Text} from 'react-native-elements';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import React, { useState } from "react";
+import { Image, View } from "react-native";
+import { Text } from "react-native-elements";
 
 import BaseView from "../BaseView";
-import AppInput from "../../components/Application/AppInput/View"
-import assets from "../../../branding/carter/assets/Assets";
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
-import {CustomSwitch} from "../../components/Global/CustomSwitch/View";
-import screenStyles from "./Styles"
+import AppInput from "../../components/Application/AppInput/View";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
+import { CustomSwitch } from "../../components/Global/CustomSwitch/View";
 import AppButton from "../../components/Application/AppButton/View";
+import { useTheme } from "@react-navigation/native";
+import AppConfig from "../../../branding/App_config";
+import { Styles } from "./Styles";
+
+const assets = AppConfig.assets.default;
+
+const creditCardFrontImage = require("./assets/credit_card.png");
 
 export const AddCreditCard = (props) => {
 
-    let inputRef = React.createRef();
-
-    return (
-
-        <BaseView
-            navigation={props.navigation}
-            title={"Add Credit Card"}
-            childView={() => {
-
-                return (
-
-                    <View style={screenStyles.mainContainer}>
-
-                        <KeyboardAwareScrollView
-                            keyboardShouldPersistTaps={'never'}
-                            getTextInputRefs={() => {
-                                return [inputRef];
-                            }}
-                            showsVerticalScrollIndicator={false}>
-
-                            <View style={screenStyles.mainContainer}>
-
-                                <Image
-                                    source={require("./assets/credit_card.png")}
-                                    style={screenStyles.creditCardImageStyle}
-                                    resizeMode={"contain"}
-                                />
+  //Input reference for KeyboardAwareScrollView
+  let inputRef = React.createRef();
 
 
-                                <AppInput
-                                    textInputRef={r => (inputRef = r)}
-                                    leftIcon={assets.account_icon}
-                                    placeholder={"CardHolder Name"}
-                                    onChangeText={(value) => {
-                                    }}
-                                />
-
-                                <AppInput
-                                    textInputRef={r => (inputRef = r)}
-                                    leftIcon={assets.credit_card_icon}
-                                    placeholder={"Card Number"}
-                                    onChangeText={(value) => {
-                                    }}
-                                />
-
-                                <View style={{flexDirection: "row", justifyContent: "space-between"}}>
-
-                                    <AppInput
-                                        textInputRef={r => (inputRef = r)}
-                                        leftIcon={assets.calendar_icon}
-                                        placeholder={"Expiry"}
-                                        containerStyle={{
-                                            flex: 0.48
-                                        }}
-                                        onChangeText={(value) => {
-                                        }}
-                                    />
-
-                                    <AppInput
-                                        textInputRef={r => (inputRef = r)}
-                                        leftIcon={assets.lock_icon}
-                                        placeholder={"CVV"}
-                                        containerStyle={{
-                                            flex: 0.48
-                                        }}
-                                        onChangeText={(value) => {
-                                        }}
-                                    />
-
-                                </View>
-
-                                <View style={{flexDirection: "row", marginTop: hp(1)}}>
-
-                                    <CustomSwitch
-                                        initialValue={false}
-                                        onValueChange={(value) => {
-
-                                        }}
-                                    />
-
-                                    <Text style={screenStyles.defaultText}>{"Make Default"}</Text>
-                                </View>
-
-                            </View>
+  //Theme based styling and colors
+  const { colors } = useTheme();
+  const screenStyles = Styles(colors);
 
 
-                        </KeyboardAwareScrollView>
+  //Internal input field states
+  const [name, setName] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [cvv, setCVV] = useState("");
 
-                        <View style={screenStyles.bottomButton}>
+  return (
 
-                            <AppButton
-                                title={'Add Credit Card'}
-                                onPress={() => {
-                                    props.navigation.goBack();
-                                }}
-                            />
+    <BaseView
+      navigation={props.navigation}
+      title={"Add Credit Card"}
+      headerWithBack
+      applyBottomSafeArea
+      childView={() => {
 
-                        </View>
+        return (
+
+          <View style={screenStyles.mainContainer}>
+
+            <KeyboardAwareScrollView
+              keyboardShouldPersistTaps={"never"}
+              getTextInputRefs={() => {
+                return [inputRef];
+              }}
+              showsVerticalScrollIndicator={false}>
+
+              <View style={screenStyles.mainContainer}>
+
+                <Image
+                  source={creditCardFrontImage}
+                  style={screenStyles.creditCardImageStyle}
+                  resizeMode={"contain"}
+                />
 
 
-                    </View>
+                <AppInput
+                  textInputRef={r => (inputRef = r)}
+                  leftIcon={assets.account_icon}
+                  placeholder={"CardHolder Name"}
+                  value={name}
+                  onChangeText={(name) => {
+                    setName(name);
+                  }}
+                />
 
-                );
+                <AppInput
+                  textInputRef={r => (inputRef = r)}
+                  leftIcon={assets.credit_card_icon}
+                  placeholder={"Card Number"}
+                  value={cardNumber}
+                  onChangeText={(cardNumber) => {
+                    setCardNumber(cardNumber);
+                  }}
+                />
 
-            }}
+                <View style={screenStyles.horizontalInputsContainer}>
 
-        />
+                  <AppInput
+                    textInputRef={r => (inputRef = r)}
+                    leftIcon={assets.calendar_icon}
+                    placeholder={"Expiry"}
+                    containerStyle={{
+                      flex: 0.48,
+                    }}
+                    value={expiry}
+                    onChangeText={(expiry) => {
+                      setExpiry(expiry);
+                    }}
+                  />
 
-    );
+                  <AppInput
+                    textInputRef={r => (inputRef = r)}
+                    leftIcon={assets.lock_icon}
+                    placeholder={"CVV"}
+                    containerStyle={{
+                      flex: 0.48,
+                    }}
+                    value={cvv}
+                    onChangeText={(cvv) => {
+                      setCVV(cvv);
+                    }}
+                  />
 
-}
+                </View>
+
+                <View style={screenStyles.switchContainer}>
+
+                  <CustomSwitch
+                    initialValue={false}
+                    onValueChange={(value) => {
+
+                    }}
+                  />
+
+                  <Text style={screenStyles.defaultText}>{"Make Default"}</Text>
+                </View>
+
+              </View>
+
+
+            </KeyboardAwareScrollView>
+
+            <View style={screenStyles.bottomButton}>
+
+              <AppButton
+                title={"Add Credit Card"}
+                onPress={() => {
+                  props.navigation.goBack();
+                }}
+              />
+
+            </View>
+
+
+          </View>
+
+        );
+
+      }}
+
+    />
+
+  );
+
+};

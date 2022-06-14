@@ -6,9 +6,15 @@ import Routes from "../../navigation/Routes";
 import Globals from "../../utils/Globals";
 import {AddressItem} from "../../components/Application/AddressItem/View";
 import AppButton from "../../components/Application/AppButton/View";
+import { useTheme } from "@react-navigation/native";
+import { Styles } from "./Styles";
 
 
 export const CheckoutAddress = (props) => {
+
+  //Theme based styling and colors
+  const { colors } = useTheme();
+  const screenStyles = Styles(colors);
 
     const [addresses, setAddresses] = useState(Globals.addressItems);
 
@@ -29,14 +35,16 @@ export const CheckoutAddress = (props) => {
         <BaseView
             navigation={props.navigation}
             title={"Select Address"}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
                 return (
 
-                    <View style={{flex: 1}}>
+                    <View style={screenStyles.container}>
 
                         <FlatList
                             showsVerticalScrollIndicator={false}
-                            style={{flex: 1}}
+                            style={screenStyles.listContainer}
                             data={addresses}
                             renderItem={({item, index}) => {
                                 return <AddressItem

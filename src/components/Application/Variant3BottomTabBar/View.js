@@ -1,18 +1,27 @@
-import React from 'react';
-import {Image, TouchableOpacity, View} from 'react-native';
+import React from "react";
+import { Image, TouchableOpacity, useColorScheme, View } from "react-native";
 import AppConfig from "../../../../branding/App_config";
 import {heightPercentageToDP as hp} from "react-native-responsive-screen";
-import Styles from "./Style"
+import { Styles } from "./Style"
+import Globals from "../../../utils/Globals";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 const assets = AppConfig.assets.default;
-const colors = AppConfig.colors.default;
-
 
 export function Variant3BottomTabBar({state, descriptors, navigation}) {
 
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, scheme, colors);
+
+
     return (
 
-        <View style={Styles.container}>
+        <View style={screenStyles.container}>
 
             {state.routes.map((route, index) => {
                 const {options} = descriptors[route.key];
@@ -63,7 +72,7 @@ export function Variant3BottomTabBar({state, descriptors, navigation}) {
                         testID={options.tabBarTestID}
                         activeOpacity={0.8}
                         onPress={onPress}
-                        style={Styles.bottomTabContainer}>
+                        style={[screenStyles.bottomTabContainer, {marginBottom: Globals.SAFE_AREA_INSET.bottom / 2}]}>
 
 
                         {/*isFocused is selected*/}
@@ -71,12 +80,12 @@ export function Variant3BottomTabBar({state, descriptors, navigation}) {
                         <View style={[{
                             width: isFocused ? hp(5) : 0,
                             height: isFocused ? hp(5) : 0,
-                        }, Styles.bottomTabItemContainer
+                        }, screenStyles.bottomTabItemContainer
                         ]}>
 
                             <Image source={icon} style={[{
-                                tintColor: isFocused ? colors.primaryGreenColor : colors.white
-                            }, Styles.bottomTabIcon]}/>
+                                tintColor: isFocused ? colors.activeColor : colors.primaryBackground
+                            }, screenStyles.bottomTabIcon]}/>
 
                         </View>
 

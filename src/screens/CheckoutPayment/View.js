@@ -1,53 +1,28 @@
 import React, {useState} from 'react';
-import {FlatList, Image, TouchableOpacity, View} from 'react-native';
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import { FlatList, Image, TouchableOpacity, useColorScheme, View } from "react-native";
 
 import BaseView from "../BaseView"
 import {Text} from "react-native-elements";
-import AppConfig from "../../../branding/App_config";
 import Routes from "../../navigation/Routes";
-import Styles from "./Styles";
-import assets from "../../../branding/carter/assets/Assets";
+import { Styles } from "./Styles";
 import AppButton from "../../components/Application/AppButton/View";
+import { useTheme } from "@react-navigation/native";
+import Globals from "../../utils/Globals";
+import AppConfig from "../../../branding/App_config";
 
-const colors = AppConfig.colors.default;
+const assets = AppConfig.assets.default;
 
 
 export const CheckoutPayment = (props) => {
 
-    const [selectedItem, setSelectedItem] = useState({
-        isActive: true,
-        icon: assets.credit_card_icon,
-        type: 'Credit Card',
-    })
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const screenStyles = Styles(scheme, colors);
 
-    const [paymentMethods, setPaymentMethods] = useState([
-        {
-            isActive: true,
-            icon: assets.credit_card_icon,
-            type: 'Credit Card',
-        },
-        {
-            isActive: false,
-            icon: assets.paypal_icon,
-            type: 'Paypal',
-        },
-        {
-            isActive: false,
-            icon: assets.apple_icon,
-            type: 'Apple Pay',
-        },
-        {
-            isActive: false,
-            icon: assets.transaction_icon,
-            type: 'Cash on Delivery',
-        },
-        {
-            isActive: false,
-            icon: assets.cart_regular_icon,
-            type: 'Self Pickup',
-        },
-    ])
+    //Internal states
+    const [selectedItem, setSelectedItem] = useState(Globals.paymentMethodItems.paymentMethods[0])
+    const [paymentMethods, setPaymentMethods] = useState(Globals.paymentMethodItems.paymentMethods)
 
     const renderPaymentMethodItem = (item, index) => {
         return (
@@ -64,40 +39,30 @@ export const CheckoutPayment = (props) => {
                     })
 
                 }}
-                style={[Styles.foodItemContainer, item.isActive && {
+                style={[screenStyles.paymentMethodItemParentContainer, item.isActive && {
                     borderWidth: 1,
-                    borderColor: colors.primaryGreenColor
+                    borderColor: colors.activeColor
                 }]}>
 
+                <View style={screenStyles.paymentMethodItemContainer}>
 
-                <View style={{
-                    flex: 1, flexDirection: "row",
-                    alignItems: "center",
-                }}>
-
-                    <Image source={item.icon} style={{
-                        width: hp(3),
-                        height: hp(3),
-                        tintColor: item.isActive ? colors.primaryGreenColor : colors.iconColorGrey1
-                    }} resizeMode={"contain"}/>
+                    <Image source={item.icon} style={[
+                      screenStyles.icon, {
+                        tintColor: item.isActive ? colors.activeColor : colors.inactiveColor
+                    }]} resizeMode={"contain"}/>
 
 
-                    <View style={{marginHorizontal: wp("3"), flexDirection: "row", flex: 1}}>
+                    <View style={screenStyles.nameContainer}>
                         <View>
-                            <Text style={Styles.nameTitle}>{item.type}</Text>
+                            <Text style={screenStyles.nameTitle}>{item.type}</Text>
                         </View>
 
 
                         {
                             item.isActive &&
-                            <View style={{
-                                flex: 1,
-                                justifyContent: "center",
-                                alignItems: "flex-end",
-                                paddingRight: wp("5")
-                            }}>
+                            <View style={screenStyles.rightIconContainer}>
                                 <Image source={assets.check_circle_icon}
-                                       style={{width: hp(2.5), height: hp(2.5), tintColor: colors.primaryGreenColor}}
+                                       style={screenStyles.icon}
                                        resizeMode={"contain"}/>
                             </View>
                         }
@@ -129,10 +94,12 @@ export const CheckoutPayment = (props) => {
         <BaseView
             navigation={props.navigation}
             title={"Payment Method"}
+            headerWithBack
+            applyBottomSafeArea
             childView={() => {
                 return (
 
-                    <View style={{flex: 1}}>
+                    <View style={screenStyles.container}>
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             data={paymentMethods}
@@ -150,7 +117,6 @@ export const CheckoutPayment = (props) => {
 
                             }}
                         />
-
 
                     </View>
 

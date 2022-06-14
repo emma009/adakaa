@@ -1,91 +1,130 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import AppConfig from "../../../../branding/App_config";
 
-
-const colors = AppConfig.colors.default;
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
+export const Styles = function(scheme, colors) {
 
-let Style = {
+    return {
+        container: {
+            height: hp("15"),
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground  :colors.primaryBackground,
+            flexDirection: "row",
+            marginBottom: hp(1)
+        },
 
-    container: {
-        height: hp("15"),
-        backgroundColor: "white",
-        flexDirection: "row",
-        marginBottom: hp(1)
-    },
+        touchableChildContainer: {
+            flex: 1
+        },
 
-    activeContainer: {
-        borderWidth: 1,
-        borderColor: colors.primaryGreenColor
-    },
+        rightSwipeableContainer: {
+            width: wp("20"),
+            height: "100%",
+            backgroundColor: colors.rightSwipeBackground,
+            justifyContent: "center",
+            alignItems: "center"
+        },
 
-    defaultContainer: {
-        position: "absolute",
-        backgroundColor: colors.secondaryGreenColor,
-        width: "18%",
-        height: hp(2.5),
-        justifyContent: "center",
-        alignItems: "center",
-        borderTopRightRadius: hp(0.5),
-        borderBottomRightRadius: hp(0.5)
-    },
+        rightSwipeableIcon: {
+            width: hp(3),
+            height: hp(3),
+            tintColor: "white",
+            resizeMode: "contain"
+        },
+
+        nonTouchableContainer: {
+            borderBottomWidth: 1,
+            borderBottomColor: colors.borderColorLight
+        },
+
+        swipeableContainer: {
+            width: "100%",
+            justifyContent: 'center'
+        },
+
+        activeContainer: {
+            borderWidth: 1,
+            borderColor: colors.activeColor
+        },
+
+        defaultContainer: {
+            position: "absolute",
+            backgroundColor: colors.tertiaryBackground,
+            width: "18%",
+            height: hp(2.5),
+            justifyContent: "center",
+            alignItems: "center",
+            borderTopRightRadius: hp(0.5),
+            borderBottomRightRadius: hp(0.5)
+        },
 
 
-    leftImageContainer: {
-        width: hp("8"),
-        height: hp("8"),
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: hp("4"),
-        marginLeft: wp("5"),
-        marginRight: wp(4),
-        backgroundColor: colors.secondaryGreenColor
-    },
+        leftImageContainer: {
+            width: hp("8"),
+            height: hp("8"),
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: hp("4"),
+            marginLeft: wp("5"),
+            marginRight: wp(4),
+            backgroundColor: colors.tertiaryBackground
+        },
 
-    leftImage: {
-        width: hp(3.5),
-        height: hp(3.5),
-        tintColor: colors.primaryGreenColor
-    },
+        leftImage: {
+            width: hp(3.5),
+            height: hp(3.5),
+            tintColor: colors.activeColor
+        },
 
-    titleText: {
-        fontSize: Typography.P3,
-        fontFamily: fonts.RUBIK_MEDIUM,
-        color: colors.textColorBlack1
-    },
+        titleText: {
+            fontSize: Typography.P3,
+            fontFamily: fonts.RUBIK_MEDIUM,
+            color: colors.headingColor
+        },
 
-    addressText: {
-        fontSize: Typography.P6,
-        fontFamily: fonts.RUBIK_REGULAR,
-        marginVertical: hp("0.5"),
-        lineHeight: hp(2.5),
-        width: "55%",
-        color: colors.textColorGrey1
-    },
+        addressText: {
+            fontSize: Typography.P6,
+            fontFamily: fonts.RUBIK_REGULAR,
+            marginVertical: hp("0.5"),
+            lineHeight: hp(2.5),
+            width: "55%",
+            color: colors.subHeadingColor
+        },
 
-    contactText: {
-        fontSize: Typography.P5,
-        fontFamily: fonts.RUBIK_MEDIUM,
-        marginRight: wp("5"),
-        color: colors.textColorBlack1
-    },
+        contactText: {
+            fontSize: Typography.P5,
+            fontFamily: fonts.RUBIK_MEDIUM,
+            marginRight: wp("5"),
+            color: colors.headingColor
+        },
 
-    rightIconContainer: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "flex-end",
-        paddingRight: wp("5")
-    },
+        rightIconContainer: {
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "flex-end",
+            paddingRight: wp("5")
+        },
 
-    rightIcon: {
-        width: hp(2.5),
-        height: hp(2.5),
-        tintColor: colors.primaryGreenColor
+        rightIcon: {
+            width: hp(2.5),
+            height: hp(2.5),
+            tintColor: colors.activeColor
+        },
+
+        childContainer: {
+            flexDirection: "row",
+            height: "100%",
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground  :colors.primaryBackground,
+        },
+
+        childInnerContainer: {
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center"
+        }
+
     }
 
 }
-
-export default Style;

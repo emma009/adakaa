@@ -1,18 +1,19 @@
 import React from 'react';
-import {Animated, Image, TouchableOpacity, View} from 'react-native';
+import { Animated, Image, TouchableOpacity, useColorScheme, View } from "react-native";
 
 import {Text} from 'react-native-elements';
 import PropTypes from 'prop-types';
 import AppConfig from "../../../../branding/App_config";
-import Styles from "./Style"
+import { Styles } from "./Style"
 import Easing from "react-native/Libraries/Animated/src/Easing";
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
 import Swipeable from "react-native-gesture-handler/Swipeable";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 const assets = AppConfig.assets.default;
-const colors = AppConfig.colors.default;
-const globalStyles = AppConfig.styling.default;
 
+//Animation Constants
 const activeAnimConfig = {
     toValue: 1,
     duration: 300,
@@ -31,6 +32,13 @@ const deActiveAnimConfig = {
 export const AddressItem = (props) => {
 
 
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const { colors } = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+
+    const itemStyles = Styles(scheme, colors);
+
     const {
         isTouchable,
         isActive,
@@ -48,10 +56,10 @@ export const AddressItem = (props) => {
             }}
             style={
                 [
-                    Styles.container,
-                    isActive && Styles.activeContainer]
+                    itemStyles.container,
+                    isActive && itemStyles.activeContainer]
             }>
-            <View style={{ flex: 1}}>
+            <View style={ itemStyles.touchableChildContainer }>
                 {child}
             </View>
         </TouchableOpacity>
@@ -65,22 +73,11 @@ export const AddressItem = (props) => {
                 onPress={() => {
 
                 }}
-                style={{
-                    width: wp("20"),
-                    height: "100%",
-                    backgroundColor: colors.iconColorRed2,
-                    justifyContent: "center",
-                    alignItems: "center"
-                }}>
+                style={itemStyles.rightSwipeableContainer}>
 
                 <Image
                     source={assets.trash_icon}
-                    style={{
-                        width: hp(3),
-                        height: hp(3),
-                        tintColor: "white",
-                        resizeMode: "contain"
-                    }} />
+                    style={itemStyles.rightSwipeableIcon} />
 
             </TouchableOpacity>
 
@@ -91,9 +88,9 @@ export const AddressItem = (props) => {
         return <View
             style={
                 [
-                    Styles.container,
+                    itemStyles.container,
                     {marginBottom: 0},
-                    isActive && {borderBottomWidth: 1, borderBottomColor: colors.borderColorLight}
+                    isActive && itemStyles.nonTouchableContainer
                 ]
             }>
             <Swipeable
@@ -102,7 +99,7 @@ export const AddressItem = (props) => {
                 leftThreshold={80}
                 rightThreshold={40}
                 renderRightActions={renderRightActions}
-                containerStyle={{width: "100%", justifyContent: 'center'}}>
+                containerStyle={itemStyles.swipeableContainer}>
             {child}
             </Swipeable>
         </View>
@@ -127,37 +124,36 @@ export const AddressItem = (props) => {
             ).start()
         }
 
-        return <View style={{flexDirection: "row", height: "100%", backgroundColor: colors.white}}>
+        return <View style={itemStyles.childContainer}>
             {item.isDefault &&
-                <View style={Styles.defaultContainer}>
+                <View style={itemStyles.defaultContainer}>
                     <Text style={globalStyles.promotionalTextStyle}>{"DEFAULT"}</Text>
                 </View>}
 
-            <View style={{flex: 1, flexDirection: "row", alignItems: "center"}}>
+            <View style={itemStyles.childInnerContainer}>
 
-                <View style={Styles.leftImageContainer}>
+                <View style={itemStyles.leftImageContainer}>
                     <Image
                         source={assets.map_marker_icon}
-                        style={Styles.leftImage} resizeMode={"contain"}/>
+                        style={itemStyles.leftImage} resizeMode={"contain"}/>
 
                 </View>
 
                 <View>
-                    <Text style={Styles.titleText}>{item.name}</Text>
-                    <Text style={Styles.addressText} numberOfLines={2}>{item.address}</Text>
-                    <Text style={Styles.contactText}>{item.phone}</Text>
+                    <Text style={itemStyles.titleText}>{item.name}</Text>
+                    <Text style={itemStyles.addressText} numberOfLines={2}>{item.address}</Text>
+                    <Text style={itemStyles.contactText}>{item.phone}</Text>
 
                 </View>
-
 
             </View>
 
             {
                 (showActiveIcon && isActive) &&
-                <View style={Styles.rightIconContainer}>
+                <View style={itemStyles.rightIconContainer}>
                     <Image
                         source={assets.check_circle_icon}
-                        style={Styles.rightIcon}
+                        style={itemStyles.rightIcon}
                         resizeMode={"contain"}/>
                 </View>
             }
@@ -165,10 +161,10 @@ export const AddressItem = (props) => {
 
             {
                 showAnimatedIcon &&
-                <View style={Styles.rightIconContainer}>
+                <View style={itemStyles.rightIconContainer}>
                     <Animated.Image source={assets.drop_down_icon} style={[
                         {transform: [{rotate: spin}]},
-                        Styles.rightIcon
+                        itemStyles.rightIcon
                     ]} resizeMode={"contain"}/>
                 </View>
             }

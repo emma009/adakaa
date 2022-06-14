@@ -1,25 +1,32 @@
 import React from 'react';
-import {ImageBackground, StatusBar, View,} from 'react-native';
+import { ImageBackground, StatusBar, View } from "react-native";
 import {Button, Text} from 'react-native-elements';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import AppConfig from '../../../../branding/App_config';
 import Routes from '../../../navigation/Routes';
-import Style from "./Style"
+import { Styles } from "./Style"
 import AppHeader from "../../../components/Application/AppHeader/View"
-import AppSocialButton from "../../../components/Application/AppSocialButton/View";
+import { AppSocialButton } from "../../../components/Application/AppSocialButton/View";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 
 const assets = AppConfig.assets.default;
-const colors = AppConfig.colors.default;
+const colors = AppConfig.lightColors.default;
 
 
 export const Variant3LoginScreen = (props) => {
 
-    return (
-        <ImageBackground source={assets.login_header3} style={Style.container}>
-            <StatusBar backgroundColor="white" barStyle="dark-content"/>
+  //Theme based styling and colors
+  const { scheme } = useTheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+  const screenStyles = Styles(globalStyles, scheme, colors);
 
-            <View style={Style.headerImage}/>
 
+  return (
+        <ImageBackground source={assets.login_header3} style={screenStyles.container}>
+            <StatusBar translucent backgroundColor={"transparent"} barStyle="light-content"/>
+
+            <View style={screenStyles.headerImage}/>
 
             <AppHeader
                 isTranslucent
@@ -27,25 +34,18 @@ export const Variant3LoginScreen = (props) => {
                 title={"Welcome"}
             />
 
-
-            <View style={[Style.bottomContainer]}>
-                <Text style={Style.titleText}>{"Welcome"}</Text>
+            <View style={[screenStyles.bottomContainer]}>
+                <Text style={screenStyles.titleText}>{"Welcome"}</Text>
 
                 <Text
-                    style={Style.subtitleText}>{"To the world's no. 1 grocery app for Android and IOS. We deliver everything on time."}</Text>
+                    style={screenStyles.subtitleText}>{"To the world's no. 1 grocery app for Android and IOS. We deliver everything on time."}</Text>
 
                 <AppSocialButton onPress={() => {
                 }}
-                                 containerStyle={{marginBottom: hp(0.5)}}
-                                 buttonStyle={{
-                                     backgroundColor: colors.white,
-                                 }}
-                                 titleStyle={{
-                                     color: colors.textColorGrey1
-                                 }}
-                                 iconStyle={{
-                                     tintColor: colors.red
-                                 }}
+                                 containerStyle={screenStyles.googleLoginButtonContainer}
+                                 buttonStyle={screenStyles.googleLoginButton}
+                                 titleStyle={screenStyles.googleLoginButtonTitle}
+                                 iconStyle={screenStyles.googleLoginIcon}
                                  title={"Connect using Google"}
                                  icon={assets.google_icon}
                 />
@@ -58,12 +58,12 @@ export const Variant3LoginScreen = (props) => {
                                  icon={assets.account_icon}
                 />
 
-                <View style={[Style.accountBottomContainer, {}]}>
-                    <Text style={Style.accountText}>{"Already have an account?"}</Text>
+                <View style={[screenStyles.accountBottomContainer, {}]}>
+                    <Text style={screenStyles.accountText}>{"Already have an account?"}</Text>
                     <Button
                         title={"Login"}
                         type={"clear"}
-                        titleStyle={Style.loginButton}
+                        titleStyle={screenStyles.loginButton}
                         onPress={() =>
                             props.navigation.navigate(Routes.LOGIN_FORM_SCREEN3)
                         }
