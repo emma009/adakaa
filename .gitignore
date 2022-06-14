@@ -57,3 +57,16 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+yarn.lock
+*.lock
+android/app/release/app-release.apk
+android/java_pid23666.hprof
+android/app/release/app-release.aab
+android/app/release/app-release.aab
+android/app/google-services.json
+android/app/release/app-release.aab
+android/gradle/wrapper/gradle-wrapper.properties
+android/app/release/NFTBee09May.apk
+android/app/release/output-metadata.json
+android/app/release/NFTBee.apk
+android/app/release/output-metadata.json
