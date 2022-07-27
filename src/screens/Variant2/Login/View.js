@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, useColorScheme, View } from "react-native";
+import { StatusBar, TouchableHighlight, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
 import {Button, Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import Routes from '../../../navigation/Routes';
@@ -9,6 +9,9 @@ import { AppSocialButton } from "../../../components/Application/AppSocialButton
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { CircularBanner } from "../../../components/Application/CicularBanner/View";
+import { widthPercentageToDP as wp } from "react-native-responsive-screen";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -33,7 +36,12 @@ export const Variant2LoginScreen = (props) => {
             />
 
             <View style={screenStyles.imageContainer}>
-                <Image source={assets.intro1_img1} style={screenStyles.headerImage} />
+              <CircularBanner
+                icon={IconNames.BagShopping}
+                theme={"green"}
+                width={wp(85)}
+                height={wp(85)}
+              />
             </View>
 
             <View style={[screenStyles.bottomContainer]}>
@@ -49,18 +57,23 @@ export const Variant2LoginScreen = (props) => {
                                  titleStyle={screenStyles.googleLoginButtonTitle}
                                  iconStyle={screenStyles.googleLoginIcon}
                                  title={"Connect using Google"}
-                                 icon={assets.google_icon}
+                                 icon={IconNames.Google}
+                                 iconColor={colors.red}
+                                 primaryShadowStart={"transparent"}
+                                 primaryShadowFinal={"transparent"}
                 />
 
                 <AppSocialButton onPress={() => {
                     props.navigation.navigate(Routes.SIGNUP_FORM_SCREEN2);
                 }}
                                  title={"Create an account"}
-                                 icon={assets.account_icon}
+                                 icon={IconNames.CircleUser}
+                                 iconColor={colors.buttonColor}
                 />
 
                 <View style={[screenStyles.accountBottomContainer]}>
                     <Text style={screenStyles.accountText}>{"Already have an account?"}</Text>
+
                     <Button
                         title={"Login"}
                         type={"clear"}

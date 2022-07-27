@@ -11,14 +11,25 @@ export const Styles = function(scheme, colors) {
     return {
 
         container: {
-            flex: 1
+            flex: 1,
+            marginTop: hp(3)
+        },
+
+        listContainer: {
+            flex: 0.9,
+        },
+
+        bottomContainer: {
+            flex: 0.1,
+            justifyContent: "center"
         },
 
         paymentMethodItemParentContainer: {
             height: hp("8"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            paddingLeft: wp("5"),
-            marginBottom: hp("1")
+            paddingHorizontal: wp("5"),
+            marginBottom: hp("1"),
+            borderRadius: hp(0.75)
         },
         paymentMethodItemContainer: {
             flex: 1,
@@ -32,7 +43,7 @@ export const Styles = function(scheme, colors) {
             resizeMode: "contain"
         },
         nameContainer: {
-            marginHorizontal: wp("3"),
+            marginLeft: wp("3"),
             flexDirection: "row",
             flex: 1
         },
@@ -40,7 +51,6 @@ export const Styles = function(scheme, colors) {
             flex: 1,
             justifyContent: "center",
             alignItems: "flex-end",
-            paddingRight: wp("5")
         },
         nameTitle: {
             fontSize: Typography.P3,

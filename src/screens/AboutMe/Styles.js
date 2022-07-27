@@ -14,16 +14,21 @@ export const Styles = function(colors){
             flex: 1,
         },
 
+        upperContainer: {
+            flex: 0.9,
+        },
+
         bottomButton: {
-            flex: 1,
-            justifyContent: "flex-end",
+            flex: 0.1,
+            justifyContent: "center",
         },
 
         typeHeader: {
             fontFamily: Fonts.RUBIK_MEDIUM,
             fontSize: Typography.P1,
             color: colors.headingColor,
-            marginVertical: hp("2")
+            marginTop: hp("3"),
+            marginBottom: hp("2")
         }
     }
 

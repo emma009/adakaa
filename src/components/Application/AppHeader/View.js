@@ -6,6 +6,8 @@ import AppConfig from "../../../../branding/App_config";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const PropTypes = require('prop-types');
 
@@ -44,6 +46,11 @@ const AppHeader = (props) => {
 
     const transparentContainerStyle = globalStyles.headerStyles.transparentContainerStyle;
 
+    const bottomMargin = props.bottomMargin || {
+        marginBottom: hp("2"),
+        borderBottomWidth: 0
+    };
+
 
     return (
 
@@ -54,17 +61,12 @@ const AppHeader = (props) => {
                     navigation.goBack()
                 }}>
                     <View style={headerIconContainerStyle}>
-                        <Image source={
-                            assets.arrow_left_icon
-                        }
-                               resizeMode={"contain"}
-                               style={[{
-                                   tintColor: overrideTheme ?
-                                     (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
-                                     : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)
-
-                               }, headerIconStyle]}
-                        />
+                        <SvgIcon
+                          style={{}}
+                          color={overrideTheme ? (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor) : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)}
+                          width={25}
+                          height={25}
+                          type={IconNames.ArrowLeft} />
                     </View>
                 </TouchableWithoutFeedback>
             }
@@ -86,14 +88,22 @@ const AppHeader = (props) => {
                     onRightIconPress();
                 }}>
                     <View style={headerIconContainerStyle}>
-                        <Image source={rightIcon}
-                               resizeMode={"contain"}
-                               style={[{
-                                   tintColor: overrideTheme ?
-                                     (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
-                                     : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white),
-                               }, headerIconStyle]}
-                        />
+                        <SvgIcon
+                          style={{}}
+                          color={overrideTheme ?
+                              (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
+                              : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)}
+                          width={25}
+                          height={25}
+                          type={rightIcon} />
+                        {/*<Image source={rightIcon}*/}
+                        {/*       resizeMode={"contain"}*/}
+                        {/*       style={[{*/}
+                        {/*           tintColor: overrideTheme ?*/}
+                        {/*             (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)*/}
+                        {/*             : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white),*/}
+                        {/*       }, headerIconStyle]}*/}
+                        {/*/>*/}
                     </View>
                 </TouchableWithoutFeedback>
             }
@@ -101,10 +111,7 @@ const AppHeader = (props) => {
                 !transparentHeader && containerShadow,
                 headerWithBackground && containerStyle,
                 transparentHeader && transparentContainerStyle,
-                {
-                    marginBottom: hp("2"),
-                    borderBottomWidth: 0
-                },
+                bottomMargin,
                 Platform.OS === 'android' && {
                     marginTop: isTranslucent ? -10 : 0
                 }]}

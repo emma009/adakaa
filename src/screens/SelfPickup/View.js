@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { View } from "react-native";
+import { useColorScheme, View } from "react-native";
 import Routes from "../../navigation/Routes";
 
 import BaseView from "../BaseView";
@@ -10,11 +10,24 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { InputButton } from "../../components/Application/InputButton/View";
 import moment from "moment";
 import AppButton from "../../components/Application/AppButton/View";
-import Styles from "./Styles";
+import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
+import { Text } from "react-native-elements";
+import { Styles } from "./Styles";
+import IconNames from "../../../branding/carter/assets/IconNames";
+
 
 const assets = AppConfig.assets.default;
 
 export const SelfPickup = (props) => {
+
+  //Theme based styling and colors
+  const { colors } = useTheme();
+  const scheme = useColorScheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+  const screenStyles = Styles(colors);
+
 
   //Internal States
   const [outlet, setOutlet] = useState("");
@@ -28,6 +41,7 @@ export const SelfPickup = (props) => {
   let inputRef = useRef();
 
 
+
   return (
 
     <BaseView
@@ -36,40 +50,52 @@ export const SelfPickup = (props) => {
       headerWithBack
       applyBottomSafeArea
       childView={() => {
-
         return (
 
-          <View style={Styles.container}>
+          <View style={screenStyles.container}>
 
-            <AppInput
-              textInputRef={r => (inputRef = r)}
-              leftIcon={assets.globe_icon}
-              placeholder={"Outlet"}
-              onChangeText={(outlet) => {
-                setOutlet(outlet);
-              }}
-            />
-
-            <InputButton
-              leftIcon={assets.calendar_icon2}
-              text={date ? moment(date).format("YYYY-MM-DD") : "Date"}
-              onPress={() => {
-                setShowDatePicker(true);
-              }}
-
-            />
-
-            <InputButton
-              leftIcon={assets.clock_icon}
-              text={time ? moment(time).format("hh:mm A") : "Time"}
-              onPress={() => {
-                setShowTimePicker(true);
-              }}
-
-            />
+            <View style={screenStyles.mainContainer}>
 
 
-            <View style={Styles.bottomContainer}>
+              <Text style={screenStyles.typeHeader}>{"Details"}</Text>
+
+
+              <AppInput
+                {...globalStyles.secondaryInputStyle}
+                textInputRef={r => (inputRef = r)}
+                leftIcon={IconNames.Globe}
+                placeholder={"Outlet"}
+                value={outlet}
+                onChangeText={(outlet) => {
+                  setOutlet(outlet);
+                }}
+              />
+
+              <Text style={screenStyles.typeHeader}>{"Schedule"}</Text>
+
+              <InputButton
+                leftIcon={IconNames.CalendarAlt}
+                text={date ? moment(date).format("YYYY-MM-DD") : "Date"}
+                onPress={() => {
+                  setShowDatePicker(true);
+                }}
+
+              />
+
+              <InputButton
+                leftIcon={IconNames.Clock}
+                text={time ? moment(time).format("hh:mm A") : "Time"}
+                onPress={() => {
+                  setShowTimePicker(true);
+                }}
+
+              />
+            </View>
+
+
+
+
+            <View style={screenStyles.bottomContainer}>
 
               <AppButton
                 title={"Next"}
@@ -108,7 +134,6 @@ export const SelfPickup = (props) => {
 
 
           </View>
-
 
         );
 

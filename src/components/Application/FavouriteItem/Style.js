@@ -12,19 +12,21 @@ export const Styles = function(scheme, colors) {
     return {
         container: {
             height: hp("15"),
-            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            // backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flexDirection: "row",
+            borderRadius: hp(0.75),
             marginBottom: hp(1)
         },
 
         swipeableContainerParent: {
             width: "100%",
-            justifyContent: "center"
+            justifyContent: "center",
         },
 
         swipeableContainer: {
             flexDirection: "row",
             height: "100%",
+            borderRadius: hp(0.75),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
         },
 
@@ -38,15 +40,10 @@ export const Styles = function(scheme, colors) {
             width: wp("20"),
             height: "100%",
             backgroundColor: colors.rightSwipeBackground,
+            borderRadius: hp(0.75),
+            marginLeft: hp(1),
             justifyContent: "center",
             alignItems: "center"
-        },
-
-        rightSwipeIcon: {
-            width: hp(3),
-            height: hp(3),
-            tintColor: "white",
-            resizeMode: "contain"
         },
 
         activeContainer: {
@@ -75,12 +72,6 @@ export const Styles = function(scheme, colors) {
             marginLeft: wp("5"),
             marginRight: wp(4),
             backgroundColor: colors.tertiaryBackground
-        },
-
-        leftImage: {
-            width: hp(3.5),
-            height: hp(3.5),
-            tintColor: colors.white
         },
 
         titleText: {

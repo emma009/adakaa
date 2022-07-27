@@ -14,6 +14,10 @@ export const Styles = function(scheme, styles, colors) {
             backgroundColor: colors.secondaryBackground
         },
 
+        mainContainer: {
+            flex: 0.9,
+        },
+
         searchContainer: {
             // paddingTop: Globals.SAFE_AREA_INSET.top + hp(1),
             backgroundColor: colors.primaryBackground,
@@ -27,24 +31,18 @@ export const Styles = function(scheme, styles, colors) {
             justifyContent: "center"
         },
 
-        headerLeftIcon: {
-            width: hp(2.5),
-            height: hp(2.5),
-            tintColor: colors.headingColor,
-            resizeMode: "contain"
-        },
-
         searchInputContainer: [
             {
                 backgroundColor: colors.inputSecondaryBackground,
                 flex: 1,
+                borderRadius: hp(0.75),
                 height: styles.buttonHeight
             },
         ],
 
         searchInputLeftIconContainer: [
             {
-                paddingRight: wp('5'),
+                paddingRight: wp('3'),
                 height: styles.buttonHeight
             },
         ],
@@ -52,7 +50,7 @@ export const Styles = function(scheme, styles, colors) {
         searchInputLeftIcon: {
             width: hp(2),
             height: hp(2),
-            tintColor: colors.headingColor,
+            tintColor: colors.inputColor,
             resizeMode: "contain"
         },
 
@@ -92,8 +90,9 @@ export const Styles = function(scheme, styles, colors) {
         historyItemTextContainer: {
             backgroundColor: colors.primaryBackground,
             padding: hp(1.5),
+            borderRadius: hp(0.75),
             marginRight: hp(1),
-            marginBottom: hp("0.5")
+            marginBottom: hp(1)
         },
 
         historyItemText: {
@@ -106,9 +105,9 @@ export const Styles = function(scheme, styles, colors) {
             alignSelf: "center",
             flexDirection: "row",
             justifyContent: "space-around",
-            flex: 1,
+            flex: 0.1,
             width: styles.gridWidth,
-            alignItems: "flex-end",
+            alignItems: "center",
             marginBottom: Globals.SAFE_AREA_INSET.bottom
         },
 
@@ -125,11 +124,7 @@ export const Styles = function(scheme, styles, colors) {
         ],
 
         buttonIcon: {
-            width: hp(2),
-            height: hp(2),
-            tintColor: colors.inactiveColor,
             left: wp("5"),
-            resizeMode: "contain"
         },
 
         buttonText: [

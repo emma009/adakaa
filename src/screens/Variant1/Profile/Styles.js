@@ -17,13 +17,13 @@ export const Styles = function(styles, scheme, colors) {
         upperContainer: {
             width: "100%",
             height: hp("20"),
-            backgroundColor: scheme? colors.secondaryBackground : colors.primaryBackground
+            backgroundColor: scheme? colors.primaryBackground : colors.primaryBackground
         },
 
         container: {
             width: "100%",
             height: hp("80"),
-            backgroundColor: scheme? colors.primaryBackground : colors.secondaryBackground,
+            backgroundColor: scheme? colors.secondaryBackground : colors.secondaryBackground,
             alignItems: "center"
         },
 
@@ -50,13 +50,6 @@ export const Styles = function(styles, scheme, colors) {
             position: "absolute",
             top: hp(9.5),
             left: hp(9.5),
-        },
-
-        profileImageAccessoryViewImage: {
-            width: hp("2.5"),
-            height: hp("2.5"),
-            resizeMode: "contain",
-            tintColor: "white",
         },
 
         infoContainer: {
@@ -86,7 +79,7 @@ export const Styles = function(styles, scheme, colors) {
             height: hp("14"),
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: scheme? colors.secondaryBackground : colors.primaryBackground,
+            backgroundColor: colors.primaryBackground,
             borderRadius: hp(1),
             margin: hp(1),
         },

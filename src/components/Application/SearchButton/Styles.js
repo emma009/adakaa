@@ -9,18 +9,15 @@ export const Styles = function(styles, scheme, colors) {
     return {
         buttonContainer: {
             width: styles.gridWidth,
-            height: hp(5.5),
+            height: hp(5.9),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flexDirection: "row",
             alignItems: "center",
             marginVertical: hp("1.5"),
-            borderRadius: hp(0.3)
+            borderRadius: hp(0.75)
         },
 
         leftIcon: {
-            width: hp(2),
-            height: hp(2),
-            tintColor: colors.inputColor,
             marginLeft: wp(5)
         },
 
@@ -31,9 +28,6 @@ export const Styles = function(styles, scheme, colors) {
             color: colors.subHeadingColor
         },
         rightIcon: {
-            width: hp(2),
-            height: hp(2),
-            tintColor: colors.inputColor,
             position: "absolute",
             right: wp(5)
         }

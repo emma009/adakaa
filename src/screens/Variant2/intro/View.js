@@ -10,6 +10,7 @@ import Globals from "../../../utils/Globals";
 import AppButton from "../../../components/Application/AppButton/View";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { CircularBanner } from "../../../components/Application/CicularBanner/View";
 
 
 export const Variant2Intro = (props) => {
@@ -32,7 +33,12 @@ export const Variant2Intro = (props) => {
         return (
             <View style={screenStyles.introItemContainer}>
 
-                <Image source={item.headerImg} style={screenStyles.introItemImage}/>
+              <CircularBanner
+                icon={item.headerImg}
+                theme={item.theme}
+                width={wp(85)}
+                height={wp(85)}
+              />
                 <Text style={screenStyles.introItemTitle}>{item.title}</Text>
                 <Text style={screenStyles.introItemSubtitle}>{item.subtitle}</Text>
 
@@ -61,7 +67,7 @@ export const Variant2Intro = (props) => {
                     dotsLength={Globals.intro2Items.length}
                     activeDotIndex={activeSlideIndex}
                     dotColor={colors.paginationDotActiveColor}
-                    inactiveDotColor={colors.textColorGrey1}
+                    inactiveDotColor={colors.paginationDotInActiveColor}
                     inactiveDotOpacity={0.4}
                     inactiveDotScale={1}
                     carouselRef={_carouselRef}

@@ -9,6 +9,8 @@ import Easing from "react-native/Libraries/Animated/src/Easing";
 import Globals from "../../utils/Globals";
 import { useTheme } from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
+import { SvgIcon } from "../../components/Application/SvgIcon/View";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -57,16 +59,15 @@ export const MyOrders = (props) => {
         }
 
         return (
-            <View>
+            <View style={index === 0 && screenStyles.ordersListFirstItem}>
                 <View style={[screenStyles.headerContainer, isActive && screenStyles.headerContainerActive]}>
 
                     <View
                         style={[screenStyles.headerLeftIconContainer,
                             section.isOrderDelivered && {backgroundColor: colors.subHeadingTertiaryColor}]}>
-                        <Image source={assets.box_open_icon} style={[
-                            screenStyles.headerLeftIcon,
-                            {tintColor: section.isOrderDelivered ? colors.subHeadingColor : colors.subHeadingSecondaryColor}
-                        ]}/>
+
+                      <SvgIcon type={IconNames.BoxOpen} width={30} height={30} color={section.isOrderDelivered ? colors.subHeadingColor : colors.subHeadingSecondaryColor} />
+
                     </View>
 
                     <View>
@@ -99,12 +100,16 @@ export const MyOrders = (props) => {
 
                     </View>
 
+                  {
+                    !section.isOrderDelivered &&
                     <View style={screenStyles.headerRightIconContainer}>
-                        <Animated.Image source={assets.drop_down_icon} style={[
-                            {transform: [{rotate: spin}]},
-                            screenStyles.headerRightIcon
-                        ]} resizeMode={"contain"}/>
+                      <Animated.Image source={assets.drop_down_icon} style={[
+                        {transform: [{rotate: spin}]},
+                        screenStyles.headerRightIcon
+                      ]} resizeMode={"contain"}/>
                     </View>
+                  }
+
 
                 </View>
 
@@ -136,7 +141,7 @@ export const MyOrders = (props) => {
                             style={[
                                 screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderPlaced ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderPlaced ? colors.subHeadingSecondaryColor : colors.inputColor
                                 }
                             ]}/>
 
@@ -144,7 +149,7 @@ export const MyOrders = (props) => {
                             style={[
                                 screenStyles.contentItemLine,
                                 {
-                                    backgroundColor: section.isOrderPlaced ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderConfirmed ? colors.subHeadingSecondaryColor : colors.borderColorLight
                                 }
                             ]}/>
                     </View>
@@ -158,7 +163,7 @@ export const MyOrders = (props) => {
                             style={[
                                 screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderConfirmed ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderConfirmed ? colors.subHeadingSecondaryColor : colors.inputColor
                                 }
                             ]}/>
 
@@ -166,7 +171,7 @@ export const MyOrders = (props) => {
                             style={[
                                 screenStyles.contentItemLine,
                                 {
-                                    backgroundColor: section.isOrderConfirmed ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderShipped ? colors.subHeadingSecondaryColor : colors.borderColorLight
                                 }
                             ]}/>
                     </View>
@@ -180,7 +185,7 @@ export const MyOrders = (props) => {
                             style={[
                                 screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderShipped ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderShipped ? colors.subHeadingSecondaryColor : colors.inputColor
                                 }
                             ]}/>
 
@@ -188,7 +193,7 @@ export const MyOrders = (props) => {
                             style={[
                                 screenStyles.contentItemLine,
                                 {
-                                    backgroundColor: section.isOrderShipped ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderOutOfDelivery ? colors.subHeadingSecondaryColor : colors.borderColorLight
                                 }
                             ]}/>
                     </View>
@@ -202,15 +207,16 @@ export const MyOrders = (props) => {
                             style={[
                                 screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderOutOfDelivery ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderOutOfDelivery ? colors.subHeadingSecondaryColor : colors.inputColor
                                 }
                             ]}/>
+
 
                         <Divider
                             style={[
                                 screenStyles.contentItemLine,
                                 {
-                                    backgroundColor: section.isOrderOutOfDelivery ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderDelivered ? colors.subHeadingSecondaryColor : colors.borderColorLight
                                 }
                             ]}/>
                     </View>
@@ -225,7 +231,7 @@ export const MyOrders = (props) => {
                             style={[
                                 screenStyles.contentItemCircle,
                                 {
-                                    backgroundColor: section.isOrderDelivered ? colors.subHeadingSecondaryColor : colors.subHeadingColor
+                                    backgroundColor: section.isOrderDelivered ? colors.subHeadingSecondaryColor : colors.inputColor
                                 }
                             ]}/>
 
@@ -240,8 +246,19 @@ export const MyOrders = (props) => {
     };
 
 
+
     const _updateSections = allActiveSections => {
+      if ( allActiveSections.length > 0 ) {
+
+        if ( !Globals.ordersItems[allActiveSections[0]].isOrderDelivered ) {
+          setActiveSections(allActiveSections)
+        }
+
+      }
+      else {
         setActiveSections(allActiveSections)
+      }
+
     };
 
     return (
@@ -254,13 +271,14 @@ export const MyOrders = (props) => {
             applyBottomSafeArea
             childView={() => {
                 return (
-                    <ScrollView>
+                    <ScrollView showsVerticalScrollIndicator={false}>
 
                         <Accordion
                             sections={Globals.ordersItems}
                             activeSections={activeSections}
                             renderHeader={renderOrdersHeader}
                             renderContent={renderOrdersContent}
+                            underlayColor={"transparent"}
                             expandMultiple={false}
                             sectionContainerStyle={ screenStyles.containerSpacing }
                             onChange={_updateSections}

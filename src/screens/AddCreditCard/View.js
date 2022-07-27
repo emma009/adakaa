@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, View } from "react-native";
+import { Image, useColorScheme, View } from "react-native";
 import { Text } from "react-native-elements";
 
 import BaseView from "../BaseView";
@@ -10,6 +10,9 @@ import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
 import { Styles } from "./Styles";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -22,8 +25,10 @@ export const AddCreditCard = (props) => {
 
 
   //Theme based styling and colors
+  const scheme = useColorScheme();
   const { colors } = useTheme();
   const screenStyles = Styles(colors);
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
 
   //Internal input field states
@@ -50,20 +55,22 @@ export const AddCreditCard = (props) => {
               getTextInputRefs={() => {
                 return [inputRef];
               }}
+              contentContainerStyle={screenStyles.parentContainer}
               showsVerticalScrollIndicator={false}>
 
-              <View style={screenStyles.mainContainer}>
+              <View style={{}}>
 
                 <Image
                   source={creditCardFrontImage}
                   style={screenStyles.creditCardImageStyle}
-                  resizeMode={"contain"}
+                  resizeMode={"cover"}
                 />
 
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.account_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.CircleUser}
                   placeholder={"CardHolder Name"}
                   value={name}
                   onChangeText={(name) => {
@@ -73,7 +80,8 @@ export const AddCreditCard = (props) => {
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.credit_card_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.CreditCard}
                   placeholder={"Card Number"}
                   value={cardNumber}
                   onChangeText={(cardNumber) => {
@@ -85,7 +93,8 @@ export const AddCreditCard = (props) => {
 
                   <AppInput
                     textInputRef={r => (inputRef = r)}
-                    leftIcon={assets.calendar_icon}
+                    {...globalStyles.secondaryInputStyle}
+                    leftIcon={IconNames.Calendar}
                     placeholder={"Expiry"}
                     containerStyle={{
                       flex: 0.48,
@@ -98,7 +107,8 @@ export const AddCreditCard = (props) => {
 
                   <AppInput
                     textInputRef={r => (inputRef = r)}
-                    leftIcon={assets.lock_icon}
+                    {...globalStyles.secondaryInputStyle}
+                    leftIcon={IconNames.LockKeyhole}
                     placeholder={"CVV"}
                     containerStyle={{
                       flex: 0.48,
@@ -124,7 +134,6 @@ export const AddCreditCard = (props) => {
                 </View>
 
               </View>
-
 
             </KeyboardAwareScrollView>
 

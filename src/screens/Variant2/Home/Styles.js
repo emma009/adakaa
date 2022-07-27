@@ -43,35 +43,32 @@ export const Styles = function(styles, scheme, colors) {
             alignSelf: "center"
         },
 
-        sectionRightIcon: {
-            width: hp(2),
-            height: hp(2),
-            tintColor: colors.subHeadingColor,
-            resizeMode: "contain"
-        },
-
         sectionContainer: {
             width: styles.gridWidth,
             alignItems: "center",
-            alignSelf: "center"
+            alignSelf: "center",
+            marginBottom: hp(3)
         },
 
         secondaryBannerContainer: {
             width: "48.5%",
             height: hp(30),
+            borderRadius: hp(0.75),
             resizeMode: "cover"
         },
 
         tertiaryBannerContainer: {
             width: "100%",
             height: hp(30),
+            borderRadius: hp(0.75),
             marginBottom: hp("1"),
             resizeMode: "cover"
         },
 
         promotionSliderContainer: {
             width: "100%",
-            height: hp("30%"),
+            height: hp("40%"),
+            borderRadius: hp(0.75),
             alignItems: "center"
         },
 

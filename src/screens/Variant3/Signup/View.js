@@ -11,6 +11,8 @@ import AppButton from "../../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import Utilities from "../../../utils/UtilityMethods";
+import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 
 const assets = AppConfig.assets.default;
@@ -36,7 +38,6 @@ export const Variant3SignupScreen = (props) => {
     let inputRef = useRef();
 
     return (
-
 
         <ImageBackground source={assets.signup_form_header3} style={screenStyles.mainContainer} resizeMode={"cover"}>
 
@@ -85,10 +86,7 @@ export const Variant3SignupScreen = (props) => {
                                 ]
                             }>
 
-                                <Image
-                                  source={assets.camera_regular_icon}
-                                  style={screenStyles.profileImageAccessoryViewImage}
-                                />
+                                <SvgIcon type={"camera"} width={20} height={20} color={colors.activeColor} />
 
                             </TouchableOpacity>
 
@@ -106,7 +104,7 @@ export const Variant3SignupScreen = (props) => {
                         <AppInput
                             {...globalStyles.secondaryInputStyle}
                             textInputRef={r => (inputRef = r)}
-                            leftIcon={assets.envelop_icon}
+                            leftIcon={IconNames.Envelope}
                             placeholder={"Email Address"}
                             value={email}
                             keyboardType={"email-address"}
@@ -118,7 +116,7 @@ export const Variant3SignupScreen = (props) => {
                         <AppInput
                             {...globalStyles.secondaryInputStyle}
                             textInputRef={r => (inputRef = r)}
-                            leftIcon={assets.phone_icon}
+                            leftIcon={IconNames.PhoneFlip}
                             placeholder={"Phone"}
                             value={phone}
                             keyboardType={"phone-pad"}
@@ -132,7 +130,7 @@ export const Variant3SignupScreen = (props) => {
                             containerStyle={screenStyles.passwordInputContainer}
                             textInputRef={r => (inputRef = r)}
                             isPasswordField
-                            leftIcon={assets.lock_icon}
+                            leftIcon={IconNames.LockKeyhole}
                             placeholder={"Password"}
                             value={password}
                             onChangeText={(password) => {

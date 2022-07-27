@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import { StatusBar, useColorScheme, View } from "react-native";
 import {Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import AppInput from "../../../components/Application/AppInput/View"
 import { Styles } from "./Style";
 import AppHeader from "../../../components/Application/AppHeader/View"
@@ -11,6 +11,9 @@ import AppButton from "../../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import Routes from "../../../navigation/Routes";
+import { CircularBanner } from "../../../components/Application/CicularBanner/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 
 const assets = AppConfig.assets.default;
@@ -53,7 +56,12 @@ export const Variant2ForgotPassword = (props) => {
                 />
 
                 <View style={screenStyles.imageContainer}>
-                    <Image source={assets.intro1_img4} style={screenStyles.headerImage} />
+                  <CircularBanner
+                    icon={IconNames.Key}
+                    theme={"red"}
+                    width={wp(85)}
+                    height={wp(85)}
+                  />
                 </View>
 
 
@@ -65,7 +73,7 @@ export const Variant2ForgotPassword = (props) => {
                     <AppInput
                         containerStyle={{marginBottom: hp(1)}}
                         textInputRef={r => (inputRef = r)}
-                        leftIcon={assets.envelop_icon}
+                        leftIcon={IconNames.Envelope}
                         placeholder={"Email Address"}
                         value={email}
                         onChangeText={(email) => {
@@ -76,7 +84,7 @@ export const Variant2ForgotPassword = (props) => {
                     <AppButton
                         title={'Send Link'}
                         onPress={() => {
-                            props.navigation.goBack();
+                          props.navigation.navigate(Routes.VERIFY_NUMBER_SCREEN)
                         }}
                     />
 

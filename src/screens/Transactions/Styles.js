@@ -20,7 +20,8 @@ export const Styles = function(scheme, colors) {
             height: hp("12"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             paddingLeft: wp("5"),
-            marginBottom: hp("1")
+            marginBottom: hp("1"),
+            borderRadius: hp(0.75)
         },
 
         leftIconContainerStyle: {
@@ -64,7 +65,17 @@ export const Styles = function(scheme, colors) {
             textAlign: "right",
             alignSelf: "center",
             color: colors.subHeadingSecondaryColor
-        }
+        },
+
+        transactionFirstItem: {
+            marginTop: hp(3)
+        },
+
+        transactionLastItem: {
+            marginBottom: hp(1)
+        },
+
+
     }
 
 }

@@ -73,7 +73,7 @@ export const Styles = function(scheme, styles, darkColors, lightColors) {
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
             lineHeight: Typography.H8,
-            marginBottom: hp("2"),
+            marginBottom: hp("3"),
             color: lightColors.subHeadingColor,
             textAlign: "center"
         },

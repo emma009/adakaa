@@ -20,15 +20,15 @@ export const Styles = function(styles, scheme, colors) {
 
         bottomTabContainer: {
             flex: 1,
-            height: hp(6.5),
+            height: hp(6),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             justifyContent: "center",
             alignItems: "center",
         },
 
         bottomTabCartOuterContainer: {
-            width: hp(8.5),
-            height: hp(8.5),
+            width: hp(8),
+            height: hp(8),
             bottom: hp(2),
             borderWidth: hp(4.5),
             borderRadius: hp(4.3),
@@ -60,11 +60,6 @@ export const Styles = function(styles, scheme, colors) {
             alignItems: "center",
         },
 
-        bottomTabIcon: {
-            width: hp(3),
-            height: hp(3),
-            resizeMode: "contain"
-        }
     }
 
 

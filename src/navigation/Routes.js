@@ -7,6 +7,8 @@ const Routes = {
     LOGIN_FORM_SCREEN1: "login_form1",
     SIGNUP_FORM_SCREEN1: "signup_form1",
     FORGOT_PASSWORD_FORM_SCREEN1: "forgot_password_form1",
+    VERIFY_NUMBER_SCREEN: "verify_number_form",
+    VERIFY_NUMBER_OTP_SCREEN: "verify_number_otp_form",
     //Variant2
     INTRO_SCREEN2: "intro2",
     LOGIN_SCREEN2: "login2",

@@ -9,6 +9,8 @@ import { AppSocialButton } from "../../../components/Application/AppSocialButton
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -40,6 +42,7 @@ export const Variant1LoginScreen = (props) => {
                 <Text
                     style={screenStyles.subtitleText}>{"To the world's no. 1 grocery app for Android and IOS. We deliver everything on time."}</Text>
 
+
                 <AppSocialButton onPress={() => {
                 }}
                                  containerStyle={screenStyles.googleLoginButtonContainer}
@@ -47,16 +50,18 @@ export const Variant1LoginScreen = (props) => {
                                  titleStyle={screenStyles.googleLoginButtonTitle}
                                  iconStyle={screenStyles.googleLoginIcon}
                                  title={"Connect using Google"}
-                                 icon={assets.google_icon}
+                                 icon={IconNames.Google}
+                                 iconColor={colors.red}
+                                 primaryShadowStart={"transparent"}
+                                 primaryShadowFinal={"transparent"}
                 />
 
                 <AppSocialButton onPress={() => {
                     props.navigation.navigate(Routes.SIGNUP_FORM_SCREEN1);
                 }}
                                  title={"Create an account"}
-                                 icon={assets.account_icon}
-                                 iconStyle={{tintColor: colors.buttonColor}
-                                 }
+                                 icon={IconNames.CircleUser}
+                                 iconColor={colors.buttonColor}
                 />
 
                 <View style={[screenStyles.accountBottomContainer]}>

@@ -15,6 +15,11 @@ export const Styles = function(scheme, colors) {
             flexDirection: "row",
             alignItems: "center",
             paddingLeft: wp("5"),
+            borderRadius: hp(0.75)
+        },
+
+        ordersListFirstItem: {
+            marginTop: hp(3),
         },
 
         headerContainerActive: {
@@ -32,25 +37,19 @@ export const Styles = function(scheme, colors) {
             marginRight: wp(3),
         },
 
-        headerLeftIcon: {
-            width: hp(3.5),
-            height: hp(3.5),
-            resizeMode: "contain"
-        },
-
         itemsHorizontalContainer: {
             flexDirection: "row",
             alignItems: "center"
         },
 
         headerTitleText: {
-            fontSize: Typography.P2,
+            fontSize: Typography.P3,
             fontFamily: Fonts.RUBIK_MEDIUM,
             color: colors.headingColor
         },
 
         headerSubtitleText: {
-            fontSize: Typography.P6,
+            fontSize: Typography.P5,
             fontFamily: Fonts.RUBIK_REGULAR,
             marginVertical: hp("0.5"),
             color: colors.subHeadingColor
@@ -78,6 +77,8 @@ export const Styles = function(scheme, colors) {
             height: hp(5),
             paddingLeft: wp("5"),
             alignItems: "center",
+            borderTopWidth: 1,
+            borderColor: colors.borderColorLight,
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
         },
 
@@ -99,8 +100,8 @@ export const Styles = function(scheme, colors) {
         },
 
         contentContainerStyle: {
-            paddingHorizontal: wp('3'),
-            paddingVertical: hp("2"),
+            paddingHorizontal: wp('5'),
+            paddingVertical: hp("2.5"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flex: 1,
             alignItems: "center"
@@ -116,9 +117,9 @@ export const Styles = function(scheme, colors) {
         },
 
         contentItemCircle: {
-            width: hp("2"),
-            height: hp("2"),
-            borderRadius: hp("1"),
+            width: hp("1.5"),
+            height: hp("1.5"),
+            borderRadius: hp("0.75"),
         },
 
         contentItemLine: {
@@ -129,7 +130,8 @@ export const Styles = function(scheme, colors) {
         contentItemLeftText: {
             flex: 0.5,
             fontFamily: Fonts.RUBIK_MEDIUM,
-            fontSize: Typography.P6,
+            fontSize: Typography.P5,
+            marginTop: -hp(0.3),
             color: colors.headingColor
         },
 

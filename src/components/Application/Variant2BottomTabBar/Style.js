@@ -62,11 +62,6 @@ export const Styles = function(styles, scheme, colors) {
             alignItems: "center",
         },
 
-        bottomTabIcon: {
-            width: hp(3),
-            height: hp(3),
-            resizeMode: "contain"
-        }
     }
 
 

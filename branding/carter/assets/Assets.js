@@ -98,6 +98,8 @@ const assets = {
     clock_icon :      require('./images/clock_icon.png'),
 
 
+
+
 };
 
 export default assets;

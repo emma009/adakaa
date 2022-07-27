@@ -10,6 +10,8 @@ import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import AppButton from "../../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import Routes from "../../../navigation/Routes";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 
 const assets = AppConfig.assets.default;
@@ -64,7 +66,7 @@ export const Variant3ForgotPassword = (props) => {
                             {...globalStyles.secondaryInputStyle}
                             containerStyle={{marginBottom: hp(1)}}
                             textInputRef={r => (inputRef = r)}
-                            leftIcon={assets.envelop_icon}
+                            leftIcon={IconNames.Envelope}
                             keyboardType={"email-address"}
                             placeholder={"Email Address"}
                             value={email}
@@ -76,7 +78,7 @@ export const Variant3ForgotPassword = (props) => {
                         <AppButton
                             title={'Send Link'}
                             onPress={() => {
-                                props.navigation.goBack();
+                                props.navigation.navigate(Routes.VERIFY_NUMBER_SCREEN)
                             }}
                         />
 

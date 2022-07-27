@@ -8,6 +8,8 @@ import Routes from "../../../navigation/Routes";
 import { Styles } from "./Styles";
 import AppConfig from "../../../../branding/App_config";
 import { useTheme } from "@react-navigation/native";
+import { SvgIcon } from "../SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -79,15 +81,8 @@ export const FoodItem = (props) => {
                         }}>
                             <View>
 
-                                {!favourite && <Image source={assets.heart_light_empty_icon} style={[
-                                    itemStyles.favouriteIcon,
-                                    {tintColor: colors.heartEmpty}
-                                ]}/>}
-
-                                {favourite && <Image source={assets.heart_filled_icon} style={[
-                                    itemStyles.favouriteIcon,
-                                    {tintColor: colors.heartFilled}
-                                ]}/>}
+                                <SvgIcon
+                                  type={favourite ? IconNames.HeartFilled : IconNames.Heart} width={20} height={20} color={favourite ? colors.heartFilled : colors.heartEmpty} />
 
                             </View>
 
@@ -114,6 +109,7 @@ export const FoodItem = (props) => {
                             <Text style={itemStyles.titleText}>{title}</Text>
                             <Text style={itemStyles.weightText}>{weight}</Text>
                         </View>
+
                         <View style={itemStyles.bottomContainer}>
                             {cartCount === 0 ?
                                 <Button
@@ -121,7 +117,8 @@ export const FoodItem = (props) => {
                                     titleStyle={itemStyles.addCartText}
                                     type={"clear"}
                                     icon={
-                                        <Image source={assets.cart_regular_icon} style={itemStyles.addCartIcon}/>
+                                    <SvgIcon type={IconNames.BagShopping} width={20} height={20} color={colors.activeColor} style={itemStyles.addCartIcon} />
+                                        // <Image source={assets.cart_regular_icon} style={itemStyles.addCartIcon}/>
                                     }
                                     onPress={() => _cartCountChange("add")}
                                 />
@@ -130,7 +127,7 @@ export const FoodItem = (props) => {
                                         _cartCountChange("subtract")
                                     }}>
 
-                                        <Image source={assets.minus_icon} style={itemStyles.cartUpdateIcon}/>
+                                        <SvgIcon type={IconNames.Minus} width={15} height={15} color={colors.activeColor} />
 
                                     </TouchableOpacity>
 
@@ -140,7 +137,7 @@ export const FoodItem = (props) => {
                                         _cartCountChange("add")
                                     }}>
 
-                                        <Image source={assets.plus_icon} style={itemStyles.cartUpdateIcon}/>
+                                        <SvgIcon type={IconNames.Plus} width={15} height={15} color={colors.activeColor} />
 
                                     </TouchableOpacity>
 

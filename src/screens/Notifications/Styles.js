@@ -10,7 +10,12 @@ export const Styles = function(scheme, colors) {
 
     return {
         container: {
-            flex: 1
+            flex: 1,
+        },
+
+        mainContainer: {
+            flex: 0.9,
+            marginTop: hp(3)
         },
 
         notificationContainer: {
@@ -23,6 +28,18 @@ export const Styles = function(scheme, colors) {
             paddingLeft: wp("5"),
 
             paddingVertical: hp("2"),
+
+
+        },
+
+        topRadius: {
+            borderTopLeftRadius: hp(0.75),
+            borderTopRightRadius: hp(0.75)
+        },
+
+        bottomRadius: {
+            borderBottomLeftRadius: hp(0.75),
+            borderBottomRightRadius: hp(0.75)
         },
 
         notificationBottomBorder: {
@@ -49,6 +66,13 @@ export const Styles = function(scheme, colors) {
             marginVertical: hp("0.5"),
             color: colors.subHeadingColor
         },
+
+        bottomContainer: {
+            flex: 0.1,
+            justifyContent: "center"
+        }
+
+
     }
 
 }

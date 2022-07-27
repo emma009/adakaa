@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { View } from "react-native";
+import { useColorScheme, View } from "react-native";
 
 import BaseView from "../BaseView";
 import { Text } from "react-native-elements";
@@ -9,6 +9,9 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview"
 import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -19,7 +22,9 @@ export const AboutMe = (props) => {
   let inputRef = useRef();
 
   //Theme based styling and colors
+  const scheme = useColorScheme();
   const { colors } = useTheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
   const screenStyles = Styles(colors);
 
 
@@ -47,18 +52,20 @@ export const AboutMe = (props) => {
 
             <KeyboardAwareScrollView
               keyboardShouldPersistTaps={"never"}
+              style={screenStyles.upperContainer}
               getTextInputRefs={() => {
                 return [inputRef];
               }}
               showsVerticalScrollIndicator={false}>
 
-              <View style={screenStyles.mainContainer}>
+              <View style={screenStyles.upperContainer}>
 
                 <Text style={screenStyles.typeHeader}>{"Personal Details"}</Text>
 
                 <AppInput
+                  {...globalStyles.secondaryInputStyle}
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.account_icon}
+                  leftIcon={IconNames.CircleUser}
                   placeholder={"Name"}
                   value={name}
                   onChangeText={(name) => {
@@ -67,8 +74,9 @@ export const AboutMe = (props) => {
                 />
 
                 <AppInput
+                  {...globalStyles.secondaryInputStyle}
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.envelop_icon}
+                  leftIcon={IconNames.Envelope}
                   placeholder={"Email Address"}
                   value={email}
                   onChangeText={(email) => {
@@ -78,8 +86,9 @@ export const AboutMe = (props) => {
                 />
 
                 <AppInput
+                  {...globalStyles.secondaryInputStyle}
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.phone_icon}
+                  leftIcon={IconNames.PhoneFlip}
                   placeholder={"Phone"}
                   value={phone}
                   onChangeText={(phone) => {
@@ -91,8 +100,9 @@ export const AboutMe = (props) => {
                 <Text style={screenStyles.typeHeader}>{"Change Password"}</Text>
 
                 <AppInput
+                  {...globalStyles.secondaryInputStyle}
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.lock_icon}
+                  leftIcon={IconNames.LockKeyhole}
                   placeholder={"Current Password"}
                   isPasswordField
                   value={currentPassword}
@@ -102,8 +112,9 @@ export const AboutMe = (props) => {
                 />
 
                 <AppInput
+                  {...globalStyles.secondaryInputStyle}
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.lock_icon}
+                  leftIcon={IconNames.LockKeyhole}
                   placeholder={"Password"}
                   isPasswordField
                   value={newPassword}
@@ -113,8 +124,9 @@ export const AboutMe = (props) => {
                 />
 
                 <AppInput
+                  {...globalStyles.secondaryInputStyle}
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.lock_icon}
+                  leftIcon={IconNames.LockKeyhole}
                   placeholder={"Confirm Password"}
                   isPasswordField
                   value={confirmPassword}

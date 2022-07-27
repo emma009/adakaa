@@ -9,25 +9,21 @@ export const Styles = function(scheme, styles, colors) {
     return {
         buttonContainer: {
             width: styles.gridWidth,
-            height: hp(5.8),
-            backgroundColor: scheme === "dark" ? colors.inputBackground : colors.inputSecondaryBackground,
+            height: hp(6),
+            backgroundColor: scheme === "dark" ? colors.inputBackground : colors.inputBackground,
             flexDirection: "row",
             alignItems: "center",
             marginVertical: hp("0.8"),
-            borderRadius: hp(0.3)
+            borderRadius: hp(0.75)
         },
         leftIcon: {
-            width: hp(2),
-            height: hp(2),
-            tintColor: colors.inputColor,
             marginLeft: wp(5),
-            resizeMode: "contain"
         },
         Text: {
             marginLeft: hp("2"),
             fontFamily: Fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
-            color: colors.inputColor
+            color: colors.inputTextColor
         },
         rightIcon: {
             position: "absolute",

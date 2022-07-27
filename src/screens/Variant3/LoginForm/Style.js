@@ -31,7 +31,7 @@ export const Styles = function(styles, darkColors, lightColors) {
         },
 
         contentContainerStyle: {
-            marginTop: hp(5)
+            // marginTop: hp(5)
         },
 
         titleText: {
@@ -45,7 +45,7 @@ export const Styles = function(styles, darkColors, lightColors) {
         subtitleText: {
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
-            marginBottom: hp("2"),
+            marginBottom: hp("3"),
             color: lightColors.subHeadingColor,
             textAlign: "center"
         },

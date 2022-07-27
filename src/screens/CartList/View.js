@@ -24,6 +24,7 @@ export const CartList = (props) => {
 
         <View style={screenStyles.mainContainer}>
 
+
             <View style={[screenStyles.flatListContainer]}>
                 <BaseView
                     showAppHeader={true}
@@ -38,7 +39,32 @@ export const CartList = (props) => {
                             <FlatList
                                 showsVerticalScrollIndicator={false}
                                 data={Globals.foodItems}
-                                renderItem={({ item }) =>
+                                renderItem={({ item, index }) =>
+                                  index === 0 ? <View style={screenStyles.flatListFirstItemContainer}>
+                                      <CartItem
+                                        title={item.title}
+                                        image={item.image}
+                                        bigImage={item.bigImage}
+                                        price={item.price}
+                                        weight={item.weight}
+                                        discount={item.discount}
+                                        cartCount={item.cartCount}
+                                        cartCountChange={(count) => {  }}
+                                        navigation={props.navigation}
+                                      />
+                                    </View> : index === Globals.foodItems.length -1 ? <View style={screenStyles.flatListLastItemContainer}>
+                                      <CartItem
+                                        title={item.title}
+                                        image={item.image}
+                                        bigImage={item.bigImage}
+                                        price={item.price}
+                                        weight={item.weight}
+                                        discount={item.discount}
+                                        cartCount={item.cartCount}
+                                        cartCountChange={(count) => {  }}
+                                        navigation={props.navigation}
+                                      />
+                                    </View> :
                                     <CartItem
                                         title={item.title}
                                         image={item.image}
@@ -64,13 +90,13 @@ export const CartList = (props) => {
               <View style={screenStyles.bottomContainer}>
 
                 <View style={screenStyles.totalContainer}>
-                  <Text style={screenStyles.subtotalLabelText}>SubTotal</Text>
+                  <Text style={screenStyles.subtotalLabelText}>Subtotal</Text>
                   <Text style={screenStyles.subtotalValueText}>$16.99</Text>
                 </View>
 
                 <View style={screenStyles.totalContainer}>
                   <Text style={screenStyles.subtotalLabelText}>Shipping</Text>
-                  <Text style={screenStyles.subtotalValueText}>$16.99</Text>
+                  <Text style={screenStyles.subtotalValueText}>$0</Text>
                 </View>
 
                 <Divider style={screenStyles.horizontalDivider} />

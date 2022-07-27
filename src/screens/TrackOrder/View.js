@@ -9,6 +9,8 @@ import AppButton from "../../components/Application/AppButton/View";
 import Routes from "../../navigation/Routes";
 import { StackActions, useTheme } from "@react-navigation/native";
 import Config from "../../../branding/carter/configuration/Config";
+import { SvgIcon } from "../../components/Application/SvgIcon/View";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -25,7 +27,7 @@ export const TrackOrder = (props) => {
 
             <View style={screenStyles.headerLeftIconContainer}>
 
-                <Image source={assets.order_icon} style={screenStyles.headerLeftIcon}/>
+                <SvgIcon type={IconNames.Box} width={20} height={20} color={colors.activeColor} />
 
             </View>
 
@@ -52,15 +54,19 @@ export const TrackOrder = (props) => {
             <View style={screenStyles.orderStatusItemContainer}>
                 <View style={screenStyles.orderStatusLeftContainer}>
                     <View style={[screenStyles.orderStatusLeftIconContainer, {backgroundColor: colors.tertiaryBackground}]}>
-                        <Image source={assets.order_placed_icon}
-                               style={[screenStyles.orderStatusLeftIcon, {tintColor: colors.activeColor}]}/>
+                        <SvgIcon type={IconNames.BoxOpen} width={20} height={20} color={colors.activeColor} />
+
                     </View>
 
                     <Divider style={[screenStyles.orderStatusLine, {backgroundColor: colors.activeColor}]}/>
+
                 </View>
-                <View>
+                <View style={screenStyles.orderTitleContainer}>
                     <Text style={screenStyles.orderStatusTitle}>{"Orders Placed"}</Text>
                     <Text style={screenStyles.orderStatusSubtitle}>{"Dec 10, 2020"}</Text>
+
+                    <View style={screenStyles.centerSeparatorLine} />
+
                 </View>
 
             </View>
@@ -68,31 +74,35 @@ export const TrackOrder = (props) => {
             <View style={screenStyles.orderStatusItemContainer}>
                 <View style={screenStyles.orderStatusLeftContainer}>
                     <View style={[screenStyles.orderStatusLeftIconContainer, {backgroundColor: colors.tertiaryBackground}]}>
-                        <Image source={assets.order_confirmed_icon}
-                               style={[screenStyles.orderStatusLeftIcon, {tintColor: colors.activeColor}]}/>
+                        <SvgIcon type={IconNames.ClipboardCheck} width={20} height={20} color={colors.activeColor} />
+
                     </View>
 
                     <Divider style={[screenStyles.orderStatusLine, {backgroundColor: colors.activeColor}]}/>
                 </View>
-                <View>
+                <View style={screenStyles.orderTitleContainer}>
                     <Text style={screenStyles.orderStatusTitle}>{"Order Confirmed"}</Text>
                     <Text style={screenStyles.orderStatusSubtitle}>{"Dec 10, 2020"}</Text>
-                </View>
 
+                    <View style={screenStyles.centerSeparatorLine} />
+
+                </View>
             </View>
 
             <View style={screenStyles.orderStatusItemContainer}>
                 <View style={screenStyles.orderStatusLeftContainer}>
                     <View style={[screenStyles.orderStatusLeftIconContainer, {backgroundColor: colors.tertiaryBackground}]}>
-                        <Image source={assets.order_shipped_icon}
-                               style={[screenStyles.orderStatusLeftIcon, {tintColor: colors.activeColor}]}/>
+                        <SvgIcon type={IconNames.MapMarkedAlt} width={20} height={20} color={colors.activeColor} />
                     </View>
 
                     <Divider style={[screenStyles.orderStatusLine, {backgroundColor: colors.activeColor}]}/>
                 </View>
-                <View>
+                <View style={screenStyles.orderTitleContainer}>
                     <Text style={screenStyles.orderStatusTitle}>{"Order Shipped"}</Text>
                     <Text style={screenStyles.orderStatusSubtitle}>{"Dec 10, 2020"}</Text>
+
+                    <View style={screenStyles.centerSeparatorLine} />
+
                 </View>
 
             </View>
@@ -100,15 +110,16 @@ export const TrackOrder = (props) => {
             <View style={screenStyles.orderStatusItemContainer}>
                 <View style={screenStyles.orderStatusLeftContainer}>
                     <View style={[screenStyles.orderStatusLeftIconContainer, {backgroundColor: colors.inputSecondaryBackground}]}>
-                        <Image source={assets.out_for_delivery_icon}
-                               style={[screenStyles.orderStatusLeftIcon, {tintColor: colors.switchBorder}]}/>
-                    </View>
+                        <SvgIcon type={IconNames.ShippingFast} width={20} height={20} color={colors.switchBorder} />
 
+                    </View>
                     <Divider style={[screenStyles.orderStatusLine, {backgroundColor: colors.borderColorLight}]}/>
                 </View>
-                <View>
+                <View style={screenStyles.orderTitleContainer}>
                     <Text style={screenStyles.orderStatusTitle}>{"Out of Delivery"}</Text>
                     <Text style={screenStyles.orderStatusSubtitle}>{"Pending"}</Text>
+
+                    <View style={screenStyles.centerSeparatorLine} />
                 </View>
 
             </View>
@@ -116,11 +127,10 @@ export const TrackOrder = (props) => {
             <View style={screenStyles.orderStatusItemContainer}>
                 <View style={screenStyles.orderStatusLeftContainer}>
                     <View style={[screenStyles.orderStatusLeftIconContainer, {backgroundColor: colors.inputSecondaryBackground}]}>
-                        <Image source={assets.order_delivered_icon}
-                               style={[screenStyles.orderStatusLeftIcon, {tintColor: colors.switchBorder}]}/>
+                        <SvgIcon type={IconNames.Dolly} width={20} height={20} color={colors.switchBorder} />
                     </View>
                 </View>
-                <View>
+                <View style={screenStyles.orderTitleContainer}>
                     <Text style={screenStyles.orderStatusTitle}>{"Order Delivered"}</Text>
                     <Text style={screenStyles.orderStatusSubtitle}>{"Pending"}</Text>
                 </View>
@@ -143,9 +153,11 @@ export const TrackOrder = (props) => {
 
                     <View style={screenStyles.container}>
 
-                        {renderOrderHeader()}
+                        <View style={screenStyles.upperContainer}>
+                            {renderOrderHeader()}
 
-                        {renderOrderContent()}
+                            {renderOrderContent()}
+                        </View>
 
                         <View style={screenStyles.bottomContainer}>
 

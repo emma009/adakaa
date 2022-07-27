@@ -1,13 +1,13 @@
 import React from 'react';
 import {Text} from "react-native-elements";
-import { Image, TouchableOpacity, useColorScheme, View } from "react-native";
+import { TouchableHighlight, useColorScheme, View } from "react-native";
 import { Styles } from "./Style";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-
-const PropTypes = require('prop-types');
+import { Shadow } from "react-native-shadow-2";
+import { SvgIcon } from "../SvgIcon/View";
 
 export const AppSocialButton = (props) => {
 
@@ -23,28 +23,37 @@ export const AppSocialButton = (props) => {
         onPress,
         containerStyle,
         buttonStyle,
-        iconStyle,
+        iconColor,
         titleStyle
     } = props;
 
+    const primaryShadowStart = props.primaryShadowStart || colors.primaryShadowStart;
+    const primaryShadowFinal = props.primaryShadowFinal || colors.primaryShadowFinal;
 
     return (
 
-        <TouchableOpacity
-            style={[containerStyle, {borderRadius: hp(1.75)}]}
+      <Shadow
+        viewStyle={{alignSelf: "stretch"}}
+        startColor={primaryShadowStart}
+        finalColor={primaryShadowFinal}
+        radius={hp(0.75)}
+        distance={2}
+        offset={[0, 3]}
+      >
+
+        <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor="#bbbbbb"
+            style={[containerStyle, {borderRadius: hp(0.75)}]}
             onPress={() => {
                 onPress();
             }}>
-            <View style={[globalStyles.primaryButtonStyle, itemStyles.container, buttonStyle, {
-                borderRadius: hp(0.75)
-            }]}>
+            <View style={[globalStyles.primaryButtonStyle, itemStyles.container, buttonStyle]}>
 
 
-                <Image source={icon} style={[
-                    itemStyles.icon,
-                    iconStyle
-                ]}
-                />
+                {
+                    icon && <SvgIcon type={icon} width={20} height={20} color={iconColor} style={[itemStyles.icon]} />
+                }
 
                 <Text style={[
                     globalStyles.primaryButtonTextStyle,
@@ -52,26 +61,8 @@ export const AppSocialButton = (props) => {
                     titleStyle
                 ]}>{title}</Text>
             </View>
-        </TouchableOpacity>
+        </TouchableHighlight>
+      </Shadow>
 
     )
 }
-
-AppSocialButton.propTypes = {
-
-    icon: PropTypes.string,
-
-    title: PropTypes.string,
-
-    containerStyle: PropTypes.any,
-
-    buttonStyle: PropTypes.any,
-
-    iconStyle: PropTypes.any,
-
-    titleStyle: PropTypes.any,
-
-    onPress: PropTypes.func.isRequired,
-
-};
-

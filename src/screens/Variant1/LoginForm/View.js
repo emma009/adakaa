@@ -5,13 +5,15 @@ import AppConfig from '../../../../branding/App_config';
 import AppInput from "../../../components/Application/AppInput/View"
 import Routes from '../../../navigation/Routes';
 import { Styles } from "./Style";
-import { StackActions, useTheme } from "@react-navigation/native";
+import { CommonActions, StackActions, useTheme } from "@react-navigation/native";
 import AppHeader from "../../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import {CustomSwitch} from "../../../components/Global/CustomSwitch/View";
 import AppButton from "../../../components/Application/AppButton/View";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import Config from "../../../../branding/carter/configuration/Config";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 
 const assets = AppConfig.assets.default;
@@ -65,7 +67,7 @@ export const Variant1LoginFormScreen = (props) => {
                     <AppInput
                       {...globalStyles.secondaryInputStyle}
                       textInputRef= {r => (inputRef = r)}
-                        leftIcon={assets.envelop_icon}
+                        leftIcon={IconNames.Envelope}
                         placeholder={"Email Address"}
                       value={email}
                       keyboardType={"email-address"}
@@ -78,7 +80,7 @@ export const Variant1LoginFormScreen = (props) => {
                       {...globalStyles.secondaryInputStyle}
                       textInputRef={r => (inputRef = r)}
                         isPasswordField
-                        leftIcon={assets.lock_icon}
+                      leftIcon={IconNames.LockKeyhole}
                         placeholder={"Password"}
                       value={password}
                       onChangeText={(password) => {
@@ -115,7 +117,10 @@ export const Variant1LoginFormScreen = (props) => {
                         title={"Login"}
                         onPress={() => {
                             props.navigation.dispatch(
-                                StackActions.replace(Routes.HOME_VARIANT1)
+                              CommonActions.reset({
+                                  index: 1,
+                                  routes: [{name: Routes.HOME_VARIANT1}],
+                              }),
                             );
                         }}
                     />

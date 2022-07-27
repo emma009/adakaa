@@ -6,6 +6,8 @@ import Globals from "../../../utils/Globals";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import IconNames from "../../../../branding/carter/assets/IconNames";
+import { SvgIcon } from "../SvgIcon/View";
 
 const assets = AppConfig.assets.default;
 
@@ -52,8 +54,9 @@ export function Variant1BottomTabBar({ state, descriptors, navigation }) {
 
                             <View style={[screenStyles.bottomTabCartOuterContainer]}>
                                 <View style={[globalStyles.buttonShadow, screenStyles.bottomTabCartInnerContainer]}>
-                                    <Image source={assets.cart_regular_icon}
-                                           style={[screenStyles.bottomTabIcon, {tintColor: colors.white}]}/>
+
+                                    <SvgIcon type={IconNames.BagShopping} width={30} height={30} color={colors.white} />
+
 
 
                                 </View>
@@ -63,20 +66,20 @@ export function Variant1BottomTabBar({ state, descriptors, navigation }) {
                     );
                 } else {
 
-                    let icon = assets.cart_regular_icon;
+                    let icon = IconNames.HomeAlt;
 
                     switch (index) {
 
                         case 0:
-                            icon = assets.home_icon;
+                            icon = IconNames.HomeAlt;
                             break;
 
                         case 1:
-                            icon = assets.heart_regular_icon;
+                            icon = IconNames.Heart;
                             break;
 
                         case 2:
-                            icon = assets.account_icon;
+                            icon = IconNames.CircleUser;
                             break;
 
                     }
@@ -94,10 +97,8 @@ export function Variant1BottomTabBar({ state, descriptors, navigation }) {
 
                             {/*isFocused is selected*/}
 
-                            <Image source={icon} style={[
-                                screenStyles.bottomTabIcon, {
-                                    tintColor: isFocused ? colors.headingColor : colors.subHeadingColor
-                                }]}/>
+                            <SvgIcon type={icon} width={25} height={25} color={isFocused ? colors.headingColor : colors.subHeadingColor} />
+
 
                         </TouchableOpacity>
                     );

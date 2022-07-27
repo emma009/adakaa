@@ -32,6 +32,8 @@ const colors = {
     //Button
     buttonBackground: "#6cc51d",
     buttonColor: "#ffffff",
+    primaryShadowStart: "#6cc51d4d",
+    primaryShadowFinal: "#6cc51d1a",
 
     //Switch
     switchActiveBackground: "#6cc51d",
@@ -67,6 +69,30 @@ const colors = {
 
 
     white: "#ffffff",
+
+
+
+    //Custom Colors
+    bannerGreenPrimary: "#6cc51d",
+    bannerGreenSecondary: "#e2f5d2",
+    bannerGreenTertiary: "#f0f9e7",
+
+
+    bannerRedPrimary: "#ff4244",
+    bannerRedSecondary: "#ffdbdb",
+    bannerRedTertiary: "#ffecec",
+
+
+    bannerBluePrimary: "#1faaff",
+    bannerBlueSecondary: "#d4eeff",
+    bannerBlueTertiary: "#e8f6ff",
+
+
+    bannerOrangePrimary: "#ffa201",
+    bannerOrangeSecondary: "#ffedce",
+    bannerOrangeTertiary: "#fef6e5",
+
+
 
 };
 export default colors;

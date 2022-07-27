@@ -17,6 +17,8 @@ import Globals from "../../../utils/Globals";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -37,17 +39,15 @@ export const Variant2Profile = (props) => {
             onPress={() => item.onPress()}
             style={screenStyles.profileListingItemContainer}>
 
-            <Image source={item.icon} style={screenStyles.profileListingItemLeftImage}/>
+          <SvgIcon type={item.icon} width={20} height={20} color={colors.activeColor} style={screenStyles.profileListingItemLeftImage} />
+
 
             <Text style={screenStyles.profileListingItemText}>{item.title}</Text>
 
             <View style={screenStyles.profileListingItemRightContainer}>
-                <Icon
-                    name={"angle-right"}
-                    type={"font-awesome"}
-                    iconStyle={{
-                        color: colors.subHeadingColor
-                    }}/>
+
+              <SvgIcon type={IconNames.ChevronRight} width={20} height={20} color={colors.subHeadingColor} />
+
             </View>
         </TouchableOpacity>
     }
@@ -95,10 +95,7 @@ export const Variant2Profile = (props) => {
                     ]
                 }>
 
-                    <Image
-                        source={assets.camera_regular_icon}
-                        style={screenStyles.profileImageAccessoryViewImage}
-                    />
+                  <SvgIcon type={IconNames.Camera} width={20} height={20} color={colors.white} />
 
                 </TouchableOpacity>
 

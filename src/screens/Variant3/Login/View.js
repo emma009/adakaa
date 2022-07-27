@@ -9,6 +9,7 @@ import { AppSocialButton } from "../../../components/Application/AppSocialButton
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 const colors = AppConfig.lightColors.default;
@@ -47,7 +48,10 @@ export const Variant3LoginScreen = (props) => {
                                  titleStyle={screenStyles.googleLoginButtonTitle}
                                  iconStyle={screenStyles.googleLoginIcon}
                                  title={"Connect using Google"}
-                                 icon={assets.google_icon}
+                                 icon={IconNames.Google}
+                                 iconColor={colors.red}
+                                 primaryShadowStart={"transparent"}
+                                 primaryShadowFinal={"transparent"}
                 />
 
 
@@ -55,7 +59,8 @@ export const Variant3LoginScreen = (props) => {
                     props.navigation.navigate(Routes.SIGNUP_FORM_SCREEN3);
                 }}
                                  title={"Create an account"}
-                                 icon={assets.account_icon}
+                                 icon={IconNames.CircleUser}
+                                 iconColor={colors.buttonColor}
                 />
 
                 <View style={[screenStyles.accountBottomContainer, {}]}>

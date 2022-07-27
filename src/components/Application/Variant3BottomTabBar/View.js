@@ -1,14 +1,14 @@
 import React from "react";
-import { Image, TouchableOpacity, useColorScheme, View } from "react-native";
-import AppConfig from "../../../../branding/App_config";
-import {heightPercentageToDP as hp} from "react-native-responsive-screen";
-import { Styles } from "./Style"
+import { TouchableOpacity, useColorScheme, View } from "react-native";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { Styles } from "./Style";
 import Globals from "../../../utils/Globals";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
-const assets = AppConfig.assets.default;
 
 export function Variant3BottomTabBar({state, descriptors, navigation}) {
 
@@ -41,24 +41,24 @@ export function Variant3BottomTabBar({state, descriptors, navigation}) {
                 };
 
 
-                let icon = assets.cart_regular_icon;
+                let icon = IconNames.HomeAlt;
 
                 switch (index) {
 
                     case 0:
-                        icon = assets.home_icon;
+                        icon = IconNames.HomeAlt;
                         break;
 
                     case 1:
-                        icon = assets.heart_regular_icon;
+                        icon = IconNames.Heart;
                         break;
 
                     case 2:
-                        icon = assets.account_icon;
+                        icon = IconNames.CircleUser;
                         break;
 
                     case 3:
-                        icon = assets.cart_regular_icon;
+                        icon = IconNames.BagShopping;
                         break;
 
 
@@ -83,11 +83,10 @@ export function Variant3BottomTabBar({state, descriptors, navigation}) {
                         }, screenStyles.bottomTabItemContainer
                         ]}>
 
-                            <Image source={icon} style={[{
-                                tintColor: isFocused ? colors.activeColor : colors.primaryBackground
-                            }, screenStyles.bottomTabIcon]}/>
+                            <SvgIcon type={icon} width={25} height={25} color={isFocused ? colors.activeColor : colors.primaryBackground} />
 
                         </View>
+
 
                     </TouchableOpacity>
                 );

@@ -7,6 +7,8 @@ import { Styles } from "./Styles";
 import {widthPercentageToDP as wp} from "react-native-responsive-screen";
 import AppConfig from "../../../../branding/App_config";
 import { useTheme } from "@react-navigation/native";
+import { SvgIcon } from "../../Application/SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const PropTypes = require('prop-types');
 
@@ -30,7 +32,7 @@ export const Counter = (props) => {
     const borderColor = colors.borderColorLight;
 
     //Internal states
-    const [cartCount, setCartCount] = useState(0);
+    const [cartCount, setCartCount] = useState(1);
 
     const _cartCountChange = (behavior) => {
         if (behavior === "add") {
@@ -61,9 +63,7 @@ export const Counter = (props) => {
                     _cartCountChange("subtract")
                 }}>
 
-                    <Image source={assets.minus_icon}
-                           style={itemStyles.icon}
-                           resizeMode={"contain"}/>
+                  <SvgIcon type={IconNames.Minus} width={18} height={18} color={colors.subHeadingSecondaryColor} />
 
                 </TouchableOpacity>
                 <View style={[
@@ -82,9 +82,7 @@ export const Counter = (props) => {
                     _cartCountChange("add")
                 }}>
 
-                    <Image source={assets.plus_icon}
-                           style={itemStyles.icon}
-                           resizeMode={"contain"}/>
+                  <SvgIcon type={IconNames.Plus} width={18} height={18} color={colors.subHeadingSecondaryColor} />
 
                 </TouchableOpacity>
             </View>
@@ -109,9 +107,7 @@ export const Counter = (props) => {
                     _cartCountChange("add")
                 }}>
 
-                    <Image source={assets.plus_icon}
-                           style={itemStyles.icon}
-                           resizeMode={"contain"}/>
+                  <SvgIcon type={IconNames.Plus} width={18} height={18} color={colors.subHeadingSecondaryColor} />
 
                 </TouchableOpacity>
                 <View style={[
@@ -136,9 +132,7 @@ export const Counter = (props) => {
                     _cartCountChange("subtract")
                 }}>
 
-                    <Image source={assets.minus_icon}
-                           style={itemStyles.icon}
-                           resizeMode={"contain"}/>
+                  <SvgIcon type={IconNames.Minus} width={18} height={18} color={colors.subHeadingSecondaryColor} />
 
                 </TouchableOpacity>
             </View>

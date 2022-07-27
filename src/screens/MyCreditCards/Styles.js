@@ -22,6 +22,15 @@ export const Styles = function(scheme, colors) {
             marginBottom: hp("1")
         },
 
+        creditCardFirstItem: {
+            marginTop: hp(3)
+        },
+
+        creditCardLastItem: {
+            marginBottom: hp(1)
+        },
+
+
         contentContainer: {
             paddingHorizontal: wp('3'),
             paddingVertical: hp("2"),
@@ -33,8 +42,13 @@ export const Styles = function(scheme, colors) {
             alignSelf: "center",
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
-            color: colors.subHeadingColor
+            color: colors.headingColor
         },
+
+        bottomContainer: {
+            flex: 0.1,
+            justifyContent: "center"
+        }
     }
 
 }

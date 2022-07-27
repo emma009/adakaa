@@ -32,8 +32,8 @@ export const Styles = function(styles, colors) {
         },
 
         headerImage: {
-            width: hp('42%'),
-            height: hp('42%'),
+            width: hp('35%'),
+            height: hp('35%'),
             resizeMode: "contain",
         },
 

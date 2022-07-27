@@ -10,6 +10,8 @@ import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { SvgIcon } from "../../components/Application/SvgIcon/View";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -55,62 +57,69 @@ export const Search = (props) => {
         </View>
     }
 
+
     return (
 
         <View style={screenStyles.container}>
             <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"} />
 
-            <View style={[screenStyles.searchContainer, {paddingTop: Globals.SAFE_AREA_INSET.top + hp(1)}]}>
+            <View style={screenStyles.mainContainer}>
 
-                <TouchableWithoutFeedback
-                    onPress={() => {
-                        props.navigation.goBack()
-                    }}
-                >
-                    <View style={screenStyles.searchLeftIconContainer}>
-                        <Image source={assets.arrow_left_icon}
-                               style={screenStyles.headerLeftIcon}/>
-                    </View>
-                </TouchableWithoutFeedback>
+                <View style={[screenStyles.searchContainer, {paddingTop: Globals.SAFE_AREA_INSET.top + hp(1)}]}>
 
-                <TextInput
-                    textInputRef={r => (inputRef = r)}
-                    placeholder={"Search"}
-                    placeholderTextColor={colors.headingColor}
-                    rightIconSource={
-                        assets.filter_icon
+                    <TouchableWithoutFeedback
+                      onPress={() => {
+                          props.navigation.goBack()
+                      }}
+                    >
+                        <View style={screenStyles.searchLeftIconContainer}>
+                          <SvgIcon type={IconNames.ArrowLeft} width={25} height={25} color={colors.headingColor} />
+                        </View>
+                    </TouchableWithoutFeedback>
+
+
+                    <TextInput
+                      textInputRef={r => (inputRef = r)}
+                      placeholder={"Search"}
+                      placeholderTextColor={colors.headingColor}
+                      rightIconSource={
+                          IconNames.SlidersH
+                      }
+                      rightIconPress={() => {
+                          props.navigation.navigate(Routes.APPLY_FILTERS)
+                      }}
+                      rightIconTintColor={colors.inputColor}
+                      leftIcon={
+                          <SvgIcon width={20} height={20} type={IconNames.Search} color={colors.inputColor} />
+                      }
+                      containerStyle={screenStyles.searchInputContainer}
+                      leftIconContainerStyle={screenStyles.searchInputLeftIconContainer}
+                      onChangeText={(value) => {
+
+                      }}
+                    />
+
+
+                </View>
+
+                <View style={screenStyles.contentContainerStyle}>
+                    {
+                        renderCategoryTitle("Search History", "Clear")
                     }
-                    rightIconPress={() => {
-                        props.navigation.navigate(Routes.APPLY_FILTERS)
-                    }}
-                    rightIconTintColor={colors.inactiveColor}
-                    leftIcon={
-                        <Image source={assets.search_icon}
-                               style={screenStyles.searchInputLeftIcon}/>
-                    }
-                    containerStyle={screenStyles.searchInputContainer}
-                    leftIconContainerStyle={screenStyles.searchInputLeftIconContainer}
-                    onChangeText={(value) => {
 
-                    }}
-                />
+                    {renderHistoryItems()}
+
+                    {
+                        renderCategoryTitle("Discover More", "Refresh")
+                    }
+
+                    {renderHistoryItems()}
+
+                </View>
+
 
             </View>
 
-            <View style={screenStyles.contentContainerStyle}>
-                {
-                    renderCategoryTitle("Search History", "Clear")
-                }
-
-                {renderHistoryItems()}
-
-                {
-                    renderCategoryTitle("Discover More", "Refresh")
-                }
-
-                {renderHistoryItems()}
-
-            </View>
 
             <View style={screenStyles.bottomButtonsContainer}>
 
@@ -120,9 +129,10 @@ export const Search = (props) => {
 
                     <View style={screenStyles.buttonContainer}>
 
-                        <Image source={assets.camera_regular_icon} style={screenStyles.buttonIcon}/>
+                      <SvgIcon type={IconNames.Camera} width={18} height={18} color={colors.inputColor} style={screenStyles.buttonIcon} />
 
                         <Text style={screenStyles.buttonText}>{"Image Search"}</Text>
+
 
                     </View>
 
@@ -132,9 +142,9 @@ export const Search = (props) => {
 
                     <View style={screenStyles.buttonContainer}>
 
-                        <Image source={assets.microphone_regular_icon} style={screenStyles.buttonIcon}/>
+                      <SvgIcon type={IconNames.Microphone} width={18} height={18} color={colors.inputColor} style={screenStyles.buttonIcon} />
 
-                        <Text style={screenStyles.buttonText}>{"Voice Search"}</Text>
+                      <Text style={screenStyles.buttonText}>{"Voice Search"}</Text>
 
                     </View>
                 </TouchableOpacity>

@@ -52,7 +52,7 @@ export const Styles = function(styles, colors) {
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
             lineHeight: Typography.H8,
-            marginBottom: hp("1.6"),
+            marginBottom: hp("3"),
             color: colors.subHeadingColor
         },
 

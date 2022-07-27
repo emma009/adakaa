@@ -47,22 +47,51 @@ export const CheckoutAddress = (props) => {
                             style={screenStyles.listContainer}
                             data={addresses}
                             renderItem={({item, index}) => {
-                                return <AddressItem
+                              if (index === 0) {
+                                return <View style={screenStyles.addressFirstItem}>
+                                  <AddressItem
                                     showActiveIcon
                                     isActive={item.isActive}
                                     item={item}
                                     onPress={() => {
-                                        onAddressItemPress(index)
+                                      onAddressItemPress(index)
                                     }}
+                                  />
+                                </View>
+                              }
+                              else if (index === Globals.addressItems.length - 1) {
+                                return <View style={screenStyles.addressLastItem}>
+                                  <AddressItem
+                                    showActiveIcon
+                                    isActive={item.isActive}
+                                    item={item}
+                                    onPress={() => {
+                                      onAddressItemPress(index)
+                                    }}
+                                  />
+                                </View>
+                              }
+                              else {
+                                return <AddressItem
+                                  showActiveIcon
+                                  isActive={item.isActive}
+                                  item={item}
+                                  onPress={() => {
+                                    onAddressItemPress(index)
+                                  }}
                                 />
+                              }
+
                             }}/>
 
+                      <View style={screenStyles.bottomContainer}>
                         <AppButton
                             title={'Next'}
                             onPress={() => {
                                 props.navigation.navigate(Routes.CHECKOUT_PAYMENT)
                             }}
                         />
+                      </View>
                     </View>
 
                 );

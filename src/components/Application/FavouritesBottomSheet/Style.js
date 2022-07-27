@@ -19,7 +19,7 @@ export const Styles = function(scheme, colors) {
             alignItems: "center",
             width: "100%",
             height: hp(8),
-            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.secondaryBackground
         },
 
         headerImageContainer: {
@@ -29,13 +29,6 @@ export const Styles = function(scheme, colors) {
             alignItems: "center",
             borderRadius: hp("3"),
             backgroundColor: colors.activeColor,
-        },
-
-        headerImage: {
-            width: hp(3),
-            height: hp(3),
-            tintColor: "white",
-            resizeMode: "contain"
         },
 
         headerTitle: {
@@ -60,7 +53,7 @@ export const Styles = function(scheme, colors) {
         },
 
         listContainer: {
-            marginTop: hp(2)
+            marginTop: hp(1)
         },
 
         colorListItemContainer: {

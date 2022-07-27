@@ -44,26 +44,58 @@ export const CheckoutSelectCard = (props) => {
               style={Styles.listContainer}
               renderItem={({ item, index }) => {
 
+                if (index === 0) {
+                  return (
+                    <View style={Styles.cardFirstItem}>
+                    <CardItem
+                      showActiveIcon
+                      isActive={item.isActive}
+                      item={item}
+                      onPress={() => {
+                        onCardItemPress(index);
+                      }} />
+                    </View>
+                  );
+                }
+                else if (index === Globals.paymentMethodItems.cardItems.length - 1) {
+                  return (
+                    <View style={Styles.cardLastItem}>
+                    <CardItem
+                      showActiveIcon
+                      isActive={item.isActive}
+                      item={item}
+                      onPress={() => {
+                        onCardItemPress(index);
+                      }} />
+                    </View>
+                  );
+                }
+                else {
+                  return (
+                    <CardItem
+                      showActiveIcon
+                      isActive={item.isActive}
+                      item={item}
+                      onPress={() => {
+                        onCardItemPress(index);
+                      }} />
+                  );
+                }
 
-                return (
-                  <CardItem
-                    showActiveIcon
-                    isActive={item.isActive}
-                    item={item}
-                    onPress={() => {
-                      onCardItemPress(index);
-                    }} />
-                );
+
               }}
             />
 
+            <View style={Styles.bottomContainer}>
+              <AppButton
+                title={"Next"}
+                onPress={() => {
+                  props.navigation.navigate(Routes.CART_SUMMARY);
+                }}
+              />
 
-            <AppButton
-              title={"Next"}
-              onPress={() => {
-                props.navigation.navigate(Routes.CART_SUMMARY);
-              }}
-            />
+            </View>
+
 
           </View>
 

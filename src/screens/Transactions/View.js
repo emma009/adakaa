@@ -18,7 +18,7 @@ export const Transactions = (props) => {
   const screenStyles = Styles(scheme, colors);
 
 
-  const renderTransactionItem = (item) => {
+  const renderTransactionItem = (item, index) => {
 
         let icon = assets.master_card_icon;
 
@@ -28,9 +28,8 @@ export const Transactions = (props) => {
             icon = assets.paypal_coloured_icon
         }
 
-
         return (
-            <View style={screenStyles.itemContainer}>
+            <View style={[screenStyles.itemContainer, index === 0 && screenStyles.transactionFirstItem, index === Globals.transactionItems.length - 1 && screenStyles.transactionLastItem]}>
 
                 <View style={screenStyles.leftIconContainerStyle}>
                     <Image source={icon} style={screenStyles.leftIcon}/>
@@ -65,8 +64,8 @@ export const Transactions = (props) => {
                         <FlatList
                             showsVerticalScrollIndicator={false}
                             data={Globals.transactionItems}
-                            renderItem={({item}) => {
-                                return renderTransactionItem(item)
+                            renderItem={({item, index}) => {
+                                return renderTransactionItem(item, index)
                             }}
                         />
 

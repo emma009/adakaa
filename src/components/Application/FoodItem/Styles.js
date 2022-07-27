@@ -11,7 +11,7 @@ export const Styles = function(scheme, colors) {
         container: {
             width: wp("44%"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            borderRadius: 5,
+            borderRadius: hp(0.75),
             flexDirection: "column",
             marginRight: hp("1"),
             marginBottom: hp("1"),
@@ -47,12 +47,6 @@ export const Styles = function(scheme, colors) {
             paddingEnd: wp(2),
             justifyContent: "center",
             alignItems: "flex-end"
-        },
-
-        favouriteIcon: {
-            width: hp(2),
-            height: hp(2),
-            resizeMode: "contain",
         },
 
         mainContainer: {
@@ -106,11 +100,7 @@ export const Styles = function(scheme, colors) {
         },
 
         addCartIcon: {
-            width: hp(2),
-            height: hp(1.6),
-            tintColor: colors.activeColor,
-            marginRight: wp(1),
-            resizeMode: "contain"
+            marginRight: wp(3),
         },
 
         cartUpdateContainer: {
@@ -126,13 +116,6 @@ export const Styles = function(scheme, colors) {
             alignItems: "center",
             borderColor: colors.borderColorLight,
             height: "100%"
-        },
-
-        cartUpdateIcon: {
-            width: hp(2),
-            height: hp(2),
-            tintColor: colors.activeColor,
-            resizeMode: "contain"
         },
 
         cartNumberText: {

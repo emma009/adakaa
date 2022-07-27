@@ -51,13 +51,6 @@ export const Styles = function(styles, scheme, colors) {
             left: hp(9.5),
         },
 
-        profileImageAccessoryViewImage: {
-            width: hp("2.5"),
-            height: hp("2.5"),
-            resizeMode: "contain",
-            tintColor: "white",
-        },
-
         infoContainer: {
             alignItems: "center",
             marginTop: hp("9")
@@ -87,11 +80,7 @@ export const Styles = function(styles, scheme, colors) {
         },
 
         profileListingItemLeftImage: {
-            width: hp(2.2),
-            height: hp(2.2),
-            tintColor: colors.activeColor,
             marginRight: wp(5),
-            resizeMode: "contain"
         },
 
         profileListingItemText: {

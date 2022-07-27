@@ -12,9 +12,14 @@ export const Styles = function(colors){
             flex: 1
         },
 
+        parentContainer: {
+            flex: 0.9,
+            marginTop: hp(3)
+        },
+
         bottomButton: {
-            flex: 1,
-            justifyContent: "flex-end"
+            flex: 0.1,
+            justifyContent: "center"
         },
 
         defaultText: {

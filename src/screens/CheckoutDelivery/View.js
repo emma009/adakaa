@@ -36,8 +36,9 @@ export const CheckoutDelivery = (props) => {
                 })
 
             }}>
-                <View style={[screenStyles.deliveryContainer, selectedDeliveryIndex === index && {
-                  borderWidth: 1,
+
+              <View style={[screenStyles.deliveryContainer, selectedDeliveryIndex === index && {
+                  borderWidth: 2,
                   borderColor: colors.activeColor
                 }]}>
 
@@ -70,6 +71,7 @@ export const CheckoutDelivery = (props) => {
 
                     <View style={screenStyles.container}>
 
+                      <View style={screenStyles.upperContainer}>
                         {renderDeliveryContainer(
                             "Standard Delivery",
                             "Order will be delivered between 3 - 5 business days straight to your doorstep.",
@@ -90,6 +92,8 @@ export const CheckoutDelivery = (props) => {
                             "$2",
                             3
                         )}
+
+                      </View>
 
                         <View style={screenStyles.bottomContainer}>
 

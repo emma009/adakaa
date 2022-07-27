@@ -8,6 +8,8 @@ import { Styles } from "./Style";
 import Easing from "react-native/Libraries/Animated/src/Easing";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useTheme } from "@react-navigation/native";
+import { SvgIcon } from "../SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -50,9 +52,7 @@ export const FavouriteItem = (props) => {
         }}
         style={itemStyles.rightSwipeContainer}>
 
-        <Image
-          source={assets.trash_icon}
-          style={itemStyles.rightSwipeIcon} />
+        <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white} />
 
       </TouchableOpacity>
 
@@ -93,9 +93,8 @@ export const FavouriteItem = (props) => {
         <View style={ itemStyles.swipeableMainContainer }>
 
           <View style={[itemStyles.leftImageContainer, { backgroundColor: item.color }]}>
-            <Image
-              source={assets.cart_regular_icon}
-              style={itemStyles.leftImage} resizeMode={"contain"} />
+
+            <SvgIcon type={IconNames.BagShopping} width={30} height={30} color={colors.white} />
 
           </View>
 

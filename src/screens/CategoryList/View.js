@@ -1,8 +1,9 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import { FlatList, View } from "react-native";
 import {CategoryItem} from "../../components/Application/CategoryItem/View";
 import BaseView from "../BaseView";
 import Globals from "../../utils/Globals";
+import style from "./Style";
 
 export const CategoryList = (props) => {
     return(
@@ -15,6 +16,7 @@ export const CategoryList = (props) => {
             childView={() => {
                 return (
 
+                  <View style={style.mainContainer}>
                     <FlatList
                         data={Globals.categoryItems}
                         numColumns={3}
@@ -26,13 +28,14 @@ export const CategoryList = (props) => {
                                 secondaryColor={item.secondaryColor}
                                 primaryTitle={item.primaryTitle}
                                 primaryColor={item.primaryColor}
+                                iconBgColor={item.iconBgColor}
                                 iconURI={item.iconURI}
                                 bgURI={item.bgURI}
                             />
                         }
                     />
 
-
+                  </View>
                 );
             }}
         />

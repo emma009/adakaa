@@ -16,6 +16,8 @@ import Globals from "../../../utils/Globals";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -40,9 +42,8 @@ export const Variant1Profile = (props) => {
       <View style={screenStyles.cardListingItemContainer}>
         <View style={screenStyles.cardListingItemIconContainer}>
 
-          <Image
-            source={item.icon}
-            style={screenStyles.cardListingItemIcon} />
+
+          <SvgIcon type={item.icon} width={20} height={20} color={colors.activeColor} />
 
         </View>
 
@@ -101,10 +102,7 @@ export const Variant1Profile = (props) => {
           ]
         }>
 
-          <Image
-            source={assets.camera_regular_icon}
-            style={screenStyles.profileImageAccessoryViewImage}
-          />
+          <SvgIcon type={IconNames.Camera} width={20} height={20} color={colors.white} />
 
         </TouchableOpacity>
 

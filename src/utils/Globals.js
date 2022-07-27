@@ -4,6 +4,7 @@ import AppConfig from "../../branding/App_config";
 import assets from "../../branding/carter/assets/Assets";
 import {CommonActions} from "@react-navigation/native";
 import Config from "../../branding/carter/configuration/Config";
+import IconNames from "../../branding/carter/assets/IconNames";
 
 const colors = AppConfig.lightColors.default;
 
@@ -39,22 +40,26 @@ class Globals {
         {
             title: "Welcome to Carter grocery application",
             subtitle: "Carter online grocery store is the no. 1 grocery application in the world",
-            headerImg: assets.intro1_img1
+            headerImg: IconNames.BagShopping,
+            theme: "green"
         },
         {
             title: "Best quality grocery at your doorstep",
             subtitle: "Carter online grocery store where we deliver everything on time.",
-            headerImg: assets.intro1_img2
+            headerImg: IconNames.Fish,
+            theme: "red"
         },
         {
             title: "Peace of mind same day delivery guaranteed",
             subtitle: "We dispatch all the order within two hours of the order being placed.",
-            headerImg: assets.intro1_img3
+            headerImg: IconNames.Truck,
+            theme: "blue"
         },
         {
             title: "Big savings with seasonal discounts in all products",
             subtitle: "We believe in providing best competitive prices to all of our customers.",
-            headerImg: assets.intro1_img4
+            headerImg: IconNames.MoneyBillWave,
+            theme: "orange"
         },
     ];
 
@@ -286,31 +291,35 @@ class Globals {
     ];
 
     static categoryItems = [
+
+        {
+            secondaryTitle: "organic",
+            secondaryColor: "#7ad228",
+            primaryTitle: "Vegetable",
+            primaryColor: "#519610",
+            iconBgColor: "#7ad027",
+            iconURI: IconNames.Carrot,
+            bgURI: require('../components/Application/CategoryItem/Assets/Images/organic_vegetable.png'),
+            selected: true,
+        },
         {
             secondaryTitle: "fresh",
             secondaryColor: "#FF4344",
             primaryTitle: "Fruits",
             primaryColor: "#DD2021",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/fresh_fruits_icon.png'),
+            iconBgColor: "#ff4244",
+            iconURI: IconNames.Lemon,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/fresh_fruits.png'),
-            selected: true,
+            selected: false,
         },
         {
             secondaryTitle: "fresh",
             secondaryColor: "#ffa200",
             primaryTitle: "Dairy",
             primaryColor: "#ee7b00",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/fresh_dairy_icon.png'),
+            iconBgColor: "#ffa200",
+            iconURI: IconNames.BreadSlice,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/fresh_dairy.png'),
-            selected: false,
-        },
-        {
-            secondaryTitle: "organic",
-            secondaryColor: "#7ad228",
-            primaryTitle: "Vegetables",
-            primaryColor: "#519610",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/organic_vegetable_icon.png'),
-            bgURI: require('../components/Application/CategoryItem/Assets/Images/organic_vegetable.png'),
             selected: false,
         },
         {
@@ -318,7 +327,8 @@ class Globals {
             secondaryColor: "#1faaff",
             primaryTitle: "Medicine",
             primaryColor: "#0076be",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/original_medicine_icon.png'),
+            iconBgColor: "#20a9ff",
+            iconURI: IconNames.HeartBeat,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/original_medicine.png'),
             selected: false,
         },
@@ -327,7 +337,8 @@ class Globals {
             secondaryColor: "#18e2d6",
             primaryTitle: "Bakery",
             primaryColor: "#09bcb1",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/quality_bakery_icon.png'),
+            iconBgColor: "#1ae1d5",
+            iconURI: IconNames.BirthdayCake,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/quality_bakery.png'),
             selected: false,
         },
@@ -336,7 +347,8 @@ class Globals {
             secondaryColor: "#D250E9",
             primaryTitle: "Products",
             primaryColor: "#A627BC",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/baby_products_icon.png'),
+            iconBgColor: "#d24fe9",
+            iconURI: IconNames.BabyCarriage,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/baby_products.png'),
             selected: false,
         },
@@ -345,7 +357,8 @@ class Globals {
             secondaryColor: "#E26D3F",
             primaryTitle: "chicken",
             primaryColor: "#B24E27",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/fresh_chicken_icon.png'),
+            iconBgColor: "#e26e3e",
+            iconURI: IconNames.Turkey,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/fresh_chicken.png'),
             selected: false,
         },
@@ -354,7 +367,8 @@ class Globals {
             secondaryColor: "#9DB6CF",
             primaryTitle: "fishes",
             primaryColor: "#7A91A8",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/fresh_fishes_icon.png'),
+            iconBgColor: "#9db5cf",
+            iconURI: IconNames.Fish,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/fresh_fishes.png'),
             selected: false,
         },
@@ -363,7 +377,8 @@ class Globals {
             secondaryColor: "#7AD228",
             primaryTitle: "salads",
             primaryColor: "#519610",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/organic_salads_icon.png'),
+            iconBgColor: "#a3db19",
+            iconURI: IconNames.Salad,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/organic_salads.png'),
             selected: false,
         },
@@ -372,7 +387,8 @@ class Globals {
             secondaryColor: "#B6833D",
             primaryTitle: "foods",
             primaryColor: "#A26E27",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/pet_foods_icon.png'),
+            iconBgColor: "#b5833b",
+            iconURI: IconNames.Dog,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/pet_foods.png'),
             selected: false,
         },
@@ -381,7 +397,8 @@ class Globals {
             secondaryColor: "#C5150C",
             primaryTitle: "pizzas",
             primaryColor: "#A8130B",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/quality_pizzas_icon.png'),
+            iconBgColor: "#c6160c",
+            iconURI: IconNames.PizzaSlice,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/quality_pizzas.png'),
             selected: false,
         },
@@ -390,7 +407,8 @@ class Globals {
             secondaryColor: "#2A56F5",
             primaryTitle: "goods",
             primaryColor: "#1E40BD",
-            iconURI: require('../components/Application/CategoryItem/Assets/Images/sport_goods_icon.png'),
+            iconBgColor: "#2a56f5",
+            iconURI: IconNames.TableTennis,
             bgURI: require('../components/Application/CategoryItem/Assets/Images/sport_goods.png'),
             selected: false,
         }
@@ -654,31 +672,31 @@ class Globals {
             {
                 id: 1,
                 isActive: true,
-                icon: assets.credit_card_icon,
+                icon: IconNames.CreditCard,
                 type: 'Credit Card',
             },
             {
                 id: 2,
                 isActive: false,
-                icon: assets.paypal_icon,
+                icon: IconNames.Paypal,
                 type: 'Paypal',
             },
             {
                 id: 3,
                 isActive: false,
-                icon: assets.apple_icon,
+                icon: IconNames.Apple,
                 type: 'Apple Pay',
             },
             {
                 id: 4,
                 isActive: false,
-                icon: assets.transaction_icon,
+                icon: IconNames.MoneyBillWave,
                 type: 'Cash on Delivery',
             },
             {
                 id: 5,
                 isActive: false,
-                icon: assets.cart_regular_icon,
+                icon: IconNames.BagShopping,
                 type: 'Self Pickup',
             }
         ]
@@ -865,17 +883,17 @@ class Globals {
     static ordersItems = [
         {
             title: 'First',
-            orderNo: "Order # 44 698",
-            dateTime: "Placed on December 15, 2020",
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
             items: '10',
             total: '$16.99',
 
             isOrderPlaced: true,
-            orderPlaced: "Dec 10, 2020",
+            orderPlaced: "Dec 10, 2022",
             isOrderConfirmed: true,
-            orderConfirmed: "Dec 10, 2020",
+            orderConfirmed: "Dec 10, 2022",
             isOrderShipped: true,
-            orderShipped: "Dec 10, 2020",
+            orderShipped: "Dec 10, 2022",
             isOrderOutOfDelivery: false,
             outOfDelivery: "Pending",
             isOrderDelivered: false,
@@ -885,38 +903,17 @@ class Globals {
         },
         {
             title: 'First',
-            orderNo: "Order # 44 698",
-            dateTime: "Placed on December 15, 2020",
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
             items: '10',
             total: '$16.99',
 
             isOrderPlaced: true,
-            orderPlaced: "Dec 10, 2020",
+            orderPlaced: "Dec 10, 2022",
             isOrderConfirmed: true,
-            orderConfirmed: "Dec 10, 2020",
+            orderConfirmed: "Dec 10, 2022",
             isOrderShipped: true,
-            orderShipped: "Dec 10, 2020",
-            isOrderOutOfDelivery: false,
-            outOfDelivery: "Pending",
-            isOrderDelivered: false,
-            orderDelivered: "Pending",
-
-            spinValue: new Animated.Value(0)
-
-        },
-        {
-            title: 'First',
-            orderNo: "Order # 44 698",
-            dateTime: "Placed on December 15, 2020",
-            items: '10',
-            total: '$16.99',
-
-            isOrderPlaced: true,
-            orderPlaced: "Dec 10, 2020",
-            isOrderConfirmed: true,
-            orderConfirmed: "Dec 10, 2020",
-            isOrderShipped: true,
-            orderShipped: "Dec 10, 2020",
+            orderShipped: "Dec 10, 2022",
             isOrderOutOfDelivery: false,
             outOfDelivery: "Pending",
             isOrderDelivered: false,
@@ -927,17 +924,17 @@ class Globals {
         },
         {
             title: 'First',
-            orderNo: "Order # 44 698",
-            dateTime: "Placed on December 15, 2020",
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
             items: '10',
             total: '$16.99',
 
             isOrderPlaced: true,
-            orderPlaced: "Dec 10, 2020",
+            orderPlaced: "Dec 10, 2022",
             isOrderConfirmed: true,
-            orderConfirmed: "Dec 10, 2020",
+            orderConfirmed: "Dec 10, 2022",
             isOrderShipped: true,
-            orderShipped: "Dec 10, 2020",
+            orderShipped: "Dec 10, 2022",
             isOrderOutOfDelivery: false,
             outOfDelivery: "Pending",
             isOrderDelivered: false,
@@ -948,17 +945,17 @@ class Globals {
         },
         {
             title: 'First',
-            orderNo: "Order # 44 698",
-            dateTime: "Placed on December 15, 2020",
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
             items: '10',
             total: '$16.99',
 
             isOrderPlaced: true,
-            orderPlaced: "Dec 10, 2020",
+            orderPlaced: "Dec 10, 2022",
             isOrderConfirmed: true,
-            orderConfirmed: "Dec 10, 2020",
+            orderConfirmed: "Dec 10, 2022",
             isOrderShipped: true,
-            orderShipped: "Dec 10, 2020",
+            orderShipped: "Dec 10, 2022",
             isOrderOutOfDelivery: false,
             outOfDelivery: "Pending",
             isOrderDelivered: false,
@@ -969,17 +966,17 @@ class Globals {
         },
         {
             title: 'First',
-            orderNo: "Order # 44 698",
-            dateTime: "Placed on December 15, 2020",
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
             items: '10',
             total: '$16.99',
 
             isOrderPlaced: true,
-            orderPlaced: "Dec 10, 2020",
+            orderPlaced: "Dec 10, 2022",
             isOrderConfirmed: true,
-            orderConfirmed: "Dec 10, 2020",
+            orderConfirmed: "Dec 10, 2022",
             isOrderShipped: true,
-            orderShipped: "Dec 10, 2020",
+            orderShipped: "Dec 10, 2022",
             isOrderOutOfDelivery: false,
             outOfDelivery: "Pending",
             isOrderDelivered: false,
@@ -990,64 +987,85 @@ class Globals {
         },
         {
             title: 'First',
-            orderNo: "Order # 44 698",
-            dateTime: "Placed on December 15, 2020",
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
+            items: '10',
+            total: '$16.99',
+
+            isOrderPlaced: true,
+            orderPlaced: "Dec 10, 2022",
+            isOrderConfirmed: true,
+            orderConfirmed: "Dec 10, 2022",
+            isOrderShipped: true,
+            orderShipped: "Dec 10, 2022",
+            isOrderOutOfDelivery: false,
+            outOfDelivery: "Pending",
+            isOrderDelivered: false,
+            orderDelivered: "Pending",
+
+            spinValue: new Animated.Value(0)
+
+        },
+        {
+            title: 'First',
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
             items: '10',
             total: '$16.99',
 
             isOrderPlaced: false,
-            orderPlaced: "Dec 10, 2020",
+            orderPlaced: "Dec 10, 2022",
             isOrderConfirmed: false,
-            orderConfirmed: "Dec 10, 2020",
+            orderConfirmed: "Dec 10, 2022",
             isOrderShipped: false,
-            orderShipped: "Dec 10, 2020",
+            orderShipped: "Dec 10, 2022",
             isOrderOutOfDelivery: false,
-            outOfDelivery: "Dec 10, 2020",
+            outOfDelivery: "Dec 10, 2022",
             isOrderDelivered: true,
-            orderDelivered: "Dec 10, 2020",
+            orderDelivered: "Dec 10, 2022",
 
             spinValue: new Animated.Value(0)
 
         },
         {
             title: 'First',
-            orderNo: "Order # 44 698",
-            dateTime: "Placed on December 15, 2020",
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
             items: '10',
             total: '$16.99',
 
             isOrderPlaced: false,
-            orderPlaced: "Dec 10, 2020",
+            orderPlaced: "Dec 10, 2022",
             isOrderConfirmed: false,
-            orderConfirmed: "Dec 10, 2020",
+            orderConfirmed: "Dec 10, 2022",
             isOrderShipped: false,
-            orderShipped: "Dec 10, 2020",
+            orderShipped: "Dec 10, 2022",
             isOrderOutOfDelivery: false,
-            outOfDelivery: "Dec 10, 2020",
+            outOfDelivery: "Dec 10, 2022",
             isOrderDelivered: true,
-            orderDelivered: "Dec 10, 2020",
+            orderDelivered: "Dec 10, 2022",
 
             spinValue: new Animated.Value(0)
 
         },
         {
             title: 'First',
-            orderNo: "Order # 44 69812",
-            dateTime: "Placed on December 15, 2020",
+            orderNo: "Order # 4469812",
+            dateTime: "Placed on December 15, 2022",
             items: '10',
             total: '$16.99',
 
 
             isOrderPlaced: false,
-            orderPlaced: "Dec 10, 2020",
+            orderPlaced: "Dec 10, 2022",
             isOrderConfirmed: false,
-            orderConfirmed: "Dec 10, 2020",
+            orderConfirmed: "Dec 10, 2022",
             isOrderShipped: false,
-            orderShipped: "Dec 10, 2020",
+            orderShipped: "Dec 10, 2022",
             isOrderOutOfDelivery: false,
-            outOfDelivery: "Dec 10, 2020",
+            outOfDelivery: "Dec 10, 2022",
             isOrderDelivered: true,
-            orderDelivered: "Dec 10, 2020",
+            orderDelivered: "Dec 10, 2022",
 
 
             spinValue: new Animated.Value(0)
@@ -1098,42 +1116,42 @@ class Globals {
     static profileList = (navigation) => {
         return [
             {
-                icon: assets.user_icon,
+                icon: IconNames.UserAlt,
                 title: "About me",
                 onPress: () => navigation.navigate(Routes.ABOUT_ME)
             },
             {
-                icon: assets.order_icon,
+                icon: IconNames.Box,
                 title: "My Orders",
                 onPress: () => navigation.navigate(Routes.MY_ORDERS)
             },
             {
-                icon: assets.map_marker_icon,
+                icon: IconNames.MapMarkerAlt,
                 title: "My Addresses",
                 onPress: () => navigation.navigate(Routes.My_Address)
             },
             {
-                icon: assets.credit_card_icon,
+                icon: IconNames.CreditCard,
                 title: "Credit Cards",
                 onPress: () => navigation.navigate(Routes.My_CREDIT_CARDS)
             },
             {
-                icon: assets.transaction_icon,
+                icon: IconNames.MoneyBillWave,
                 title: "Transactions",
                 onPress: () => navigation.navigate(Routes.TRANSACTIONS)
             },
             {
-                icon: assets.notification_icon,
+                icon: IconNames.Bell,
                 title: "Notifications",
                 onPress: () => navigation.navigate(Routes.NOTIFICATIONS)
             },
             {
-                icon: assets.categories_icon,
+                icon: IconNames.Th,
                 title: "Categories",
                 onPress: () => navigation.navigate(Routes.CATEGORY_LIST)
             },
             {
-                icon: assets.sign_out_icon,
+                icon: IconNames.PowerOff,
                 title: "Sign out",
                 onPress: () => navigation.dispatch(
                     CommonActions.reset({
@@ -1150,94 +1168,95 @@ class Globals {
     static otherFilters = [
         {
             id: 1,
-            leftIcon: assets.discount_icon,
+            leftIcon: IconNames.Tag,
             title: "Discount",
             checked: false
         },
         {
             id: 2,
-            leftIcon: assets.shipping_icon,
-            title: "Free Shipping",
+            leftIcon: IconNames.ParachuteBox,
+            title: "Same Day Delivery",
             checked: false
         },
         {
             id: 3,
-            leftIcon: assets.same_day_delivery_icon,
-            title: "Same Day Delivery",
+            leftIcon: IconNames.Truck,
+            title: "Free Shipping",
             checked: false
         }
+
     ]
 
     static filterCategories = [
         {
             id: 1,
-            leftIcon: assets.fruits_icon,
+            leftIcon: IconNames.Lemon,
             title: "Fresh Fruits",
             checked: false
         },
         {
             id: 2,
-            leftIcon: assets.chicken_icon,
+            leftIcon: IconNames.Turkey,
             title: "Fresh Chicken",
             checked: false
         },
         {
             id: 3,
-            leftIcon: assets.dairy_icon,
+            leftIcon: IconNames.BreadSlice,
             title: "Fresh Dairy",
             checked: false
         },
         {
             id: 4,
-            leftIcon: assets.fishes_icon,
+            leftIcon: IconNames.Fish,
             title: "Fresh Fishes",
             checked: false
         },
         {
             id: 5,
-            leftIcon: assets.vegetables_icon,
-            title: "Fresh Vegetables",
+            leftIcon: IconNames.Carrot,
+            title: "Vegetables",
             checked: false
         },
         {
             id: 6,
-            leftIcon: assets.salad_icon,
+            leftIcon: IconNames.Salad,
             title: "Organic Salads",
             checked: false
         },
         {
             id: 7,
-            leftIcon: assets.medicine_icon,
-            title: "Original Medicine",
+            leftIcon: IconNames.HeartBeat,
+            title: "Medicine",
             checked: false
         },
         {
             id: 8,
-            leftIcon: assets.pets_icon,
+            leftIcon: IconNames.Dog,
             title: "Pet Foods",
             checked: false
         },
         {
             id: 9,
-            leftIcon: assets.bakery_icon,
+            leftIcon: IconNames.BirthdayCake,
             title: "Quality Bakery",
             checked: false
         },
         {
             id: 10,
-            leftIcon: assets.pizza_icon,
+            leftIcon: IconNames.PizzaSlice,
             title: "Quality Pizza",
             checked: false
         },
         {
             id: 11,
-            leftIcon: assets.baby_products_icon,
+            leftIcon: IconNames.BabyCarriage,
             title: "Baby Products",
             checked: false
         },
         {
             id: 12,
-            leftIcon: assets.sports_icon,
+            leftIcon: IconNames.TableTennis,
             title: "Sports Goods",
             checked: false
         }

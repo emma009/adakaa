@@ -11,11 +11,13 @@ export const Styles = function(scheme, colors) {
             height: hp("14"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flexDirection: "row",
+            borderRadius: hp(0.75),
             marginBottom: hp(1)
         },
 
         touchableChildContainer: {
-            flex: 1
+            flex: 1,
+            borderRadius: hp(0.75)
         },
 
         rightSwipeableContainer: {
@@ -49,6 +51,7 @@ export const Styles = function(scheme, colors) {
             backgroundColor: colors.tertiaryBackground,
             width: "18%",
             height: hp(2.5),
+            borderTopLeftRadius: hp(0.75),
             justifyContent: "center",
             alignItems: "center",
             borderTopRightRadius: hp(0.5),
@@ -63,17 +66,17 @@ export const Styles = function(scheme, colors) {
             borderRadius: hp("4"),
             marginLeft: wp("5"),
             marginRight: wp("3"),
-            backgroundColor: colors.tertiaryBackground
+            backgroundColor: colors.secondaryBackground
         },
 
         activeContainer: {
-            borderWidth: 1,
+            borderWidth: 2,
             borderColor: colors.activeColor
         },
 
         leftImage: {
-            width: hp(3),
-            height: hp(3)
+            width: hp(3.5),
+            height: hp(3.5)
         },
 
         titleText: {
@@ -110,6 +113,7 @@ export const Styles = function(scheme, colors) {
         childContainer: {
             flexDirection: "row",
             height: "100%",
+            borderRadius: hp(0.75),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
         },
 

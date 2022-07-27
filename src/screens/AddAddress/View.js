@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { View } from "react-native";
+import { useColorScheme, View } from "react-native";
 import { Text } from "react-native-elements";
 
 import BaseView from "../BaseView";
@@ -10,6 +10,9 @@ import { CustomSwitch } from "../../components/Global/CustomSwitch/View";
 import { Styles } from "./Styles";
 import { useTheme } from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -20,8 +23,10 @@ export const AddAddress = (props) => {
   let inputRef = useRef();
 
   //Theme based styling and colors
+  const scheme = useColorScheme();
   const { colors } = useTheme();
   const screenStyles = Styles(colors);
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
 
   //Internal input field states
@@ -52,13 +57,16 @@ export const AddAddress = (props) => {
               getTextInputRefs={() => {
                 return [inputRef];
               }}
+              contentContainerStyle={screenStyles.parentContainer}
               showsVerticalScrollIndicator={false}>
 
-              <View style={screenStyles.mainContainer}>
+
+              <View style={{}}>
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.account_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.CircleUser}
                   placeholder={"Name"}
                   value={name}
                   onChangeText={(name) => {
@@ -68,7 +76,8 @@ export const AddAddress = (props) => {
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.envelop_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.Envelope}
                   placeholder={"Email Address"}
                   value={email}
                   keyboardType={"email-address"}
@@ -79,7 +88,8 @@ export const AddAddress = (props) => {
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.phone_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.PhoneFlip}
                   placeholder={"Phone"}
                   value={phone}
                   keyboardType={"phone-pad"}
@@ -90,7 +100,8 @@ export const AddAddress = (props) => {
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.map_marker_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.MapMarkerAlt}
                   placeholder={"Address"}
                   value={address}
                   onChangeText={(address) => {
@@ -100,7 +111,8 @@ export const AddAddress = (props) => {
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.mailbox_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.Mailbox}
                   placeholder={"Zip code"}
                   value={zipCode}
                   onChangeText={(zipCode) => {
@@ -110,7 +122,8 @@ export const AddAddress = (props) => {
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.map_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.Map}
                   placeholder={"City"}
                   value={city}
                   onChangeText={(city) => {
@@ -120,7 +133,8 @@ export const AddAddress = (props) => {
 
                 <AppInput
                   textInputRef={r => (inputRef = r)}
-                  leftIcon={assets.globe_icon}
+                  {...globalStyles.secondaryInputStyle}
+                  leftIcon={IconNames.Globe}
                   placeholder={"Country"}
                   value={country}
                   onChangeText={(country) => {

@@ -10,6 +10,8 @@ import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -133,9 +135,8 @@ export const AddressItem = (props) => {
             <View style={itemStyles.childInnerContainer}>
 
                 <View style={itemStyles.leftImageContainer}>
-                    <Image
-                        source={assets.map_marker_icon}
-                        style={itemStyles.leftImage} resizeMode={"contain"}/>
+
+                    <SvgIcon type={IconNames.MapMarkerAlt} width={30} height={30} color={colors.activeColor} />
 
                 </View>
 
@@ -151,10 +152,7 @@ export const AddressItem = (props) => {
             {
                 (showActiveIcon && isActive) &&
                 <View style={itemStyles.rightIconContainer}>
-                    <Image
-                        source={assets.check_circle_icon}
-                        style={itemStyles.rightIcon}
-                        resizeMode={"contain"}/>
+                    <SvgIcon type={IconNames.CheckCircle} width={22} height={22} color={colors.activeColor} />
                 </View>
             }
 

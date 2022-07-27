@@ -71,6 +71,8 @@ import Config from "../../branding/carter/configuration/Config";
 import {Variant1BottomTabBar} from "../components/Application/Variant1BottomTabBar/View";
 import {Variant2BottomTabBar} from "../components/Application/Variant2BottomTabBar/View";
 import {Variant3BottomTabBar} from "../components/Application/Variant3BottomTabBar/View";
+import { VerifyPhone } from "../screens/VerifyNumber/View";
+import { VerifyPhoneOTP } from "../screens/VerifyNumberOTP/View";
 
 
 const Stack = createStackNavigator();
@@ -94,6 +96,9 @@ export function RootStack() {
             <Stack.Screen name={Routes.LOGIN_FORM_SCREEN1} component={Variant1LoginFormScreen} />
             <Stack.Screen name={Routes.SIGNUP_FORM_SCREEN1} component={Variant1SignupScreen} />
             <Stack.Screen name={Routes.FORGOT_PASSWORD_FORM_SCREEN1} component={Variant1ForgotPassword} />
+
+            <Stack.Screen name={Routes.VERIFY_NUMBER_SCREEN} component={VerifyPhone} />
+            <Stack.Screen name={Routes.VERIFY_NUMBER_OTP_SCREEN} component={VerifyPhoneOTP} />
 
             {/*Variant2*/}
             <Stack.Screen name={Routes.INTRO_SCREEN2} component={Variant2Intro} />

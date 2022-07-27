@@ -31,17 +31,20 @@ let Styles = {
     primaryTitle: {
         textTransform: "uppercase",
         fontFamily: Fonts.RUBIK_MEDIUM,
-        fontSize: Typography.P5,
+        fontSize: Typography.P4,
         marginBottom: hp(1)
     },
     secondaryTitle: {
         textTransform: "uppercase",
         fontFamily: Fonts.RUBIK_REGULAR,
-        fontSize: Typography.P10
+        fontSize: Typography.P9
     },
     icon: {
-        width: hp(9),
-        height: hp(9),
+        width: hp(8),
+        height: hp(8),
+        borderRadius: hp(4),
+        justifyContent: "center",
+        alignItems: "center"
     }
 }
 

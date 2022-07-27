@@ -11,6 +11,8 @@ import {Counter} from "../../Global/Counter/View";
 import { Styles } from "./Style"
 import AppConfig from "../../../../branding/App_config";
 import { useTheme } from "@react-navigation/native";
+import { SvgIcon } from "../SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -30,9 +32,7 @@ export const CartItem = (props) => {
                 onPress={() => {}}
                 style={itemStyles.rightSwipeContainer}>
 
-                <Image
-                    source={assets.trash_icon}
-                    style={itemStyles.rightSwipeIcon} />
+              <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white} />
 
             </TouchableOpacity>
 
@@ -55,7 +55,7 @@ export const CartItem = (props) => {
                         leftThreshold={80}
                         rightThreshold={40}
                         renderRightActions={renderRightActions}
-                        containerStyle={{marginVertical: hp("0.5")}}>
+                        containerStyle={itemStyles.swipeableContainer}>
 
                         <View style={itemStyles.foodItemContainer}>
 

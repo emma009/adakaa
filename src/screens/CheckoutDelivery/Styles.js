@@ -12,11 +12,16 @@ export const Styles = function(scheme, styles, colors) {
 
         container: {
             flex: 1,
+            marginTop: hp(2)
+        },
+
+        upperContainer: {
+            flex: 0.9
         },
 
         bottomContainer: {
-            flex: 1,
-            justifyContent: "flex-end"
+            flex: 0.1,
+            justifyContent: "center"
         },
 
         deliveryContainer: {
@@ -24,7 +29,8 @@ export const Styles = function(scheme, styles, colors) {
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flexDirection: "row",
             alignItems: "center",
-            marginTop: hp("2"),
+            marginTop: hp("1"),
+            borderRadius: hp(0.75),
             paddingHorizontal: wp(5),
         },
 

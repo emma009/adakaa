@@ -10,6 +10,8 @@ import AppButton from "../AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -51,8 +53,9 @@ export const FavouritesBottomSheet = (props) => {
         }}
         style={itemStyles.headerContainer}>
         <View style={itemStyles.headerImageContainer}>
-          <Image source={assets.cart_regular_icon} style={itemStyles.headerImage}
-                 resizeMode={"contain"} />
+
+          <SvgIcon type={IconNames.BagShopping} width={25} height={25} color={colors.white} />
+
         </View>
 
         <Text
@@ -79,8 +82,7 @@ export const FavouritesBottomSheet = (props) => {
           <View style={itemStyles.inputContainer}>
             <AppInput
               textInputRef={r => (textInputRef = r)}
-              leftIcon={assets.cart_regular_icon}
-              {...globalStyles.secondaryInputStyle}
+              leftIcon={IconNames.BagShopping}
               placeholder={"Enter your list title"}
               onChangeText={(value) => {
               }}
@@ -118,10 +120,8 @@ export const FavouritesBottomSheet = (props) => {
                     }}>
 
                     {
-                      item.selected &&
-                      <Image source={assets.tick_icon}
-                             style={itemStyles.colorListIcon}
-                             resizeMode={"contain"} />
+                      item.selected && <SvgIcon type={IconNames.Check} width={15} height={15} color={colors.white} />
+
                     }
 
                   </TouchableOpacity>

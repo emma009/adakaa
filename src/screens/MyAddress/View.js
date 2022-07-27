@@ -14,6 +14,7 @@ import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 import AppConfig from "../../../branding/App_config";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -24,7 +25,6 @@ export const MyAddress = (props) => {
   const scheme = useColorScheme();
   const { colors } = useTheme();
   const screenStyles = Styles(scheme, colors);
-  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
 
   //Internal states
@@ -35,12 +35,36 @@ export const MyAddress = (props) => {
 
   const renderAddressesHeader = (section, index, isActive) => {
 
-    return <AddressItem
-      isTouchable={false}
-      isActive={isActive}
-      showAnimatedIcon
-      item={section}
-    />;
+    if (index === 0) {
+      return <View style={screenStyles.addressFirstItem}>
+        <AddressItem
+          isTouchable={false}
+          isActive={isActive}
+          showAnimatedIcon
+          item={section}
+        />
+      </View>
+    }
+    else if (index === Globals.addressItems.length - 1) {
+      return <View style={screenStyles.addressLastItem}>
+        <AddressItem
+          isTouchable={false}
+          isActive={isActive}
+          showAnimatedIcon
+          item={section}
+        />
+      </View>
+    }
+    else {
+      return <AddressItem
+        isTouchable={false}
+        isActive={isActive}
+        showAnimatedIcon
+        item={section}
+      />;
+    }
+
+
 
   };
 
@@ -51,8 +75,7 @@ export const MyAddress = (props) => {
 
         <AppInput
           textInputRef={r => (inputRef = r)}
-          {...globalStyles.secondaryInputStyle}
-          leftIcon={assets.account_icon}
+          leftIcon={IconNames.CircleUser}
           placeholder={"Name"}
           onChangeText={(value) => {
           }}
@@ -60,8 +83,7 @@ export const MyAddress = (props) => {
 
         <AppInput
           textInputRef={r => (inputRef = r)}
-          {...globalStyles.secondaryInputStyle}
-          leftIcon={assets.map_marker_icon}
+          leftIcon={IconNames.MapMarkerAlt}
           placeholder={"Address"}
           onChangeText={(value) => {
           }}
@@ -72,8 +94,7 @@ export const MyAddress = (props) => {
 
           <AppInput
             textInputRef={r => (inputRef = r)}
-            {...globalStyles.secondaryInputStyle}
-            leftIcon={assets.map_marker_icon}
+            leftIcon={IconNames.Map}
             placeholder={"City"}
             containerStyle={screenStyles.horizontalInput}
             onChangeText={(value) => {
@@ -83,8 +104,7 @@ export const MyAddress = (props) => {
 
           <AppInput
             textInputRef={r => (inputRef = r)}
-            {...globalStyles.secondaryInputStyle}
-            leftIcon={assets.mailbox_icon}
+            leftIcon={IconNames.Mailbox}
             placeholder={"Zip Code"}
             containerStyle={screenStyles.horizontalInput}
             onChangeText={(value) => {
@@ -96,8 +116,7 @@ export const MyAddress = (props) => {
 
         <AppInput
           textInputRef={r => (inputRef = r)}
-          {...globalStyles.secondaryInputStyle}
-          leftIcon={assets.globe_icon}
+          leftIcon={IconNames.Globe}
           placeholder={"Country"}
           onChangeText={(value) => {
           }}
@@ -105,8 +124,7 @@ export const MyAddress = (props) => {
 
         <AppInput
           textInputRef={r => (inputRef = r)}
-          {...globalStyles.secondaryInputStyle}
-          leftIcon={assets.phone_icon}
+          leftIcon={IconNames.PhoneFlip}
           placeholder={"Phone"}
           onChangeText={(value) => {
           }}
@@ -137,7 +155,7 @@ export const MyAddress = (props) => {
     <BaseView
       navigation={props.navigation}
       title={"My Address"}
-      rightIcon={assets.plus_circle_icon}
+      rightIcon={IconNames.PlusCircle}
       onRightIconPress={() => {
         props.navigation.navigate(Routes.Add_Address);
       }}
@@ -147,13 +165,14 @@ export const MyAddress = (props) => {
         return (
 
           <View style={screenStyles.container}>
-            <ScrollView style={ screenStyles.scrollViewContainer }>
+            <ScrollView showsVerticalScrollIndicator={false} style={ screenStyles.scrollViewContainer }>
 
               <Accordion
                 sections={Globals.addressItems}
                 activeSections={activeSections}
                 renderHeader={renderAddressesHeader}
                 renderContent={renderAddressesContent}
+                underlayColor={"transparent"}
                 expandMultiple={false}
                 sectionContainerStyle={ screenStyles.containerSpacing }
                 onChange={_updateSections}
@@ -162,12 +181,17 @@ export const MyAddress = (props) => {
 
             </ScrollView>
 
+            <View style={screenStyles.bottomContainer}>
+
             <AppButton
               title={"Save Settings"}
               onPress={() => {
                 props.navigation.goBack();
               }}
             />
+
+            </View>
+
           </View>
 
 

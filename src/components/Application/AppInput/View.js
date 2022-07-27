@@ -1,10 +1,11 @@
 import React from 'react';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen'
+import { heightPercentageToDP as hp, widthPercentageToDP } from "react-native-responsive-screen";
 import {TextInput} from "../../Global/TextInput/View";
-import { Image, useColorScheme } from "react-native";
+import { Image, useColorScheme, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../SvgIcon/View";
 
 const PropTypes = require('prop-types');
 
@@ -33,7 +34,7 @@ const AppInput = (props) => {
     const containerStyle = props.containerStyle || globalStyles.primaryInputStyle.containerStyle;
     const leftIconContainerStyle = props.leftIconContainerStyle || globalStyles.primaryInputStyle.leftIconContainerStyle;
     const multilineInputHeight = props.multilineInputHeight || { height: hp(30) };
-    const showLeftIcon = props.showLeftIcon || true;
+    const showLeftIcon = props.showLeftIcon !== undefined ? props.showLeftIcon : true;
 
 
     return (
@@ -44,13 +45,7 @@ const AppInput = (props) => {
             placeholder={placeholder}
             placeholderTextColor={placeholderTextColor}
             leftIcon={
-                showLeftIcon && <Image source={leftIcon} style={{
-                    width: hp(2),
-                    height: hp(2),
-                    tintColor: leftIconColor,
-                resizeMode: "contain",
-                }}
-               resizeMode={"contain"} />
+                showLeftIcon ? <SvgIcon type={leftIcon} width={20} height={20} color={leftIconColor} /> : null
             }
             containerStyle={[
                 {

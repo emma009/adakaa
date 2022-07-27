@@ -27,8 +27,8 @@ export const Styles = function(styles, darkColors, lightColors) {
         bottomContainer: {
             flex: 1,
             width: styles.gridWidth3,
-            paddingTop: hp("3"),
-            marginTop: hp(20)
+            paddingVertical: hp("3"),
+            marginTop: hp(20),
         },
 
         titleText: {
@@ -43,7 +43,7 @@ export const Styles = function(styles, darkColors, lightColors) {
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
             lineHeight: Typography.H8,
-            marginBottom: hp("6"),
+            marginBottom: hp("3"),
             color: lightColors.subHeadingColor,
             textAlign: "center"
         }

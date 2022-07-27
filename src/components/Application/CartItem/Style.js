@@ -7,11 +7,15 @@ const Typography = AppConfig.typography.default;
 export const Styles = function(scheme, colors) {
 
     return {
+        swipeableContainer: {
+            marginVertical: hp("0.5"),
+        },
         foodItemContainer: {
             height: hp("15"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flexDirection: "row",
             alignItems: "center",
+            borderRadius: hp(0.75),
             paddingLeft: wp("5")
         },
         foodItemImage: {
@@ -38,16 +42,13 @@ export const Styles = function(scheme, colors) {
         rightSwipeContainer: {
             width: wp("20"),
             height: "100%",
+            marginLeft: hp("1"),
             backgroundColor: colors.rightSwipeBackground,
+            borderRadius: hp(0.75),
             justifyContent: "center",
             alignItems: "center"
         },
-        rightSwipeIcon: {
-            width: hp(3),
-            height: hp(3),
-            tintColor: "white",
-            resizeMode: "contain"
-        }
+
     }
 
 }

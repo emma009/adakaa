@@ -21,13 +21,6 @@ export const Styles = function(colors) {
             justifyContent: "center"
         },
 
-        cartIcon: {
-            width: hp(8),
-            height: hp(8),
-            tintColor: colors.activeColor,
-            resizeMode: "contain"
-        },
-
         titleText: {
             fontFamily: fonts.RUBIK_MEDIUM,
             color: colors.headingColor,
@@ -40,10 +33,16 @@ export const Styles = function(colors) {
             fontFamily: fonts.RUBIK_LIGHT,
             color: colors.subHeadingColor,
             fontSize: Typography.P4,
-            lineHeight: hp(3),
+            lineHeight: Typography.H8,
             textAlign: "center",
-            marginTop: hp("3")
+            marginTop: hp("1.6")
+        },
+
+        bottomContainer: {
+            flex: 0.1,
+            justifyContent: "center"
         }
+
     }
 
 }

@@ -51,7 +51,7 @@ export const Styles = function(styles, colors) {
         subtitleText: {
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
-            marginBottom: hp("2"),
+            marginBottom: hp("3"),
             color: colors.subHeadingColor
         },
 

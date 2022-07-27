@@ -11,7 +11,7 @@ export const Styles = function(styles, scheme, colors) {
 
         bottomTabContainer: {
             flex: 1,
-            height: hp(6.5),
+            height: hp(7.5),
             backgroundColor: colors.activeColor,
             justifyContent: "center",
             alignItems: "center",
@@ -25,11 +25,6 @@ export const Styles = function(styles, scheme, colors) {
             backgroundColor: colors.primaryBackground,
         },
 
-        bottomTabIcon: {
-            width: hp(3),
-            height: hp(3),
-            resizeMode: "contain"
-        }
     }
 
 

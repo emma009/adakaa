@@ -37,8 +37,8 @@ export const Styles = function(styles, colors) {
         },
 
         headerImage: {
-            width: wp(85),
-            height: wp(85),
+            width: wp(75),
+            height: wp(75),
             resizeMode: "contain",
         },
 
@@ -59,7 +59,7 @@ export const Styles = function(styles, colors) {
         subtitleText: {
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
-            marginBottom: hp("2"),
+            marginBottom: hp("3"),
             color: colors.subHeadingColor,
             textAlign: "center"
         },

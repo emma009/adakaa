@@ -13,6 +13,11 @@ export const Styles = function(scheme, colors) {
 
         container: {
             flex: 1,
+            marginTop: hp(3)
+        },
+
+        upperContainer: {
+            flex: 0.9
         },
 
         headerContainer: {
@@ -21,8 +26,8 @@ export const Styles = function(scheme, colors) {
             flexDirection: "row",
             alignItems: "center",
             paddingLeft: wp("5"),
-            borderBottomWidth: 1,
-            borderBottomColor: colors.borderColorLight
+            borderRadius: hp(0.75),
+
         },
 
 
@@ -34,13 +39,6 @@ export const Styles = function(scheme, colors) {
             backgroundColor: colors.tertiaryBackground,
             borderRadius: hp("3"),
             marginRight: wp(3)
-        },
-
-        headerLeftIcon: {
-            width: hp(2.5),
-            height: hp(2.5),
-            tintColor: colors.activeColor,
-            resizeMode: "contain"
         },
 
         headerTitleText: {
@@ -71,8 +69,9 @@ export const Styles = function(scheme, colors) {
         contentContainer: {
             alignItems: "center",
             paddingHorizontal: wp ('5'),
-            paddingVertical: hp("2"),
-            marginTop: hp(0.5),
+            paddingVertical: hp("3"),
+            marginTop: hp("1"),
+            borderRadius: hp(0.75),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
         },
 
@@ -94,15 +93,21 @@ export const Styles = function(scheme, colors) {
             borderRadius: hp("3"),
         },
 
-        orderStatusLeftIcon: {
-            width: hp(2.5),
-            height: hp(2.5),
-            resizeMode: "contain"
-        },
-
         orderStatusLine: {
             width: 2,
             height: hp("4")
+        },
+
+        orderTitleContainer: {
+            flex: 1,
+            marginTop: hp(1),
+        },
+
+        centerSeparatorLine: {
+            width: "100%",
+            height: 1,
+            backgroundColor: colors.borderColorLight,
+            marginTop: hp(2.5)
         },
 
         orderStatusTitle: {
@@ -118,8 +123,8 @@ export const Styles = function(scheme, colors) {
         },
 
         bottomContainer: {
-            flex: 1,
-            justifyContent: "flex-end"
+            flex: 0.1,
+            justifyContent: "center"
         }
 
 

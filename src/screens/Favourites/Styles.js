@@ -18,7 +18,17 @@ export const Styles = function(scheme, colors) {
         },
 
         contentContainerParent: {
+            borderBottomLeftRadius: hp(0.75),
+            borderBottomRightRadius: hp(0.75),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground
+        },
+
+        favouriteFirstItemContainer: {
+            marginTop: hp(3),
+        },
+
+        favouriteLastItemContainer: {
+            marginBottom: hp(2),
         },
 
         contentItemContainer: {
@@ -33,10 +43,10 @@ export const Styles = function(scheme, colors) {
             width: hp("8"),
             height: hp("8"),
             justifyContent: "center",
-            alignItems: "center",
+            // alignItems: "center",
             borderRadius: hp("4"),
             marginLeft: wp("5"),
-            marginRight: wp("4"),
+            // marginRight: wp("3"),
         },
 
         contentItemLeftIcon: {
@@ -56,8 +66,8 @@ export const Styles = function(scheme, colors) {
         },
 
         contentContainerButton: {
-            width: "80%",
-            marginVertical: hp(2),
+            width: "100%",
+            padding: hp(3),
             alignSelf: "center"
         },
 

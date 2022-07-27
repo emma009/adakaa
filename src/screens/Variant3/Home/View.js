@@ -18,6 +18,8 @@ import {CategoryItem} from "../../../components/Application/CategoryItem/View";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 
 const assets = AppConfig.assets.default;
@@ -51,6 +53,7 @@ export const Variant3Home = (props) => {
   //Internal States
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [categorySliderList, setCategorySliderList] = useState(Globals.categoryItems);
+  const [categoryFoodItemList, setCategoryFoodItemList] = useState(Globals.foodItems.slice(0, 4));
 
 
   //References
@@ -91,15 +94,13 @@ export const Variant3Home = (props) => {
             </View>
         );
 
-
     }
 
     return (
 
         <View style={[screenStyles.mainWrapper, {paddingTop: Globals.SAFE_AREA_INSET.top}]}>
 
-            <StatusBar backgroundColor={colors.textColorGrey2} barStyle="dark-content"/>
-
+            <StatusBar barStyle="dark-content"/>
 
             <SearchButton
                 onPress={() => props.navigation.navigate(Routes.SEARCH)}
@@ -108,7 +109,6 @@ export const Variant3Home = (props) => {
             <ScrollView showsVerticalScrollIndicator={false}>
 
                 {renderPromotionSlider()}
-
 
 
                     <FlatList
@@ -130,6 +130,9 @@ export const Variant3Home = (props) => {
                                         return [...categorySliderList]
                                     })
 
+
+                                  setCategoryFoodItemList(Globals.foodItems.sort((a, b) => 0.5 - Math.random()).slice(0, 4))
+
                                 }}
                                 style={{justifyContent: "flex-end"}}>
                                 {
@@ -141,6 +144,8 @@ export const Variant3Home = (props) => {
 
                                 }
 
+
+
                                 </TouchableOpacity>
 
                         }
@@ -148,7 +153,7 @@ export const Variant3Home = (props) => {
 
                     <FlatList
                         showsVerticalScrollIndicator={false}
-                        data={Globals.foodItems.slice(0, 4)}
+                        data={categoryFoodItemList}
                         numColumns={2}
                         style={screenStyles.sectionContainer}
                         scrollEnabled={false}
@@ -184,7 +189,8 @@ export const Variant3Home = (props) => {
                     }}>
                         <View style={screenStyles.sectionHeading}>
                             <Text style={screenStyles.sectionHeadingText}>Categories</Text>
-                            <Image source={assets.arrow_right_icon} style={screenStyles.sectionRightIcon}/>
+                          <SvgIcon type={IconNames.ArrowRight} width={20} height={20} color={colors.subHeadingColor} />
+
                         </View>
                     </TouchableOpacity>
 
@@ -199,6 +205,7 @@ export const Variant3Home = (props) => {
                                 secondaryColor={item.secondaryColor}
                                 primaryTitle={item.primaryTitle}
                                 primaryColor={item.primaryColor}
+                                iconBgColor={item.iconBgColor}
                                 iconURI={item.iconURI}
                                 bgURI={item.bgURI}
                             />
@@ -219,7 +226,9 @@ export const Variant3Home = (props) => {
                     }}>
                         <View style={screenStyles.sectionHeading}>
                             <Text style={screenStyles.sectionHeadingText}>Popular Deals</Text>
-                            <Image source={assets.arrow_right_icon} style={screenStyles.sectionRightIcon}/>
+
+                          <SvgIcon type={IconNames.ArrowRight} width={20} height={20} color={colors.subHeadingColor} />
+
 
                         </View>
                     </TouchableOpacity>

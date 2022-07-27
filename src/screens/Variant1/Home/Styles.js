@@ -11,12 +11,13 @@ export const Styles = function(styles, scheme, colors) {
         mainWrapper: {
             flex: 1,
             alignItems: "center",
-            backgroundColor: scheme ? colors.primaryBackground : colors.secondaryBackground,
+            backgroundColor: scheme ? colors.secondaryBackground : colors.secondaryBackground,
         },
 
         sectionContainer: {
             width: styles.gridWidth,
-            alignItems: "center"
+            alignItems: "center",
+            marginBottom: hp(3)
         },
 
         sectionHeading: {
@@ -34,20 +35,14 @@ export const Styles = function(styles, scheme, colors) {
             color: colors.headingColor
         },
 
-        sectionRightIcon: {
-            width: hp(2),
-            height: hp(2),
-            tintColor: colors.subHeadingColor,
-            resizeMode: "contain"
-        },
-
         sectionHeadingIcon: {
             alignSelf: "center"
         },
 
         promotionSliderContainer: {
             width: "100%",
-            height: hp("30%")
+            height: hp("35%"),
+            borderRadius: hp(0.75)
         },
 
         promotionSliderActiveDot: {

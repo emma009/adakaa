@@ -17,6 +17,8 @@ import {FavouritesBottomSheet}
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import IconNames from "../../../../branding/carter/assets/IconNames";
+import { SvgIcon } from "../../../components/Application/SvgIcon/View";
 
 
 const assets = AppConfig.assets.default;
@@ -140,7 +142,7 @@ export const Variant2Home = (props) => {
                     }}>
                         <View style={screenStyles.sectionHeading}>
                             <Text style={screenStyles.sectionHeadingText}>Popular Deals</Text>
-                            <Image source={assets.arrow_right_icon} style={screenStyles.sectionRightIcon}/>
+                          <SvgIcon type={IconNames.ArrowRight} width={20} height={20} color={colors.subHeadingColor} />
 
                         </View>
                     </TouchableOpacity>

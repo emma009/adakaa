@@ -3,20 +3,16 @@ import { FlatList, Image, ScrollView, useColorScheme, View } from "react-native"
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { Styles } from "./Styles";
 import Globals from "../../utils/Globals";
-import AppConfig from "../../../branding/App_config";
 import { Text } from "react-native-elements";
 import BaseView from "../BaseView";
 import Accordion from "react-native-collapsible/Accordion";
-import {
-  FavouritesBottomSheet,
-} from "../../components/Application/FavouritesBottomSheet/View";
+import { FavouritesBottomSheet } from "../../components/Application/FavouritesBottomSheet/View";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { FavouriteItem } from "../../components/Application/FavouriteItem/View";
 import AppButton from "../../components/Application/AppButton/View";
 import Routes from "../../navigation/Routes";
 import { useTheme } from "@react-navigation/native";
-
-const assets = AppConfig.assets.default;
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 
 export const Favourites = (props) => {
@@ -28,7 +24,7 @@ export const Favourites = (props) => {
   const screenStyles = Styles(scheme, colors);
 
   //Constants
-  const favouriteSheetHeight = hp(42)
+  const favouriteSheetHeight = hp(42);
 
   //Internal states
   const [favouritesList, setFavouritesList] = useState(Globals.favouriteItems);
@@ -39,24 +35,61 @@ export const Favourites = (props) => {
 
   const renderFavouritesHeader = (section, index, isActive) => {
 
-    return <FavouriteItem
-      isActive={isActive}
-      item={section}
-      onDeletePress={() => {
-        setFavouritesList((favouritesList) => {
+    if (index === 0) {
+      return <View style={screenStyles.favouriteFirstItemContainer}>
+        <FavouriteItem
+          isActive={isActive}
+          item={section}
+          onDeletePress={() => {
+            setFavouritesList((favouritesList) => {
 
-          favouritesList.splice(index, 1);
+              favouritesList.splice(index, 1);
 
-          return [...favouritesList];
+              return [...favouritesList];
 
-        });
-      }}
-    />;
+            });
+          }}
+        />
+      </View>;
+    } else if (index === Globals.favouriteItems.length - 1 && !isActive) {
+      return <View style={screenStyles.favouriteLastItemContainer}>
+        <FavouriteItem
+          isActive={isActive}
+          item={section}
+          onDeletePress={() => {
+            setFavouritesList((favouritesList) => {
+
+              favouritesList.splice(index, 1);
+
+              return [...favouritesList];
+
+            });
+          }}
+        />
+      </View>;
+    } else {
+      return <FavouriteItem
+        isActive={isActive}
+        item={section}
+        onDeletePress={() => {
+          setFavouritesList((favouritesList) => {
+
+            favouritesList.splice(index, 1);
+
+            return [...favouritesList];
+
+          });
+        }}
+      />;
+    }
+
   };
 
-  const renderFavouritesContent = section => {
+  const renderFavouritesContent = (section, index) => {
+
     return (
-      <View style={ screenStyles.contentContainerParent }>
+      <View
+        style={[screenStyles.contentContainerParent, (index === Globals.favouriteItems.length - 1) && screenStyles.favouriteLastItemContainer]}>
 
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -67,7 +100,9 @@ export const Favourites = (props) => {
                 <View style={[screenStyles.contentItemLeftIconContainer]}>
                   <Image
                     source={item.image}
-                    style={screenStyles.contentItemLeftIcon} />
+                    style={screenStyles.contentItemLeftIcon}
+                    resizeMode={"contain"}
+                  />
                 </View>
 
                 <View>
@@ -114,7 +149,7 @@ export const Favourites = (props) => {
       navigation={props.navigation}
       showAppHeader={true}
       title={"My List"}
-      rightIcon={assets.plus_circle_icon}
+      rightIcon={IconNames.PlusCircle}
       onRightIconPress={() => {
         sheetRef.open();
       }}
@@ -123,7 +158,6 @@ export const Favourites = (props) => {
         return (
 
           <View style={screenStyles.container}>
-
             <ScrollView style={screenStyles.container} showsVerticalScrollIndicator={false}>
 
               <Accordion
@@ -132,7 +166,8 @@ export const Favourites = (props) => {
                 renderHeader={renderFavouritesHeader}
                 renderContent={renderFavouritesContent}
                 expandMultiple={false}
-                sectionContainerStyle={ screenStyles.containerSpacing }
+                underlayColor={"transparent"}
+                sectionContainerStyle={screenStyles.containerSpacing}
                 onChange={_updateSections}
               />
 

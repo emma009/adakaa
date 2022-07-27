@@ -16,21 +16,42 @@ export const Styles = function(styles, colors) {
 
         flatListContainer: {
             flex: 0.74,
-            paddingTop: hp("2"),
         },
+
+        flatListFirstItemContainer: {
+            marginTop: hp(2),
+        },
+
+        flatListLastItemContainer: {
+            marginBottom: hp(2),
+        },
+
         bottomContainerParent: {
-            flex: 0.26,
+            flex: 0.30,
             backgroundColor: colors.primaryBackground,
+
+            justifyContent: "center",
+
+            shadowColor: colors.borderColorLight,
+            shadowOffset: {
+                width: 0,
+                height: -11,
+            },
+            shadowOpacity: 0.1,
+            shadowRadius: 1.22,
+
+            elevation: 8,
+            borderRadius: 4
         },
         bottomContainer: {
             alignSelf: "center",
             backgroundColor: colors.primaryBackground,
-            paddingTop: hp("1"),
+            // paddingTop: hp("2"),
             width: styles.gridWidth,
         },
         totalContainer: {
             flexDirection: "row",
-            marginBottom: hp("1"),
+            marginBottom: hp("1.5"),
         },
         subtotalLabelText: {
             fontFamily: Fonts.RUBIK_REGULAR,
@@ -63,7 +84,8 @@ export const Styles = function(styles, colors) {
             alignSelf: "center",
             marginBottom: hp("1"),
             backgroundColor: colors.borderColorLight
-        }
+        },
+
     }
 
 }

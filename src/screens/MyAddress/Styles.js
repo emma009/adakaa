@@ -38,7 +38,7 @@ export const Styles = function(scheme, colors) {
             alignSelf: "center",
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P4,
-            color: colors.subHeadingColor
+            color: colors.headingColor
         },
 
         horizontalInputsContainer: {
@@ -49,7 +49,20 @@ export const Styles = function(scheme, colors) {
 
         horizontalInput: {
             flex: 0.48,
-        }
+        },
+
+        addressFirstItem: {
+            marginTop: hp(3)
+        },
+
+        addressLastItem: {
+            marginBottom: hp(1)
+        },
+
+        bottomContainer: {
+            flex: 0.1,
+            justifyContent: "center"
+        },
 
     }
 

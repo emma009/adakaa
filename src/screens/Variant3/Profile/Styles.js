@@ -16,15 +16,15 @@ export const Styles = function(styles, scheme, colors) {
 
         upperContainer: {
             width: "100%",
-            height: hp("36"),
+            height: hp("35"),
             backgroundColor: colors.activeColor,
-            justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            paddingTop: hp(5)
         },
 
         container: {
             width: "100%",
-            height: hp("80"),
+            // height: hp("80"),
             backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground,
             alignItems: "center"
         },
@@ -79,12 +79,12 @@ export const Styles = function(styles, scheme, colors) {
 
         overlayContainer: {
             width: "90%",
-            height: hp(13),
+            height: hp(15),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            marginTop: -hp(6.5),
+            marginTop: -hp(7.5),
+            padding: "2%",
             alignSelf: "center",
             justifyContent: "center",
-            paddingHorizontal: hp(1),
             borderRadius: hp(0.5),
         },
 
@@ -96,6 +96,7 @@ export const Styles = function(styles, scheme, colors) {
         },
 
         overlayNestedContainer: {
+            flex: 1,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
@@ -104,26 +105,19 @@ export const Styles = function(styles, scheme, colors) {
 
         nestedContainer: {
             width: "23%",
-            height: hp(8),
+            height: "100%",
+            // height: hp(10),
             backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground,
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            borderRadius: hp(0.5),
         },
 
         nestedContainerText: {
             fontFamily: Fonts.RUBIK_REGULAR,
             fontSize: Typography.P6,
             color: colors.subHeadingColor,
-            marginTop: hp(1)
-        },
-
-        nestedContainerImage: {
-
-            width: hp(2),
-            height: hp(2),
-            resizeMode: "contain",
-            tintColor: colors.activeColor
-
+            marginTop: hp(2)
         },
 
         cardListContainer: {
@@ -167,20 +161,16 @@ export const Styles = function(styles, scheme, colors) {
         listingContainer: {
             width: "100%",
             paddingHorizontal: wp(5),
-            marginVertical: hp(4)
+            marginVertical: hp(2)
         },
 
         profileListingItemContainer: {
             flexDirection: "row",
-            paddingVertical: hp(1)
+            paddingVertical: hp(1.2)
         },
 
         profileListingItemLeftImage: {
-            width: hp(2.2),
-            height: hp(2.2),
-            tintColor: colors.activeColor,
             marginRight: wp(5),
-            resizeMode: "contain"
         },
 
         profileListingItemText: {

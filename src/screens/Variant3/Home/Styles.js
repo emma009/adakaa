@@ -16,7 +16,8 @@ export const Styles = function(styles, scheme, colors) {
         categoryContainer: {
             width: styles.gridWidth,
             alignSelf: "center",
-            marginVertical: hp(2)
+            marginTop: hp(4),
+            marginBottom: hp(2)
         },
 
         container: {
@@ -43,18 +44,11 @@ export const Styles = function(styles, scheme, colors) {
             alignSelf: "center"
         },
 
-        sectionRightIcon: {
-            width: hp(2),
-            height: hp(2),
-            tintColor: colors.subHeadingColor,
-            resizeMode: "contain"
-        },
-
         categorySliderActiveText: {
             fontFamily: fonts.RUBIK_MEDIUM,
             fontSize: Typography.P2,
             color: colors.headingColor,
-            marginHorizontal: 30
+            marginHorizontal: 10
         },
 
         categorySliderInActiveText: {
@@ -67,6 +61,7 @@ export const Styles = function(styles, scheme, colors) {
         sectionContainer: {
             width: styles.gridWidth,
             alignSelf: "center",
+            marginBottom: hp(2)
         },
 
         secondaryBannerContainer: {
@@ -84,7 +79,8 @@ export const Styles = function(styles, scheme, colors) {
 
         promotionSliderContainer: {
             width: styles.gridWidth,
-            height: hp("30%"),
+            height: hp("45%"),
+            borderRadius: hp(0.75),
             alignSelf: "center"
         },
 

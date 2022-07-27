@@ -1,28 +1,54 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../branding/App_config";
+import { Platform } from "react-native";
 
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-export const Styles = function(scheme, colors) {
+export const Styles = function(scheme, styles, colors) {
 
     return {
         container: {
             flex: 1,
+            alignItems: "center"
+        },
+
+        baseViewChildContainerStyle: {
+            flex: 1,
         },
 
         listContainer: {
+            flex: 0.55,
+            width: styles.gridWidth,
+        },
+
+        cardContainer: {
+            marginTop: hp(3)
         },
 
         bottomContainer: {
-            // flex: 0.3,
-            paddingVertical: hp(2),
+            flex: 0.45,
+            // paddingVertical: hp(2.5),
             justifyContent: "center",
             paddingHorizontal: wp(5),
-            marginVertical: hp(1),
+            marginTop: hp(1),
+            width: "100%",
             backgroundColor: colors.primaryBackground
+        },
+
+        bottomTotalContainer: {
+            flex: 0.7,
+            // marginBottom: hp(2),
+            justifyContent: "center",
+            // backgroundColor: "red"
+        },
+
+        bottomButtonContainer: {
+            // justifyContent: "center",
+            flex: 0.3,
+            // backgroundColor: "green"
         },
 
         receiptItemContainer: {
@@ -71,6 +97,7 @@ export const Styles = function(scheme, colors) {
             height: hp("12"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flexDirection: "row",
+            borderRadius: hp(0.75),
             alignItems: "center",
             paddingLeft: wp("5"),
         },

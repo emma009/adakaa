@@ -10,18 +10,71 @@ export const Styles = function(scheme, colors) {
 
     return {
         mainContainer: {
-            flex: 1
+            flex: 1,
         },
 
         cardContainerStyle: {
             width: "100%",
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            paddingHorizontal: wp(4),
-            paddingTop: hp(2),
-            paddingBottom: hp(2),
+            paddingHorizontal: hp(3),
+            paddingVertical: hp(2),
             borderBottomWidth: 1,
             borderBottomColor: colors.borderColorLight
         },
+
+        firstCardContainerStyle: {
+            marginTop: hp(3),
+            borderTopLeftRadius: hp(0.75),
+            borderTopRightRadius: hp(0.75),
+
+        },
+
+        othersTitle: {
+            marginHorizontal: wp(3),
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P4,
+            color: colors.headingColor
+        },
+
+
+        checkCircleImage: {
+            position: "absolute",
+            right: 0,
+        },
+
+        othersCardContainerStyle: {
+            marginBottom: hp(2),
+            borderBottomLeftRadius: hp(0.75),
+            borderBottomRightRadius: hp(0.75),
+            borderBottomWidth: 0,
+        },
+
+        categoriesCardContainerStyle: {
+            borderRadius: hp(0.75),
+            borderBottomWidth: 0,
+            marginBottom: hp(3)
+        },
+
+        categoryParent: {
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            flexDirection: "row",
+            alignItems: "center",
+            flex: 0.55,
+            paddingVertical: hp("1.5"),
+        },
+
+        categoryParentBorder: {
+            borderBottomWidth: 1,
+            borderBottomColor: colors.borderColorLight
+        },
+
+        categoryTitle: {
+            marginHorizontal: wp(3),
+            fontFamily: Fonts.RUBIK_REGULAR,
+            fontSize: Typography.P4,
+            color: colors.headingColor
+        },
+
 
         priceContainer: {
             flexDirection: "row",
@@ -36,7 +89,7 @@ export const Styles = function(scheme, colors) {
         },
 
         inputContainerStyle: {
-            width: wp(40),
+            width: wp(38),
             backgroundColor: colors.inputSecondaryBackground,
             justifyContent: "center"
         },
@@ -45,8 +98,9 @@ export const Styles = function(scheme, colors) {
             flexDirection: "row",
             alignItems: "center",
             backgroundColor: colors.inputSecondaryBackground,
-            height: hp(5.5),
-            paddingHorizontal: wp(2)
+            height: hp(5.9),
+            borderRadius: hp(0.75),
+            paddingHorizontal: wp(5)
         },
 
         ratingTextStyle: {
@@ -63,7 +117,18 @@ export const Styles = function(scheme, colors) {
             alignItems: "center",
             paddingVertical: hp("1.5"),
             borderBottomColor: colors.borderColorLight
+        },
+
+
+        scrollViewContainer: {
+            flex: 0.9
+        },
+
+        bottomButtonContainer: {
+            flex: 0.1,
+            justifyContent: "center"
         }
+
     }
 
 

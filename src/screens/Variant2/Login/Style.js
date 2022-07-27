@@ -25,8 +25,8 @@ export const Styles = function(styles, scheme, colors) {
         },
 
         headerImage: {
-            width: wp(85),
-            height: wp(85),
+            width: wp(80),
+            height: wp(80),
             resizeMode: "contain",
         },
 

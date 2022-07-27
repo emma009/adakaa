@@ -5,13 +5,16 @@ import AppConfig from '../../../../branding/App_config';
 import AppInput from "../../../components/Application/AppInput/View"
 import Routes from '../../../navigation/Routes';
 import { Styles } from "./Style";
-import { StackActions, useTheme } from "@react-navigation/native";
+import { CommonActions, StackActions, useTheme } from "@react-navigation/native";
 import AppHeader from "../../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import {CustomSwitch} from "../../../components/Global/CustomSwitch/View";
 import AppButton from "../../../components/Application/AppButton/View";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { CircularBanner } from "../../../components/Application/CicularBanner/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
+import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 
 
 const assets = AppConfig.assets.default;
@@ -57,7 +60,12 @@ export const Variant2LoginFormScreen = (props) => {
                 />
 
                 <View style={screenStyles.imageContainer}>
-                    <Image source={assets.intro1_img2} style={screenStyles.headerImage} />
+                    <CircularBanner
+                      icon={IconNames.Key}
+                      theme={"blue"}
+                      width={wp(85)}
+                      height={wp(85)}
+                    />
                 </View>
 
                 <View style={[screenStyles.bottomContainer]}>
@@ -67,7 +75,7 @@ export const Variant2LoginFormScreen = (props) => {
 
                     <AppInput
                         textInputRef={r => (inputRef = r)}
-                        leftIcon={assets.envelop_icon}
+                        leftIcon={IconNames.Envelope}
                         placeholder={"Email Address"}
                         value={email}
                         keyboardType={"email-address"}
@@ -79,7 +87,7 @@ export const Variant2LoginFormScreen = (props) => {
                     <AppInput
                         textInputRef={r => (inputRef = r)}
                         isPasswordField
-                        leftIcon={assets.lock_icon}
+                        leftIcon={IconNames.LockKeyhole}
                         placeholder={"Password"}
                         value={password}
                         onChangeText={(password) => {
@@ -119,7 +127,10 @@ export const Variant2LoginFormScreen = (props) => {
                         title={"Login"}
                         onPress={() => {
                             props.navigation.dispatch(
-                                StackActions.replace(Routes.HOME_VARIANT2)
+                              CommonActions.reset({
+                                  index: 1,
+                                  routes: [{name: Routes.HOME_VARIANT2}],
+                              }),
                             );
                         }}
                     />

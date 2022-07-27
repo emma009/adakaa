@@ -10,13 +10,16 @@ import { AddressItem } from "../../components/Application/AddressItem/View";
 import { CardItem } from "../../components/Application/CardItem/View";
 import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 
 export const CartSummary = (props) => {
 
   //Theme based styling and colors
   const scheme = useColorScheme();
   const { colors } = useTheme();
-  const screenStyles = Styles(scheme, colors);
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+  const screenStyles = Styles(scheme, globalStyles, colors);
 
 
   const renderCartItems = (item, index) => {
@@ -50,8 +53,8 @@ export const CartSummary = (props) => {
     <BaseView
       navigation={props.navigation}
       title={"Cart Summary"}
+      childContainerStyle={screenStyles.baseViewChildContainerStyle}
       headerWithBack
-      applyBottomSafeArea
       childView={() => {
 
         return (
@@ -61,11 +64,14 @@ export const CartSummary = (props) => {
               showsVerticalScrollIndicator={false}
               style={screenStyles.listContainer}
             >
-              <CardItem
-                isActive={false}
-                item={Globals.paymentMethodItems.cardItems[2]}
-                onPress={() => {
-                }} />
+              <View style={screenStyles.cardContainer}>
+                <CardItem
+                  isActive={false}
+                  item={Globals.paymentMethodItems.cardItems[2]}
+                  onPress={() => {
+                  }} />
+              </View>
+
 
               <AddressItem
                 isActive={false}
@@ -86,40 +92,46 @@ export const CartSummary = (props) => {
 
             <View style={screenStyles.bottomContainer}>
 
-              <View style={screenStyles.receiptItemContainer}>
-                <Text style={screenStyles.boldLabelText}>Subtotal (6) Items:</Text>
-                <Text style={screenStyles.boldLabelValueText}>$36.45</Text>
+              <View style={screenStyles.bottomTotalContainer}>
+                <View style={screenStyles.receiptItemContainer}>
+                  <Text style={screenStyles.boldLabelText}>Subtotal (6) Items:</Text>
+                  <Text style={screenStyles.boldLabelValueText}>$36.45</Text>
+                </View>
+
+                <Divider style={screenStyles.receiptItemDivider} />
+
+                <View style={screenStyles.receiptItemContainer}>
+                  <Text style={screenStyles.normalLabelText}>Promotional Discounts:</Text>
+                  <Text style={screenStyles.normalLabelValueText}>-$9.50</Text>
+                </View>
+
+                <View style={screenStyles.receiptItemContainer}>
+                  <Text style={screenStyles.normalLabelText}>Delivery Charges:</Text>
+                  <Text style={screenStyles.normalLabelValueText}>$5.00</Text>
+                </View>
+
+                <Divider style={screenStyles.receiptItemDivider} />
+
+                <View style={[screenStyles.receiptItemContainer, { marginBottom: 0 }]}>
+                  <Text style={screenStyles.boldLabelText}>Total</Text>
+                  <Text style={screenStyles.boldLabelValueText}>$16.99</Text>
+                </View>
+
               </View>
 
-              <Divider style={screenStyles.receiptItemDivider} />
-
-              <View style={screenStyles.receiptItemContainer}>
-                <Text style={screenStyles.normalLabelText}>Promotional Discounts:</Text>
-                <Text style={screenStyles.normalLabelValueText}>-$9.50</Text>
+              <View style={screenStyles.bottomButtonContainer}>
+                <AppButton
+                  title={"Place Order"}
+                  onPress={() => {
+                    props.navigation.navigate(Routes.ORDER_SUCCESS);
+                  }}
+                />
               </View>
-
-              <View style={screenStyles.receiptItemContainer}>
-                <Text style={screenStyles.normalLabelText}>Delivery Charges:</Text>
-                <Text style={screenStyles.normalLabelValueText}>$5.00</Text>
-              </View>
-
-              <Divider style={screenStyles.receiptItemDivider} />
-
-              <View style={[screenStyles.receiptItemContainer, { marginBottom: 0 }]}>
-                <Text style={screenStyles.boldLabelText}>Total</Text>
-                <Text style={screenStyles.boldLabelValueText}>$16.99</Text>
-              </View>
-
 
             </View>
 
 
-            <AppButton
-              title={"Place Order"}
-              onPress={() => {
-                props.navigation.navigate(Routes.ORDER_SUCCESS);
-              }}
-            />
+
 
           </View>
         );

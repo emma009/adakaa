@@ -5,6 +5,7 @@ import {Text} from 'react-native-elements';
 import PropTypes from 'prop-types';
 import Styles from "./Styles";
 import Routes from "../../../navigation/Routes";
+import { SvgIcon } from "../SvgIcon/View";
 
 export const CategoryItem = (props) => {
 
@@ -13,6 +14,7 @@ export const CategoryItem = (props) => {
         primaryColor,
         secondaryTitle,
         secondaryColor,
+        iconBgColor,
         iconURI,
         bgURI
     } = props;
@@ -25,6 +27,7 @@ export const CategoryItem = (props) => {
             });
         }}>
 
+
             <View style={Styles.categoryItemContainer}>
                 <ImageBackground
                     source={bgURI}
@@ -35,11 +38,17 @@ export const CategoryItem = (props) => {
 
                         <Text style={[Styles.secondaryTitle, {color: secondaryColor}]}>{secondaryTitle}</Text>
                         <Text style={[Styles.primaryTitle, {color: primaryColor}]}>{primaryTitle}</Text>
-                        <Image
-                            source={iconURI}
-                            style={Styles.icon}
-                            resizeMode={"contain"}
-                        />
+
+                        <View style={[Styles.icon, {backgroundColor: iconBgColor}]}>
+
+                            <SvgIcon type={iconURI} width={30} height={30} color={"white"} />
+
+                        </View>
+                        {/*<Image*/}
+                        {/*    source={iconURI}*/}
+                        {/*    style={Styles.icon}*/}
+                        {/*    resizeMode={"contain"}*/}
+                        {/*/>*/}
                     </View>
 
                 </ImageBackground>

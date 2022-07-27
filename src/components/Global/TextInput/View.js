@@ -4,7 +4,9 @@ import {Input} from 'react-native-elements';
 import {Image, TouchableOpacity, ViewPropTypes} from "react-native";
 import AppConfig from "../../../../branding/App_config";
 import Style from "./Styles"
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { widthPercentageToDP as wp } from "react-native-responsive-screen";
+import { SvgIcon } from "../../Application/SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const PropTypes = require('prop-types');
 
@@ -19,9 +21,9 @@ export const TextInput = (props) => {
     const getEyeIcon = () => {
 
         if (showObscureText) {
-            return assets.eye_slash_icon;
+            return IconNames.EyeSlash;
         } else {
-            return assets.eye_icon;
+            return IconNames.Eye;
         }
 
     };
@@ -42,7 +44,6 @@ export const TextInput = (props) => {
         labelProps,
         leftIcon,
         leftIconContainerStyle,
-        rightIconContainerStyle,
         value,
         keyboardType,
         textInputRef,
@@ -54,6 +55,7 @@ export const TextInput = (props) => {
     const isPasswordField = props.isPasswordField || false;
     const showPassword = props.showPassword || false;
     const rightIconTintColor = props.rightIconTintColor || colors.switchBorder;
+    const rightIconContainerStyle = props.rightIconContainerStyle || { marginRight: wp(5) };
     const rightIconPress = props.rightIconPress || (() => {})
 
 
@@ -89,18 +91,11 @@ export const TextInput = (props) => {
             (isPasswordField && showPassword) ? <TouchableOpacity onPress={() => setShowObscureText((showObscureText) => {
               return !showObscureText
           })}>
-              <Image source={getEyeIcon()} style={[
-                  Style.rightIcon,
-                  {tintColor: rightIconTintColor}
-              ]}
-                     resizeMode={"contain"}/>
+                <SvgIcon type={getEyeIcon()} width={20} height={20} color={rightIconTintColor} />
           </TouchableOpacity> : rightIconSource ?  <TouchableOpacity onPress={() => {
                 rightIconPress ? rightIconPress() : {}
             }}>
-                <Image source={rightIconSource} style={[
-                    Style.rightIcon,
-                    {tintColor: rightIconTintColor}
-                ]}/>
+                <SvgIcon type={rightIconSource} width={20} height={20} color={rightIconTintColor} />
             </TouchableOpacity> : null
 
           }

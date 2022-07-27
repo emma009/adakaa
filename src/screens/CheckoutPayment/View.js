@@ -9,6 +9,8 @@ import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import Globals from "../../utils/Globals";
 import AppConfig from "../../../branding/App_config";
+import { SvgIcon } from "../../components/Application/SvgIcon/View";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -40,16 +42,17 @@ export const CheckoutPayment = (props) => {
 
                 }}
                 style={[screenStyles.paymentMethodItemParentContainer, item.isActive && {
-                    borderWidth: 1,
+                    borderWidth: 2,
                     borderColor: colors.activeColor
                 }]}>
 
                 <View style={screenStyles.paymentMethodItemContainer}>
 
-                    <Image source={item.icon} style={[
-                      screenStyles.icon, {
-                        tintColor: item.isActive ? colors.activeColor : colors.inactiveColor
-                    }]} resizeMode={"contain"}/>
+                  <SvgIcon type={item.icon} width={25} height={25} color={item.isActive ? colors.activeColor : colors.inactiveColor} />
+                    {/*<Image source={item.icon} style={[*/}
+                    {/*  screenStyles.icon, {*/}
+                    {/*    tintColor: item.isActive ? colors.activeColor : colors.inactiveColor*/}
+                    {/*}]} resizeMode={"contain"}/>*/}
 
 
                     <View style={screenStyles.nameContainer}>
@@ -57,19 +60,19 @@ export const CheckoutPayment = (props) => {
                             <Text style={screenStyles.nameTitle}>{item.type}</Text>
                         </View>
 
-
                         {
                             item.isActive &&
                             <View style={screenStyles.rightIconContainer}>
-                                <Image source={assets.check_circle_icon}
-                                       style={screenStyles.icon}
-                                       resizeMode={"contain"}/>
+                              <SvgIcon type={IconNames.CheckCircle} width={25} height={25} color={colors.activeColor} />
+
+                              {/*<Image source={assets.check_circle_icon}*/}
+                              {/*         style={screenStyles.icon}*/}
+                              {/*         resizeMode={"contain"}/>*/}
                             </View>
                         }
 
                     </View>
                 </View>
-
 
             </TouchableOpacity>
         );
@@ -102,6 +105,7 @@ export const CheckoutPayment = (props) => {
                     <View style={screenStyles.container}>
                         <FlatList
                             showsVerticalScrollIndicator={false}
+                            style={screenStyles.listContainer}
                             data={paymentMethods}
                             renderItem={({item, index}) => {
 
@@ -110,6 +114,7 @@ export const CheckoutPayment = (props) => {
                             }}
                         />
 
+                      <View style={screenStyles.bottomContainer}>
                         <AppButton
                             title={'Next'}
                             onPress={() => {
@@ -118,6 +123,7 @@ export const CheckoutPayment = (props) => {
                             }}
                         />
 
+                      </View>
                     </View>
 
                 );

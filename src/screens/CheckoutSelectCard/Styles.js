@@ -7,8 +7,20 @@ let Styles = {
   },
 
   listContainer: {
-    flex: 1,
-    marginBottom: hp(1)
+    flex: 0.9,
+  },
+
+  cardFirstItem: {
+    marginTop: hp(3)
+  },
+
+  cardLastItem: {
+    marginBottom: hp(2)
+  },
+
+  bottomContainer: {
+    flex: 0.1,
+    justifyContent: "center"
   }
 
 

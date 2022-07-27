@@ -16,6 +16,8 @@ import Globals from "../../../utils/Globals";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -37,26 +39,24 @@ export const Variant3Profile = (props) => {
             onPress={() => item.onPress()}
             style={screenStyles.profileListingItemContainer}>
 
-            <Image source={item.icon} style={screenStyles.profileListingItemLeftImage}/>
+            <SvgIcon type={item.icon} width={20} height={20} color={colors.activeColor} style={screenStyles.profileListingItemLeftImage} />
+
 
             <Text style={screenStyles.profileListingItemText}>{item.title}</Text>
 
             <View style={screenStyles.profileListingItemRightContainer}>
-                <Icon
-                    name={"angle-right"}
-                    type={"font-awesome"}
-                    iconStyle={{
-                        color: colors.textColorGrey3
-                    }}/>
+                <SvgIcon type={IconNames.ChevronRight} width={20} height={20} color={colors.subHeadingColor} />
+
             </View>
         </TouchableOpacity>
     }
 
     return (
         <View style={screenStyles.mainContainer}>
-            <StatusBar backgroundColor={colors.primaryBackground} barStyle={"dark-content"} />
+            <StatusBar backgroundColor={colors.activeColor} barStyle={"light-content"} />
 
             <View style={screenStyles.upperContainer} >
+
 
                 <View
                     style={screenStyles.profileImageContainer}>
@@ -79,10 +79,7 @@ export const Variant3Profile = (props) => {
                         ]
                     }>
 
-                        <Image
-                            source={assets.camera_regular_icon}
-                            style={screenStyles.profileImageAccessoryViewImage}
-                        />
+                        <SvgIcon type={IconNames.Camera} width={20} height={20} color={colors.white} />
 
                     </TouchableOpacity>
 
@@ -94,7 +91,6 @@ export const Variant3Profile = (props) => {
                     <Text style={screenStyles.emailText}>{"gfx.partner@gmail.com"}</Text>
                 </View>
 
-
             </View>
 
             <View style={[screenStyles.overlayContainer]}>
@@ -105,10 +101,7 @@ export const Variant3Profile = (props) => {
 
                     <View style={screenStyles.nestedContainer}>
 
-                        <Image
-                            source={assets.wallet_icon}
-                            style={screenStyles.nestedContainerImage}
-                        />
+                        <SvgIcon type={IconNames.Wallet} width={25} height={25} color={colors.activeColor} />
 
                         <Text style={screenStyles.nestedContainerText}>{"Unpaid"}</Text>
 
@@ -116,10 +109,7 @@ export const Variant3Profile = (props) => {
 
                     <View style={screenStyles.nestedContainer}>
 
-                        <Image
-                            source={assets.order_icon}
-                            style={screenStyles.nestedContainerImage}
-                        />
+                        <SvgIcon type={IconNames.Box} width={25} height={25} color={colors.activeColor} />
 
 
                         <Text style={screenStyles.nestedContainerText}>{"Pending"}</Text>
@@ -129,10 +119,7 @@ export const Variant3Profile = (props) => {
                     <View style={screenStyles.nestedContainer}>
 
 
-                        <Image
-                            source={assets.shipping_icon}
-                            style={screenStyles.nestedContainerImage}
-                        />
+                        <SvgIcon type={IconNames.Truck} width={25} height={25} color={colors.activeColor} />
 
 
                         <Text style={screenStyles.nestedContainerText}>{"Shipped"}</Text>
@@ -142,10 +129,7 @@ export const Variant3Profile = (props) => {
                     <View style={screenStyles.nestedContainer}>
 
 
-                        <Image
-                            source={assets.star_icon}
-                            style={screenStyles.nestedContainerImage}
-                        />
+                        <SvgIcon type={IconNames.StarSharp} width={25} height={25} color={colors.activeColor} />
 
                         <Text style={screenStyles.nestedContainerText}>{"Reviews"}</Text>
 

@@ -51,6 +51,7 @@ const BaseView = (props) => {
                     rightIcon={rightIcon}
                     onRightIconPress={() => rightIcon !== "" && onRightIconPress()}
                     title={title}
+                    bottomMargin={{}}
                 />
 
             }

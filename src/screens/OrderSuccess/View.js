@@ -8,6 +8,8 @@ import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
 import {Styles} from "./Styles"
+import { SvgIcon } from "../../components/Application/SvgIcon/View";
+import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -32,9 +34,7 @@ export const OrderSuccess = (props) => {
 
                         <View style={screenStyles.mainContainer}>
 
-                            <Image
-                                source={assets.cart_regular_icon}
-                                style={screenStyles.cartIcon}/>
+                          <SvgIcon type={IconNames.BagShopping} width={70} height={70} color={colors.activeColor} />
 
                             <Text style={screenStyles.titleText}>Your Order was successful!</Text>
 
@@ -42,7 +42,7 @@ export const OrderSuccess = (props) => {
 
                         </View>
 
-                        <View style={{flex: 0.1, justifyContent: "flex-end"}}>
+                        <View style={screenStyles.bottomContainer}>
                             <AppButton
                                 title={'Track Order'}
                                 onPress={() => {

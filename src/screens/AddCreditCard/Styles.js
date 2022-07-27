@@ -12,9 +12,15 @@ export const Styles = function(colors) {
       flex: 1,
     },
 
+    parentContainer: {
+      flex: 0.9,
+      marginTop: hp(3),
+    },
+
     creditCardImageStyle: {
       width: "100%",
       height: hp("30"),
+      resizeMode: "cover"
     },
 
     defaultText: {
@@ -27,8 +33,8 @@ export const Styles = function(colors) {
 
 
     bottomButton: {
-      flex: 1,
-      justifyContent: "flex-end",
+      flex: 0.1,
+      justifyContent: "center",
     },
 
 

@@ -32,15 +32,15 @@ export const commonLightStyles = function(colors) {
 
             borderRadius: hp(0.75),
 
-            shadowColor: colors.buttonBackground,
-            shadowOffset: {
-                width: 0,
-                height: 3,
-            },
-            shadowOpacity: 0.4,
-            shadowRadius: 2.22,
-
-            elevation: 3,
+            // shadowColor: colors.buttonBackground,
+            // shadowOffset: {
+            //     width: 0,
+            //     height: 3,
+            // },
+            // shadowOpacity: 0.4,
+            // shadowRadius: 2.22,
+            //
+            // elevation: 3,
         },
 
         primaryButtonTextStyle: {
@@ -134,7 +134,7 @@ export const commonLightStyles = function(colors) {
                 shadowOpacity: 0.1,
                 shadowRadius: 1.22,
 
-                elevation: 2,
+                elevation: 4,
                 borderRadius: 4
             }
         },

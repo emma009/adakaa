@@ -6,6 +6,8 @@ import Globals from "../../../utils/Globals";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import { SvgIcon } from "../SvgIcon/View";
+import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
@@ -53,8 +55,7 @@ export function Variant2BottomTabBar({ state, descriptors, navigation }) {
 
                             <View style={[screenStyles.bottomTabCartOuterContainer]}>
                                 <View style={[globalStyles.buttonShadow, screenStyles.bottomTabCartInnerContainer]}>
-                                    <Image source={assets.cart_regular_icon}
-                                           style={[screenStyles.bottomTabIcon, {tintColor: colors.white}]}/>
+                                    <SvgIcon type={IconNames.BagShopping} width={30} height={30} color={colors.white} />
 
                                 </View>
                             </View>
@@ -63,24 +64,24 @@ export function Variant2BottomTabBar({ state, descriptors, navigation }) {
                     );
                 } else {
 
-                    let icon = assets.cart_regular_icon;
+                    let icon = IconNames.HomeAlt;
 
                     switch (index) {
 
                         case 0:
-                            icon = assets.home_icon;
+                            icon = IconNames.HomeAlt;
                             break;
 
                         case 1:
-                            icon = assets.heart_regular_icon;
+                            icon = IconNames.Heart;
                             break;
 
                         case 3:
-                            icon = assets.order_placed_icon;
+                            icon = IconNames.BoxOpen;
                             break;
 
                         case 4:
-                            icon = assets.account_icon;
+                            icon = IconNames.CircleUser;
                             break;
 
                     }
@@ -98,10 +99,7 @@ export function Variant2BottomTabBar({ state, descriptors, navigation }) {
 
                             {/*isFocused is selected*/}
 
-                            <Image source={icon} style={[
-                                screenStyles.bottomTabIcon, {
-                                    tintColor: isFocused ? colors.headingColor : colors.subHeadingColor
-                            }]}/>
+                            <SvgIcon type={icon} width={25} height={25} color={isFocused ? colors.headingColor : colors.subHeadingColor} />
 
                         </TouchableOpacity>
                     );
