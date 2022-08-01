@@ -29,14 +29,11 @@ const slider_data = [
     img: require("./Assets/Images/slider_img_1.png")
   },
   {
-    img: require("./Assets/Images/slider_img_1.png")
+    img: require("./Assets/Images/slider_img_2.png")
   },
   {
-    img: require("./Assets/Images/slider_img_1.png")
-  },
-  {
-    img: require("./Assets/Images/slider_img_1.png")
-  },
+    img: require("./Assets/Images/slider_img_3.png")
+  }
 ];
 
 export const Variant2Home = (props) => {
@@ -97,10 +94,11 @@ export const Variant2Home = (props) => {
 
     return (
 
-        <View style={[screenStyles.mainWrapper, {paddingTop: Globals.SAFE_AREA_INSET.top}]}>
+        <View style={[screenStyles.mainWrapper]}>
 
-            <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
+          <View style={screenStyles.mainContainer}>
 
+          <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
           <View style={screenStyles.searchContainer}>
               <SearchButton
@@ -147,14 +145,15 @@ export const Variant2Home = (props) => {
                         </View>
                     </TouchableOpacity>
 
-
                     <FlatList
                         showsVerticalScrollIndicator={false}
                         data={Globals.foodItems}
                         numColumns={2}
                         scrollEnabled={false}
-                        renderItem={({item}) =>
-                            <FoodItem
+                        renderItem={({item, index}) => {
+                          if (index === Globals.foodItems.length - 2 || index === Globals.foodItems.length - 1) {
+                            return <View style={screenStyles.foodLastItems}>
+                              <FoodItem
                                 title={item.title}
                                 image={item.image}
                                 bigImage={item.bigImage}
@@ -168,13 +167,37 @@ export const Variant2Home = (props) => {
                                 cartCountChange={(count) => {
                                 }}
                                 favouriteChange={(favourite) => {
-                                    if (favourite) {
-                                        _favouriteSheet.open()
-                                    }
+                                  if (favourite) {
+                                    _favouriteSheet.open()
+                                  }
                                 }}
                                 navigation={props.navigation}
+                              />
+                            </View>
+                          }
+                          else {
+                            return <FoodItem
+                              title={item.title}
+                              image={item.image}
+                              bigImage={item.bigImage}
+                              price={item.price}
+                              weight={item.weight}
+                              discount={item.discount}
+                              cartCount={item.cartCount}
+                              isFavourite={item.isFavourite}
+                              detail={item.detail}
+                              ratingValue={item.ratingValue}
+                              cartCountChange={(count) => {
+                              }}
+                              favouriteChange={(favourite) => {
+                                if (favourite) {
+                                  _favouriteSheet.open()
+                                }
+                              }}
+                              navigation={props.navigation}
                             />
-                        }
+                          }
+                        }}
                     />
 
 
@@ -198,7 +221,7 @@ export const Variant2Home = (props) => {
 
             </RBSheet>
 
-
+          </View>
         </View>
 
     );

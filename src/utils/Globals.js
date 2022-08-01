@@ -89,8 +89,8 @@ class Globals {
     static foodItems = [
         {
             title: "Organic lemons",
-            image: require("../components/Application/FoodItem/Assets/Images/OrganicLemons.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            image: require("../components/Application/FoodItem/Assets/Images/organic_lemons.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/organic_lemons_big.png"),
             price: "$1.22",
             weight: "1.50 lbs",
             discount: "15%",
@@ -102,7 +102,7 @@ class Globals {
         {
             title: "Fresh apricots",
             image: require("../components/Application/FoodItem/Assets/Images/apricot.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/apricot_big.png"),
             price: "$2.35",
             weight: "dozen",
             cartCount: 0,
@@ -113,7 +113,7 @@ class Globals {
         {
             title: "Pomegranate",
             image: require("../components/Application/FoodItem/Assets/Images/pomegranate.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/pomegranate_big.png"),
             price: "$1.22",
             weight: "each",
             cartCount: 0,
@@ -124,7 +124,7 @@ class Globals {
         {
             title: "Broccoli flower",
             image: require("../components/Application/FoodItem/Assets/Images/broccoli_flower.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/broccoli_flower_big.png"),
             price: "$4.99",
             weight: "1.50 lbs",
             cartCount: 0,
@@ -135,7 +135,7 @@ class Globals {
         {
             title: "Chocolate chip",
             image: require("../components/Application/FoodItem/Assets/Images/chocolate_chip.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/chocolate_chip_big.png"),
             price: "$1.22",
             weight: "10 cookies",
             cartCount: 0,
@@ -146,7 +146,7 @@ class Globals {
         {
             title: "Red grapes",
             image: require("../components/Application/FoodItem/Assets/Images/red_grapes.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/red_grapes_big.png"),
             price: "$8.99",
             weight: "5.0 lbs",
             cartCount: 0,
@@ -156,8 +156,8 @@ class Globals {
         },
         {
             title: "Organic lemons",
-            image: require("../components/Application/FoodItem/Assets/Images/OrganicLemons.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            image: require("../components/Application/FoodItem/Assets/Images/organic_lemons.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/organic_lemons_big.png"),
             price: "$1.22",
             weight: "1.50 lbs",
             discount: "15%",
@@ -169,7 +169,7 @@ class Globals {
         {
             title: "Fresh apricots",
             image: require("../components/Application/FoodItem/Assets/Images/apricot.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/apricot_big.png"),
             price: "$2.35",
             weight: "dozen",
             cartCount: 0,
@@ -180,7 +180,7 @@ class Globals {
         {
             title: "Pomegranate",
             image: require("../components/Application/FoodItem/Assets/Images/pomegranate.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/pomegranate_big.png"),
             price: "$1.22",
             weight: "each",
             cartCount: 0,
@@ -191,7 +191,7 @@ class Globals {
         {
             title: "Broccoli flower",
             image: require("../components/Application/FoodItem/Assets/Images/broccoli_flower.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/broccoli_flower_big.png"),
             price: "$4.99",
             weight: "1.50 lbs",
             cartCount: 0,
@@ -202,7 +202,7 @@ class Globals {
         {
             title: "Chocolate chip",
             image: require("../components/Application/FoodItem/Assets/Images/chocolate_chip.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/chocolate_chip_big.png"),
             price: "$1.22",
             weight: "10 cookies",
             cartCount: 0,
@@ -213,7 +213,7 @@ class Globals {
         {
             title: "Red grapes",
             image: require("../components/Application/FoodItem/Assets/Images/red_grapes.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/red_grapes_big.png"),
             price: "$8.99",
             weight: "5.0 lbs",
             cartCount: 0,
@@ -223,8 +223,8 @@ class Globals {
         },
         {
             title: "Organic lemons",
-            image: require("../components/Application/FoodItem/Assets/Images/OrganicLemons.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            image: require("../components/Application/FoodItem/Assets/Images/organic_lemons.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/organic_lemons_big.png"),
             price: "$1.22",
             weight: "1.50 lbs",
             discount: "15%",
@@ -236,7 +236,7 @@ class Globals {
         {
             title: "Fresh apricots",
             image: require("../components/Application/FoodItem/Assets/Images/apricot.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/apricot_big.png"),
             price: "$2.35",
             weight: "dozen",
             cartCount: 0,
@@ -247,7 +247,7 @@ class Globals {
         {
             title: "Pomegranate",
             image: require("../components/Application/FoodItem/Assets/Images/pomegranate.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/pomegranate_big.png"),
             price: "$1.22",
             weight: "each",
             cartCount: 0,
@@ -258,7 +258,7 @@ class Globals {
         {
             title: "Broccoli flower",
             image: require("../components/Application/FoodItem/Assets/Images/broccoli_flower.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/broccoli_flower_big.png"),
             price: "$4.99",
             weight: "1.50 lbs",
             cartCount: 0,
@@ -269,7 +269,7 @@ class Globals {
         {
             title: "Chocolate chip",
             image: require("../components/Application/FoodItem/Assets/Images/chocolate_chip.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/chocolate_chip_big.png"),
             price: "$1.22",
             weight: "10 cookies",
             cartCount: 0,
@@ -280,7 +280,7 @@ class Globals {
         {
             title: "Red grapes",
             image: require("../components/Application/FoodItem/Assets/Images/red_grapes.png"),
-            bigImage: require("../components/Application/FoodItem/Assets/Images/BigImage.png"),
+            bigImage: require("../components/Application/FoodItem/Assets/Images/red_grapes_big.png"),
             price: "$8.99",
             weight: "5.0 lbs",
             cartCount: 0,
@@ -509,6 +509,56 @@ class Globals {
         }
     ];
 
+    static selfPickupAddresses = [
+        {
+            key: 1,
+            isDefault: false,
+            name: 'Carter Bay Area',
+            address: "2811 Crescent Day, LA Port California, United States, 77511",
+            phone: "+1 122 541 1234",
+
+            city: "California",
+            state: "United States",
+            postalCode: "77547",
+
+            isActive: false,
+
+            spinValue: new Animated.Value(0)
+
+        },
+        {
+            key: 2,
+            isDefault: false,
+            name: 'Carter Downtown',
+            address: "2811 Crescent Day, LA Port California, United States, 77511",
+            phone: "+1 122 541 1234",
+
+            city: "California",
+            state: "United States",
+            postalCode: "77547",
+
+            isActive: false,
+
+            spinValue: new Animated.Value(0)
+
+        },
+        {
+            key: 3,
+            isDefault: false,
+            name: 'Carter 5th Avenue',
+            address: "2811 Crescent Day, LA Port California, United States, 77511",
+            phone: "+1 122 541 1234",
+
+            isActive: false,
+
+            city: "California",
+            state: "United States",
+            postalCode: "77547",
+
+            spinValue: new Animated.Value(0)
+        }
+    ];
+
     static paymentMethodItems = {
 
         cardItems: [
@@ -519,6 +569,8 @@ class Globals {
 
                 type: 'Master Card',
                 cardNo: "XXXX XXXX XXXX 3694",
+                completeCardNo: "1234 5678 1234 5678",
+                cardHolderName: "John Doe",
                 expiry: "01/25",
                 CVV: "512",
 
@@ -532,6 +584,8 @@ class Globals {
 
                 type: 'Visa Card',
                 cardNo: "XXXX XXXX XXXX 3694",
+                completeCardNo: "5678 1234 5678 1234",
+                cardHolderName: "William Crown",
                 expiry: "01/25",
                 CVV: "512",
 
@@ -544,6 +598,8 @@ class Globals {
 
                 type: 'Master Card',
                 cardNo: "XXXX XXXX XXXX 3694",
+                completeCardNo: "1234 5678 1234 5678",
+                cardHolderName: "John Doe",
                 expiry: "01/25",
                 CVV: "512",
 
@@ -556,6 +612,8 @@ class Globals {
 
                 type: 'Visa Card',
                 cardNo: "XXXX XXXX XXXX 3694",
+                completeCardNo: "5678 1234 5678 1234",
+                cardHolderName: "William Crown",
                 expiry: "01/25",
                 CVV: "512",
 
@@ -569,6 +627,8 @@ class Globals {
 
                 type: 'Master Card',
                 cardNo: "XXXX XXXX XXXX 3694",
+                completeCardNo: "1234 5678 1234 5678",
+                cardHolderName: "John Doe",
                 expiry: "01/25",
                 CVV: "512",
 
@@ -582,6 +642,8 @@ class Globals {
 
                 type: 'Visa Card',
                 cardNo: "XXXX XXXX XXXX 3694",
+                completeCardNo: "5678 1234 5678 1234",
+                cardHolderName: "William Crown",
                 expiry: "01/25",
                 CVV: "512",
 

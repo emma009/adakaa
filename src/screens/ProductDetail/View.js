@@ -23,6 +23,8 @@ import RBSheet from "react-native-raw-bottom-sheet";
 import ReadMore from "@fawazahmed/react-native-read-more";
 import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
+import IconNames from "../../../branding/carter/assets/IconNames";
+import { SvgIcon } from "../../components/Application/SvgIcon/View";
 
 const assets = AppConfig.assets.default;
 
@@ -90,14 +92,8 @@ export const ProductDetail = (props) => {
 
                                 }}>
 
-                                    <Image
-                                        source={isFavourite ? assets.heart_filled_icon : assets.heart_light_empty_icon}
-                                        style={[
-                                            {
-                                                tintColor: isFavourite ? colors.heartRed : colors.iconColorGrey1
-                                            },
-                                            screenStyles.favouriteIcon
-                                        ]} resizeMode={"contain"}/>
+                                    <SvgIcon
+                                      type={isFavourite ? IconNames.HeartFilled : IconNames.Heart} width={20} height={20} color={isFavourite ? colors.heartFilled : colors.heartEmpty} />
 
                                 </TouchableOpacity>
 
@@ -139,7 +135,6 @@ export const ProductDetail = (props) => {
                             </View>
 
                         </TouchableWithoutFeedback>
-
 
                         <ReadMore
                             seeMoreText={"more"}

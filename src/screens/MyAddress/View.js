@@ -15,6 +15,7 @@ import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 import AppConfig from "../../../branding/App_config";
 import IconNames from "../../../branding/carter/assets/IconNames";
+import { AddressContentItem } from "../../components/Application/AddressContentItem/View";
 
 const assets = AppConfig.assets.default;
 
@@ -69,80 +70,7 @@ export const MyAddress = (props) => {
   };
 
   const renderAddressesContent = section => {
-    return (
-      <View style={screenStyles.contentContainer}>
-
-
-        <AppInput
-          textInputRef={r => (inputRef = r)}
-          leftIcon={IconNames.CircleUser}
-          placeholder={"Name"}
-          onChangeText={(value) => {
-          }}
-        />
-
-        <AppInput
-          textInputRef={r => (inputRef = r)}
-          leftIcon={IconNames.MapMarkerAlt}
-          placeholder={"Address"}
-          onChangeText={(value) => {
-          }}
-        />
-
-        <View style={ screenStyles.horizontalInputsContainer }>
-
-
-          <AppInput
-            textInputRef={r => (inputRef = r)}
-            leftIcon={IconNames.Map}
-            placeholder={"City"}
-            containerStyle={screenStyles.horizontalInput}
-            onChangeText={(value) => {
-            }}
-          />
-
-
-          <AppInput
-            textInputRef={r => (inputRef = r)}
-            leftIcon={IconNames.Mailbox}
-            placeholder={"Zip Code"}
-            containerStyle={screenStyles.horizontalInput}
-            onChangeText={(value) => {
-            }}
-          />
-
-        </View>
-
-
-        <AppInput
-          textInputRef={r => (inputRef = r)}
-          leftIcon={IconNames.Globe}
-          placeholder={"Country"}
-          onChangeText={(value) => {
-          }}
-        />
-
-        <AppInput
-          textInputRef={r => (inputRef = r)}
-          leftIcon={IconNames.PhoneFlip}
-          placeholder={"Phone"}
-          onChangeText={(value) => {
-          }}
-        />
-
-        <View style={ screenStyles.defaultContainer }>
-
-          <CustomSwitch
-            initialValue={false}
-            onValueChange={(value) => {
-            }}
-          />
-
-          <Text style={screenStyles.defaultText}>{"Make Default"}</Text>
-        </View>
-
-      </View>
-    );
+    return <AddressContentItem data={section}/>
   };
 
   const _updateSections = allActiveSections => {

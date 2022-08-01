@@ -27,7 +27,6 @@ export function Variant1BottomTabBar({ state, descriptors, navigation }) {
             {state.routes.map((route, index) => {
                 const {options} = descriptors[route.key];
 
-
                 const isFocused = state.index === index;
 
                 const onPress = () => {
@@ -42,6 +41,8 @@ export function Variant1BottomTabBar({ state, descriptors, navigation }) {
                     }
                 };
 
+
+
                 if (index === 3) {
                     return (
                         <TouchableOpacity
@@ -53,7 +54,7 @@ export function Variant1BottomTabBar({ state, descriptors, navigation }) {
                         >
 
                             <View style={[screenStyles.bottomTabCartOuterContainer]}>
-                                <View style={[globalStyles.buttonShadow, screenStyles.bottomTabCartInnerContainer]}>
+                                <View style={[screenStyles.bottomTabCartInnerContainer]}>
 
                                     <SvgIcon type={IconNames.BagShopping} width={30} height={30} color={colors.white} />
 
@@ -97,7 +98,7 @@ export function Variant1BottomTabBar({ state, descriptors, navigation }) {
 
                             {/*isFocused is selected*/}
 
-                            <SvgIcon type={icon} width={25} height={25} color={isFocused ? colors.headingColor : colors.subHeadingColor} />
+                            <SvgIcon type={icon} width={30} height={30} color={isFocused ? colors.headingColor : colors.switchBorder} />
 
 
                         </TouchableOpacity>

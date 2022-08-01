@@ -46,7 +46,7 @@ export const Variant2Profile = (props) => {
 
             <View style={screenStyles.profileListingItemRightContainer}>
 
-              <SvgIcon type={IconNames.ChevronRight} width={20} height={20} color={colors.subHeadingColor} />
+              <SvgIcon type={IconNames.ChevronRight} width={15} height={15} color={colors.switchBorder} />
 
             </View>
         </TouchableOpacity>

@@ -1,4 +1,4 @@
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp, widthPercentageToDP } from "react-native-responsive-screen";
 import AppConfig from "../../../../branding/App_config";
 
 const fonts = AppConfig.fonts.default;
@@ -9,7 +9,12 @@ export const Styles = function(styles, scheme, colors) {
     return {
         mainWrapper: {
             flex: 1,
-            backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground
+            backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground,
+        },
+
+        mainContainer: {
+            marginTop: hp(4),
+            marginBottom: hp(8),
         },
 
         searchContainer: {
@@ -35,7 +40,7 @@ export const Styles = function(styles, scheme, colors) {
 
         sectionHeadingText: {
             fontFamily: fonts.RUBIK_MEDIUM,
-            fontSize: Typography.P2,
+            fontSize: Typography.P1,
             color: colors.headingColor
         },
 
@@ -47,12 +52,12 @@ export const Styles = function(styles, scheme, colors) {
             width: styles.gridWidth,
             alignItems: "center",
             alignSelf: "center",
-            marginBottom: hp(3)
+            marginBottom: hp(1)
         },
 
         secondaryBannerContainer: {
-            width: "48.5%",
-            height: hp(30),
+            width: widthPercentageToDP(44),
+            height: hp(35),
             borderRadius: hp(0.75),
             resizeMode: "cover"
         },
@@ -67,7 +72,7 @@ export const Styles = function(styles, scheme, colors) {
 
         promotionSliderContainer: {
             width: "100%",
-            height: hp("40%"),
+            height: hp("45%"),
             borderRadius: hp(0.75),
             alignItems: "center"
         },
@@ -87,6 +92,10 @@ export const Styles = function(styles, scheme, colors) {
             position: "absolute",
             bottom: 0,
             zIndex: 1
+        },
+
+        foodLastItems: {
+            marginBottom: hp(2)
         }
     }
 

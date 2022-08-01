@@ -31,14 +31,11 @@ const slider_data = [
     img: require("./Assets/Images/slider_img_1.png")
   },
   {
-    img: require("./Assets/Images/slider_img_1.png")
+    img: require("./Assets/Images/slider_img_2.png")
   },
   {
-    img: require("./Assets/Images/slider_img_1.png")
-  },
-  {
-    img: require("./Assets/Images/slider_img_1.png")
-  },
+    img: require("./Assets/Images/slider_img_3.png")
+  }
 ];
 
 export const Variant3Home = (props) => {
@@ -98,9 +95,12 @@ export const Variant3Home = (props) => {
 
     return (
 
-        <View style={[screenStyles.mainWrapper, {paddingTop: Globals.SAFE_AREA_INSET.top}]}>
+        <View style={[screenStyles.mainWrapper]}>
 
-            <StatusBar barStyle="dark-content"/>
+          <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
+
+          <View style={screenStyles.mainContainer}>
+
 
             <SearchButton
                 onPress={() => props.navigation.navigate(Routes.SEARCH)}
@@ -284,7 +284,7 @@ export const Variant3Home = (props) => {
 
             </RBSheet>
 
-
+          </View>
         </View>
 
     );

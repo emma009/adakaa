@@ -56,13 +56,6 @@ export const Styles = function(scheme, colors) {
             alignItems: "flex-end"
         },
 
-        favouriteIcon: {
-            width: hp(2),
-            height: hp(2),
-            resizeMode: "contain"
-        },
-
-
         priceText: {
             color: colors.subHeadingSecondaryColor,
             fontSize: Typography.H8,
@@ -87,7 +80,7 @@ export const Styles = function(scheme, colors) {
         ratingContainer: {
             flexDirection: "row",
             alignItems: "center",
-            marginBottom: hp("1")
+            marginBottom: hp("2")
         },
 
         ratingText: {
@@ -104,14 +97,14 @@ export const Styles = function(scheme, colors) {
 
         detailText: {
             fontFamily: Fonts.RUBIK_LIGHT,
-            fontSize: Typography.P4,
+            fontSize: Typography.P2,
             lineHeight: hp("3%"),
             color: colors.subHeadingColor,
         },
 
         seeMoreStyle: {
             fontFamily: Fonts.RUBIK_MEDIUM,
-            fontSize: Typography.P4,
+            fontSize: Typography.P2,
             color: colors.headingColor,
         },
 

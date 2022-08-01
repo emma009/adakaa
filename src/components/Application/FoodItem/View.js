@@ -112,16 +112,16 @@ export const FoodItem = (props) => {
 
                         <View style={itemStyles.bottomContainer}>
                             {cartCount === 0 ?
-                                <Button
-                                    title={"Add to cart"}
-                                    titleStyle={itemStyles.addCartText}
-                                    type={"clear"}
-                                    icon={
-                                    <SvgIcon type={IconNames.BagShopping} width={20} height={20} color={colors.activeColor} style={itemStyles.addCartIcon} />
-                                        // <Image source={assets.cart_regular_icon} style={itemStyles.addCartIcon}/>
-                                    }
-                                    onPress={() => _cartCountChange("add")}
-                                />
+
+                              <TouchableOpacity
+                                onPress={() => _cartCountChange("add")}
+                                style={itemStyles.addToCartContainer}>
+
+                                  <SvgIcon type={IconNames.BagShopping}     width={20} height={20} color={colors.activeColor} style={itemStyles.addCartIcon} />
+
+                                  <Text style={itemStyles.addCartText}>{"Add to cart"}</Text>
+
+                              </TouchableOpacity>
                                 : <View style={itemStyles.cartUpdateContainer}>
                                     <TouchableOpacity style={[itemStyles.cartUpdateActionContainer, {borderRightWidth: 1}]} onPress={() => {
                                         _cartCountChange("subtract")

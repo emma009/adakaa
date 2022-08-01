@@ -44,6 +44,7 @@ export const ApplyFilters = (props) => {
       screenStyles.othersItemContainerStyle,
       {
         borderBottomWidth: index === otherItems.length - 1 ? 0 : 1,
+        paddingBottom: index === 2 ? hp(1) : hp(1.5)
       }]}>
 
       <SvgIcon type={item.leftIcon} width={20} height={20}

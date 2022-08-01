@@ -20,7 +20,8 @@ export const Styles = function(styles, colors) {
             flex: 1,
             width: styles.gridWidth3,
             marginVertical: hp(3),
-            alignItems: "center"
+            alignItems: "center",
+            justifyContent: "center",
         },
 
         titleText: {
@@ -41,6 +42,7 @@ export const Styles = function(styles, colors) {
         didntReceivedContainer: {
             // flex: 1,
             // justifyContent: "flex-end",
+            marginTop: hp(2),
             alignItems: "center",
         },
 
@@ -70,8 +72,8 @@ export const Styles = function(styles, colors) {
 
         otpInput: {
 
-            width: hp(5),
-            height: hp(6),
+            width: hp(6),
+            height: hp(6.5),
             backgroundColor: colors.primaryBackground,
 
             borderRadius: hp(0.75),

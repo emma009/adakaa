@@ -1,4 +1,4 @@
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 
 import AppConfig from "../../../branding/App_config";
 
@@ -17,10 +17,8 @@ export const Styles = function(colors) {
       marginTop: hp(3),
     },
 
-    creditCardImageStyle: {
-      width: "100%",
-      height: hp("30"),
-      resizeMode: "cover"
+    cardHolderInputContainer: {
+      marginTop: hp(2)
     },
 
     defaultText: {
@@ -53,6 +51,10 @@ export const Styles = function(colors) {
     horizontalInputsContainer: {
       flexDirection: "row",
       justifyContent: "space-between"
+    },
+
+    horizontalInput: {
+      flex: 0.49,
     },
 
     switchContainer: {

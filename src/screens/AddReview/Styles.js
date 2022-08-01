@@ -8,9 +8,20 @@ const Fonts = AppConfig.fonts.default;
 export const Styles = function(colors) {
 
   return {
+
+    scrollViewContainer: {
+      flexGrow: 1,
+    },
+
     mainContainer: {
       flex: 1,
       alignItems: "center",
+    },
+
+    upperContainer: {
+      flex: 0.9,
+      alignItems: "center",
+      width: "100%"
     },
 
     primaryText: {
@@ -34,9 +45,9 @@ export const Styles = function(colors) {
 
 
     bottomButton: {
-      flex: 1,
+      flex: 0.1,
       width: "100%",
-      justifyContent: "flex-end",
+      justifyContent: "center",
     },
   };
 

@@ -27,7 +27,6 @@ export const CategoryItem = (props) => {
             });
         }}>
 
-
             <View style={Styles.categoryItemContainer}>
                 <ImageBackground
                     source={bgURI}

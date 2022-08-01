@@ -21,7 +21,7 @@ export const Styles = function(styles, scheme, colors) {
 
         container: {
             width: "100%",
-            height: hp("80"),
+            height: "100%",
             backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground,
             alignItems: "center"
         },
@@ -36,6 +36,8 @@ export const Styles = function(styles, scheme, colors) {
             width: hp("14"),
             height: hp("14"),
             borderRadius: hp("7"),
+            borderWidth: 5,
+            borderColor: colors.primaryBackground,
             resizeMode: "cover"
         },
 
@@ -76,7 +78,7 @@ export const Styles = function(styles, scheme, colors) {
 
         profileListingItemContainer: {
             flexDirection: "row",
-            paddingVertical: hp(1)
+            paddingVertical: hp(1.35)
         },
 
         profileListingItemLeftImage: {

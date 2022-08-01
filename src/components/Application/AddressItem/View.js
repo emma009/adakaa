@@ -77,9 +77,7 @@ export const AddressItem = (props) => {
                 }}
                 style={itemStyles.rightSwipeableContainer}>
 
-                <Image
-                    source={assets.trash_icon}
-                    style={itemStyles.rightSwipeableIcon} />
+                <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white} />
 
             </TouchableOpacity>
 

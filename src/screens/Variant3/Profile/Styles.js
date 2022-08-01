@@ -16,7 +16,7 @@ export const Styles = function(styles, scheme, colors) {
 
         upperContainer: {
             width: "100%",
-            height: hp("35"),
+            height: hp("32"),
             backgroundColor: colors.activeColor,
             alignItems: "center",
             paddingTop: hp(5)
@@ -37,6 +37,8 @@ export const Styles = function(styles, scheme, colors) {
             width: hp("14"),
             height: hp("14"),
             borderRadius: hp("7"),
+            borderWidth: 5,
+            borderColor: colors.primaryDarkGreenColor,
             resizeMode: "cover"
         },
 
@@ -81,7 +83,7 @@ export const Styles = function(styles, scheme, colors) {
             width: "90%",
             height: hp(15),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            marginTop: -hp(7.5),
+            marginTop: -hp(4.5),
             padding: "2%",
             alignSelf: "center",
             justifyContent: "center",
@@ -117,7 +119,7 @@ export const Styles = function(styles, scheme, colors) {
             fontFamily: Fonts.RUBIK_REGULAR,
             fontSize: Typography.P6,
             color: colors.subHeadingColor,
-            marginTop: hp(2)
+            marginTop: hp(1.5)
         },
 
         cardListContainer: {
@@ -166,7 +168,7 @@ export const Styles = function(styles, scheme, colors) {
 
         profileListingItemContainer: {
             flexDirection: "row",
-            paddingVertical: hp(1.2)
+            paddingVertical: hp(1.35)
         },
 
         profileListingItemLeftImage: {

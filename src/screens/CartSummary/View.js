@@ -30,6 +30,9 @@ export const CartSummary = (props) => {
           borderBottomWidth: 1,
           borderBottomColor: colors.borderColorLight,
         },
+        index === 0 && screenStyles.cartTopBorder,
+        index === Globals.foodItems.length - 1 && screenStyles.cartBottomBorder,
+        index === Globals.foodItems.length - 1 && screenStyles.cartBottomMargin,
       ]}>
         <Image
           source={item.image}
@@ -61,7 +64,6 @@ export const CartSummary = (props) => {
           <View style={screenStyles.container}>
 
             <ScrollView
-              showsVerticalScrollIndicator={false}
               style={screenStyles.listContainer}
             >
               <View style={screenStyles.cardContainer}>

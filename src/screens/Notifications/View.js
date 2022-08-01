@@ -21,7 +21,7 @@ export const Notifications = (props) => {
       screenStyles.notificationContainer,
       bottomMargin && { marginBottom: hp(1) },
       bottomBorder && screenStyles.notificationBottomBorder,
-      index === 1 && screenStyles.topRadius,
+      (index === 1 || index === 2) && screenStyles.topRadius,
       (index === 1 || index === 4) && screenStyles.bottomRadius,
     ]}>
 

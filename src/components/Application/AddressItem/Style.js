@@ -10,7 +10,7 @@ export const Styles = function(scheme, colors) {
     return {
         container: {
             height: hp("15"),
-            backgroundColor: scheme === "dark" ? colors.secondaryBackground  :colors.primaryBackground,
+            backgroundColor: "transparent",
             flexDirection: "row",
             borderRadius: hp(0.75),
             marginBottom: hp(1)
@@ -25,20 +25,15 @@ export const Styles = function(scheme, colors) {
             width: wp("20"),
             height: "100%",
             backgroundColor: colors.rightSwipeBackground,
+            borderRadius: hp(0.75),
+            marginLeft: hp(1),
             justifyContent: "center",
             alignItems: "center"
         },
 
-        rightSwipeableIcon: {
-            width: hp(3),
-            height: hp(3),
-            tintColor: "white",
-            resizeMode: "contain"
-        },
-
         nonTouchableContainer: {
             borderBottomWidth: 1,
-            borderBottomColor: colors.borderColorLight
+            borderBottomColor: colors.borderColorLight,
         },
 
         swipeableContainer: {
@@ -56,11 +51,11 @@ export const Styles = function(scheme, colors) {
             backgroundColor: colors.tertiaryBackground,
             width: "18%",
             height: hp(2.5),
-            borderTopLeftRadius: hp(0.75),
             justifyContent: "center",
             alignItems: "center",
-            borderTopRightRadius: hp(0.5),
-            borderBottomRightRadius: hp(0.5)
+            borderTopLeftRadius: hp(0.75),
+            borderTopRightRadius: hp(0.75),
+            borderBottomRightRadius: hp(0.75)
         },
 
 

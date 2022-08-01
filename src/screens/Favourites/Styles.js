@@ -10,7 +10,8 @@ export const Styles = function(scheme, colors) {
     return {
 
         container: {
-            flex: 1
+            flex: 1,
+            marginBottom: hp(1),
         },
 
         containerSpacing: {

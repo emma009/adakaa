@@ -31,9 +31,9 @@ export const Styles = function(styles, scheme, colors) {
 
         callingCode: {
             fontFamily: fonts.RUBIK_MEDIUM,
-            fontSize: Typography.P5,
+            fontSize: Typography.P3,
             color: colors.headingColor,
-            marginHorizontal: wp(2)
+            marginRight: wp(2)
         },
 
 

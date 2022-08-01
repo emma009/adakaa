@@ -16,9 +16,9 @@ import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 import { Text } from "react-native-elements";
 import { Styles } from "./Styles";
 import IconNames from "../../../branding/carter/assets/IconNames";
+import { AddressItem } from "../../components/Application/AddressItem/View";
+import Globals from "../../utils/Globals";
 
-
-const assets = AppConfig.assets.default;
 
 export const SelfPickup = (props) => {
 
@@ -30,7 +30,7 @@ export const SelfPickup = (props) => {
 
 
   //Internal States
-  const [outlet, setOutlet] = useState("");
+  const [selectedOutlet, setSelectedOutlet] = useState(0);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [date, setDate] = useState("");
   const [showTimePicker, setShowTimePicker] = useState(false);
@@ -57,19 +57,63 @@ export const SelfPickup = (props) => {
             <View style={screenStyles.mainContainer}>
 
 
-              <Text style={screenStyles.typeHeader}>{"Details"}</Text>
+              <Text style={screenStyles.typeHeader}>{"Select Outlet"}</Text>
 
+              <AddressItem
+                showActiveIcon
+                isActive={selectedOutlet === 1}
+                item={Globals.selfPickupAddresses[0]}
+                onPress={() => {
+                  setSelectedOutlet((selectedOutlet) => {
+                    if (selectedOutlet === 1) {
+                      return 0
+                    }
+                    else {
+                      return 1;
+                    }
+                  })
+                }} />
 
-              <AppInput
-                {...globalStyles.secondaryInputStyle}
-                textInputRef={r => (inputRef = r)}
-                leftIcon={IconNames.Globe}
-                placeholder={"Outlet"}
-                value={outlet}
-                onChangeText={(outlet) => {
-                  setOutlet(outlet);
-                }}
-              />
+              <AddressItem
+                showActiveIcon
+                isActive={selectedOutlet === 2}
+                item={Globals.selfPickupAddresses[1]}
+                onPress={() => {
+                  setSelectedOutlet((selectedOutlet) => {
+                    if (selectedOutlet === 2) {
+                      return 0
+                    }
+                    else {
+                      return 2;
+                    }
+                  })
+                }} />
+
+              <AddressItem
+                showActiveIcon
+                isActive={selectedOutlet === 3}
+                item={Globals.selfPickupAddresses[2]}
+                onPress={() => {
+                  setSelectedOutlet((selectedOutlet) => {
+                    if (selectedOutlet === 3) {
+                      return 0
+                    }
+                    else {
+                      return 3;
+                    }
+                  })
+                }} />
+
+              {/*<AppInput*/}
+              {/*  {...globalStyles.secondaryInputStyle}*/}
+              {/*  textInputRef={r => (inputRef = r)}*/}
+              {/*  leftIcon={IconNames.Globe}*/}
+              {/*  placeholder={"Outlet"}*/}
+              {/*  value={outlet}*/}
+              {/*  onChangeText={(outlet) => {*/}
+              {/*    setOutlet(outlet);*/}
+              {/*  }}*/}
+              {/*/>*/}
 
               <Text style={screenStyles.typeHeader}>{"Schedule"}</Text>
 

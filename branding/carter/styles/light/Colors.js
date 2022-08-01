@@ -1,5 +1,6 @@
 const colors = {
     primaryGreenColor: "#6cc51d",
+    primaryDarkGreenColor: "#57a614",
 
     //Active/Inactive tint color
     activeColor: "#6cc51d",

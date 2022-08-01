@@ -17,7 +17,7 @@ export const Styles = function(scheme, colors) {
             width: "100%",
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             paddingHorizontal: hp(3),
-            paddingVertical: hp(2),
+            paddingVertical: hp(2.5),
             borderBottomWidth: 1,
             borderBottomColor: colors.borderColorLight
         },

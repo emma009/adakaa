@@ -15,7 +15,7 @@ export const Styles = function(styles, colors) {
         },
 
         flatListContainer: {
-            flex: 0.74,
+            flex: 0.78,
         },
 
         flatListFirstItemContainer: {
@@ -41,8 +41,15 @@ export const Styles = function(styles, colors) {
             shadowRadius: 1.22,
 
             elevation: 8,
-            borderRadius: 4
+            borderRadius: 4,
+
         },
+
+        bottomContainerParentVariant1: {
+          paddingBottom: hp(1.8)
+        },
+
+
         bottomContainer: {
             alignSelf: "center",
             backgroundColor: colors.primaryBackground,

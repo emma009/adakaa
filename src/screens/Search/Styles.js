@@ -114,7 +114,7 @@ export const Styles = function(scheme, styles, colors) {
         buttonContainer: [
             styles.primaryButtonStyle,
             {
-                borderRadius: hp(0.3),
+                borderRadius: hp(0.75),
                 flexDirection: "row",
                 alignItems: "center",
                 backgroundColor: colors.primaryBackground,

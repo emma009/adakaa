@@ -37,7 +37,7 @@ const BaseView = (props) => {
 
             {
                 showAppHeader &&
-                <StatusBar backgroundColor={colors.primaryBackground} barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
+                <StatusBar backgroundColor={"transparent"} barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
 
             }
 

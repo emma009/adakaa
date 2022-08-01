@@ -9,6 +9,8 @@ import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import IconNames from "../../../../branding/carter/assets/IconNames";
+import { SvgIcon } from "../SvgIcon/View";
 
 const PropTypes = require('prop-types');
 
@@ -70,9 +72,7 @@ export const CardItem = (props) => {
                 }}
                 style={itemStyles.rightSwipeableContainer}>
 
-                <Image
-                    source={assets.trash_icon}
-                    style={itemStyles.rightSwipeableIcon} />
+                <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white} />
 
             </TouchableOpacity>
 
@@ -178,10 +178,7 @@ export const CardItem = (props) => {
             {
                 (showActiveIcon && isActive) &&
                 <View style={itemStyles.rightIconContainer}>
-                    <Image
-                        source={assets.check_circle_icon}
-                        style={itemStyles.rightIcon}
-                        resizeMode={"contain"}/>
+                    <SvgIcon type={IconNames.CheckCircle} width={22} height={22} color={colors.activeColor} />
                 </View>
             }
 

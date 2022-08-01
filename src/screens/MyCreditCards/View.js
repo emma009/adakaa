@@ -16,6 +16,7 @@ import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 import AppConfig from "../../../branding/App_config";
 import IconNames from "../../../branding/carter/assets/IconNames";
+import { CardContentItem } from "../../components/Application/CardContentItem/View";
 
 const assets = AppConfig.assets.default;
 
@@ -69,66 +70,7 @@ export const MyCreditCards = (props) => {
     };
 
     const renderCreditCardsContent = section => {
-        return (
-            <View style={screenStyles.contentContainer}>
-
-                <AppInput
-                    textInputRef= {r => (inputRef = r)}
-                    leftIcon={IconNames.CircleUser}
-                    placeholder={"Cardholder Name"}
-                    onChangeText={(value) => {
-                    }}
-                />
-
-                <AppInput
-                    textInputRef= {r => (inputRef = r)}
-                    leftIcon={IconNames.CreditCard}
-                    placeholder={"Card Number"}
-                    onChangeText={(value) => {
-                    }}
-                />
-
-                <View style={{flexDirection: "row", justifyContent: "space-between"}}>
-
-
-                    <AppInput
-                        textInputRef= {r => (inputRef = r)}
-                        leftIcon={IconNames.Calendar}
-                        placeholder={"Expiry"}
-                        containerStyle={{
-                            flex: 0.48
-                        }}
-                        onChangeText={(value) => {
-                        }}
-                    />
-
-
-                    <AppInput
-                        textInputRef= {r => (inputRef = r)}
-                        leftIcon={IconNames.LockKeyhole}
-                        placeholder={"CVV"}
-                        containerStyle={{
-                            flex: 0.48
-                        }}
-                        onChangeText={(value) => {
-                        }}
-                    />
-
-                </View>
-                <View style={{flexDirection: "row", marginTop: hp(1)}}>
-
-                    <CustomSwitch
-                        initialValue={section.isDefault}
-                        onValueChange={(value) => {
-                        }}
-                    />
-
-                    <Text style={screenStyles.defaultText}>{"Make Default"}</Text>
-                </View>
-
-
-            </View>
-        );
+        return <CardContentItem data={section} />
     };
 
     const _updateSections = allActiveSections => {

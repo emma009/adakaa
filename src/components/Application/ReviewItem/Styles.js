@@ -12,7 +12,8 @@ export const Styles = function(scheme, colors) {
             paddingHorizontal: wp(5),
             paddingVertical: hp(1.5),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            marginVertical: hp("0.5")
+            marginVertical: hp("0.5"),
+            borderRadius: hp(0.75)
         },
 
         upperContainer: {

@@ -29,25 +29,37 @@ export const Styles = function(scheme, styles, colors) {
         },
 
         bottomContainer: {
-            flex: 0.45,
+            flex: 0.55,
             // paddingVertical: hp(2.5),
             justifyContent: "center",
             paddingHorizontal: wp(5),
-            marginTop: hp(1),
+            // marginTop: hp(1),
             width: "100%",
-            backgroundColor: colors.primaryBackground
+            backgroundColor: colors.primaryBackground,
+
+
+            shadowColor: colors.borderColorLight,
+            shadowOffset: {
+                width: 0,
+                height: -11,
+            },
+            shadowOpacity: 0.1,
+            shadowRadius: 1.22,
+
+            elevation: 8,
+            borderRadius: 4
         },
 
         bottomTotalContainer: {
-            flex: 0.7,
+            flex: 0.60,
             // marginBottom: hp(2),
             justifyContent: "center",
-            // backgroundColor: "red"
+            marginBottom: hp(3),
         },
 
         bottomButtonContainer: {
             // justifyContent: "center",
-            flex: 0.3,
+            flex: 0.2,
             // backgroundColor: "green"
         },
 
@@ -61,7 +73,7 @@ export const Styles = function(scheme, styles, colors) {
             width: "100%",
             height: 1,
             alignSelf: "center",
-            marginBottom: hp("1"),
+            marginVertical: hp("1"),
             backgroundColor: colors.borderColorLight
         },
 
@@ -82,13 +94,15 @@ export const Styles = function(scheme, styles, colors) {
         normalLabelText: {
             fontFamily: Fonts.RUBIK_REGULAR,
             fontSize: Typography.P6,
-            color: colors.subHeadingColor
+            color: colors.subHeadingColor,
+            marginTop: hp(1),
         },
 
         normalLabelValueText: {
             fontFamily: Fonts.RUBIK_REGULAR,
             fontSize: Typography.P6,
             flex: 1,
+            marginTop: hp(1),
             textAlign: "right",
             color: colors.subHeadingColor,
         },
@@ -97,9 +111,22 @@ export const Styles = function(scheme, styles, colors) {
             height: hp("12"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flexDirection: "row",
-            borderRadius: hp(0.75),
             alignItems: "center",
             paddingLeft: wp("5"),
+        },
+
+        cartTopBorder: {
+            borderTopLeftRadius: hp(0.75),
+            borderTopRightRadius: hp(0.75),
+        },
+
+        cartBottomBorder: {
+            borderBottomLeftRadius: hp(0.75),
+            borderBottomRightRadius: hp(0.75),
+        },
+
+        cartBottomMargin: {
+            marginBottom: hp(3)
         },
 
         cartItemLeftImage: {

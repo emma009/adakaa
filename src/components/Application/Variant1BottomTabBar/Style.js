@@ -20,7 +20,7 @@ export const Styles = function(styles, scheme, colors) {
 
         bottomTabContainer: {
             flex: 1,
-            height: hp(6),
+            height: hp(6.5),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             justifyContent: "center",
             alignItems: "center",
@@ -32,23 +32,23 @@ export const Styles = function(styles, scheme, colors) {
             bottom: hp(2),
             borderWidth: hp(4.5),
             borderRadius: hp(4.3),
-            borderColor: "transparent",
-            borderTopColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            borderLeftColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            borderRightColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            borderColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            // borderTopColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            // borderLeftColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
+            // borderRightColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             justifyContent: "center",
             alignItems: "center",
 
-            shadowOffset: {
-                width: 0,
-                height: -25,
-            },
-            shadowColor: colors.subHeadingColor,
-            shadowRadius: 10.0,
-
-            shadowOpacity: 0.1,
-            elevation: 24,
-            zIndex: 0,
+            // shadowOffset: {
+            //     width: 0,
+            //     height: -25,
+            // },
+            // shadowColor: colors.subHeadingColor,
+            // shadowRadius: 10.0,
+            //
+            // shadowOpacity: 0.1,
+            // elevation: 24,
+            // zIndex: 0,
         },
 
         bottomTabCartInnerContainer: {

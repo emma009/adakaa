@@ -31,8 +31,9 @@ export const Styles = function(scheme, colors) {
             height: hp(3),
             justifyContent: "center",
             alignItems: "center",
-            borderTopRightRadius: hp(0.5),
-            borderBottomRightRadius: hp(0.5)
+            borderTopRightRadius: hp(0.75),
+            borderBottomRightRadius: hp(0.75),
+            borderTopLeftRadius: hp(0.75)
         },
 
         discountText: {
@@ -92,15 +93,20 @@ export const Styles = function(scheme, colors) {
             borderTopWidth: 1,
         },
 
+        addToCartContainer: {
+            flexDirection: "row",
+            justifyContent: "center"
+        },
 
         addCartText: {
             color: colors.subHeadingColor,
             fontFamily: Fonts.RUBIK_REGULAR,
-            fontSize: Typography.P3,
+            fontSize: Typography.P4,
+            lineHeight: hp('2.8'),
         },
 
         addCartIcon: {
-            marginRight: wp(3),
+            marginRight: wp(2),
         },
 
         cartUpdateContainer: {

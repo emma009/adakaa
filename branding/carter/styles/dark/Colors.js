@@ -1,5 +1,6 @@
 const colors = {
     primaryGreenColor: "#6cc51d",
+    primaryDarkGreenColor: "#57a614",
 
     //Active/Inactive tint color
     activeColor: "#4E9F3D",
@@ -41,7 +42,7 @@ const colors = {
     switchBorder: "#D8E9A8",
 
     //Border Color
-    borderColorLight: "#8B97A9",
+    borderColorLight: "#E2E6EC",
 
     //Heart Color
     heartFilled: "#FF595A",

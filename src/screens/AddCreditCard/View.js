@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, useColorScheme, View } from "react-native";
+import { useColorScheme, View } from "react-native";
 import { Text } from "react-native-elements";
 
 import BaseView from "../BaseView";
@@ -8,15 +8,14 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview"
 import { CustomSwitch } from "../../components/Global/CustomSwitch/View";
 import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
-import AppConfig from "../../../branding/App_config";
 import { Styles } from "./Styles";
 import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 import IconNames from "../../../branding/carter/assets/IconNames";
+import { widthPercentageToDP as wp} from "react-native-responsive-screen";
+import { CreditCard } from "../../components/Application/CreditCard/View";
+import creditcardutils from "creditcardutils";
 
-const assets = AppConfig.assets.default;
-
-const creditCardFrontImage = require("./assets/credit_card.png");
 
 export const AddCreditCard = (props) => {
 
@@ -37,6 +36,7 @@ export const AddCreditCard = (props) => {
   const [expiry, setExpiry] = useState("");
   const [cvv, setCVV] = useState("");
 
+
   return (
 
     <BaseView
@@ -55,15 +55,18 @@ export const AddCreditCard = (props) => {
               getTextInputRefs={() => {
                 return [inputRef];
               }}
-              contentContainerStyle={screenStyles.parentContainer}
+              style={screenStyles.parentContainer}
               showsVerticalScrollIndicator={false}>
 
               <View style={{}}>
 
-                <Image
-                  source={creditCardFrontImage}
-                  style={screenStyles.creditCardImageStyle}
-                  resizeMode={"cover"}
+                <CreditCard
+                  width={wp(90)}
+                  number={cardNumber}
+                  cvc={cvv}
+                  expiration={expiry}
+                  name={name}
+                  fontSize={20}
                 />
 
 
@@ -72,6 +75,7 @@ export const AddCreditCard = (props) => {
                   {...globalStyles.secondaryInputStyle}
                   leftIcon={IconNames.CircleUser}
                   placeholder={"CardHolder Name"}
+                  containerStyle={screenStyles.cardHolderInputContainer}
                   value={name}
                   onChangeText={(name) => {
                     setName(name);
@@ -82,10 +86,14 @@ export const AddCreditCard = (props) => {
                   textInputRef={r => (inputRef = r)}
                   {...globalStyles.secondaryInputStyle}
                   leftIcon={IconNames.CreditCard}
+                  maxLength={16}
+                  keyboardType={"number-pad"}
                   placeholder={"Card Number"}
                   value={cardNumber}
                   onChangeText={(cardNumber) => {
+
                     setCardNumber(cardNumber);
+
                   }}
                 />
 
@@ -96,12 +104,12 @@ export const AddCreditCard = (props) => {
                     {...globalStyles.secondaryInputStyle}
                     leftIcon={IconNames.Calendar}
                     placeholder={"Expiry"}
-                    containerStyle={{
-                      flex: 0.48,
-                    }}
+                    maxLength={7}
+                    keyboardType={"number-pad"}
+                    containerStyle={screenStyles.horizontalInput}
                     value={expiry}
                     onChangeText={(expiry) => {
-                      setExpiry(expiry);
+                      setExpiry(creditcardutils.formatCardExpiry(expiry));
                     }}
                   />
 
@@ -110,9 +118,9 @@ export const AddCreditCard = (props) => {
                     {...globalStyles.secondaryInputStyle}
                     leftIcon={IconNames.LockKeyhole}
                     placeholder={"CVV"}
-                    containerStyle={{
-                      flex: 0.48,
-                    }}
+                    maxLength={3}
+                    keyboardType={"number-pad"}
+                    containerStyle={screenStyles.horizontalInput}
                     value={cvv}
                     onChangeText={(cvv) => {
                       setCVV(cvv);

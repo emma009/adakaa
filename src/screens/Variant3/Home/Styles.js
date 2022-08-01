@@ -1,4 +1,4 @@
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import AppConfig from "../../../../branding/App_config";
 
 const fonts = AppConfig.fonts.default;
@@ -11,6 +11,10 @@ export const Styles = function(styles, scheme, colors) {
             flex: 1,
             alignItems: "center",
             backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground
+        },
+
+        mainContainer: {
+            marginTop: hp(3)
         },
 
         categoryContainer: {
@@ -48,20 +52,20 @@ export const Styles = function(styles, scheme, colors) {
             fontFamily: fonts.RUBIK_MEDIUM,
             fontSize: Typography.P2,
             color: colors.headingColor,
-            marginHorizontal: 10
+            marginHorizontal: 15
         },
 
         categorySliderInActiveText: {
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P3,
             color: colors.headingColor,
-            marginHorizontal: 10
+            marginHorizontal: 15
         },
 
         sectionContainer: {
             width: styles.gridWidth,
             alignSelf: "center",
-            marginBottom: hp(2)
+            marginBottom: hp(1)
         },
 
         secondaryBannerContainer: {
@@ -73,8 +77,10 @@ export const Styles = function(styles, scheme, colors) {
         tertiaryBannerContainer: {
             width: "100%",
             height: hp(30),
-            marginBottom: hp("1"),
-            resizeMode: "cover"
+            borderRadius: hp(0.75),
+            marginBottom: hp("2"),
+            marginTop: -wp(2),
+            resizeMode: "cover",
         },
 
         promotionSliderContainer: {

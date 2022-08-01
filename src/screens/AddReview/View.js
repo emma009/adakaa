@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { View } from "react-native";
+import { useColorScheme, View } from "react-native";
 import { Text } from "react-native-elements";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
@@ -10,6 +10,10 @@ import AppConfig from "../../../branding/App_config";
 import StarRating from "react-native-star-rating";
 import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
+import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
+import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
+import IconNames from "../../../branding/carter/assets/IconNames";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scrollview";
 
 const assets = AppConfig.assets.default;
 
@@ -21,7 +25,9 @@ export const AddReview = (props) => {
 
 
   //Theme based styling and colors
+  const scheme = useColorScheme();
   const { colors } = useTheme();
+  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
   const screenStyles = Styles(colors);
 
 
@@ -40,36 +46,45 @@ export const AddReview = (props) => {
       childView={() => {
 
         return (
+          <KeyboardAwareScrollView
+            contentContainerStyle={screenStyles.scrollViewContainer}>
 
           <View style={screenStyles.mainContainer}>
 
-            <Text style={screenStyles.primaryText}>What do you think?</Text>
-            <Text style={screenStyles.secondaryText}>Please give your rating by clicking on the stars
-              below.</Text>
+            <View style={screenStyles.upperContainer}>
 
-            <StarRating
-              disabled={false}
-              maxStars={5}
-              rating={rating}
-              starSize={hp(5.5)}
-              fullStarColor={colors.ratingActiveColor}
-              emptyStarColor={colors.ratingInActiveColor}
-              selectedStar={(rating) => {
-                setRating(rating);
-              }}
-              containerStyle={screenStyles.ratingContainerStyle}
-            />
+              <Text style={screenStyles.primaryText}>What do you think?</Text>
+              <Text style={screenStyles.secondaryText}>Please give your rating by clicking on the stars
+                below.</Text>
 
-            <AppInput
-              multilineInput
-              textInputRef={r => (inputRef = r)}
-              leftIcon={assets.pencil_icon}
-              placeholder={"Tell us about your experience"}
-              value={experience}
-              onChangeText={(experience) => {
-                setExperience(experience);
-              }}
-            />
+
+              <StarRating
+                disabled={false}
+                maxStars={5}
+                rating={rating}
+                starSize={hp(5.5)}
+                fullStarColor={colors.ratingActiveColor}
+                emptyStarColor={colors.ratingInActiveColor}
+                selectedStar={(rating) => {
+                  setRating(rating);
+                }}
+                containerStyle={screenStyles.ratingContainerStyle}
+              />
+
+              <AppInput
+                multilineInput
+                {...globalStyles.secondaryInputStyle}
+                textInputRef={r => (inputRef = r)}
+                leftIcon={IconNames.Pencil}
+                placeholder={"Tell us about your experience"}
+                value={experience}
+                onChangeText={(experience) => {
+                  setExperience(experience);
+                }}
+              />
+
+            </View>
+
 
             <View style={screenStyles.bottomButton}>
 
@@ -83,10 +98,10 @@ export const AddReview = (props) => {
             </View>
 
           </View>
+          </KeyboardAwareScrollView>
 
 
         );
-
 
       }}
 

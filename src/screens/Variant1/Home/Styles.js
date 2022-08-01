@@ -17,7 +17,7 @@ export const Styles = function(styles, scheme, colors) {
         sectionContainer: {
             width: styles.gridWidth,
             alignItems: "center",
-            marginBottom: hp(3)
+            marginBottom: hp(1)
         },
 
         sectionHeading: {
@@ -41,8 +41,9 @@ export const Styles = function(styles, scheme, colors) {
 
         promotionSliderContainer: {
             width: "100%",
-            height: hp("35%"),
-            borderRadius: hp(0.75)
+            height: hp("30%"),
+            borderRadius: hp(0.75),
+            marginBottom: hp(1)
         },
 
         promotionSliderActiveDot: {
@@ -60,6 +61,10 @@ export const Styles = function(styles, scheme, colors) {
             position: "absolute",
             bottom: 0,
             zIndex: 1
+        },
+
+        foodLastItems: {
+            marginBottom: hp(2)
         }
     }
 

@@ -3,7 +3,7 @@ import {
     FlatList,
     Image,
     StatusBar,
-    Text,
+    Text, TouchableHighlight,
     TouchableOpacity,
     useColorScheme,
     View,
@@ -18,11 +18,11 @@ import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style"
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import { SvgIcon } from "../../../components/Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import Routes from "../../../navigation/Routes";
 
 const assets = AppConfig.assets.default;
 
 export const Variant3Profile = (props) => {
-
 
     //Theme based styling and colors
     const scheme = useColorScheme();
@@ -45,18 +45,17 @@ export const Variant3Profile = (props) => {
             <Text style={screenStyles.profileListingItemText}>{item.title}</Text>
 
             <View style={screenStyles.profileListingItemRightContainer}>
-                <SvgIcon type={IconNames.ChevronRight} width={20} height={20} color={colors.subHeadingColor} />
+                <SvgIcon type={IconNames.ChevronRight} width={15} height={15} color={colors.switchBorder} />
 
             </View>
         </TouchableOpacity>
     }
-
+    
     return (
         <View style={screenStyles.mainContainer}>
-            <StatusBar backgroundColor={colors.activeColor} barStyle={"light-content"} />
+          <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
-            <View style={screenStyles.upperContainer} >
-
+          <View style={screenStyles.upperContainer} >
 
                 <View
                     style={screenStyles.profileImageContainer}>
@@ -79,7 +78,7 @@ export const Variant3Profile = (props) => {
                         ]
                     }>
 
-                        <SvgIcon type={IconNames.Camera} width={20} height={20} color={colors.white} />
+                        <SvgIcon type={IconNames.Camera} width={20} height={20} color={colors.activeColor} />
 
                     </TouchableOpacity>
 
@@ -99,41 +98,70 @@ export const Variant3Profile = (props) => {
 
                 <View style={screenStyles.overlayNestedContainer}>
 
-                    <View style={screenStyles.nestedContainer}>
+                    <TouchableHighlight
+                      onPress={() => {
+                          props.navigation.navigate(Routes.MY_ORDERS)
+                      }}
+                      underlayColor={colors.secondaryBackground}
+                      activeOpacity={0.5}
+                      style={screenStyles.nestedContainer}>
 
-                        <SvgIcon type={IconNames.Wallet} width={25} height={25} color={colors.activeColor} />
+                        <View style={{alignItems: "center"}}>
+                            <SvgIcon type={IconNames.Wallet} width={25} height={25} color={colors.activeColor} />
 
-                        <Text style={screenStyles.nestedContainerText}>{"Unpaid"}</Text>
+                            <Text style={screenStyles.nestedContainerText}>{"Unpaid"}</Text>
+                        </View>
+                    </TouchableHighlight>
 
-                    </View>
+                    <TouchableHighlight
+                      onPress={() => {
+                          props.navigation.navigate(Routes.MY_ORDERS)
+                      }}
+                      underlayColor={colors.secondaryBackground}
+                      activeOpacity={0.5}
+                      style={screenStyles.nestedContainer}>
 
-                    <View style={screenStyles.nestedContainer}>
-
+                        <View style={{alignItems: "center"}}>
                         <SvgIcon type={IconNames.Box} width={25} height={25} color={colors.activeColor} />
 
 
                         <Text style={screenStyles.nestedContainerText}>{"Pending"}</Text>
+                        </View>
+                    </TouchableHighlight>
 
-                    </View>
+                    <TouchableHighlight
+                      onPress={() => {
+                          props.navigation.navigate(Routes.MY_ORDERS)
+                      }}
+                      underlayColor={colors.secondaryBackground}
+                      activeOpacity={0.5}
+                      style={screenStyles.nestedContainer}>
 
-                    <View style={screenStyles.nestedContainer}>
+                        <View style={{alignItems: "center"}}>
+                            <SvgIcon type={IconNames.Truck} width={28} height={25} color={colors.activeColor} />
 
+                            <Text style={screenStyles.nestedContainerText}>{"Shipped"}</Text>
 
-                        <SvgIcon type={IconNames.Truck} width={25} height={25} color={colors.activeColor} />
+                        </View>
 
+                    </TouchableHighlight>
 
-                        <Text style={screenStyles.nestedContainerText}>{"Shipped"}</Text>
+                    <TouchableHighlight
+                      onPress={() => {
+                          props.navigation.navigate(Routes.REVIEW_LIST)
+                      }}
+                      underlayColor={colors.secondaryBackground}
+                      activeOpacity={0.5}
+                      style={screenStyles.nestedContainer}>
 
-                    </View>
+                        <View style={{alignItems: "center"}}>
+                            <SvgIcon type={IconNames.StarSharp} width={25} height={25} color={colors.activeColor} />
 
-                    <View style={screenStyles.nestedContainer}>
+                            <Text style={screenStyles.nestedContainerText}>{"Reviews"}</Text>
 
+                        </View>
 
-                        <SvgIcon type={IconNames.StarSharp} width={25} height={25} color={colors.activeColor} />
-
-                        <Text style={screenStyles.nestedContainerText}>{"Reviews"}</Text>
-
-                    </View>
+                    </TouchableHighlight>
 
                 </View>
 

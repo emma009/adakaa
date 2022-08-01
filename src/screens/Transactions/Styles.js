@@ -19,7 +19,7 @@ export const Styles = function(scheme, colors) {
             alignItems: "center",
             height: hp("12"),
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
-            paddingLeft: wp("5"),
+            paddingHorizontal: wp("5"),
             marginBottom: hp("1"),
             borderRadius: hp(0.75)
         },
@@ -42,7 +42,7 @@ export const Styles = function(scheme, colors) {
         textContainer: {
             flex: 1,
             flexDirection: "row",
-            marginHorizontal: wp("3")
+            marginLeft: wp("3")
         },
 
         titleText: {

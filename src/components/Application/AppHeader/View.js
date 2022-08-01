@@ -93,8 +93,8 @@ const AppHeader = (props) => {
                           color={overrideTheme ?
                               (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
                               : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)}
-                          width={25}
-                          height={25}
+                          width={20}
+                          height={20}
                           type={rightIcon} />
                         {/*<Image source={rightIcon}*/}
                         {/*       resizeMode={"contain"}*/}
@@ -113,8 +113,12 @@ const AppHeader = (props) => {
                 transparentHeader && transparentContainerStyle,
                 bottomMargin,
                 Platform.OS === 'android' && {
-                    marginTop: isTranslucent ? -10 : 0
-                }]}
+                    marginTop: isTranslucent ? -10 : 0,
+                    paddingTop: 0,
+                    height: 56
+                },
+
+            ]}
 
         />
 

@@ -37,6 +37,8 @@ export const Styles = function(styles, scheme, colors) {
             width: hp("14"),
             height: hp("14"),
             borderRadius: hp("7"),
+            borderWidth: 5,
+            borderColor: colors.primaryBackground,
             resizeMode: "cover"
         },
 

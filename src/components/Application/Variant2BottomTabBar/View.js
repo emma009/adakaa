@@ -20,7 +20,6 @@ export function Variant2BottomTabBar({ state, descriptors, navigation }) {
     const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
     const screenStyles = Styles(globalStyles, scheme, colors);
 
-
     return (
 
         <View style={[screenStyles.container]}>
@@ -54,7 +53,7 @@ export function Variant2BottomTabBar({ state, descriptors, navigation }) {
                         >
 
                             <View style={[screenStyles.bottomTabCartOuterContainer]}>
-                                <View style={[globalStyles.buttonShadow, screenStyles.bottomTabCartInnerContainer]}>
+                                <View style={[screenStyles.bottomTabCartInnerContainer]}>
                                     <SvgIcon type={IconNames.BagShopping} width={30} height={30} color={colors.white} />
 
                                 </View>
@@ -99,7 +98,7 @@ export function Variant2BottomTabBar({ state, descriptors, navigation }) {
 
                             {/*isFocused is selected*/}
 
-                            <SvgIcon type={icon} width={25} height={25} color={isFocused ? colors.headingColor : colors.subHeadingColor} />
+                            <SvgIcon type={icon} width={30} height={30} color={isFocused ? colors.headingColor : colors.switchBorder} />
 
                         </TouchableOpacity>
                     );

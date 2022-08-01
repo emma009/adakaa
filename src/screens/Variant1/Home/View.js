@@ -27,17 +27,14 @@ const assets = AppConfig.assets.default;
 //Constants
 const slider_data = [
   {
-    img: require("./Assets/Images/slider_img_1.png")
-  },
-  {
     img: require("./Assets/Images/slider_img_2.png")
   },
   {
     img: require("./Assets/Images/slider_img_1.png")
   },
   {
-    img: require("./Assets/Images/slider_img_2.png")
-  },
+    img: require("./Assets/Images/slider_img_3.png")
+  }
 ];
 
 export const Variant1Home = (props) => {
@@ -52,7 +49,6 @@ export const Variant1Home = (props) => {
     //References
     const _carousel = useRef();
     let _favouriteSheet = useRef();
-
 
     const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
@@ -154,28 +150,54 @@ export const Variant1Home = (props) => {
                         data={Globals.foodItems}
                         numColumns={2}
                         scrollEnabled={false}
-                        renderItem={({item}) =>
-                            <FoodItem
-                                title={item.title}
-                                image={item.image}
-                                bigImage={item.bigImage}
-                                price={item.price}
-                                weight={item.weight}
-                                discount={item.discount}
-                                cartCount={item.cartCount}
-                                isFavourite={item.isFavourite}
-                                detail={item.detail}
-                                ratingValue={item.ratingValue}
-                                cartCountChange={(count) => {
-                                }}
-                                favouriteChange={(favourite) => {
-                                    if (favourite) {
-                                        _favouriteSheet.open()
-                                    }
-                                }}
-                                navigation={props.navigation}
-                            />
-                        }
+                        renderItem={({item, index}) => {
+                           if (index === Globals.foodItems.length - 2 || index === Globals.foodItems.length - 1) {
+                             return <View style={screenStyles.foodLastItems}>
+                               <FoodItem
+                                 title={item.title}
+                                 image={item.image}
+                                 bigImage={item.bigImage}
+                                 price={item.price}
+                                 weight={item.weight}
+                                 discount={item.discount}
+                                 cartCount={item.cartCount}
+                                 isFavourite={item.isFavourite}
+                                 detail={item.detail}
+                                 ratingValue={item.ratingValue}
+                                 cartCountChange={(count) => {
+                                 }}
+                                 favouriteChange={(favourite) => {
+                                   if (favourite) {
+                                     _favouriteSheet.open()
+                                   }
+                                 }}
+                                 navigation={props.navigation}
+                               />
+                             </View>
+                           }
+                           else {
+                             return  <FoodItem
+                               title={item.title}
+                               image={item.image}
+                               bigImage={item.bigImage}
+                               price={item.price}
+                               weight={item.weight}
+                               discount={item.discount}
+                               cartCount={item.cartCount}
+                               isFavourite={item.isFavourite}
+                               detail={item.detail}
+                               ratingValue={item.ratingValue}
+                               cartCountChange={(count) => {
+                               }}
+                               favouriteChange={(favourite) => {
+                                 if (favourite) {
+                                   _favouriteSheet.open()
+                                 }
+                               }}
+                               navigation={props.navigation}
+                             />
+                           }
+                        }}
                     />
 
 

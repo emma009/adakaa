@@ -11,6 +11,7 @@ import AppButton from "../../components/Application/AppButton/View";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
+import Config from "../../../branding/carter/configuration/Config";
 
 export const CartList = (props) => {
 
@@ -24,7 +25,6 @@ export const CartList = (props) => {
 
         <View style={screenStyles.mainContainer}>
 
-
             <View style={[screenStyles.flatListContainer]}>
                 <BaseView
                     showAppHeader={true}
@@ -37,7 +37,6 @@ export const CartList = (props) => {
                         return (
 
                             <FlatList
-                                showsVerticalScrollIndicator={false}
                                 data={Globals.foodItems}
                                 renderItem={({ item, index }) =>
                                   index === 0 ? <View style={screenStyles.flatListFirstItemContainer}>
@@ -86,7 +85,7 @@ export const CartList = (props) => {
                 />
             </View>
 
-            <View style={screenStyles.bottomContainerParent}>
+            <View style={[screenStyles.bottomContainerParent, Config.SELECTED_VARIANT === Routes.INTRO_SCREEN1 && screenStyles.bottomContainerParentVariant1]}>
               <View style={screenStyles.bottomContainer}>
 
                 <View style={screenStyles.totalContainer}>
