@@ -21,6 +21,9 @@ export const CategoryItems = (props) => {
                         showsVerticalScrollIndicator={false}
                         data={Globals.foodItems}
                         numColumns={2}
+                        keyExtractor={(item, index) => {
+                            return item.id;
+                        }}
                         renderItem={({ item, index }) => {
 
                           if (index === 0 || index === 1) {

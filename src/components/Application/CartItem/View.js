@@ -1,51 +1,49 @@
 import React from 'react';
-import { Image, TouchableOpacity, useColorScheme, View } from "react-native";
+import {Image, TouchableOpacity, useColorScheme, View} from "react-native";
 
 import {Button, Text} from 'react-native-elements';
-import PropTypes from 'prop-types';
 import Routes from "../../../navigation/Routes";
 
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Counter} from "../../Global/Counter/View";
-import { Styles } from "./Style"
-import AppConfig from "../../../../branding/App_config";
-import { useTheme } from "@react-navigation/native";
-import { SvgIcon } from "../SvgIcon/View";
+import {Styles} from "./Style"
+import {useTheme} from "@react-navigation/native";
+import {SvgIcon} from "../SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 
-const assets = AppConfig.assets.default;
 
 export const CartItem = (props) => {
 
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const itemStyles = Styles(scheme, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const itemStyles = Styles(scheme, colors);
 
 
-  const renderRightActions = (progress, dragX) => {
+    const renderRightActions = (progress, dragX) => {
         return (
 
             <TouchableOpacity
-                onPress={() => {}}
+                onPress={() => {
+                }}
                 style={itemStyles.rightSwipeContainer}>
 
-              <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white} />
+                <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white}/>
 
             </TouchableOpacity>
 
         );
     };
 
-    return(
+    return (
         <Button
             onPress={() => {
                 props.navigation.navigate(Routes.PRODUCT_DETAIL, {
-                       item: props,
-                       }
-                   );
+                        item: props,
+                    }
+                );
             }}
             ViewComponent={() => {
 
@@ -90,14 +88,3 @@ export const CartItem = (props) => {
     );
 
 }
-
-CartItem.propTypes = {
-    title: PropTypes.string,
-    image: PropTypes.func,
-    price: PropTypes.string,
-    weight: PropTypes.string,
-    discount: PropTypes.string,
-    cartCountChange: PropTypes.func,
-    favouriteChange: PropTypes.func,
-};
-

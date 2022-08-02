@@ -32,9 +32,9 @@ export const Variant1Profile = (props) => {
   //Internal States
   const [profileImage, setProfileImage] = useState("");
 
-  const renderProfileCardItem = (item) => {
+  const renderProfileCardItem = (item, index) => {
     return <TouchableWithoutFeedback
-
+      key={index}
       onPress={() => {
         item.onPress();
       }}>
@@ -73,7 +73,7 @@ export const Variant1Profile = (props) => {
             numColumns={3}
             data={Globals.profileList(props.navigation)}
             renderItem={({ item, index }) => {
-              return renderProfileCardItem(item);
+              return renderProfileCardItem(item, index);
             }} />
 
         </View>

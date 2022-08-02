@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, {useRef, useState} from "react";
 import {
     Image,
     ScrollView,
@@ -12,27 +12,24 @@ import {
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Text} from 'react-native-elements';
 import Routes from "../../navigation/Routes";
-import { Styles } from "./Styles";
+import {Styles} from "./Styles";
 import AppHeader from "../../components/Application/AppHeader/View";
 import {Counter} from "../../components/Global/Counter/View"
-import AppConfig from "../../../branding/App_config";
 import StarRating from "react-native-star-rating";
-import {FavouritesBottomSheet}
-    from "../../components/Application/FavouritesBottomSheet/View";
+import {FavouritesBottomSheet} from "../../components/Application/FavouritesBottomSheet/View";
 import RBSheet from "react-native-raw-bottom-sheet";
 import ReadMore from "@fawazahmed/react-native-read-more";
 import AppButton from "../../components/Application/AppButton/View";
-import { useTheme } from "@react-navigation/native";
+import {useTheme} from "@react-navigation/native";
 import IconNames from "../../../branding/carter/assets/IconNames";
-import { SvgIcon } from "../../components/Application/SvgIcon/View";
+import {SvgIcon} from "../../components/Application/SvgIcon/View";
 
-const assets = AppConfig.assets.default;
 
 export const ProductDetail = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const screenStyles = Styles(scheme, colors);
 
 
@@ -49,7 +46,7 @@ export const ProductDetail = (props) => {
 
     return (
         <View style={screenStyles.container}>
-            <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"} />
+            <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
 
             <View style={screenStyles.imageContainer}>
 
@@ -88,12 +85,11 @@ export const ProductDetail = (props) => {
                                         return !isFavourite
                                     });
 
-
-
                                 }}>
 
                                     <SvgIcon
-                                      type={isFavourite ? IconNames.HeartFilled : IconNames.Heart} width={20} height={20} color={isFavourite ? colors.heartFilled : colors.heartEmpty} />
+                                        type={isFavourite ? IconNames.HeartFilled : IconNames.Heart} width={20}
+                                        height={20} color={isFavourite ? colors.heartFilled : colors.heartEmpty}/>
 
                                 </TouchableOpacity>
 

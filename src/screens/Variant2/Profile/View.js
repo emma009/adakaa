@@ -36,6 +36,7 @@ export const Variant2Profile = (props) => {
 
     const renderProfileListItem = (item, index) => {
         return <TouchableOpacity
+            key={index}
             onPress={() => item.onPress()}
             style={screenStyles.profileListingItemContainer}>
 

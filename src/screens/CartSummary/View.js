@@ -24,7 +24,9 @@ export const CartSummary = (props) => {
 
   const renderCartItems = (item, index) => {
     return (
-      <View style={[
+      <View
+      key={index}
+          style={[
         screenStyles.cartItemContainer,
         index !== Globals.foodItems.length - 1 && {
           borderBottomWidth: 1,
@@ -82,13 +84,12 @@ export const CartSummary = (props) => {
                 }}
               />
 
-              <FlatList
-                showsVerticalScrollIndicator={false}
-                data={Globals.foodItems}
-                renderItem={({ item, index }) => {
-                  return renderCartItems(item, index);
-                }}
-              />
+                {
+                    Globals.foodItems.map((item, index) => {
+                        return renderCartItems(item, index);
+                    })
+                }
+
 
             </ScrollView>
 

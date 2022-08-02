@@ -5,7 +5,7 @@ import {Text} from 'react-native-elements';
 import PropTypes from 'prop-types';
 import AppConfig from "../../../../branding/App_config";
 import { Styles } from "./Style"
-import Easing from "react-native/Libraries/Animated/src/Easing";
+import Easing from "react-native/Libraries/Animated/Easing";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";

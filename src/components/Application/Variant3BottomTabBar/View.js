@@ -67,9 +67,7 @@ export function Variant3BottomTabBar({state, descriptors, navigation}) {
 
                 return (
                     <TouchableOpacity
-                        accessibilityRole="button"
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
-                        testID={options.tabBarTestID}
+                        key={index}
                         activeOpacity={0.8}
                         onPress={onPress}
                         style={[screenStyles.bottomTabContainer, {marginBottom: Globals.SAFE_AREA_INSET.bottom / 2}]}>

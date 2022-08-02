@@ -14,6 +14,9 @@ export const Styles = function(styles, scheme, colors) {
         },
 
         mainContainer: {
+            flex: 1,
+            width: styles.gridWidth,
+            alignSelf: "center",
             marginTop: hp(3)
         },
 
@@ -63,9 +66,18 @@ export const Styles = function(styles, scheme, colors) {
         },
 
         sectionContainer: {
-            width: styles.gridWidth,
-            alignSelf: "center",
             marginBottom: hp(1)
+        },
+
+        categoryFoodItemParent: {
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            marginBottom: hp(1)
+        },
+
+        categoryFoodItem: {
+            width: "49%",
         },
 
         secondaryBannerContainer: {
@@ -79,7 +91,7 @@ export const Styles = function(styles, scheme, colors) {
             height: hp(30),
             borderRadius: hp(0.75),
             marginBottom: hp("2"),
-            marginTop: -wp(2),
+            // marginTop: -wp(2),
             resizeMode: "cover",
         },
 

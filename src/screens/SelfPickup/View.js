@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useColorScheme, View } from "react-native";
+import {ScrollView, useColorScheme, View} from "react-native";
 import Routes from "../../navigation/Routes";
 
 import BaseView from "../BaseView";
@@ -54,7 +54,7 @@ export const SelfPickup = (props) => {
 
           <View style={screenStyles.container}>
 
-            <View style={screenStyles.mainContainer}>
+            <ScrollView style={screenStyles.mainContainer} showsVerticalScrollIndicator={false}>
 
 
               <Text style={screenStyles.typeHeader}>{"Select Outlet"}</Text>
@@ -104,17 +104,6 @@ export const SelfPickup = (props) => {
                   })
                 }} />
 
-              {/*<AppInput*/}
-              {/*  {...globalStyles.secondaryInputStyle}*/}
-              {/*  textInputRef={r => (inputRef = r)}*/}
-              {/*  leftIcon={IconNames.Globe}*/}
-              {/*  placeholder={"Outlet"}*/}
-              {/*  value={outlet}*/}
-              {/*  onChangeText={(outlet) => {*/}
-              {/*    setOutlet(outlet);*/}
-              {/*  }}*/}
-              {/*/>*/}
-
               <Text style={screenStyles.typeHeader}>{"Schedule"}</Text>
 
               <InputButton
@@ -134,7 +123,7 @@ export const SelfPickup = (props) => {
                 }}
 
               />
-            </View>
+            </ScrollView>
 
 
 

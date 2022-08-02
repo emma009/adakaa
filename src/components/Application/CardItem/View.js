@@ -4,7 +4,7 @@ import {Text} from 'react-native-elements';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen'
 import { Styles } from "./Style"
 import AppConfig from "../../../../branding/App_config";
-import Easing from "react-native/Libraries/Animated/src/Easing";
+import Easing from "react-native/Libraries/Animated/Easing";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";

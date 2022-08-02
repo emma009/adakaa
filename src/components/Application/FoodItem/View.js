@@ -1,29 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import { Image, TouchableOpacity, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
+import {Image, TouchableOpacity, TouchableWithoutFeedback, useColorScheme, View} from "react-native";
 
 
-import {Button, Text} from 'react-native-elements';
-import PropTypes from 'prop-types';
+import {Text} from 'react-native-elements';
 import Routes from "../../../navigation/Routes";
-import { Styles } from "./Styles";
-import AppConfig from "../../../../branding/App_config";
-import { useTheme } from "@react-navigation/native";
-import { SvgIcon } from "../SvgIcon/View";
+import {Styles} from "./Styles";
+import {useTheme} from "@react-navigation/native";
+import {SvgIcon} from "../SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
-
-const assets = AppConfig.assets.default;
 
 
 export const FoodItem = (props) => {
 
     //Theme based styling and colors
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const scheme = useColorScheme();
     const itemStyles = Styles(scheme, colors);
 
     //Internal states
     const [cartCount, setCartCount] = useState(props.cartCount);
-    const [favourite, setFavourite] = useState(props.isFavourite);
+    const [favourite, setFavourite] = useState(props.isFavourite ? props.isFavourite : false);
 
     useEffect(() => {
         props.favouriteChange(favourite)
@@ -82,7 +78,8 @@ export const FoodItem = (props) => {
                             <View>
 
                                 <SvgIcon
-                                  type={favourite ? IconNames.HeartFilled : IconNames.Heart} width={20} height={20} color={favourite ? colors.heartFilled : colors.heartEmpty} />
+                                    type={favourite ? IconNames.HeartFilled : IconNames.Heart} width={20} height={20}
+                                    color={favourite ? colors.heartFilled : colors.heartEmpty}/>
 
                             </View>
 
@@ -113,31 +110,38 @@ export const FoodItem = (props) => {
                         <View style={itemStyles.bottomContainer}>
                             {cartCount === 0 ?
 
-                              <TouchableOpacity
-                                onPress={() => _cartCountChange("add")}
-                                style={itemStyles.addToCartContainer}>
+                                <TouchableOpacity
+                                    onPress={() => _cartCountChange("add")}
+                                    style={itemStyles.addToCartContainer}>
 
-                                  <SvgIcon type={IconNames.BagShopping}     width={20} height={20} color={colors.activeColor} style={itemStyles.addCartIcon} />
+                                    <SvgIcon type={IconNames.BagShopping} width={20} height={20}
+                                             color={colors.activeColor} style={itemStyles.addCartIcon}/>
 
-                                  <Text style={itemStyles.addCartText}>{"Add to cart"}</Text>
+                                    <Text style={itemStyles.addCartText}>{"Add to cart"}</Text>
 
-                              </TouchableOpacity>
+                                </TouchableOpacity>
                                 : <View style={itemStyles.cartUpdateContainer}>
-                                    <TouchableOpacity style={[itemStyles.cartUpdateActionContainer, {borderRightWidth: 1}]} onPress={() => {
-                                        _cartCountChange("subtract")
-                                    }}>
+                                    <TouchableOpacity
+                                        style={[itemStyles.cartUpdateActionContainer, {borderRightWidth: 1}]}
+                                        onPress={() => {
+                                            _cartCountChange("subtract")
+                                        }}>
 
-                                        <SvgIcon type={IconNames.Minus} width={15} height={15} color={colors.activeColor} />
+                                        <SvgIcon type={IconNames.Minus} width={15} height={15}
+                                                 color={colors.activeColor}/>
 
                                     </TouchableOpacity>
 
                                     <Text style={itemStyles.cartNumberText}>{cartCount}</Text>
 
-                                    <TouchableOpacity style={[itemStyles.cartUpdateActionContainer, {borderLeftWidth: 1}]} onPress={() => {
-                                        _cartCountChange("add")
-                                    }}>
+                                    <TouchableOpacity
+                                        style={[itemStyles.cartUpdateActionContainer, {borderLeftWidth: 1}]}
+                                        onPress={() => {
+                                            _cartCountChange("add")
+                                        }}>
 
-                                        <SvgIcon type={IconNames.Plus} width={15} height={15} color={colors.activeColor} />
+                                        <SvgIcon type={IconNames.Plus} width={15} height={15}
+                                                 color={colors.activeColor}/>
 
                                     </TouchableOpacity>
 
@@ -154,20 +158,3 @@ export const FoodItem = (props) => {
 
 
 }
-
-FoodItem.propTypes = {
-    title: PropTypes.string,
-    image: PropTypes.func,
-    price: PropTypes.string,
-    weight: PropTypes.string,
-    discount: PropTypes.string,
-    cartCountChange: PropTypes.func,
-    isFavourite: PropTypes.bool,
-    favouriteChange: PropTypes.func,
-};
-
-FoodItem.defaultProps = {
-    isFavourite: false
-};
-
-

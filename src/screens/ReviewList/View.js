@@ -1,14 +1,12 @@
 import React from 'react';
-import { FlatList, View } from "react-native";
+import {FlatList, View} from "react-native";
 import {ReviewItem} from "../../components/Application/ReviewItem/View";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import {heightPercentageToDP as hp} from "react-native-responsive-screen";
 import BaseView from "../BaseView"
 import Routes from "../../navigation/Routes";
 import Globals from "../../utils/Globals";
-import AppConfig from "../../../branding/App_config";
 import IconNames from "../../../branding/carter/assets/IconNames";
 
-const assets = AppConfig.assets.default;
 
 export const ReviewList = (props) => {
 
@@ -31,31 +29,32 @@ export const ReviewList = (props) => {
                     <FlatList
                         showsVerticalScrollIndicator={false}
                         data={Globals.reviewsList}
-
+                        keyExtractor={(item, index) => {
+                            return item.id;
+                        }}
                         renderItem={({item, index}) => {
 
-                          if (index === 0) {
-                            return <View style={{
-                              marginTop: hp(3)
-                            }}>
-                              <ReviewItem
-                                profileImage={item.profileImage}
-                                fullName={item.fullName}
-                                reviewTime={item.reviewTime}
-                                rating={item.rating}
-                                comment={item.comment}
-                              />
-                            </View>
-                          }
-                          else {
-                            return <ReviewItem
-                              profileImage={item.profileImage}
-                              fullName={item.fullName}
-                              reviewTime={item.reviewTime}
-                              rating={item.rating}
-                              comment={item.comment}
-                            />
-                          }
+                            if (index === 0) {
+                                return <View style={{
+                                    marginTop: hp(3)
+                                }}>
+                                    <ReviewItem
+                                        profileImage={item.profileImage}
+                                        fullName={item.fullName}
+                                        reviewTime={item.reviewTime}
+                                        rating={item.rating}
+                                        comment={item.comment}
+                                    />
+                                </View>
+                            } else {
+                                return <ReviewItem
+                                    profileImage={item.profileImage}
+                                    fullName={item.fullName}
+                                    reviewTime={item.reviewTime}
+                                    rating={item.rating}
+                                    comment={item.comment}
+                                />
+                            }
 
                         }}
                     />

@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import { FlatList, Image, ScrollView, StatusBar, Text, TouchableOpacity, useColorScheme, View } from "react-native";
+import {FlatList, Image, StatusBar, Text, TouchableOpacity, useColorScheme, View} from "react-native";
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Carousel, {Pagination} from 'react-native-snap-carousel';
@@ -7,50 +7,46 @@ import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {FoodItem} from "../../../components/Application/FoodItem/View";
 import {SearchButton} from "../../../components/Application/SearchButton/View";
 
-import { Styles } from "./Styles";
+import {Styles} from "./Styles";
 import Routes from "../../../navigation/Routes";
-import AppConfig from "../../../../branding/App_config";
 import Globals from "../../../utils/Globals";
 import RBSheet from "react-native-raw-bottom-sheet";
-import {FavouritesBottomSheet}
-    from "../../../components/Application/FavouritesBottomSheet/View";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import {FavouritesBottomSheet} from "../../../components/Application/FavouritesBottomSheet/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
-import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import {SvgIcon} from "../../../components/Application/SvgIcon/View";
 
-
-const assets = AppConfig.assets.default;
 
 //Constants
 const slider_data = [
-  {
-    img: require("./Assets/Images/slider_img_1.png")
-  },
-  {
-    img: require("./Assets/Images/slider_img_2.png")
-  },
-  {
-    img: require("./Assets/Images/slider_img_3.png")
-  }
+    {
+        img: require("./Assets/Images/slider_img_1.png")
+    },
+    {
+        img: require("./Assets/Images/slider_img_2.png")
+    },
+    {
+        img: require("./Assets/Images/slider_img_3.png")
+    }
 ];
 
 export const Variant2Home = (props) => {
 
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
-  const screenStyles = Styles(globalStyles, scheme, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, scheme, colors);
 
 
-  //Internal States
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+    //Internal States
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
 
-  //References
+    //References
     const _carousel = useRef();
     let _favouriteSheet = useRef();
 
@@ -96,64 +92,90 @@ export const Variant2Home = (props) => {
 
         <View style={[screenStyles.mainWrapper]}>
 
-          <View style={screenStyles.mainContainer}>
+            <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
-          <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
-
-          <View style={screenStyles.searchContainer}>
-              <SearchButton
-                  onPress={() => props.navigation.navigate(Routes.SEARCH)}
-              />
-          </View>
-
-            <ScrollView showsVerticalScrollIndicator={false}>
-
-                {renderPromotionSlider()}
-
-                <View style={screenStyles.secondarySliderContainer}>
-
-                    <Image
-                        source={require("./Assets/Images/banner1.png")}
-                        style={screenStyles.secondaryBannerContainer}
-                    />
-
-                    <Image
-                        source={require("./Assets/Images/banner2.png")}
-                        style={screenStyles.secondaryBannerContainer}
-                    />
+            <View style={screenStyles.mainContainer}>
 
 
-                </View>
+                <SearchButton
+                    onPress={() => props.navigation.navigate(Routes.SEARCH)}
+                />
 
-              <View style={screenStyles.sectionContainer}>
-                  <Image
-                      source={require("./Assets/Images/banner3.png")}
-                      style={screenStyles.tertiaryBannerContainer}
-                  />
+                <FlatList
+                    showsVerticalScrollIndicator={false}
+                    data={Globals.foodItems}
+                    numColumns={2}
+                    ListHeaderComponent={() => {
+                        return (
+                            <>
 
-              </View>
 
-                <View style={screenStyles.sectionContainer}>
+                                {renderPromotionSlider()}
 
-                    <TouchableOpacity onPress={() => {
-                        props.navigation.navigate(Routes.POPULAR_DEALS);
-                    }}>
-                        <View style={screenStyles.sectionHeading}>
-                            <Text style={screenStyles.sectionHeadingText}>Popular Deals</Text>
-                          <SvgIcon type={IconNames.ArrowRight} width={20} height={20} color={colors.subHeadingColor} />
+                                <View style={screenStyles.secondarySliderContainer}>
 
-                        </View>
-                    </TouchableOpacity>
+                                    <Image
+                                        source={require("./Assets/Images/banner1.png")}
+                                        style={screenStyles.secondaryBannerContainer}
+                                    />
 
-                    <FlatList
-                        showsVerticalScrollIndicator={false}
-                        data={Globals.foodItems}
-                        numColumns={2}
-                        scrollEnabled={false}
-                        renderItem={({item, index}) => {
-                          if (index === Globals.foodItems.length - 2 || index === Globals.foodItems.length - 1) {
+                                    <Image
+                                        source={require("./Assets/Images/banner2.png")}
+                                        style={screenStyles.secondaryBannerContainer}
+                                    />
+
+
+                                </View>
+
+                                <Image
+                                    source={require("./Assets/Images/banner3.png")}
+                                    style={screenStyles.tertiaryBannerContainer}
+                                />
+
+
+                                <TouchableOpacity onPress={() => {
+                                    props.navigation.navigate(Routes.POPULAR_DEALS);
+                                }}>
+                                    <View style={screenStyles.sectionHeading}>
+                                        <Text style={screenStyles.sectionHeadingText}>Popular Deals</Text>
+                                        <SvgIcon type={IconNames.ArrowRight} width={20} height={20}
+                                                 color={colors.subHeadingColor}/>
+
+                                    </View>
+                                </TouchableOpacity>
+
+                            </>
+                        )
+                    }}
+                    keyExtractor={(item, index) => {
+                        return item.id;
+                    }}
+                    renderItem={({item, index}) => {
+                        if (index === Globals.foodItems.length - 2 || index === Globals.foodItems.length - 1) {
                             return <View style={screenStyles.foodLastItems}>
-                              <FoodItem
+                                <FoodItem
+                                    title={item.title}
+                                    image={item.image}
+                                    bigImage={item.bigImage}
+                                    price={item.price}
+                                    weight={item.weight}
+                                    discount={item.discount}
+                                    cartCount={item.cartCount}
+                                    isFavourite={item.isFavourite}
+                                    detail={item.detail}
+                                    ratingValue={item.ratingValue}
+                                    cartCountChange={(count) => {
+                                    }}
+                                    favouriteChange={(favourite) => {
+                                        if (favourite) {
+                                            _favouriteSheet.open()
+                                        }
+                                    }}
+                                    navigation={props.navigation}
+                                />
+                            </View>
+                        } else {
+                            return <FoodItem
                                 title={item.title}
                                 image={item.image}
                                 bigImage={item.bigImage}
@@ -167,61 +189,33 @@ export const Variant2Home = (props) => {
                                 cartCountChange={(count) => {
                                 }}
                                 favouriteChange={(favourite) => {
-                                  if (favourite) {
-                                    _favouriteSheet.open()
-                                  }
+                                    if (favourite) {
+                                        _favouriteSheet.open()
+                                    }
                                 }}
                                 navigation={props.navigation}
-                              />
-                            </View>
-                          }
-                          else {
-                            return <FoodItem
-                              title={item.title}
-                              image={item.image}
-                              bigImage={item.bigImage}
-                              price={item.price}
-                              weight={item.weight}
-                              discount={item.discount}
-                              cartCount={item.cartCount}
-                              isFavourite={item.isFavourite}
-                              detail={item.detail}
-                              ratingValue={item.ratingValue}
-                              cartCountChange={(count) => {
-                              }}
-                              favouriteChange={(favourite) => {
-                                if (favourite) {
-                                  _favouriteSheet.open()
-                                }
-                              }}
-                              navigation={props.navigation}
                             />
-                          }
-                        }}
-                    />
-
-
-                </View>
-
-            </ScrollView>
-
-
-            <RBSheet
-                ref={ref => {
-                    _favouriteSheet = ref;
-                }}
-                height={hp(42)}
-            >
-
-                <FavouritesBottomSheet
-                    onItemSelect={() => {
-                        _favouriteSheet.close()
+                        }
                     }}
                 />
 
-            </RBSheet>
 
-          </View>
+                <RBSheet
+                    ref={ref => {
+                        _favouriteSheet = ref;
+                    }}
+                    height={hp(42)}
+                >
+
+                    <FavouritesBottomSheet
+                        onItemSelect={() => {
+                            _favouriteSheet.close()
+                        }}
+                    />
+
+                </RBSheet>
+
+            </View>
         </View>
 
     );

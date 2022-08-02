@@ -88,6 +88,7 @@ class Globals {
 
     static foodItems = [
         {
+            id: 1,
             title: "Organic lemons",
             image: require("../components/Application/FoodItem/Assets/Images/organic_lemons.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/organic_lemons_big.png"),
@@ -100,6 +101,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 2,
             title: "Fresh apricots",
             image: require("../components/Application/FoodItem/Assets/Images/apricot.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/apricot_big.png"),
@@ -111,6 +113,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 3,
             title: "Pomegranate",
             image: require("../components/Application/FoodItem/Assets/Images/pomegranate.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/pomegranate_big.png"),
@@ -122,6 +125,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 4,
             title: "Broccoli flower",
             image: require("../components/Application/FoodItem/Assets/Images/broccoli_flower.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/broccoli_flower_big.png"),
@@ -133,6 +137,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 5,
             title: "Chocolate chip",
             image: require("../components/Application/FoodItem/Assets/Images/chocolate_chip.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/chocolate_chip_big.png"),
@@ -144,6 +149,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 6,
             title: "Red grapes",
             image: require("../components/Application/FoodItem/Assets/Images/red_grapes.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/red_grapes_big.png"),
@@ -155,6 +161,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 7,
             title: "Organic lemons",
             image: require("../components/Application/FoodItem/Assets/Images/organic_lemons.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/organic_lemons_big.png"),
@@ -167,6 +174,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 8,
             title: "Fresh apricots",
             image: require("../components/Application/FoodItem/Assets/Images/apricot.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/apricot_big.png"),
@@ -178,6 +186,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 9,
             title: "Pomegranate",
             image: require("../components/Application/FoodItem/Assets/Images/pomegranate.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/pomegranate_big.png"),
@@ -189,6 +198,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 10,
             title: "Broccoli flower",
             image: require("../components/Application/FoodItem/Assets/Images/broccoli_flower.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/broccoli_flower_big.png"),
@@ -200,6 +210,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 11,
             title: "Chocolate chip",
             image: require("../components/Application/FoodItem/Assets/Images/chocolate_chip.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/chocolate_chip_big.png"),
@@ -211,6 +222,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 12,
             title: "Red grapes",
             image: require("../components/Application/FoodItem/Assets/Images/red_grapes.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/red_grapes_big.png"),
@@ -222,6 +234,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 13,
             title: "Organic lemons",
             image: require("../components/Application/FoodItem/Assets/Images/organic_lemons.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/organic_lemons_big.png"),
@@ -234,6 +247,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 14,
             title: "Fresh apricots",
             image: require("../components/Application/FoodItem/Assets/Images/apricot.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/apricot_big.png"),
@@ -245,6 +259,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 15,
             title: "Pomegranate",
             image: require("../components/Application/FoodItem/Assets/Images/pomegranate.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/pomegranate_big.png"),
@@ -256,6 +271,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 16,
             title: "Broccoli flower",
             image: require("../components/Application/FoodItem/Assets/Images/broccoli_flower.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/broccoli_flower_big.png"),
@@ -267,6 +283,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 17,
             title: "Chocolate chip",
             image: require("../components/Application/FoodItem/Assets/Images/chocolate_chip.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/chocolate_chip_big.png"),
@@ -278,6 +295,7 @@ class Globals {
             ratingValue: 4.5
         },
         {
+            id: 18,
             title: "Red grapes",
             image: require("../components/Application/FoodItem/Assets/Images/red_grapes.png"),
             bigImage: require("../components/Application/FoodItem/Assets/Images/red_grapes_big.png"),
@@ -293,6 +311,7 @@ class Globals {
     static categoryItems = [
 
         {
+            id: 1,
             secondaryTitle: "organic",
             secondaryColor: "#7ad228",
             primaryTitle: "Vegetable",
@@ -303,6 +322,7 @@ class Globals {
             selected: true,
         },
         {
+            id: 2,
             secondaryTitle: "fresh",
             secondaryColor: "#FF4344",
             primaryTitle: "Fruits",
@@ -313,6 +333,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 3,
             secondaryTitle: "fresh",
             secondaryColor: "#ffa200",
             primaryTitle: "Dairy",
@@ -323,6 +344,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 4,
             secondaryTitle: "original",
             secondaryColor: "#1faaff",
             primaryTitle: "Medicine",
@@ -333,6 +355,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 5,
             secondaryTitle: "quality",
             secondaryColor: "#18e2d6",
             primaryTitle: "Bakery",
@@ -343,6 +366,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 6,
             secondaryTitle: "baby",
             secondaryColor: "#D250E9",
             primaryTitle: "Products",
@@ -353,6 +377,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 7,
             secondaryTitle: "fresh",
             secondaryColor: "#E26D3F",
             primaryTitle: "chicken",
@@ -363,6 +388,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 8,
             secondaryTitle: "fresh",
             secondaryColor: "#9DB6CF",
             primaryTitle: "fishes",
@@ -373,6 +399,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 9,
             secondaryTitle: "organic",
             secondaryColor: "#7AD228",
             primaryTitle: "salads",
@@ -383,6 +410,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 10,
             secondaryTitle: "pet",
             secondaryColor: "#B6833D",
             primaryTitle: "foods",
@@ -393,6 +421,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 11,
             secondaryTitle: "quality",
             secondaryColor: "#C5150C",
             primaryTitle: "pizzas",
@@ -403,6 +432,7 @@ class Globals {
             selected: false,
         },
         {
+            id: 12,
             secondaryTitle: "sport",
             secondaryColor: "#2A56F5",
             primaryTitle: "goods",
@@ -416,7 +446,7 @@ class Globals {
 
     static addressItems = [
         {
-            key: 0,
+            id: 0,
             isDefault: true,
             name: 'William Crown',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -431,7 +461,7 @@ class Globals {
             spinValue: new Animated.Value(0)
         },
         {
-            key: 1,
+            id: 1,
             isDefault: false,
             name: 'John Doe',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -447,7 +477,7 @@ class Globals {
 
         },
         {
-            key: 2,
+            id: 2,
             isDefault: false,
             name: 'William Crown',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -463,7 +493,7 @@ class Globals {
 
         },
         {
-            key: 3,
+            id: 3,
             isDefault: false,
             name: 'John Doe',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -478,7 +508,7 @@ class Globals {
             spinValue: new Animated.Value(0)
         },
         {
-            key: 4,
+            id: 4,
             isDefault: false,
             name: 'William Crown',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -493,7 +523,7 @@ class Globals {
             spinValue: new Animated.Value(0)
         },
         {
-            key: 5,
+            id: 5,
             isDefault: false,
             name: 'John Doe',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -511,7 +541,7 @@ class Globals {
 
     static selfPickupAddresses = [
         {
-            key: 1,
+            id: 1,
             isDefault: false,
             name: 'Carter Bay Area',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -527,7 +557,7 @@ class Globals {
 
         },
         {
-            key: 2,
+            id: 2,
             isDefault: false,
             name: 'Carter Downtown',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -543,7 +573,7 @@ class Globals {
 
         },
         {
-            key: 3,
+            id: 3,
             isDefault: false,
             name: 'Carter 5th Avenue',
             address: "2811 Crescent Day, LA Port California, United States, 77511",
@@ -563,7 +593,7 @@ class Globals {
 
         cardItems: [
             {
-                key: 0,
+                id: 0,
                 isDefault: true,
                 isActive: true,
 
@@ -577,7 +607,7 @@ class Globals {
                 spinValue: new Animated.Value(0)
             },
             {
-                key: 1,
+                id: 1,
                 isDefault: false,
                 isActive: false,
 
@@ -592,7 +622,7 @@ class Globals {
                 spinValue: new Animated.Value(0)
             },
             {
-                key: 2,
+                id: 2,
                 isDefault: false,
                 isActive: false,
 
@@ -606,7 +636,7 @@ class Globals {
                 spinValue: new Animated.Value(0)
             },
             {
-                key: 3,
+                id: 3,
                 isDefault: false,
                 isActive: false,
 
@@ -620,7 +650,7 @@ class Globals {
                 spinValue: new Animated.Value(0)
             },
             {
-                key: 4,
+                id: 4,
                 isDefault: false,
                 isActive: false,
 
@@ -635,7 +665,7 @@ class Globals {
                 spinValue: new Animated.Value(0)
             },
             {
-                key: 5,
+                id: 5,
                 isDefault: false,
                 isActive: false,
 
@@ -652,7 +682,7 @@ class Globals {
         ],
         paypalItems: [
             {
-                key: 0,
+                id: 0,
                 isDefault: true,
                 isActive: true,
 
@@ -665,7 +695,7 @@ class Globals {
 
             },
             {
-                key: 1,
+                id: 1,
                 isDefault: false,
                 isActive: false,
 
@@ -678,7 +708,7 @@ class Globals {
 
             },
             {
-                key: 2,
+                id: 2,
                 isDefault: false,
                 isActive: false,
 
@@ -691,7 +721,7 @@ class Globals {
 
             },
             {
-                key: 3,
+                id: 3,
                 isDefault: false,
                 isActive: false,
 
@@ -704,7 +734,7 @@ class Globals {
 
             },
             {
-                key: 4,
+                id: 4,
                 isDefault: false,
                 isActive: false,
 
@@ -717,7 +747,7 @@ class Globals {
 
             },
             {
-                key: 5,
+                id: 5,
                 isDefault: false,
                 isActive: false,
 
@@ -767,41 +797,49 @@ class Globals {
 
     static favouritesList = [
         {
+            id: 1,
             backgroundColor: "#6cc51d",
             itemLabel: "Groceries",
             selected: false
         },
         {
+            id: 2,
             backgroundColor: "#bf0d3f",
             itemLabel: "Sunday Snacks",
             selected: true
         },
         {
+            id: 3,
             backgroundColor: "#f88e11",
             itemLabel: "Vegetables",
             selected: false
         },
         {
+            id: 4,
             backgroundColor: "#efb019",
             itemLabel: "Snacks",
             selected: false
         },
         {
+            id: 5,
             backgroundColor: "#b71dc5",
             itemLabel: "fruits",
             selected: false
         },
         {
+            id: 6,
             backgroundColor: "#1d68c5",
             itemLabel: "Meat",
             selected: false
         },
         {
+            id: 7,
             backgroundColor: "#1dafc5",
             itemLabel: "Dieting Plan",
             selected: false
         },
         {
+            id: 8,
             backgroundColor: "#ccb7cc",
             itemLabel: "Sports",
             selected: false
@@ -810,7 +848,7 @@ class Globals {
 
     static favouriteItems = [
         {
-            key: 0,
+            id: 0,
             name: 'Groceries',
             totalItems: "4",
             addedOn: "11/07/2020",
@@ -821,7 +859,7 @@ class Globals {
             spinValue: new Animated.Value(0)
         },
         {
-            key: 1,
+            id: 1,
             name: 'Sunday Snacks',
             totalItems: "6",
             addedOn: "11/07/2020",
@@ -832,7 +870,7 @@ class Globals {
             spinValue: new Animated.Value(0)
         },
         {
-            key: 2,
+            id: 2,
             name: 'Vegetables',
             totalItems: "2",
             addedOn: "11/07/2020",
@@ -843,7 +881,7 @@ class Globals {
             spinValue: new Animated.Value(0)
         },
         {
-            key: 3,
+            id: 3,
             name: 'Snacks',
             totalItems: "7",
             addedOn: "11/07/2020",
@@ -866,76 +904,91 @@ class Globals {
 
     static transactionItems = [
         {
+            id: 1,
             type: 'Master Card',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 2,
             type: 'Visa',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 3,
             type: 'Paypal',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 4,
             type: 'Master Card',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 5,
             type: 'Paypal',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 6,
             type: 'Visa',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 7,
             type: 'Master Card',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 8,
             type: 'Visa',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 9,
             type: 'Paypal',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 10,
             type: 'Visa',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 11,
             type: 'Master Card',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 12,
             type: 'Master Card',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 13,
             type: 'Paypal',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 14,
             type: 'Visa',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
         },
         {
+            id: 15,
             type: 'Master Card',
             date: "Dec 10, 2020 at 10:00 PM",
             price: "$16.99",
@@ -944,6 +997,7 @@ class Globals {
 
     static ordersItems = [
         {
+            id: 1,
             title: 'First',
             orderNo: "Order # 44698",
             dateTime: "Placed on December 15, 2022",
@@ -964,27 +1018,7 @@ class Globals {
             spinValue: new Animated.Value(0)
         },
         {
-            title: 'First',
-            orderNo: "Order # 44698",
-            dateTime: "Placed on December 15, 2022",
-            items: '10',
-            total: '$16.99',
-
-            isOrderPlaced: true,
-            orderPlaced: "Dec 10, 2022",
-            isOrderConfirmed: true,
-            orderConfirmed: "Dec 10, 2022",
-            isOrderShipped: true,
-            orderShipped: "Dec 10, 2022",
-            isOrderOutOfDelivery: false,
-            outOfDelivery: "Pending",
-            isOrderDelivered: false,
-            orderDelivered: "Pending",
-
-            spinValue: new Animated.Value(0)
-
-        },
-        {
+            id: 2,
             title: 'First',
             orderNo: "Order # 44698",
             dateTime: "Placed on December 15, 2022",
@@ -1006,6 +1040,7 @@ class Globals {
 
         },
         {
+            id: 3,
             title: 'First',
             orderNo: "Order # 44698",
             dateTime: "Placed on December 15, 2022",
@@ -1027,6 +1062,7 @@ class Globals {
 
         },
         {
+            id: 4,
             title: 'First',
             orderNo: "Order # 44698",
             dateTime: "Placed on December 15, 2022",
@@ -1048,6 +1084,7 @@ class Globals {
 
         },
         {
+            id: 5,
             title: 'First',
             orderNo: "Order # 44698",
             dateTime: "Placed on December 15, 2022",
@@ -1069,6 +1106,29 @@ class Globals {
 
         },
         {
+            id: 6,
+            title: 'First',
+            orderNo: "Order # 44698",
+            dateTime: "Placed on December 15, 2022",
+            items: '10',
+            total: '$16.99',
+
+            isOrderPlaced: true,
+            orderPlaced: "Dec 10, 2022",
+            isOrderConfirmed: true,
+            orderConfirmed: "Dec 10, 2022",
+            isOrderShipped: true,
+            orderShipped: "Dec 10, 2022",
+            isOrderOutOfDelivery: false,
+            outOfDelivery: "Pending",
+            isOrderDelivered: false,
+            orderDelivered: "Pending",
+
+            spinValue: new Animated.Value(0)
+
+        },
+        {
+            id: 7,
             title: 'First',
             orderNo: "Order # 44698",
             dateTime: "Placed on December 15, 2022",
@@ -1090,6 +1150,7 @@ class Globals {
 
         },
         {
+            id: 8,
             title: 'First',
             orderNo: "Order # 44698",
             dateTime: "Placed on December 15, 2022",
@@ -1111,6 +1172,7 @@ class Globals {
 
         },
         {
+            id: 9,
             title: 'First',
             orderNo: "Order # 4469812",
             dateTime: "Placed on December 15, 2022",
@@ -1137,6 +1199,7 @@ class Globals {
 
     static reviewsList = [
         {
+            id: 1,
             profileImage: require('../screens/ReviewList/Assets/Images/review_author_img1.png'),
             fullName: "David Martin",
             reviewTime: "32 minutes ago",
@@ -1144,6 +1207,7 @@ class Globals {
             comment: "Carter team is fast and always deliver fresh fruits. Highly Recommend!"
         },
         {
+            id: 2,
             profileImage: require('../screens/ReviewList/Assets/Images/review_author_img2.png'),
             fullName: "David Martin",
             reviewTime: "32 minutes ago",
@@ -1151,6 +1215,7 @@ class Globals {
             comment: "Best apples on the market hands down. I almost order them everyday."
         },
         {
+            id: 3,
             profileImage: require('../screens/ReviewList/Assets/Images/review_author_img3.png'),
             fullName: "David Martin",
             reviewTime: "32 minutes ago",
@@ -1158,6 +1223,7 @@ class Globals {
             comment: "Carter team is fast and always deliver fresh fruits. Highly Recommend!"
         },
         {
+            id: 4,
             profileImage: require('../screens/ReviewList/Assets/Images/review_author_img4.png'),
             fullName: "David Martin",
             reviewTime: "32 minutes ago",
@@ -1165,6 +1231,7 @@ class Globals {
             comment: "Best apples on the market hands down. I almost order them everyday."
         },
         {
+            id: 5,
             profileImage: require('../screens/ReviewList/Assets/Images/review_author_img1.png'),
             fullName: "David Martin",
             reviewTime: "32 minutes ago",
@@ -1178,41 +1245,49 @@ class Globals {
     static profileList = (navigation) => {
         return [
             {
+                id: 1,
                 icon: IconNames.UserAlt,
                 title: "About me",
                 onPress: () => navigation.navigate(Routes.ABOUT_ME)
             },
             {
+                id: 2,
                 icon: IconNames.Box,
                 title: "My Orders",
                 onPress: () => navigation.navigate(Routes.MY_ORDERS)
             },
             {
+                id: 3,
                 icon: IconNames.MapMarkerAlt,
                 title: "My Addresses",
                 onPress: () => navigation.navigate(Routes.My_Address)
             },
             {
+                id: 4,
                 icon: IconNames.CreditCard,
                 title: "Credit Cards",
                 onPress: () => navigation.navigate(Routes.My_CREDIT_CARDS)
             },
             {
+                id: 5,
                 icon: IconNames.MoneyBillWave,
                 title: "Transactions",
                 onPress: () => navigation.navigate(Routes.TRANSACTIONS)
             },
             {
+                id: 6,
                 icon: IconNames.Bell,
                 title: "Notifications",
                 onPress: () => navigation.navigate(Routes.NOTIFICATIONS)
             },
             {
+                id: 7,
                 icon: IconNames.Th,
                 title: "Categories",
                 onPress: () => navigation.navigate(Routes.CATEGORY_LIST)
             },
             {
+                id: 8,
                 icon: IconNames.PowerOff,
                 title: "Sign out",
                 onPress: () => navigation.dispatch(

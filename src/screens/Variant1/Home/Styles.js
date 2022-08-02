@@ -14,6 +14,12 @@ export const Styles = function(styles, scheme, colors) {
             backgroundColor: scheme ? colors.secondaryBackground : colors.secondaryBackground,
         },
 
+        parentWrapper: {
+            flex: 1,
+            width: styles.gridWidth,
+            alignSelf: "center",
+        },
+
         sectionContainer: {
             width: styles.gridWidth,
             alignItems: "center",

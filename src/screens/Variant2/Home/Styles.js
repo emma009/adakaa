@@ -12,13 +12,15 @@ export const Styles = function(styles, scheme, colors) {
             backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground,
         },
 
-        mainContainer: {
-            marginTop: hp(4),
-            marginBottom: hp(8),
+        parentWrapper: {
+
         },
 
-        searchContainer: {
-            alignSelf:  "center"
+        mainContainer: {
+            width: styles.gridWidth,
+            alignSelf: "center",
+            marginTop: hp(4),
+            marginBottom: hp(8),
         },
 
         secondarySliderContainer: {
@@ -66,7 +68,7 @@ export const Styles = function(styles, scheme, colors) {
             width: "100%",
             height: hp(30),
             borderRadius: hp(0.75),
-            marginBottom: hp("1"),
+            marginBottom: hp("2"),
             resizeMode: "cover"
         },
 
@@ -95,7 +97,7 @@ export const Styles = function(styles, scheme, colors) {
         },
 
         foodLastItems: {
-            marginBottom: hp(2)
+            marginBottom: hp(3)
         }
     }
 

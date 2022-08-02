@@ -36,6 +36,7 @@ export const Variant3Profile = (props) => {
 
     const renderProfileListItem = (item, index) => {
         return <TouchableOpacity
+            key={index}
             onPress={() => item.onPress()}
             style={screenStyles.profileListingItemContainer}>
 
@@ -50,7 +51,7 @@ export const Variant3Profile = (props) => {
             </View>
         </TouchableOpacity>
     }
-    
+
     return (
         <View style={screenStyles.mainContainer}>
           <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />

@@ -5,7 +5,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
 import {Divider, Text} from "react-native-elements";
 import { Styles } from "./Styles";
-import Easing from "react-native/Libraries/Animated/src/Easing";
+import Easing from "react-native/Libraries/Animated/Easing";
 import Globals from "../../utils/Globals";
 import { useTheme } from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";

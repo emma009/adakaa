@@ -29,25 +29,25 @@ export const App = (props) => {
 
   return (
 
-    <NavigationContainer theme={scheme === 'dark' ? DarkTheme : LightTheme}>
-      <SafeAreaProvider>
-        <SafeAreaConsumer>
+      <NavigationContainer theme={scheme === 'dark' ? DarkTheme : LightTheme}>
+        <SafeAreaProvider>
+          <SafeAreaConsumer>
 
-          {
-            insets => {
+            {
+              insets => {
 
-              Globals.SAFE_AREA_INSET = insets;
+                Globals.SAFE_AREA_INSET = insets;
 
-              return (
+                return (
 
-                <RootStack/>
+                    <RootStack/>
 
-              );
+                );
+              }
             }
-          }
-        </SafeAreaConsumer>
-      </SafeAreaProvider>
-    </NavigationContainer>
+          </SafeAreaConsumer>
+        </SafeAreaProvider>
+      </NavigationContainer>
   );
 
 

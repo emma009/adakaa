@@ -29,7 +29,7 @@ const AppInput = (props) => {
     const backgroundColor = props.backgroundColor || globalStyles.primaryInputStyle.backgroundColor;
     const value = props.value || "";
     const multilineInput = props.multilineInput || false;
-    const keyboardType = props.keyboardType || "";
+    const keyboardType = props.keyboardType || "default";
     const defaultContainerStyle = props.defaultContainerStyle || globalStyles.primaryInputStyle.defaultContainerStyle;
     const containerStyle = props.containerStyle || globalStyles.primaryInputStyle.containerStyle;
     const leftIconContainerStyle = props.leftIconContainerStyle || globalStyles.primaryInputStyle.leftIconContainerStyle;

@@ -86,7 +86,7 @@ export const Styles = function(scheme, colors) {
         ratingText: {
             fontFamily: Fonts.RUBIK_REGULAR,
             fontSize: Typography.P3,
-            colors: colors.headingColor
+            color: colors.headingColor
         },
 
         reviewText: {

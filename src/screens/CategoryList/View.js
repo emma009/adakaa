@@ -20,6 +20,9 @@ export const CategoryList = (props) => {
                     <FlatList
                         data={Globals.categoryItems}
                         numColumns={3}
+                        keyExtractor={(item, index) => {
+                            return item.id;
+                        }}
                         showsVerticalScrollIndicator={false}
                         renderItem={({ item }) =>
                             <CategoryItem

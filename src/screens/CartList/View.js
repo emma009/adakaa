@@ -38,6 +38,9 @@ export const CartList = (props) => {
 
                             <FlatList
                                 data={Globals.foodItems}
+                                keyExtractor={(item, index) => {
+                                    return item.id;
+                                }}
                                 renderItem={({ item, index }) =>
                                   index === 0 ? <View style={screenStyles.flatListFirstItemContainer}>
                                       <CartItem

@@ -27,7 +27,6 @@ export const Styles = function(styles, colors) {
         paginationContainerStyle: {
             position: "absolute",
             width: "100%",
-            alignItem: "center",
             bottom: hp(10),
             zIndex: 1
         },

@@ -53,7 +53,7 @@ export const Styles = function(scheme, colors) {
         contentItemLeftIcon: {
             width: hp(6),
             height: hp(6),
-            resizeMethod: "contain"
+            resizeMode: "contain"
         },
 
         weightPriceContainer: {

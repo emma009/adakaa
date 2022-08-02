@@ -7,7 +7,6 @@ import { commonDarkStyles } from "../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../branding/carter/styles/light/Style";
 import { useTheme } from "@react-navigation/native";
 
-const PropTypes = require('prop-types');
 
 const BaseView = (props) => {
 
@@ -70,18 +69,5 @@ const BaseView = (props) => {
 
     );
 }
-
-BaseView.propTypes = {
-
-    navigation: PropTypes.any,
-    showAppHeader: PropTypes.bool,
-    headerWithBack: PropTypes.bool,
-    title: PropTypes.string,
-    childView: PropTypes.node,
-    rightIcon: PropTypes.string,
-    onRightIconPress: PropTypes.func,
-    applyBottomSafeArea: PropTypes.bool,
-
-};
 
 export default BaseView;

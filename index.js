@@ -10,4 +10,3 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 AppRegistry.registerComponent(appName, () => App);
 registerCustomIconType('font-awesome-5', FontAwesome5);
-console.disableYellowBox = true;

@@ -29,7 +29,8 @@ export const Search = (props) => {
 
 
     const renderCategoryTitle = (title, rightBtnText) => {
-        return <TouchableOpacity onPress={() => {
+        return <TouchableOpacity
+            onPress={() => {
         }}>
             <View style={screenStyles.categoryTitleContainer}>
                 <Text style={screenStyles.categoryTitleText}>{title}</Text>
@@ -41,9 +42,10 @@ export const Search = (props) => {
     const renderHistoryItems = () => {
         return <View style={screenStyles.historyItemContainer}>
             {
-                Globals.searchHistoryItems.map(item => {
+                Globals.searchHistoryItems.map((item, index) => {
                     return (
                         <View
+                            key={index}
                             style={screenStyles.historyItemTextContainer}>
                             <Text
                                 ellipsizeMode={'tail'}

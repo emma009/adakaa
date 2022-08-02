@@ -1,11 +1,10 @@
 import React from 'react';
-import {Image, ImageBackground, TouchableWithoutFeedback, View} from 'react-native';
+import {ImageBackground, TouchableWithoutFeedback, View} from 'react-native';
 
 import {Text} from 'react-native-elements';
-import PropTypes from 'prop-types';
 import Styles from "./Styles";
 import Routes from "../../../navigation/Routes";
-import { SvgIcon } from "../SvgIcon/View";
+import {SvgIcon} from "../SvgIcon/View";
 
 export const CategoryItem = (props) => {
 
@@ -43,11 +42,6 @@ export const CategoryItem = (props) => {
                             <SvgIcon type={iconURI} width={30} height={30} color={"white"} />
 
                         </View>
-                        {/*<Image*/}
-                        {/*    source={iconURI}*/}
-                        {/*    style={Styles.icon}*/}
-                        {/*    resizeMode={"contain"}*/}
-                        {/*/>*/}
                     </View>
 
                 </ImageBackground>
@@ -57,12 +51,3 @@ export const CategoryItem = (props) => {
 
     );
 }
-
-
-CategoryItem.propTypes = {
-    navigation: PropTypes.any,
-    primaryTitle: PropTypes.string,
-    secondaryTitle: PropTypes.string,
-    iconURI: PropTypes.func,
-    bgURI: PropTypes.func
-};

@@ -49,17 +49,22 @@ export const Styles = function(scheme, colors) {
             borderBottomWidth: 0,
         },
 
-        categoriesCardContainerStyle: {
+        categoriesCardParentContainerStyle: {
             borderRadius: hp(0.75),
             borderBottomWidth: 0,
             marginBottom: hp(3)
+        },
+
+        categoriesCardContainerStyle: {
+            flexDirection: "row",
+            flexWrap: "wrap"
         },
 
         categoryParent: {
             backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             flexDirection: "row",
             alignItems: "center",
-            flex: 0.55,
+            width: "50%",
             paddingVertical: hp("1.5"),
         },
 

@@ -91,37 +91,38 @@ export const Favourites = (props) => {
       <View
         style={[screenStyles.contentContainerParent, (index === Globals.favouriteItems.length - 1) && screenStyles.favouriteLastItemContainer]}>
 
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={section.items}
-          renderItem={({ item }) => {
-            return (
-              <View style={screenStyles.contentItemContainer}>
-                <View style={[screenStyles.contentItemLeftIconContainer]}>
-                  <Image
-                    source={item.image}
-                    style={screenStyles.contentItemLeftIcon}
-                    resizeMode={"contain"}
-                  />
-                </View>
 
-                <View>
-                  <Text style={screenStyles.titleText}>{item.title}</Text>
+          {
+              section.items.map((item, index) => {
+                  return (
+                      <View
+                          key={index}
+                          style={screenStyles.contentItemContainer}>
+                          <View style={[screenStyles.contentItemLeftIconContainer]}>
+                              <Image
+                                  source={item.image}
+                                  style={screenStyles.contentItemLeftIcon}
+                              />
+                          </View>
 
-                  <View style={screenStyles.weightPriceContainer}>
+                          <View>
+                              <Text style={screenStyles.titleText}>{item.title}</Text>
 
-                    <View style={screenStyles.weightContainer}>
-                      <Text style={screenStyles.weightText}>{item.weight}</Text>
-                    </View>
+                              <View style={screenStyles.weightPriceContainer}>
 
-                    <Text style={screenStyles.priceText}>{item.price}</Text>
+                                  <View style={screenStyles.weightContainer}>
+                                      <Text style={screenStyles.weightText}>{item.weight}</Text>
+                                  </View>
 
-                  </View>
+                                  <Text style={screenStyles.priceText}>{item.price}</Text>
 
-                </View>
-              </View>
-            );
-          }} />
+                              </View>
+
+                          </View>
+                      </View>
+                  );
+              })
+          }
 
 
         <View style={screenStyles.contentContainerButton}>

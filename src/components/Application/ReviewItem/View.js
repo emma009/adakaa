@@ -6,7 +6,6 @@ import { Styles } from "./Styles";
 import StarRating from "react-native-star-rating";
 import { useTheme } from "@react-navigation/native";
 
-const PropTypes = require('prop-types');
 
 export const ReviewItem = (props) => {
 
@@ -67,14 +66,3 @@ export const ReviewItem = (props) => {
     )
 
 }
-
-
-ReviewItem.propTypes = {
-
-    profileImage: PropTypes.string,
-    fullName: PropTypes.string,
-    reviewTime: PropTypes.string,
-    rating: PropTypes.number,
-    comment: PropTypes.string
-
-};

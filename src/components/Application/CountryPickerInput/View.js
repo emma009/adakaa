@@ -79,8 +79,6 @@ CountryPickerInput.propTypes = {
 
   title: PropTypes.string,
 
-  onPress: PropTypes.func.isRequired,
-
   buttonStyle: PropTypes.any,
 
   titleStyle: PropTypes.any,
