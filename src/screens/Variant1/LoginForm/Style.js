@@ -20,6 +20,7 @@ export const Styles = function(styles, colors) {
 
         headerContainer: {
             flex: 1,
+            top: -1,
         },
 
         container: {

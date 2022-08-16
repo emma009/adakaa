@@ -61,6 +61,8 @@ export const Variant2Intro = (props) => {
                     sliderWidth={wp('100%')}
                     itemWidth={wp('100%')}
                     onSnapToItem={(index) => setActiveSlideIndex(index)}
+                    enableMomentum={true}
+                    decelerationRate={0.9}
                 />
 
                 <Pagination

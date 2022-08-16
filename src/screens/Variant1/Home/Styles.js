@@ -11,7 +11,7 @@ export const Styles = function(styles, scheme, colors) {
         mainWrapper: {
             flex: 1,
             alignItems: "center",
-            backgroundColor: scheme ? colors.secondaryBackground : colors.secondaryBackground,
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.secondaryBackground,
         },
 
         parentWrapper: {

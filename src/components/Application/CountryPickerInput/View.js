@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useColorScheme, View } from "react-native";
+import {TouchableOpacity, useColorScheme, View} from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
@@ -22,8 +22,11 @@ export const CountryPickerInput = (props) => {
 
   const [countryCode, setCountryCode] = useState("US");
   const [withFilter, setWithFilter] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [withFlagButton, setWithFlagButton] = useState(false);
   const onSelect = (country) => {
     setSelectedCountry(country);
+    setVisible(false)
   };
 
   const [selectedCountry, setSelectedCountry] = useState({
@@ -35,42 +38,50 @@ export const CountryPickerInput = (props) => {
 
 
   return (
-    <View style={[itemStyles.mainContainer, props.containerStyle]}>
+      <View style={[itemStyles.mainContainer, props.containerStyle]}>
 
-      <View
-        style={itemStyles.leftContainer}
-      >
+        <TouchableOpacity
+            onPress={() => {
+              setVisible(true)
+            }}
+            style={itemStyles.leftContainer}
+        >
 
-        {/*<Image*/}
-        {/*  source={{ uri: selectedCountry.flag }}*/}
-        {/*  style={itemStyles.flagImage} />*/}
+          {/*<Image*/}
+          {/*  source={{ uri: selectedCountry.flag }}*/}
+          {/*  style={itemStyles.flagImage} />*/}
 
-        <CountryPicker {...{
-          countryCode,
-          withFilter,
-          onSelect,
-        }}
-        />
 
-        <Text style={itemStyles.callingCode}>{"+" + selectedCountry.callingCode}</Text>
+          <CountryPicker {...{
+            countryCode,
+            withFilter,
+            withFlagButton,
+            onSelect,
+          }}
+                         visible={visible}
+          />
 
-        <SvgIcon type={IconNames.ChevronDown} width={15} height={15} color={colors.inputColor} />
+          <Text style={itemStyles.callingCode}>{"+" + selectedCountry.callingCode}</Text>
+
+          <SvgIcon type={IconNames.ChevronDown} width={15} height={15} color={colors.inputColor} />
+
+        </TouchableOpacity>
+
+        <AppInput
+            {...props}
+            {...globalStyles.secondaryInputStyle}
+            containerStyle={itemStyles.inputContainerStyle}
+            showLeftIcon={false}
+            keyboardType={"number-pad"}
+            placeholder={"  Phone"}
+            value={phone}
+            onChangeText={(phone) => {
+              setPhone(phone);
+            }} />
+
+
 
       </View>
-
-      <AppInput
-        {...props}
-        {...globalStyles.secondaryInputStyle}
-        containerStyle={itemStyles.inputContainerStyle}
-        showLeftIcon={false}
-        keyboardType={"number-pad"}
-        placeholder={"  Phone"}
-        value={phone}
-        onChangeText={(phone) => {
-          setPhone(phone);
-        }} />
-
-    </View>
 
   );
 };

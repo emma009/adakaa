@@ -58,6 +58,8 @@ export const Variant1Intro = (props) => {
                     onSnapToItem={(index) => {
                         setActiveSlideIndex(index)
                     }}
+                    enableMomentum={true}
+                    decelerationRate={0.9}
                 />
 
                 <Pagination

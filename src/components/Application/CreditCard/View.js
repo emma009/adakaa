@@ -84,9 +84,11 @@ export const CreditCard = (props) => {
 
                   <View style={{ flexGrow: 1 }} />
 
+
+
                   <Text
                     style={{
-                      fontSize: fontSize * 1.5,
+                      fontSize: fontSize * 1.2,
                       color: fontColor,
                     }}
                   >
@@ -120,10 +122,22 @@ export const CreditCard = (props) => {
                       {/*  </>*/}
                       {/*)}*/}
 
+
+                      {props.name !== "" && <Text
+                          style={{
+                            ...styles.groupLabel,
+                            fontSize: fontSize * 0.4,
+                            color: "#697281",
+                            marginTop: 5,
+                            marginBottom: 2
+                          }}
+                      >
+                        {"CARD HOLDER"}
+                      </Text>
+                      }
                       <Text
                         style={{
-                          fontSize: fontSize,
-                          marginTop: 5,
+                          fontSize: fontSize * 0.9,
                           color: fontColor,
                         }}
                       >
@@ -137,14 +151,15 @@ export const CreditCard = (props) => {
                       {props.expiration !== "" && (
                         <>
                           <Text
-                            style={{
-                              ...styles.groupLabel,
-                              fontSize: fontSize * 0.7,
-                              color: fontColor,
-                              textAlign: 'center',
-                            }}
+                              style={{
+                                ...styles.groupLabel,
+                                fontSize: fontSize * 0.4,
+                                color: "#697281",
+                                marginTop: 5,
+                                marginBottom: 2
+                              }}
                           >
-                            VALID{'\n'}THRU
+                            EXPIRES
                           </Text>
 
                           <Text
@@ -196,16 +211,17 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   groupContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: '2%',
+    // flexDirection: 'row',
+    // backgroundColor: "red",
+    // alignItems: 'center',
+    // marginRight: '2%',
   },
   groupLabel: {
     textAlignVertical: 'center',
     marginRight: '2%',
   },
   imageContainer: {
-    padding: 15,
+    padding: 25,
     flex: 1,
   },
   cardTypeIconContainer: {
@@ -213,11 +229,11 @@ const styles = StyleSheet.create({
     height: 27,
     width: 27 * (125 / 80),
     alignItems: 'center',
-    alignSelf: "flex-end"
+    alignSelf: "flex-start"
   },
   cardTypeIcon: {
-    height: 25,
-    width: 25 * (125 / 80),
+    height: 30,
+    width: 30 * (125 / 80),
   },
   rowContainer: {
     flexDirection: 'row',
