@@ -10,6 +10,7 @@ import Globals from "../../../utils/Globals";
 import AppButton from "../../../components/Application/AppButton/View";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import AppConfig from "../../../../branding/App_config";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 const colors = AppConfig.lightColors.default;
 
@@ -44,7 +45,7 @@ export const Variant3Intro = (props) => {
   return (
 
     <View style={screenStyles.container}>
-      <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content" />
+      <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content" />
 
       <Carousel
         ref={(c) => {

@@ -14,6 +14,7 @@ import { commonLightStyles } from "../../../../branding/carter/styles/light/Styl
 import { CircularBanner } from "../../../components/Application/CicularBanner/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 const assets = AppConfig.assets.default;
 
@@ -51,7 +52,7 @@ export const Variant2SignupScreen = (props) => {
 
             <View style={screenStyles.container}>
 
-                <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
+                <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
                 <AppHeader
                     isTranslucent
@@ -67,8 +68,8 @@ export const Variant2SignupScreen = (props) => {
                     <CircularBanner
                       icon={IconNames.BagShopping}
                       theme={"orange"}
-                      width={wp(85)}
-                      height={wp(85)}
+                      width={wp(75)}
+                      height={wp(75)}
                     />
                 </View>
 

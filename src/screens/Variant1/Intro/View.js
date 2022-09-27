@@ -10,6 +10,7 @@ import Globals from "../../../utils/Globals";
 import AppButton from "../../../components/Application/AppButton/View";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 export const Variant1Intro = (props) => {
 
@@ -43,7 +44,7 @@ export const Variant1Intro = (props) => {
 
         <View style={screenStyles.container}>
 
-            <StatusBar backgroundColor={colors.primaryBackground} barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
+            <FocusAwareStatusBar backgroundColor={colors.primaryBackground} barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
 
             <View style={screenStyles.introUpperContainer}>
 
@@ -58,9 +59,8 @@ export const Variant1Intro = (props) => {
                     onSnapToItem={(index) => {
                         setActiveSlideIndex(index)
                     }}
-                    enableMomentum={true}
-                    decelerationRate={0.9}
                 />
+
 
                 <Pagination
                     dotsLength={Globals.intro1Items.length}

@@ -13,6 +13,7 @@ import { commonLightStyles } from "../../../../branding/carter/styles/light/Styl
 import Utilities from "../../../utils/UtilityMethods";
 import { SvgIcon } from "../../../components/Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 const assets = AppConfig.assets.default;
@@ -48,7 +49,7 @@ export const Variant3SignupScreen = (props) => {
                 }}
                 showsVerticalScrollIndicator={false}>
 
-                <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+                <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
 
                 <View style={screenStyles.container}>
 

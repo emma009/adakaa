@@ -19,6 +19,7 @@ import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
 import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import {SvgIcon} from "../../../components/Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 //Constants
@@ -56,11 +57,17 @@ export const Variant1Home = (props) => {
                 <Carousel
                     ref={_carousel}
                     data={slider_data}
-                    renderItem={({item}) => <Image
-                        source={item.img}
-                        style={screenStyles.promotionSliderContainer}
-                        resizeMode={"cover"}
-                    />}
+                    renderItem={({item}) => {
+                        return <TouchableOpacity onPress={() => {
+                            props.navigation.navigate(Routes.POPULAR_DEALS)
+                        }}>
+                            <Image
+                                source={item.img}
+                                style={screenStyles.promotionSliderContainer}
+                                resizeMode={"cover"}
+                            />
+                        </TouchableOpacity>
+                    }}
                     sliderWidth={globalStyles.gridWidth}
                     itemWidth={globalStyles.gridWidth}
                     onSnapToItem={(index) => setActiveSlideIndex(index)}
@@ -88,7 +95,7 @@ export const Variant1Home = (props) => {
     return (
         <View style={[screenStyles.mainWrapper, {paddingTop: Globals.SAFE_AREA_INSET.top}]}>
 
-            <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
+            <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
             <View style={screenStyles.parentWrapper}>
 

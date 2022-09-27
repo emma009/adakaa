@@ -12,6 +12,7 @@ import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { SvgIcon } from "../../components/Application/SvgIcon/View";
 import IconNames from "../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 const assets = AppConfig.assets.default;
 
@@ -63,7 +64,8 @@ export const Search = (props) => {
     return (
 
         <View style={screenStyles.container}>
-            <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"} />
+            <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
+
 
             <View style={screenStyles.mainContainer}>
 

@@ -11,6 +11,7 @@ import AppButton from "../../../components/Application/AppButton/View";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import { CircularBanner } from "../../../components/Application/CicularBanner/View";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 export const Variant2Intro = (props) => {
@@ -49,7 +50,7 @@ export const Variant2Intro = (props) => {
     return (
 
         <View style={screenStyles.container}>
-          <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content" />
+          <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content" />
             <View style={screenStyles.introUpperContainer}>
 
                 <Carousel

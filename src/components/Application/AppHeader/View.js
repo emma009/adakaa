@@ -107,16 +107,22 @@ const AppHeader = (props) => {
                     </View>
                 </TouchableWithoutFeedback>
             }
+            statusBarProps={{ translucent: true }}
             containerStyle={[
                 !transparentHeader && containerShadow,
                 headerWithBackground && containerStyle,
                 transparentHeader && transparentContainerStyle,
                 bottomMargin,
-                Platform.OS === 'android' && {
-                    marginTop: isTranslucent ? -10 : 0,
-                    paddingTop: 0,
-                    height: 56
-                },
+                Platform.select({
+                    android: Platform.Version <= 20 ? { paddingTop: 0, height: 56 } : {},
+                })
+                // {paddingTop: 0}
+                // {marginTop: Platform.OS === 'ios' ? 0 : -24}
+                // Platform.OS === 'android' && {
+                //     marginTop: isTranslucent ? -10 : 0,
+                //     paddingTop: 0,
+                //     height: 56
+                // },
 
             ]}
 

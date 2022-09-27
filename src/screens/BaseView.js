@@ -6,6 +6,7 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { commonDarkStyles } from "../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../branding/carter/styles/light/Style";
 import { useTheme } from "@react-navigation/native";
+import {FocusAwareStatusBar} from "../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 const BaseView = (props) => {
@@ -36,7 +37,7 @@ const BaseView = (props) => {
 
             {
                 showAppHeader &&
-                <StatusBar backgroundColor={"transparent"} barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
+                <FocusAwareStatusBar backgroundColor={"transparent"} barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
 
             }
 

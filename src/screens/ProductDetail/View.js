@@ -23,6 +23,7 @@ import AppButton from "../../components/Application/AppButton/View";
 import {useTheme} from "@react-navigation/native";
 import IconNames from "../../../branding/carter/assets/IconNames";
 import {SvgIcon} from "../../components/Application/SvgIcon/View";
+import {FocusAwareStatusBar} from "../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 export const ProductDetail = (props) => {
@@ -46,7 +47,7 @@ export const ProductDetail = (props) => {
 
     return (
         <View style={screenStyles.container}>
-            <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
+            <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
             <View style={screenStyles.imageContainer}>
 

@@ -8,6 +8,7 @@ import { StackActions, useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
 import OtpInputs from "react-native-otp-inputs";
+import {FocusAwareStatusBar} from "../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 const assets = AppConfig.assets.default;
@@ -47,7 +48,7 @@ export const VerifyPhoneOTP = (props) => {
 
     return (
         <View style={screenStyles.container}>
-            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
+            <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
 
             <AppHeader
                 navigation={props.navigation}

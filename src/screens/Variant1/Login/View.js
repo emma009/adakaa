@@ -11,6 +11,7 @@ import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style"
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import { SvgIcon } from "../../../components/Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 const assets = AppConfig.assets.default;
 
@@ -24,7 +25,7 @@ export const Variant1LoginScreen = (props) => {
 
     return (
         <View style={screenStyles.container}>
-            <StatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+            <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
 
           <View style={screenStyles.headerContainer}>
             <Image source={assets.login_header1} style={screenStyles.headerImage}/>

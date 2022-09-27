@@ -29,6 +29,7 @@ export const FavouritesBottomSheet = (props) => {
   // viewType : 1 = Create New List
   // viewType : 2 = Favourite List
   const [viewType, setViewType] = useState(2);
+  const [favouriteName, setFavouriteName] = useState("");
   const [favouriteList, setFavouriteList] = useState(Globals.favouritesList);
   const [selectedFavouriteList, setSelectedFavouriteList] = useState(Globals.favouritesList[0].itemLabel);
 
@@ -84,7 +85,9 @@ export const FavouritesBottomSheet = (props) => {
               textInputRef={r => (textInputRef = r)}
               leftIcon={IconNames.BagShopping}
               placeholder={"Enter your list title"}
-              onChangeText={(value) => {
+              value={favouriteName}
+              onChangeText={(favouriteName) => {
+                  setFavouriteName(favouriteName)
               }}
             />
 

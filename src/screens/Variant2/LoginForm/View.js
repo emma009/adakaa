@@ -15,6 +15,7 @@ import { commonLightStyles } from "../../../../branding/carter/styles/light/Styl
 import { CircularBanner } from "../../../components/Application/CicularBanner/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 const assets = AppConfig.assets.default;
@@ -47,7 +48,7 @@ export const Variant2LoginFormScreen = (props) => {
             }}
             showsVerticalScrollIndicator={false}>
             <View style={screenStyles.container}>
-                <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
+                <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
                 <AppHeader
                     navigation={props.navigation}
@@ -63,8 +64,8 @@ export const Variant2LoginFormScreen = (props) => {
                     <CircularBanner
                       icon={IconNames.Key}
                       theme={"blue"}
-                      width={wp(85)}
-                      height={wp(85)}
+                      width={wp(75)}
+                      height={wp(75)}
                     />
                 </View>
 

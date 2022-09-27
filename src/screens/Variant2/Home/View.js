@@ -1,5 +1,14 @@
 import React, {useRef, useState} from 'react';
-import {FlatList, Image, StatusBar, Text, TouchableOpacity, useColorScheme, View} from "react-native";
+import {
+    FlatList,
+    Image,
+    StatusBar,
+    Text,
+    TouchableHighlight,
+    TouchableOpacity,
+    useColorScheme,
+    View
+} from "react-native";
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Carousel, {Pagination} from 'react-native-snap-carousel';
@@ -17,6 +26,7 @@ import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
 import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {SvgIcon} from "../../../components/Application/SvgIcon/View";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 //Constants
@@ -58,11 +68,17 @@ export const Variant2Home = (props) => {
                 <Carousel
                     ref={_carousel}
                     data={slider_data}
-                    renderItem={({item}) => <Image
-                        source={item.img}
-                        style={screenStyles.promotionSliderContainer}
-                        resizeMode={"cover"}
-                    />}
+                    renderItem={({item}) => {
+                        return <TouchableOpacity onPress={() => {
+                            props.navigation.navigate(Routes.POPULAR_DEALS)
+                        }}>
+                            <Image
+                                source={item.img}
+                                style={screenStyles.promotionSliderContainer}
+                                resizeMode={"cover"}
+                            />
+                        </TouchableOpacity>
+                    }}
                     sliderWidth={globalStyles.gridWidth}
                     itemWidth={globalStyles.gridWidth}
                     onSnapToItem={(index) => setActiveSlideIndex(index)}
@@ -92,7 +108,7 @@ export const Variant2Home = (props) => {
 
         <View style={[screenStyles.mainWrapper]}>
 
-            <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
+            <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
             <View style={screenStyles.mainContainer}>
 
@@ -114,23 +130,35 @@ export const Variant2Home = (props) => {
 
                                 <View style={screenStyles.secondarySliderContainer}>
 
-                                    <Image
-                                        source={require("./Assets/Images/banner1.png")}
-                                        style={screenStyles.secondaryBannerContainer}
-                                    />
+                                    <TouchableOpacity onPress={() => {
+                                        props.navigation.navigate(Routes.POPULAR_DEALS)
+                                    }}>
+                                        <Image
+                                            source={require("./Assets/Images/banner1.png")}
+                                            style={screenStyles.secondaryBannerContainer}
+                                        />
+                                    </TouchableOpacity>
 
-                                    <Image
-                                        source={require("./Assets/Images/banner2.png")}
-                                        style={screenStyles.secondaryBannerContainer}
-                                    />
+                                    <TouchableOpacity onPress={() => {
+                                        props.navigation.navigate(Routes.POPULAR_DEALS)
+                                    }}>
+                                        <Image
+                                            source={require("./Assets/Images/banner2.png")}
+                                            style={screenStyles.secondaryBannerContainer}
+                                        />
+                                    </TouchableOpacity>
 
 
                                 </View>
 
-                                <Image
-                                    source={require("./Assets/Images/banner3.png")}
-                                    style={screenStyles.tertiaryBannerContainer}
-                                />
+                                <TouchableOpacity onPress={() => {
+                                    props.navigation.navigate(Routes.POPULAR_DEALS)
+                                }}>
+                                    <Image
+                                        source={require("./Assets/Images/banner3.png")}
+                                        style={screenStyles.tertiaryBannerContainer}
+                                    />
+                                </TouchableOpacity>
 
 
                                 <TouchableOpacity onPress={() => {

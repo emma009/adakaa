@@ -6,7 +6,7 @@ import creditcardutils from "creditcardutils";
 
 export const CreditCard = (props) => {
 
-  const height = props.height || 190;
+  const height = props.height || 240;
   const width = props.width || 300;
   const fontSize = props.fontSize || 15;
   const fontColor = props.fontColor || '#FFFFFF';
@@ -226,14 +226,14 @@ const styles = StyleSheet.create({
   },
   cardTypeIconContainer: {
     justifyContent: 'center',
-    height: 27,
-    width: 27 * (125 / 80),
+    height: 50,
+    width: 50 * (125 / 80),
     alignItems: 'center',
     alignSelf: "flex-start"
   },
   cardTypeIcon: {
-    height: 30,
-    width: 30 * (125 / 80),
+    height: 50,
+    width: 50 * (125 / 80),
   },
   rowContainer: {
     flexDirection: 'row',

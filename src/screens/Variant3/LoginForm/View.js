@@ -12,6 +12,7 @@ import {CustomSwitch} from "../../../components/Global/CustomSwitch/View";
 import AppButton from "../../../components/Application/AppButton/View";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 const assets = AppConfig.assets.default;
@@ -42,7 +43,7 @@ export const Variant3LoginFormScreen = (props) => {
                 }}
                 showsVerticalScrollIndicator={false}>
                 <View style={screenStyles.container}>
-                    <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
+                    <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
 
                     <AppHeader
                       overrideTheme={"light"}

@@ -14,6 +14,7 @@ import { commonLightStyles } from "../../../../branding/carter/styles/light/Styl
 import Routes from "../../../navigation/Routes";
 import { CircularBanner } from "../../../components/Application/CicularBanner/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 const assets = AppConfig.assets.default;
@@ -43,7 +44,7 @@ export const Variant2ForgotPassword = (props) => {
             }}
             showsVerticalScrollIndicator={false}>
             <View style={screenStyles.container}>
-              <StatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
+              <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
                 <AppHeader
                     navigation={props.navigation}

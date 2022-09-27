@@ -15,7 +15,7 @@ export const Styles = function(styles, scheme, colors) {
         },
 
         leftContainer: {
-            width: "35%",
+            width: "25%",
             borderRightColor: colors.borderColorLight,
             borderRightWidth: 1,
             borderTopLeftRadius: hp(0.75),
@@ -44,7 +44,7 @@ export const Styles = function(styles, scheme, colors) {
         },
 
         inputContainerStyle: {
-            width: "65%",
+            width: "75%",
             marginRight: 100,
             justifyContent: "center",
         }

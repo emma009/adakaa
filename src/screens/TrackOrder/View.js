@@ -166,7 +166,7 @@ export const TrackOrder = (props) => {
                                 onPress={() => {
                                     props.navigation.dispatch(
                                         StackActions.replace(Config.SELECTED_VARIANT === Routes.INTRO_SCREEN1 ?
-                                        Routes.HOME_VARIANT1 : Config.SELECTED_VARIANT === Routes.INTRO_SCREEN1 ?
+                                        Routes.HOME_VARIANT1 : Config.SELECTED_VARIANT === Routes.INTRO_SCREEN2 ?
                                         Routes.HOME_VARIANT2 :
                                         Routes.HOME_VARIANT3)
                                     );

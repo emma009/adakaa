@@ -10,6 +10,7 @@ import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 const assets = AppConfig.assets.default;
 const colors = AppConfig.lightColors.default;
@@ -25,7 +26,7 @@ export const Variant3LoginScreen = (props) => {
 
   return (
         <ImageBackground source={assets.login_header3} style={screenStyles.container}>
-            <StatusBar translucent backgroundColor={"transparent"} barStyle="light-content"/>
+            <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="light-content"/>
 
             <View style={screenStyles.headerImage}/>
 

@@ -18,6 +18,7 @@ import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style"
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import { SvgIcon } from "../../../components/Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 const assets = AppConfig.assets.default;
 
@@ -55,7 +56,7 @@ export const Variant1Profile = (props) => {
 
   return (
     <View style={screenStyles.mainContainer}>
-      <StatusBar barStyle={scheme === "dark" ? "light-content" : "dark-content"} />
+      <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
       <View style={screenStyles.upperContainer} />
 

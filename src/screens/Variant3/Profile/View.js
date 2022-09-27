@@ -19,6 +19,7 @@ import { commonLightStyles } from "../../../../branding/carter/styles/light/Styl
 import { SvgIcon } from "../../../components/Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import Routes from "../../../navigation/Routes";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 const assets = AppConfig.assets.default;
 
@@ -54,7 +55,7 @@ export const Variant3Profile = (props) => {
 
     return (
         <View style={screenStyles.mainContainer}>
-          <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+          <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 
           <View style={screenStyles.upperContainer} >
 

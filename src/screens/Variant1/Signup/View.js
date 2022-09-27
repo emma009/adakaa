@@ -13,6 +13,7 @@ import { useTheme } from "@react-navigation/native";
 import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
 import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
+import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 const assets = AppConfig.assets.default;
@@ -48,7 +49,9 @@ export const Variant1SignupScreen = (props) => {
 
             <View style={screenStyles.container}>
 
-              <View style={screenStyles.headerContainer}>
+                <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
+
+                <View style={screenStyles.headerContainer}>
                 <Image source={assets.signup_form_header1} style={screenStyles.headerImage}/>
               </View>
 
