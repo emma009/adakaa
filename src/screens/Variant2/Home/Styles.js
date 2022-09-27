@@ -1,10 +1,10 @@
-import { heightPercentageToDP as hp, widthPercentageToDP } from "react-native-responsive-screen";
+import {heightPercentageToDP as hp, widthPercentageToDP} from "react-native-responsive-screen";
 import AppConfig from "../../../../branding/App_config";
 
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
-export const Styles = function(styles, scheme, colors) {
+export const Styles = function (styles, scheme, colors) {
 
     return {
         mainWrapper: {
@@ -12,9 +12,7 @@ export const Styles = function(styles, scheme, colors) {
             backgroundColor: scheme === "dark" ? colors.primaryBackground : colors.secondaryBackground,
         },
 
-        parentWrapper: {
-
-        },
+        parentWrapper: {},
 
         mainContainer: {
             width: styles.gridWidth,

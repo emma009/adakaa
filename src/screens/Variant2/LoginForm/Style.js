@@ -4,7 +4,7 @@ import AppConfig from "../../../../branding/App_config";
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
-export const Styles = function(styles, colors) {
+export const Styles = function (styles, colors) {
 
     return {
 
@@ -65,12 +65,12 @@ export const Styles = function(styles, colors) {
         },
 
         forgotPasswordContainer: {
-            flexDirection:"row",
+            flexDirection: "row",
             marginBottom: hp(1)
         },
 
         accountBottomContainer: {
-            flexDirection:"row",
+            flexDirection: "row",
             alignItems: "center",
             justifyContent: "center"
         },

@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
 
 import {Switch} from "react-native-switch";
-import { useTheme } from "@react-navigation/native";
+import {useTheme} from "@react-navigation/native";
 
 export const CustomSwitch = (props) => {
 
     const [checked, setChecked] = useState(false);
 
 
-  const { colors } = useTheme();
+    const {colors} = useTheme();
 
 
-  const {
+    const {
         onValueChange
     } = props;
 

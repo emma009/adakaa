@@ -1,23 +1,13 @@
 import React, {useState} from 'react';
-import {
-  FlatList,
-  Image,
-  StatusBar,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  useColorScheme,
-  View,
-} from "react-native";
-import {Icon} from 'react-native-elements';
-import { Styles } from "./Styles";
+import {FlatList, Image, Text, TouchableOpacity, useColorScheme, View,} from "react-native";
+import {Styles} from "./Styles";
 import AppConfig from "../../../../branding/App_config";
 import Utilities from "../../../utils/UtilityMethods";
 import Globals from "../../../utils/Globals";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
-import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
+import {SvgIcon} from "../../../components/Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
@@ -25,14 +15,14 @@ const assets = AppConfig.assets.default;
 
 export const Variant2Profile = (props) => {
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
-  const screenStyles = Styles(globalStyles, scheme, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, scheme, colors);
 
 
-  //Internal States
+    //Internal States
     const [profileImage, setProfileImage] = useState("");
 
     const renderProfileListItem = (item, index) => {
@@ -41,14 +31,15 @@ export const Variant2Profile = (props) => {
             onPress={() => item.onPress()}
             style={screenStyles.profileListingItemContainer}>
 
-          <SvgIcon type={item.icon} width={20} height={20} color={colors.activeColor} style={screenStyles.profileListingItemLeftImage} />
+            <SvgIcon type={item.icon} width={20} height={20} color={colors.activeColor}
+                     style={screenStyles.profileListingItemLeftImage}/>
 
 
             <Text style={screenStyles.profileListingItemText}>{item.title}</Text>
 
             <View style={screenStyles.profileListingItemRightContainer}>
 
-              <SvgIcon type={IconNames.ChevronRight} width={15} height={15} color={colors.switchBorder} />
+                <SvgIcon type={IconNames.ChevronRight} width={15} height={15} color={colors.switchBorder}/>
 
             </View>
         </TouchableOpacity>
@@ -56,7 +47,7 @@ export const Variant2Profile = (props) => {
 
     return (
         <View style={screenStyles.mainContainer}>
-            <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
+            <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
 
             <View style={screenStyles.upperContainer}/>
 
@@ -93,11 +84,11 @@ export const Variant2Profile = (props) => {
                     activeOpacity={0.8} style={
                     [
                         globalStyles.buttonShadow,
-                      screenStyles.profileImageAccessoryViewContainer
+                        screenStyles.profileImageAccessoryViewContainer
                     ]
                 }>
 
-                  <SvgIcon type={IconNames.Camera} width={20} height={20} color={colors.white} />
+                    <SvgIcon type={IconNames.Camera} width={20} height={20} color={colors.white}/>
 
                 </TouchableOpacity>
 

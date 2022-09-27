@@ -6,7 +6,7 @@ import Globals from "../../utils/Globals";
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
-export const Styles = function(scheme, colors) {
+export const Styles = function (scheme, colors) {
 
     return {
         container: {
@@ -111,7 +111,7 @@ export const Styles = function(scheme, colors) {
         cartCounterContainer: {
             width: "100%",
             flexDirection: "row",
-            justifyContent:"space-between",
+            justifyContent: "space-between",
             alignItems: "center",
             backgroundColor: colors.primaryBackground,
             marginVertical: hp("1")

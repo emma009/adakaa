@@ -6,7 +6,7 @@ const Typography = AppConfig.typography.default;
 const Fonts = AppConfig.fonts.default;
 
 
-export const Styles = function(scheme, styles, colors) {
+export const Styles = function (scheme, styles, colors) {
 
     return {
 

@@ -4,7 +4,7 @@ import AppConfig from "../../../../branding/App_config";
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
-export const Styles = function(scheme, colors) {
+export const Styles = function (scheme, colors) {
 
     return {
         swipeableContainer: {

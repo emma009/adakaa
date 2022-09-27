@@ -1,16 +1,16 @@
 import React from 'react';
-import { Animated, Image, TouchableOpacity, useColorScheme, View } from "react-native";
+import {Animated, Image, TouchableOpacity, useColorScheme, View} from "react-native";
 import {Text} from 'react-native-elements';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen'
-import { Styles } from "./Style"
+import {Styles} from "./Style"
 import AppConfig from "../../../../branding/App_config";
 import Easing from "react-native/Libraries/Animated/Easing";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
-import { SvgIcon } from "../SvgIcon/View";
+import {SvgIcon} from "../SvgIcon/View";
 
 const PropTypes = require('prop-types');
 
@@ -35,11 +35,12 @@ export const CardItem = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
     const itemStyles = Styles(scheme, colors);
 
+    //Props
     const {
         isTouchable,
         isActive,
@@ -56,7 +57,7 @@ export const CardItem = (props) => {
                 onPress()
             }}
             style={[itemStyles.container, isActive && itemStyles.activeContainer]}>
-            <View style={ itemStyles.touchableChildContainer }>
+            <View style={itemStyles.touchableChildContainer}>
                 {child}
             </View>
         </TouchableOpacity>
@@ -72,7 +73,7 @@ export const CardItem = (props) => {
                 }}
                 style={itemStyles.rightSwipeableContainer}>
 
-                <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white} />
+                <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white}/>
 
             </TouchableOpacity>
 
@@ -104,8 +105,7 @@ export const CardItem = (props) => {
 
         if (item.type === "Visa Card") {
             icon = assets.visa_icon;
-        }
-        else if (item.type === "Paypal") {
+        } else if (item.type === "Paypal") {
             icon = assets.paypal_coloured_icon;
         }
 
@@ -141,7 +141,8 @@ export const CardItem = (props) => {
 
                 <View>
                     <Text style={itemStyles.titleText}>{item.type === "Paypal" ? item.name : item.type}</Text>
-                    <Text style={[itemStyles.subtitleText, {marginVertical: hp(0.5)}]}>{item.type === "Paypal" ? item.email : item.cardNo}</Text>
+                    <Text
+                        style={[itemStyles.subtitleText, {marginVertical: hp(0.5)}]}>{item.type === "Paypal" ? item.email : item.cardNo}</Text>
 
                     <View style={itemStyles.centerTextContainer}>
 
@@ -163,8 +164,8 @@ export const CardItem = (props) => {
                         {
                             item.type === "Paypal" &&
                             <>
-                            <Text style={itemStyles.subtitleText}>{"Added on: "}</Text>
-                            <Text style={itemStyles.subtitleText}>{item.addedOn}</Text>
+                                <Text style={itemStyles.subtitleText}>{"Added on: "}</Text>
+                                <Text style={itemStyles.subtitleText}>{item.addedOn}</Text>
                             </>
                         }
 
@@ -178,7 +179,7 @@ export const CardItem = (props) => {
             {
                 (showActiveIcon && isActive) &&
                 <View style={itemStyles.rightIconContainer}>
-                    <SvgIcon type={IconNames.CheckCircle} width={22} height={22} color={colors.activeColor} />
+                    <SvgIcon type={IconNames.CheckCircle} width={22} height={22} color={colors.activeColor}/>
                 </View>
             }
 

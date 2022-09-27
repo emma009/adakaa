@@ -1,43 +1,43 @@
 import React, {useState} from 'react';
-import { Animated, Image, ScrollView, useColorScheme, View } from "react-native";
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {Animated, ScrollView, useColorScheme, View} from "react-native";
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import Accordion from 'react-native-collapsible/Accordion';
 import BaseView from "../BaseView"
 import {Divider, Text} from "react-native-elements";
-import { Styles } from "./Styles";
+import {Styles} from "./Styles";
 import Easing from "react-native/Libraries/Animated/Easing";
 import Globals from "../../utils/Globals";
-import { useTheme } from "@react-navigation/native";
+import {useTheme} from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
-import { SvgIcon } from "../../components/Application/SvgIcon/View";
+import {SvgIcon} from "../../components/Application/SvgIcon/View";
 import IconNames from "../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
 
 //Animation Constants
 const activeAnimConfig = {
-  toValue: 1,
-  duration: 300,
-  easing: Easing.linear,
-  useNativeDriver: true,
+    toValue: 1,
+    duration: 300,
+    easing: Easing.linear,
+    useNativeDriver: true,
 };
 
 const deActiveAnimConfig = {
-  toValue: 0,
-  duration: 300,
-  easing: Easing.linear,
-  useNativeDriver: true,
+    toValue: 0,
+    duration: 300,
+    easing: Easing.linear,
+    useNativeDriver: true,
 };
 export const MyOrders = (props) => {
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const screenStyles = Styles(scheme, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const screenStyles = Styles(scheme, colors);
 
 
-  //Internal States
-  const [activeSections, setActiveSections] = useState([]);
+    //Internal States
+    const [activeSections, setActiveSections] = useState([]);
 
     const renderOrdersHeader = (section, index, isActive) => {
 
@@ -66,7 +66,8 @@ export const MyOrders = (props) => {
                         style={[screenStyles.headerLeftIconContainer,
                             section.isOrderDelivered && {backgroundColor: colors.subHeadingTertiaryColor}]}>
 
-                      <SvgIcon type={IconNames.BoxOpen} width={30} height={30} color={section.isOrderDelivered ? colors.subHeadingColor : colors.subHeadingSecondaryColor} />
+                        <SvgIcon type={IconNames.BoxOpen} width={30} height={30}
+                                 color={section.isOrderDelivered ? colors.subHeadingColor : colors.subHeadingSecondaryColor}/>
 
                     </View>
 
@@ -77,7 +78,7 @@ export const MyOrders = (props) => {
                                 section.isOrderDelivered && {color: colors.subHeadingColor}
                             ]}>{section.orderNo}</Text>
                         <Text style={screenStyles.headerSubtitleText}>{section.dateTime}</Text>
-                        <View style={ screenStyles.itemsHorizontalContainer }>
+                        <View style={screenStyles.itemsHorizontalContainer}>
                             <Text style={screenStyles.headerSubtitleText}>{"Items: "}</Text>
                             <Text style={[
                                 {
@@ -100,15 +101,15 @@ export const MyOrders = (props) => {
 
                     </View>
 
-                  {
-                    !section.isOrderDelivered &&
-                    <View style={screenStyles.headerRightIconContainer}>
-                      <Animated.Image source={assets.drop_down_icon} style={[
-                        {transform: [{rotate: spin}]},
-                        screenStyles.headerRightIcon
-                      ]} resizeMode={"contain"}/>
-                    </View>
-                  }
+                    {
+                        !section.isOrderDelivered &&
+                        <View style={screenStyles.headerRightIconContainer}>
+                            <Animated.Image source={assets.drop_down_icon} style={[
+                                {transform: [{rotate: spin}]},
+                                screenStyles.headerRightIcon
+                            ]} resizeMode={"contain"}/>
+                        </View>
+                    }
 
 
                 </View>
@@ -246,18 +247,16 @@ export const MyOrders = (props) => {
     };
 
 
-
     const _updateSections = allActiveSections => {
-      if ( allActiveSections.length > 0 ) {
+        if (allActiveSections.length > 0) {
 
-        if ( !Globals.ordersItems[allActiveSections[0]].isOrderDelivered ) {
-          setActiveSections(allActiveSections)
+            if (!Globals.ordersItems[allActiveSections[0]].isOrderDelivered) {
+                setActiveSections(allActiveSections)
+            }
+
+        } else {
+            setActiveSections(allActiveSections)
         }
-
-      }
-      else {
-        setActiveSections(allActiveSections)
-      }
 
     };
 
@@ -280,7 +279,7 @@ export const MyOrders = (props) => {
                             renderContent={renderOrdersContent}
                             underlayColor={"transparent"}
                             expandMultiple={false}
-                            sectionContainerStyle={ screenStyles.containerSpacing }
+                            sectionContainerStyle={screenStyles.containerSpacing}
                             onChange={_updateSections}
                         />
 

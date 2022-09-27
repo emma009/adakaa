@@ -1,10 +1,10 @@
 import AppConfig from "../../../../branding/App_config";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import {heightPercentageToDP as hp} from "react-native-responsive-screen";
 
 const Typography = AppConfig.typography.default;
 const fonts = AppConfig.fonts.default;
 
-export const Styles = function(colors) {
+export const Styles = function (colors) {
 
     return {
 

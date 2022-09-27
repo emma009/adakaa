@@ -1,17 +1,16 @@
 import React from 'react';
-import { Image, Platform, TouchableWithoutFeedback, useColorScheme, View, ViewPropTypes } from "react-native";
+import {Platform, TouchableWithoutFeedback, useColorScheme, View, ViewPropTypes} from "react-native";
 import {Header} from 'react-native-elements';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen'
 import AppConfig from "../../../../branding/App_config";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
-import { SvgIcon } from "../SvgIcon/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
+import {SvgIcon} from "../SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const PropTypes = require('prop-types');
 
-const assets = AppConfig.assets.default;
 const fonts = AppConfig.fonts.default;
 const lightColors = AppConfig.lightColors.default;
 const Typography = AppConfig.typography.default;
@@ -21,14 +20,16 @@ const AppHeader = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
 
     const overrideTheme = props.overrideTheme || false;
 
     const globalStyles = overrideTheme ?
-      (overrideTheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(lightColors)) :
-      (scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors));
+        (overrideTheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(lightColors)) :
+        (scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors));
 
+
+    //Props
     const navigation = props.navigation || "";
     const title = props.title || "Title";
     const transparentHeader = props.transparentHeader || false;
@@ -40,7 +41,8 @@ const AppHeader = (props) => {
     const headerIconStyle = props.headerIconStyle || globalStyles.headerStyles.headerIconStyle;
     const headerIconContainerStyle = props.headerIconContainerStyle || globalStyles.headerStyles.headerIconContainerStyle;
     const centerContainerStyle = props.centerContainerStyle || globalStyles.headerStyles.centerContainerStyle;
-    const onRightIconPress = props.onRightIconPress || (() => {});
+    const onRightIconPress = props.onRightIconPress || (() => {
+    });
     const containerStyle = props.containerStyle || globalStyles.headerStyles.containerStyle;
     const containerShadow = props.containerShadow || globalStyles.headerStyles.headerShadowStyle;
 
@@ -62,11 +64,11 @@ const AppHeader = (props) => {
                 }}>
                     <View style={headerIconContainerStyle}>
                         <SvgIcon
-                          style={{}}
-                          color={overrideTheme ? (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor) : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)}
-                          width={25}
-                          height={25}
-                          type={IconNames.ArrowLeft} />
+                            style={{}}
+                            color={overrideTheme ? (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor) : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)}
+                            width={25}
+                            height={25}
+                            type={IconNames.ArrowLeft}/>
                     </View>
                 </TouchableWithoutFeedback>
             }
@@ -75,8 +77,8 @@ const AppHeader = (props) => {
                 text: title,
                 style: {
                     color: overrideTheme ?
-                      (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
-                      : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white),
+                        (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
+                        : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white),
                     fontFamily: fonts.RUBIK_MEDIUM,
                     fontSize: Typography.P1
                 }
@@ -89,41 +91,25 @@ const AppHeader = (props) => {
                 }}>
                     <View style={headerIconContainerStyle}>
                         <SvgIcon
-                          style={{}}
-                          color={overrideTheme ?
-                              (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
-                              : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)}
-                          width={20}
-                          height={20}
-                          type={rightIcon} />
-                        {/*<Image source={rightIcon}*/}
-                        {/*       resizeMode={"contain"}*/}
-                        {/*       style={[{*/}
-                        {/*           tintColor: overrideTheme ?*/}
-                        {/*             (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)*/}
-                        {/*             : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white),*/}
-                        {/*       }, headerIconStyle]}*/}
-                        {/*/>*/}
+                            style={{}}
+                            color={overrideTheme ?
+                                (overrideTheme === "dark" ? colors.headerPrimaryColor : lightColors.headerPrimaryColor)
+                                : ((darkIcons || headerWithBackground) ? colors.headerPrimaryColor : colors.white)}
+                            width={20}
+                            height={20}
+                            type={rightIcon}/>
                     </View>
                 </TouchableWithoutFeedback>
             }
-            statusBarProps={{ translucent: true }}
+            statusBarProps={{translucent: true}}
             containerStyle={[
                 !transparentHeader && containerShadow,
                 headerWithBackground && containerStyle,
                 transparentHeader && transparentContainerStyle,
                 bottomMargin,
                 Platform.select({
-                    android: Platform.Version <= 20 ? { paddingTop: 0, height: 56 } : {},
+                    android: Platform.Version <= 20 ? {paddingTop: 0, height: 56} : {},
                 })
-                // {paddingTop: 0}
-                // {marginTop: Platform.OS === 'ios' ? 0 : -24}
-                // Platform.OS === 'android' && {
-                //     marginTop: isTranslucent ? -10 : 0,
-                //     paddingTop: 0,
-                //     height: 56
-                // },
-
             ]}
 
         />

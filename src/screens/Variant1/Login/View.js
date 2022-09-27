@@ -1,15 +1,14 @@
 import React from 'react';
-import { StatusBar, useColorScheme, View } from "react-native";
+import {useColorScheme, View} from "react-native";
 import {Button, Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import Routes from '../../../navigation/Routes';
-import { Styles } from "./Style"
+import {Styles} from "./Style"
 import AppHeader from "../../../components/Application/AppHeader/View"
-import { AppSocialButton } from "../../../components/Application/AppSocialButton/View";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
-import { SvgIcon } from "../../../components/Application/SvgIcon/View";
+import {AppSocialButton} from "../../../components/Application/AppSocialButton/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
@@ -17,19 +16,19 @@ const assets = AppConfig.assets.default;
 
 export const Variant1LoginScreen = (props) => {
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
-  const screenStyles = Styles(globalStyles, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, colors);
 
     return (
         <View style={screenStyles.container}>
             <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
 
-          <View style={screenStyles.headerContainer}>
-            <Image source={assets.login_header1} style={screenStyles.headerImage}/>
-          </View>
+            <View style={screenStyles.headerContainer}>
+                <Image source={assets.login_header1} style={screenStyles.headerImage}/>
+            </View>
 
             <AppHeader
                 isTranslucent

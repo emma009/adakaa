@@ -28,11 +28,6 @@ const assets = {
 
     drop_down_icon :      require('./images/drop_down_icon.png'),
 
-
-
-
-
-
 };
 
 export default assets;

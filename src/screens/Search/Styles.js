@@ -6,7 +6,7 @@ import Globals from "../../utils/Globals";
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
-export const Styles = function(scheme, styles, colors) {
+export const Styles = function (scheme, styles, colors) {
 
     return {
         container: {

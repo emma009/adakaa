@@ -1,21 +1,23 @@
 import React from "react";
-import { StatusBar, useColorScheme, View } from "react-native";
+import {useColorScheme, View} from "react-native";
 import AppHeader from "../components/Application/AppHeader/View";
 import Globals from "../utils/Globals";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { commonDarkStyles } from "../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../branding/carter/styles/light/Style";
-import { useTheme } from "@react-navigation/native";
+import {heightPercentageToDP as hp} from "react-native-responsive-screen";
+import {commonDarkStyles} from "../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../branding/carter/styles/light/Style";
+import {useTheme} from "@react-navigation/native";
 import {FocusAwareStatusBar} from "../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
 const BaseView = (props) => {
 
+    //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
 
+    //Props
     const navigation = props.navigation || "";
     const title = props.title || "";
     const rightIcon = props.rightIcon || "";
@@ -25,10 +27,11 @@ const BaseView = (props) => {
     const containerStyle = props.containerStyle || globalStyles.baseViewStyles.containerStyle;
     const childContainerStyle = props.childContainerStyle || globalStyles.baseViewStyles.childContainerStyle;
     const childView = props.childView || (<View></View>);
-    const onRightIconPress = props.onRightIconPress || (() => {});
+    const onRightIconPress = props.onRightIconPress || (() => {
+    });
 
 
-  return (
+    return (
         <View style={[
             containerStyle,
             !showAppHeader && {
@@ -37,7 +40,8 @@ const BaseView = (props) => {
 
             {
                 showAppHeader &&
-                <FocusAwareStatusBar backgroundColor={"transparent"} barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
+                <FocusAwareStatusBar backgroundColor={"transparent"}
+                                     barStyle={scheme === "dark" ? "light-content" : "dark-content"}/>
 
             }
 

@@ -1,13 +1,12 @@
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 import AppConfig from "../../../branding/App_config";
-import { Platform } from "react-native";
 
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-export const Styles = function(scheme, styles, colors) {
+export const Styles = function (scheme, styles, colors) {
 
     return {
         container: {
@@ -157,7 +156,6 @@ export const Styles = function(scheme, styles, colors) {
             color: colors.activeColor,
             marginRight: wp(5)
         },
-
 
 
         flatListContainer: {

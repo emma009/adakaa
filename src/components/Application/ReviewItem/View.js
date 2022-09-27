@@ -1,20 +1,21 @@
 import React from 'react';
-import { useColorScheme, View } from "react-native";
+import {useColorScheme, View} from "react-native";
 import {Avatar, Text} from 'react-native-elements';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Styles } from "./Styles";
+import {Styles} from "./Styles";
 import StarRating from "react-native-star-rating";
-import { useTheme } from "@react-navigation/native";
+import {useTheme} from "@react-navigation/native";
 
 
 export const ReviewItem = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const itemStyles = Styles(scheme, colors);
 
 
+    //Props
     const {
         profileImage,
         fullName,

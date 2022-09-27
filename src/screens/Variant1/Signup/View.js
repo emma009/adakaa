@@ -1,17 +1,16 @@
 import React, {useRef, useState} from 'react';
-import { useColorScheme, View } from "react-native";
+import {useColorScheme, View} from "react-native";
 import {Button, Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
-import { Styles } from "./Style";
+import {Styles} from "./Style";
 import AppHeader from "../../../components/Application/AppHeader/View";
 import AppInput from "../../../components/Application/AppInput/View";
 import Routes from "../../../navigation/Routes";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import AppButton from "../../../components/Application/AppButton/View";
-import {heightPercentageToDP as hp} from "react-native-responsive-screen";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
@@ -23,12 +22,11 @@ export const Variant1SignupScreen = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
     const screenStyles = Styles(globalStyles, colors);
 
     //Internal States
-    const [profileImage, setProfileImage] = useState("");
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
     const [password, setPassword] = useState("")
@@ -52,8 +50,8 @@ export const Variant1SignupScreen = (props) => {
                 <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="light-content"/>
 
                 <View style={screenStyles.headerContainer}>
-                <Image source={assets.signup_form_header1} style={screenStyles.headerImage}/>
-              </View>
+                    <Image source={assets.signup_form_header1} style={screenStyles.headerImage}/>
+                </View>
 
                 <AppHeader
                     isTranslucent
@@ -70,40 +68,40 @@ export const Variant1SignupScreen = (props) => {
 
 
                     <AppInput
-                      {...globalStyles.secondaryInputStyle}
-                      textInputRef={r => (inputRef = r)}
+                        {...globalStyles.secondaryInputStyle}
+                        textInputRef={r => (inputRef = r)}
                         leftIcon={IconNames.Envelope}
                         placeholder={"Email Address"}
-                      value={email}
-                      keyboardType={"email-address"}
-                      onChangeText={(email) => {
-                          setEmail(email)
-                      }}
+                        value={email}
+                        keyboardType={"email-address"}
+                        onChangeText={(email) => {
+                            setEmail(email)
+                        }}
                     />
 
                     <AppInput
-                      {...globalStyles.secondaryInputStyle}
-                      textInputRef={r => (inputRef = r)}
+                        {...globalStyles.secondaryInputStyle}
+                        textInputRef={r => (inputRef = r)}
                         leftIcon={IconNames.PhoneFlip}
                         placeholder={"Phone"}
-                      value={phone}
-                      keyboardType={"phone-pad"}
-                      onChangeText={(phone) => {
-                          setPhone(phone)
-                      }}
+                        value={phone}
+                        keyboardType={"phone-pad"}
+                        onChangeText={(phone) => {
+                            setPhone(phone)
+                        }}
                     />
 
                     <AppInput
-                      {...globalStyles.secondaryInputStyle}
-                      containerStyle={screenStyles.passwordInputContainer}
+                        {...globalStyles.secondaryInputStyle}
+                        containerStyle={screenStyles.passwordInputContainer}
                         textInputRef={r => (inputRef = r)}
                         isPasswordField
                         leftIcon={IconNames.LockKeyhole}
                         placeholder={"Password"}
-                      value={password}
-                      onChangeText={(password) => {
-                          setPassword(password)
-                      }}
+                        value={password}
+                        onChangeText={(password) => {
+                            setPassword(password)
+                        }}
                     />
 
                     <AppButton

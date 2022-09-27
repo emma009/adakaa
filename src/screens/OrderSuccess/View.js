@@ -1,23 +1,20 @@
 import React from 'react';
-import {Image, View} from 'react-native';
+import {View} from 'react-native';
 
 import BaseView from "../BaseView"
 import {Text} from "react-native-elements";
 import Routes from "../../navigation/Routes";
 import AppButton from "../../components/Application/AppButton/View";
-import { useTheme } from "@react-navigation/native";
-import AppConfig from "../../../branding/App_config";
+import {useTheme} from "@react-navigation/native";
 import {Styles} from "./Styles"
-import { SvgIcon } from "../../components/Application/SvgIcon/View";
+import {SvgIcon} from "../../components/Application/SvgIcon/View";
 import IconNames from "../../../branding/carter/assets/IconNames";
-
-const assets = AppConfig.assets.default;
 
 
 export const OrderSuccess = (props) => {
 
-  const { colors } = useTheme();
-  const screenStyles = Styles(colors);
+    const {colors} = useTheme();
+    const screenStyles = Styles(colors);
 
     return (
 
@@ -34,7 +31,7 @@ export const OrderSuccess = (props) => {
 
                         <View style={screenStyles.mainContainer}>
 
-                          <SvgIcon type={IconNames.BagShopping} width={70} height={70} color={colors.activeColor} />
+                            <SvgIcon type={IconNames.BagShopping} width={70} height={70} color={colors.activeColor}/>
 
                             <Text style={screenStyles.titleText}>Your Order was successful!</Text>
 

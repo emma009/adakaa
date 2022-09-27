@@ -1,10 +1,10 @@
 import AppConfig from "../../../../branding/App_config";
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
 
 const Typography = AppConfig.typography.default;
 const Fonts = AppConfig.fonts.default;
 
-export const Styles = function(scheme, styles, colors) {
+export const Styles = function (scheme, styles, colors) {
 
     return {
         buttonContainer: {

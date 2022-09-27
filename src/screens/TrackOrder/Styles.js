@@ -6,8 +6,7 @@ const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-
-export const Styles = function(scheme, colors) {
+export const Styles = function (scheme, colors) {
 
     return {
 
@@ -68,7 +67,7 @@ export const Styles = function(scheme, colors) {
 
         contentContainer: {
             alignItems: "center",
-            paddingHorizontal: wp ('5'),
+            paddingHorizontal: wp('5'),
             paddingVertical: hp("3"),
             marginTop: hp("1"),
             borderRadius: hp(0.75),

@@ -1,14 +1,14 @@
 import React from 'react';
-import { ImageBackground, StatusBar, View } from "react-native";
+import {ImageBackground, View} from "react-native";
 import {Button, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import Routes from '../../../navigation/Routes';
-import { Styles } from "./Style"
+import {Styles} from "./Style"
 import AppHeader from "../../../components/Application/AppHeader/View"
-import { AppSocialButton } from "../../../components/Application/AppSocialButton/View";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import {AppSocialButton} from "../../../components/Application/AppSocialButton/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
@@ -18,13 +18,13 @@ const colors = AppConfig.lightColors.default;
 
 export const Variant3LoginScreen = (props) => {
 
-  //Theme based styling and colors
-  const { scheme } = useTheme();
-  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
-  const screenStyles = Styles(globalStyles, scheme, colors);
+    //Theme based styling and colors
+    const {scheme} = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, scheme, colors);
 
 
-  return (
+    return (
         <ImageBackground source={assets.login_header3} style={screenStyles.container}>
             <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="light-content"/>
 

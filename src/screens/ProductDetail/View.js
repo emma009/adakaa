@@ -1,13 +1,5 @@
 import React, {useRef, useState} from "react";
-import {
-    Image,
-    ScrollView,
-    StatusBar,
-    TouchableOpacity,
-    TouchableWithoutFeedback,
-    useColorScheme,
-    View,
-} from "react-native";
+import {Image, ScrollView, TouchableOpacity, TouchableWithoutFeedback, useColorScheme, View,} from "react-native";
 
 import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Text} from 'react-native-elements';
@@ -40,6 +32,7 @@ export const ProductDetail = (props) => {
     //References
     let sheetRef = useRef();
 
+    //Props
     const {
         item
     } = props.route.params

@@ -6,8 +6,7 @@ const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-
-export const Styles = function(colors){
+export const Styles = function (colors) {
 
     return {
         mainContainer: {
@@ -31,7 +30,6 @@ export const Styles = function(colors){
             marginBottom: hp("2")
         }
     }
-
 
 
 }

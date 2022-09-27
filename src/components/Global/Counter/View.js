@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 
 import {Text} from 'react-native-elements';
-import {Image, TouchableOpacity, View} from "react-native";
-import { Styles } from "./Styles";
+import {TouchableOpacity, View} from "react-native";
+import {Styles} from "./Styles";
 
 import {widthPercentageToDP as wp} from "react-native-responsive-screen";
 import AppConfig from "../../../../branding/App_config";
-import { useTheme } from "@react-navigation/native";
-import { SvgIcon } from "../../Application/SvgIcon/View";
+import {useTheme} from "@react-navigation/native";
+import {SvgIcon} from "../../Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const PropTypes = require('prop-types');
@@ -19,7 +19,7 @@ export const Counter = (props) => {
 
 
     //Theme based styling and colors
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const itemStyles = Styles(colors);
 
     //Default Props
@@ -54,35 +54,35 @@ export const Counter = (props) => {
             }]}>
 
                 <TouchableOpacity style={[
-                  itemStyles.actionContainer, {
-                    width: spacing,
-                    height: spacing,
-                    borderRightColor: borderColor,
-                    borderRightWidth: borderWidth,
-                }]} onPress={() => {
+                    itemStyles.actionContainer, {
+                        width: spacing,
+                        height: spacing,
+                        borderRightColor: borderColor,
+                        borderRightWidth: borderWidth,
+                    }]} onPress={() => {
                     _cartCountChange("subtract")
                 }}>
 
-                  <SvgIcon type={IconNames.Minus} width={18} height={18} color={colors.subHeadingSecondaryColor} />
+                    <SvgIcon type={IconNames.Minus} width={18} height={18} color={colors.subHeadingSecondaryColor}/>
 
                 </TouchableOpacity>
                 <View style={[
-                  itemStyles.actionContainer, {
-                    width: spacing,
-                }]}>
+                    itemStyles.actionContainer, {
+                        width: spacing,
+                    }]}>
                     <Text style={itemStyles.counterText}>{cartCount}</Text>
                 </View>
 
                 <TouchableOpacity style={[
-                  itemStyles.actionContainer, {
-                    width: spacing,
-                    height: spacing,
-                    borderLeftColor: borderColor, borderLeftWidth: borderWidth,
-                }]} onPress={() => {
+                    itemStyles.actionContainer, {
+                        width: spacing,
+                        height: spacing,
+                        borderLeftColor: borderColor, borderLeftWidth: borderWidth,
+                    }]} onPress={() => {
                     _cartCountChange("add")
                 }}>
 
-                  <SvgIcon type={IconNames.Plus} width={18} height={18} color={colors.subHeadingSecondaryColor} />
+                    <SvgIcon type={IconNames.Plus} width={18} height={18} color={colors.subHeadingSecondaryColor}/>
 
                 </TouchableOpacity>
             </View>
@@ -96,43 +96,43 @@ export const Counter = (props) => {
             <View style={itemStyles.verticalContainer}>
 
                 <TouchableOpacity style={[
-                  itemStyles.actionContainer, {
-                    width: spacing,
-                    height: spacing,
-                    borderBottomColor: borderColor,
-                    borderBottomWidth: borderWidth,
-                    borderLeftColor: borderColor,
-                    borderLeftWidth: borderWidth,
-                }]} onPress={() => {
+                    itemStyles.actionContainer, {
+                        width: spacing,
+                        height: spacing,
+                        borderBottomColor: borderColor,
+                        borderBottomWidth: borderWidth,
+                        borderLeftColor: borderColor,
+                        borderLeftWidth: borderWidth,
+                    }]} onPress={() => {
                     _cartCountChange("add")
                 }}>
 
-                  <SvgIcon type={IconNames.Plus} width={18} height={18} color={colors.subHeadingSecondaryColor} />
+                    <SvgIcon type={IconNames.Plus} width={18} height={18} color={colors.subHeadingSecondaryColor}/>
 
                 </TouchableOpacity>
                 <View style={[
-                  itemStyles.actionContainer, {
-                    width: spacing,
-                    height: spacing,
-                    borderLeftColor: borderColor,
-                    borderLeftWidth: borderWidth
-                }]}>
+                    itemStyles.actionContainer, {
+                        width: spacing,
+                        height: spacing,
+                        borderLeftColor: borderColor,
+                        borderLeftWidth: borderWidth
+                    }]}>
                     <Text style={itemStyles.counterText}>{cartCount}</Text>
                 </View>
 
                 <TouchableOpacity style={[
-                  itemStyles.actionContainer, {
-                    width: spacing,
-                    height: spacing,
-                    borderTopColor: borderColor,
-                    borderTopWidth: borderWidth,
-                    borderLeftColor: borderColor,
-                    borderLeftWidth: borderWidth,
-                }]} onPress={() => {
+                    itemStyles.actionContainer, {
+                        width: spacing,
+                        height: spacing,
+                        borderTopColor: borderColor,
+                        borderTopWidth: borderWidth,
+                        borderLeftColor: borderColor,
+                        borderLeftWidth: borderWidth,
+                    }]} onPress={() => {
                     _cartCountChange("subtract")
                 }}>
 
-                  <SvgIcon type={IconNames.Minus} width={18} height={18} color={colors.subHeadingSecondaryColor} />
+                    <SvgIcon type={IconNames.Minus} width={18} height={18} color={colors.subHeadingSecondaryColor}/>
 
                 </TouchableOpacity>
             </View>

@@ -5,7 +5,7 @@ const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-export const Styles = function(scheme, colors) {
+export const Styles = function (scheme, colors) {
 
     return {
         container: {
@@ -108,7 +108,7 @@ export const Styles = function(scheme, colors) {
         childContainer: {
             flexDirection: "row",
             height: "100%",
-            backgroundColor: scheme === "dark" ? colors.secondaryBackground  :colors.primaryBackground,
+            backgroundColor: scheme === "dark" ? colors.secondaryBackground : colors.primaryBackground,
             borderRadius: hp(0.75),
         },
 

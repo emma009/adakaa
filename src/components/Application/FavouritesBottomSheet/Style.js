@@ -1,11 +1,11 @@
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
 import AppConfig from "../../../../branding/App_config";
 
 const Typography = AppConfig.typography.default;
 const fonts = AppConfig.fonts.default;
 
 
-export const Styles = function(scheme, colors) {
+export const Styles = function (scheme, colors) {
 
     return {
         container: {

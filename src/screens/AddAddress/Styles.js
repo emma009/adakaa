@@ -5,7 +5,7 @@ import AppConfig from "../../../branding/App_config";
 const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
-export const Styles = function(colors){
+export const Styles = function (colors) {
 
     return {
         mainContainer: {

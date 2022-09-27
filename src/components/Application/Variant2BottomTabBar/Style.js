@@ -1,7 +1,7 @@
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
-export const Styles = function(styles, scheme, colors) {
+export const Styles = function (styles, scheme, colors) {
 
     return {
         container: {
@@ -62,7 +62,6 @@ export const Styles = function(styles, scheme, colors) {
         },
 
     }
-
 
 
 }

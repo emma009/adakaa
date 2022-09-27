@@ -1,15 +1,15 @@
 import React, {useRef, useState} from 'react';
-import { ImageBackground, StatusBar, useColorScheme, View } from "react-native";
+import {ImageBackground, View} from "react-native";
 import {Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import AppInput from "../../../components/Application/AppInput/View"
-import { Styles } from "./Style";
+import {Styles} from "./Style";
 import AppHeader from "../../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import AppButton from "../../../components/Application/AppButton/View";
-import { useTheme } from "@react-navigation/native";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import {useTheme} from "@react-navigation/native";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import Routes from "../../../navigation/Routes";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
@@ -23,7 +23,7 @@ export const Variant3ForgotPassword = (props) => {
 
 
     //Theme based styling and colors
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const globalStyles = commonLightStyles(colors);
     const screenStyles = Styles(globalStyles, colors, lightColors);
 
@@ -48,8 +48,8 @@ export const Variant3ForgotPassword = (props) => {
                     <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
 
                     <AppHeader
-                      overrideTheme={"light"}
-                      isTranslucent
+                        overrideTheme={"light"}
+                        isTranslucent
                         navigation={props.navigation}
                         transparentHeader
                         headerWithBack
@@ -61,7 +61,8 @@ export const Variant3ForgotPassword = (props) => {
 
                         <Text style={screenStyles.titleText}>{"Forgot Password"}</Text>
 
-                        <Text style={screenStyles.subtitleText}>{"Enter your email and we'll send you instructions on how to reset it."}</Text>
+                        <Text
+                            style={screenStyles.subtitleText}>{"Enter your email and we'll send you instructions on how to reset it."}</Text>
 
                         <AppInput
                             {...globalStyles.secondaryInputStyle}

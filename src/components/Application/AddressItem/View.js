@@ -1,16 +1,16 @@
 import React from 'react';
-import { Animated, Image, TouchableOpacity, useColorScheme, View } from "react-native";
+import {Animated, TouchableOpacity, useColorScheme, View} from "react-native";
 
 import {Text} from 'react-native-elements';
 import PropTypes from 'prop-types';
 import AppConfig from "../../../../branding/App_config";
-import { Styles } from "./Style"
+import {Styles} from "./Style"
 import Easing from "react-native/Libraries/Animated/Easing";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
-import { SvgIcon } from "../SvgIcon/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
+import {SvgIcon} from "../SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const assets = AppConfig.assets.default;
@@ -36,11 +36,12 @@ export const AddressItem = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
 
     const itemStyles = Styles(scheme, colors);
 
+    //Props
     const {
         isTouchable,
         isActive,
@@ -61,7 +62,7 @@ export const AddressItem = (props) => {
                     itemStyles.container,
                     isActive && itemStyles.activeContainer]
             }>
-            <View style={ itemStyles.touchableChildContainer }>
+            <View style={itemStyles.touchableChildContainer}>
                 {child}
             </View>
         </TouchableOpacity>
@@ -77,7 +78,7 @@ export const AddressItem = (props) => {
                 }}
                 style={itemStyles.rightSwipeableContainer}>
 
-                <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white} />
+                <SvgIcon type={IconNames.TrashAlt} width={30} height={30} color={colors.white}/>
 
             </TouchableOpacity>
 
@@ -100,7 +101,7 @@ export const AddressItem = (props) => {
                 rightThreshold={40}
                 renderRightActions={renderRightActions}
                 containerStyle={itemStyles.swipeableContainer}>
-            {child}
+                {child}
             </Swipeable>
         </View>
     }
@@ -134,7 +135,7 @@ export const AddressItem = (props) => {
 
                 <View style={itemStyles.leftImageContainer}>
 
-                    <SvgIcon type={IconNames.MapMarkerAlt} width={30} height={30} color={colors.activeColor} />
+                    <SvgIcon type={IconNames.MapMarkerAlt} width={30} height={30} color={colors.activeColor}/>
 
                 </View>
 
@@ -150,7 +151,7 @@ export const AddressItem = (props) => {
             {
                 (showActiveIcon && isActive) &&
                 <View style={itemStyles.rightIconContainer}>
-                    <SvgIcon type={IconNames.CheckCircle} width={22} height={22} color={colors.activeColor} />
+                    <SvgIcon type={IconNames.CheckCircle} width={22} height={22} color={colors.activeColor}/>
                 </View>
             }
 

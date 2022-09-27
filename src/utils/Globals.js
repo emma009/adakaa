@@ -8,11 +8,15 @@ import IconNames from "../../branding/carter/assets/IconNames";
 
 const colors = AppConfig.lightColors.default;
 
+/**
+ * App Constants
+ */
 class Globals {
 
 
     static SAFE_AREA_INSET = {}
 
+    //Variant 1 Intro
     static intro1Items = [
         {
             title: "Welcome to Carter grocery application",
@@ -36,6 +40,7 @@ class Globals {
         },
     ];
 
+    //Variant 2 Intro
     static intro2Items = [
         {
             title: "Welcome to Carter grocery application",
@@ -63,6 +68,7 @@ class Globals {
         },
     ];
 
+    //Variant 3 Intro
     static intro3Items = [
         {
             title: "Welcome to Carter grocery application",
@@ -86,6 +92,7 @@ class Globals {
         },
     ];
 
+    //Grocery Products
     static foodItems = [
         {
             id: 1,
@@ -308,6 +315,8 @@ class Globals {
         }
     ];
 
+
+    //Product Categories
     static categoryItems = [
 
         {
@@ -444,6 +453,7 @@ class Globals {
         }
     ];
 
+    //Addresses
     static addressItems = [
         {
             id: 0,
@@ -539,6 +549,7 @@ class Globals {
         }
     ];
 
+    //Self Pickup Addresses
     static selfPickupAddresses = [
         {
             id: 1,
@@ -589,6 +600,7 @@ class Globals {
         }
     ];
 
+    //Payment Methods
     static paymentMethodItems = {
 
         cardItems: [
@@ -795,6 +807,7 @@ class Globals {
 
     }
 
+    //Favourite List
     static favouritesList = [
         {
             id: 1,
@@ -846,6 +859,8 @@ class Globals {
         }
     ]
 
+
+    //Favourite Products
     static favouriteItems = [
         {
             id: 0,
@@ -893,6 +908,7 @@ class Globals {
         },
     ]
 
+    //Search History
     static searchHistoryItems = [
         "Fresh Apricots",
         "Frozen Pizza",
@@ -902,6 +918,7 @@ class Globals {
         "Fresh Vegetables",
     ]
 
+    //Transactions
     static transactionItems = [
         {
             id: 1,
@@ -995,6 +1012,7 @@ class Globals {
         }
     ];
 
+    //Orders
     static ordersItems = [
         {
             id: 1,
@@ -1197,6 +1215,7 @@ class Globals {
         },
     ];
 
+    //Product Reviews List
     static reviewsList = [
         {
             id: 1,
@@ -1242,6 +1261,7 @@ class Globals {
 
     ]
 
+    //Profile List
     static profileList = (navigation) => {
         return [
             {
@@ -1302,6 +1322,7 @@ class Globals {
         ]
     }
 
+    //Filter Other Items
     static otherFilters = [
         {
             id: 1,
@@ -1324,6 +1345,7 @@ class Globals {
 
     ]
 
+    //Filter Categories
     static filterCategories = [
         {
             id: 1,

@@ -1,10 +1,10 @@
 import React from 'react';
-import { FlatList, Image, useColorScheme, View } from "react-native";
+import {FlatList, Image, useColorScheme, View} from "react-native";
 import BaseView from "../BaseView"
 import {Text} from "react-native-elements";
-import { Styles } from "./Styles";
+import {Styles} from "./Styles";
 import Globals from "../../utils/Globals";
-import { useTheme } from "@react-navigation/native";
+import {useTheme} from "@react-navigation/native";
 import AppConfig from "../../../branding/App_config";
 
 const assets = AppConfig.assets.default;
@@ -12,13 +12,13 @@ const assets = AppConfig.assets.default;
 export const Transactions = (props) => {
 
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const screenStyles = Styles(scheme, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const screenStyles = Styles(scheme, colors);
 
 
-  const renderTransactionItem = (item, index) => {
+    const renderTransactionItem = (item, index) => {
 
         let icon = assets.master_card_icon;
 
@@ -29,7 +29,8 @@ export const Transactions = (props) => {
         }
 
         return (
-            <View style={[screenStyles.itemContainer, index === 0 && screenStyles.transactionFirstItem, index === Globals.transactionItems.length - 1 && screenStyles.transactionLastItem]}>
+            <View
+                style={[screenStyles.itemContainer, index === 0 && screenStyles.transactionFirstItem, index === Globals.transactionItems.length - 1 && screenStyles.transactionLastItem]}>
 
                 <View style={screenStyles.leftIconContainerStyle}>
                     <Image source={icon} style={screenStyles.leftIcon}/>

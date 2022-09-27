@@ -5,6 +5,7 @@ import {Alert, PermissionsAndroid, Platform} from "react-native";
 
 class UtilityMethods {
 
+    //Image Picker
     selectImage= (callback) => {
 
         let options = {

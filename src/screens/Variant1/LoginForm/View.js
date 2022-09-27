@@ -1,18 +1,17 @@
 import React, {useRef, useState} from 'react';
-import { KeyboardAvoidingView, StatusBar, useColorScheme, View } from "react-native";
+import {useColorScheme, View} from "react-native";
 import {Button, Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import AppInput from "../../../components/Application/AppInput/View"
 import Routes from '../../../navigation/Routes';
-import { Styles } from "./Style";
-import { CommonActions, StackActions, useTheme } from "@react-navigation/native";
+import {Styles} from "./Style";
+import {CommonActions, useTheme} from "@react-navigation/native";
 import AppHeader from "../../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import {CustomSwitch} from "../../../components/Global/CustomSwitch/View";
 import AppButton from "../../../components/Application/AppButton/View";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
-import Config from "../../../../branding/carter/configuration/Config";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
@@ -23,7 +22,7 @@ export const Variant1LoginFormScreen = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
     const screenStyles = Styles(globalStyles, colors);
 
@@ -66,27 +65,27 @@ export const Variant1LoginFormScreen = (props) => {
                     <Text style={screenStyles.subtitleText}>{"Sign in to your account"}</Text>
 
                     <AppInput
-                      {...globalStyles.secondaryInputStyle}
-                      textInputRef= {r => (inputRef = r)}
+                        {...globalStyles.secondaryInputStyle}
+                        textInputRef={r => (inputRef = r)}
                         leftIcon={IconNames.Envelope}
                         placeholder={"Email Address"}
-                      value={email}
-                      keyboardType={"email-address"}
-                      onChangeText={(email) => {
-                          setEmail(email)
-                      }}
+                        value={email}
+                        keyboardType={"email-address"}
+                        onChangeText={(email) => {
+                            setEmail(email)
+                        }}
                     />
 
                     <AppInput
-                      {...globalStyles.secondaryInputStyle}
-                      textInputRef={r => (inputRef = r)}
+                        {...globalStyles.secondaryInputStyle}
+                        textInputRef={r => (inputRef = r)}
                         isPasswordField
-                      leftIcon={IconNames.LockKeyhole}
+                        leftIcon={IconNames.LockKeyhole}
                         placeholder={"Password"}
-                      value={password}
-                      onChangeText={(password) => {
-                          setPassword(password)
-                      }}
+                        value={password}
+                        onChangeText={(password) => {
+                            setPassword(password)
+                        }}
                     />
 
                     <View style={screenStyles.forgotPasswordContainer}>
@@ -102,15 +101,15 @@ export const Variant1LoginFormScreen = (props) => {
                         <Text
                             style={screenStyles.accountText}>{"Remember me"}</Text>
 
-                            <Button
-                                title={"Forgot Password"}
-                                type={"clear"}
-                                containerStyle={screenStyles.forgotPasswordButtonContainer}
-                                titleStyle={screenStyles.forgotPasswordButton}
-                                onPress={() =>
-                                    props.navigation.navigate(Routes.FORGOT_PASSWORD_FORM_SCREEN1)
-                                }
-                            />
+                        <Button
+                            title={"Forgot Password"}
+                            type={"clear"}
+                            containerStyle={screenStyles.forgotPasswordButtonContainer}
+                            titleStyle={screenStyles.forgotPasswordButton}
+                            onPress={() =>
+                                props.navigation.navigate(Routes.FORGOT_PASSWORD_FORM_SCREEN1)
+                            }
+                        />
 
                     </View>
 
@@ -118,10 +117,10 @@ export const Variant1LoginFormScreen = (props) => {
                         title={"Login"}
                         onPress={() => {
                             props.navigation.dispatch(
-                              CommonActions.reset({
-                                  index: 1,
-                                  routes: [{name: Routes.HOME_VARIANT1}],
-                              }),
+                                CommonActions.reset({
+                                    index: 1,
+                                    routes: [{name: Routes.HOME_VARIANT1}],
+                                }),
                             );
                         }}
                     />

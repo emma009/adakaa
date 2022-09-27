@@ -1,38 +1,35 @@
 import React, {useRef, useState} from 'react';
-import { StatusBar, useColorScheme, View } from "react-native";
-import {Image, Text} from 'react-native-elements';
-import AppConfig from '../../../../branding/App_config';
-import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {useColorScheme, View} from "react-native";
+import {Text} from 'react-native-elements';
+import {heightPercentageToDP as hp, widthPercentageToDP as wp} from "react-native-responsive-screen";
 import AppInput from "../../../components/Application/AppInput/View"
-import { Styles } from "./Style";
+import {Styles} from "./Style";
 import AppHeader from "../../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import AppButton from "../../../components/Application/AppButton/View";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import Routes from "../../../navigation/Routes";
-import { CircularBanner } from "../../../components/Application/CicularBanner/View";
+import {CircularBanner} from "../../../components/Application/CicularBanner/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
-const assets = AppConfig.assets.default;
-
 export const Variant2ForgotPassword = (props) => {
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
-  const screenStyles = Styles(globalStyles, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, colors);
 
 
-  //Internal States
-  const [email, setEmail] = useState("")
+    //Internal States
+    const [email, setEmail] = useState("")
 
-  //References
-  let inputRef = useRef();
+    //References
+    let inputRef = useRef();
 
     return (
         <KeyboardAwareScrollView
@@ -44,7 +41,7 @@ export const Variant2ForgotPassword = (props) => {
             }}
             showsVerticalScrollIndicator={false}>
             <View style={screenStyles.container}>
-              <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
+                <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
                 <AppHeader
                     navigation={props.navigation}
@@ -57,19 +54,20 @@ export const Variant2ForgotPassword = (props) => {
                 />
 
                 <View style={screenStyles.imageContainer}>
-                  <CircularBanner
-                    icon={IconNames.Key}
-                    theme={"red"}
-                    width={wp(85)}
-                    height={wp(85)}
-                  />
+                    <CircularBanner
+                        icon={IconNames.Key}
+                        theme={"red"}
+                        width={wp(85)}
+                        height={wp(85)}
+                    />
                 </View>
 
 
                 <View style={[screenStyles.bottomContainer]}>
                     <Text style={screenStyles.titleText}>{"Forgot Password"}</Text>
 
-                    <Text style={screenStyles.subtitleText}>{"Enter your email and we'll send you instructions on how to reset it."}</Text>
+                    <Text
+                        style={screenStyles.subtitleText}>{"Enter your email and we'll send you instructions on how to reset it."}</Text>
 
                     <AppInput
                         containerStyle={{marginBottom: hp(1)}}
@@ -78,14 +76,14 @@ export const Variant2ForgotPassword = (props) => {
                         placeholder={"Email Address"}
                         value={email}
                         onChangeText={(email) => {
-                          setEmail(email)
+                            setEmail(email)
                         }}
                     />
 
                     <AppButton
                         title={'Send Link'}
                         onPress={() => {
-                          props.navigation.navigate(Routes.VERIFY_NUMBER_SCREEN)
+                            props.navigation.navigate(Routes.VERIFY_NUMBER_SCREEN)
                         }}
                     />
 

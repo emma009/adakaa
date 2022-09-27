@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {RootStack} from './src/navigation/RootStack';
-import {SafeAreaProvider, SafeAreaConsumer} from "react-native-safe-area-context";
+import {SafeAreaConsumer, SafeAreaProvider} from "react-native-safe-area-context";
 import Globals from "./src/utils/Globals";
-import { useColorScheme } from "react-native";
+import {useColorScheme} from "react-native";
 import AppConfig from "./branding/App_config";
 
 
@@ -12,43 +12,43 @@ const darkColors = AppConfig.darkColors.default;
 
 
 const DarkTheme = {
-  dark: true,
-  colors: darkColors
+    dark: true,
+    colors: darkColors
 };
 
 
 const LightTheme = {
-  dark: false,
-  colors: lightColors
+    dark: false,
+    colors: lightColors
 };
 
 
 export const App = (props) => {
 
-  const scheme = useColorScheme();
+    const scheme = useColorScheme();
 
-  return (
+    return (
 
-      <NavigationContainer theme={scheme === 'dark' ? DarkTheme : LightTheme}>
-        <SafeAreaProvider>
-          <SafeAreaConsumer>
+        <NavigationContainer theme={scheme === 'dark' ? DarkTheme : LightTheme}>
+            <SafeAreaProvider>
+                <SafeAreaConsumer>
 
-            {
-              insets => {
+                    {
+                        insets => {
 
-                Globals.SAFE_AREA_INSET = insets;
+                            Globals.SAFE_AREA_INSET = insets;
 
-                return (
+                            return (
 
-                    <RootStack/>
+                                <RootStack/>
 
-                );
-              }
-            }
-          </SafeAreaConsumer>
-        </SafeAreaProvider>
-      </NavigationContainer>
-  );
+                            );
+                        }
+                    }
+                </SafeAreaConsumer>
+            </SafeAreaProvider>
+        </NavigationContainer>
+    );
 
 
 }

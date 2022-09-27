@@ -8,6 +8,7 @@ export const CircularBanner = (props) => {
   const { colors } = useTheme();
 
 
+  //Props
   const {
     theme,
        icon,

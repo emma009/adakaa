@@ -6,7 +6,7 @@ const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-export const Styles = function(styles, scheme, colors) {
+export const Styles = function (styles, scheme, colors) {
 
     return {
 
@@ -17,13 +17,13 @@ export const Styles = function(styles, scheme, colors) {
         upperContainer: {
             width: "100%",
             height: hp("20"),
-            backgroundColor: scheme? colors.primaryBackground : colors.primaryBackground
+            backgroundColor: scheme ? colors.primaryBackground : colors.primaryBackground
         },
 
         container: {
             width: "100%",
             height: hp("80"),
-            backgroundColor: scheme? colors.secondaryBackground : colors.secondaryBackground,
+            backgroundColor: scheme ? colors.secondaryBackground : colors.secondaryBackground,
             alignItems: "center"
         },
 

@@ -1,48 +1,45 @@
 import React from 'react';
-import { StatusBar, TouchableHighlight, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
-import {Button, Image, Text} from 'react-native-elements';
-import AppConfig from '../../../../branding/App_config';
+import {useColorScheme, View} from "react-native";
+import {Button, Text} from 'react-native-elements';
 import Routes from '../../../navigation/Routes';
-import { Styles } from "./Style"
+import {Styles} from "./Style"
 import AppHeader from "../../../components/Application/AppHeader/View"
-import { AppSocialButton } from "../../../components/Application/AppSocialButton/View";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
-import { CircularBanner } from "../../../components/Application/CicularBanner/View";
-import { widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {AppSocialButton} from "../../../components/Application/AppSocialButton/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
+import {CircularBanner} from "../../../components/Application/CicularBanner/View";
+import {widthPercentageToDP as wp} from "react-native-responsive-screen";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
-const assets = AppConfig.assets.default;
-
 export const Variant2LoginScreen = (props) => {
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
-  const screenStyles = Styles(globalStyles, scheme, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, scheme, colors);
 
-  return (
+    return (
         <View style={screenStyles.container}>
-          <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
+            <FocusAwareStatusBar translucent backgroundColor={"transparent"} barStyle="dark-content"/>
 
             <AppHeader
-              headerWithBackground
-              containerStyle={screenStyles.headerContainer}
-              containerShadow={{}}
+                headerWithBackground
+                containerStyle={screenStyles.headerContainer}
+                containerShadow={{}}
                 isTranslucent
                 title={"Welcome"}
             />
 
             <View style={screenStyles.imageContainer}>
-              <CircularBanner
-                icon={IconNames.BagShopping}
-                theme={"green"}
-                width={wp(85)}
-                height={wp(85)}
-              />
+                <CircularBanner
+                    icon={IconNames.BagShopping}
+                    theme={"green"}
+                    width={wp(85)}
+                    height={wp(85)}
+                />
             </View>
 
             <View style={[screenStyles.bottomContainer]}>

@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {FlatList, Image, StatusBar, Text, TouchableOpacity, useColorScheme, View} from "react-native";
+import {FlatList, Image, Text, TouchableOpacity, useColorScheme, View} from "react-native";
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Carousel, {Pagination} from 'react-native-snap-carousel';

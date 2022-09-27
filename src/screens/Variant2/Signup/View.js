@@ -1,22 +1,19 @@
 import React, {useRef, useState} from 'react';
-import { StatusBar, useColorScheme, View } from "react-native";
-import {Button, Image, Text} from 'react-native-elements';
-import AppConfig from '../../../../branding/App_config';
-import { Styles } from "./Style";
+import {useColorScheme, View} from "react-native";
+import {Button, Text} from 'react-native-elements';
+import {Styles} from "./Style";
 import AppHeader from "../../../components/Application/AppHeader/View";
 import AppInput from "../../../components/Application/AppInput/View";
 import Routes from "../../../navigation/Routes";
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import AppButton from "../../../components/Application/AppButton/View";
-import { useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../../branding/carter/styles/light/Style";
-import { CircularBanner } from "../../../components/Application/CicularBanner/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
+import {CircularBanner} from "../../../components/Application/CicularBanner/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
-import { widthPercentageToDP as wp } from "react-native-responsive-screen";
+import {widthPercentageToDP as wp} from "react-native-responsive-screen";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
-
-const assets = AppConfig.assets.default;
 
 
 export const Variant2SignupScreen = (props) => {
@@ -24,7 +21,7 @@ export const Variant2SignupScreen = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
     const screenStyles = Styles(globalStyles, colors);
 
@@ -33,7 +30,6 @@ export const Variant2SignupScreen = (props) => {
     const [email, setEmail] = useState("")
     const [phone, setPhone] = useState("")
     const [password, setPassword] = useState("")
-
 
 
     //References
@@ -66,10 +62,10 @@ export const Variant2SignupScreen = (props) => {
 
                 <View style={screenStyles.imageContainer}>
                     <CircularBanner
-                      icon={IconNames.BagShopping}
-                      theme={"orange"}
-                      width={wp(75)}
-                      height={wp(75)}
+                        icon={IconNames.BagShopping}
+                        theme={"orange"}
+                        width={wp(75)}
+                        height={wp(75)}
                     />
                 </View>
 

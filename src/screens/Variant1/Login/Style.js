@@ -4,7 +4,7 @@ import AppConfig from "../../../../branding/App_config";
 const fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
-export const Styles = function(styles, colors) {
+export const Styles = function (styles, colors) {
 
     return {
         container: {
@@ -48,14 +48,14 @@ export const Styles = function(styles, colors) {
         },
 
         accountBottomContainer: {
-            flexDirection:"row",
+            flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
         },
 
         accountText: {
             fontFamily: fonts.RUBIK_REGULAR,
-            fontSize: Typography.P5 ,
+            fontSize: Typography.P5,
             color: colors.subHeadingColor
 
         },

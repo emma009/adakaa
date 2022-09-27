@@ -1,33 +1,23 @@
 import React, {useState} from 'react';
 
 import {Input} from 'react-native-elements';
-import {Image, TouchableOpacity, ViewPropTypes} from "react-native";
+import {TouchableOpacity, ViewPropTypes} from "react-native";
 import AppConfig from "../../../../branding/App_config";
 import Style from "./Styles"
-import { widthPercentageToDP as wp } from "react-native-responsive-screen";
-import { SvgIcon } from "../../Application/SvgIcon/View";
+import {widthPercentageToDP as wp} from "react-native-responsive-screen";
+import {SvgIcon} from "../../Application/SvgIcon/View";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 
 const PropTypes = require('prop-types');
 
 const colors = AppConfig.lightColors.default;
-const assets = AppConfig.assets.default;
-
 
 export const TextInput = (props) => {
 
+    //Internal states
     const [showObscureText, setShowObscureText] = useState(true);
 
-    const getEyeIcon = () => {
-
-        if (showObscureText) {
-            return IconNames.EyeSlash;
-        } else {
-            return IconNames.Eye;
-        }
-
-    };
-
+    //Props
     const {
         placeholderTextColor,
         onChangeText,
@@ -55,56 +45,67 @@ export const TextInput = (props) => {
     const isPasswordField = props.isPasswordField || false;
     const showPassword = props.showPassword || false;
     const rightIconTintColor = props.rightIconTintColor || colors.switchBorder;
-    const rightIconContainerStyle = props.rightIconContainerStyle || { marginRight: wp(5) };
-    const rightIconPress = props.rightIconPress || (() => {})
+    const rightIconContainerStyle = props.rightIconContainerStyle || {marginRight: wp(5)};
+    const rightIconPress = props.rightIconPress || (() => {
+    })
 
+    const getEyeIcon = () => {
+
+        if (showObscureText) {
+            return IconNames.EyeSlash;
+        } else {
+            return IconNames.Eye;
+        }
+
+    };
 
     return (
 
-      <Input
-        {...props}
-        ref={(r) => textInputRef(r)}
-        placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
-        onChangeText={(text) => onChangeText(text)}
-        containerStyle={containerStyle}
-        disabled={disabled}
-        value={value}
-        disabledInputStyle={disabledInputStyle}
-        inputContainerStyle={inputContainerStyle}
-        errorMessage={errorMessage}
-        errorStyle={errorStyle}
-        errorProps={errorProps}
-        inputComponent={inputComponent}
-        keyboardType={keyboardType}
+        <Input
+            {...props}
+            ref={(r) => textInputRef(r)}
+            placeholder={placeholder}
+            placeholderTextColor={placeholderTextColor}
+            onChangeText={(text) => onChangeText(text)}
+            containerStyle={containerStyle}
+            disabled={disabled}
+            value={value}
+            disabledInputStyle={disabledInputStyle}
+            inputContainerStyle={inputContainerStyle}
+            errorMessage={errorMessage}
+            errorStyle={errorStyle}
+            errorProps={errorProps}
+            inputComponent={inputComponent}
+            keyboardType={keyboardType}
 
-        inputStyle={[Style.defaultInputStyles, inputStyle]}
-        label={label}
-        labelStyle={[labelStyle]}
-        labelProps={labelProps}
-        leftIcon={leftIcon}
-        leftIconContainerStyle={leftIconContainerStyle}
+            inputStyle={[Style.defaultInputStyles, inputStyle]}
+            label={label}
+            labelStyle={[labelStyle]}
+            labelProps={labelProps}
+            leftIcon={leftIcon}
+            leftIconContainerStyle={leftIconContainerStyle}
 
 
-        rightIcon={
+            rightIcon={
 
-            (isPasswordField && showPassword) ? <TouchableOpacity onPress={() => setShowObscureText((showObscureText) => {
-              return !showObscureText
-          })}>
-                <SvgIcon type={getEyeIcon()} width={20} height={20} color={rightIconTintColor} />
-          </TouchableOpacity> : rightIconSource ?  <TouchableOpacity onPress={() => {
-                rightIconPress ? rightIconPress() : {}
-            }}>
-                <SvgIcon type={rightIconSource} width={20} height={20} color={rightIconTintColor} />
-            </TouchableOpacity> : null
+                (isPasswordField && showPassword) ?
+                    <TouchableOpacity onPress={() => setShowObscureText((showObscureText) => {
+                        return !showObscureText
+                    })}>
+                        <SvgIcon type={getEyeIcon()} width={20} height={20} color={rightIconTintColor}/>
+                    </TouchableOpacity> : rightIconSource ? <TouchableOpacity onPress={() => {
+                        rightIconPress ? rightIconPress() : {}
+                    }}>
+                        <SvgIcon type={rightIconSource} width={20} height={20} color={rightIconTintColor}/>
+                    </TouchableOpacity> : null
 
-          }
+            }
 
-        secureTextEntry={isPasswordField ? showPassword ? showObscureText : true : false}
+            secureTextEntry={isPasswordField ? showPassword ? showObscureText : true : false}
 
-        rightIconContainerStyle={rightIconContainerStyle}
+            rightIconContainerStyle={rightIconContainerStyle}
 
-      />
+        />
 
 
     )

@@ -1,56 +1,53 @@
-import React, { useEffect, useRef, useState } from "react";
-import { StatusBar, useColorScheme, View } from "react-native";
-import {Image, Text} from 'react-native-elements';
-import AppConfig from '../../../branding/App_config';
-import { Styles } from "./Style";
+import React, {useEffect, useRef, useState} from "react";
+import {useColorScheme, View} from "react-native";
+import {Text} from 'react-native-elements';
+import {Styles} from "./Style";
 import AppHeader from "../../components/Application/AppHeader/View"
 import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scrollview";
 import AppButton from "../../components/Application/AppButton/View";
-import { StackActions, useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
-import { CountryPickerInput } from "../../components/Application/CountryPickerInput/View";
+import {useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../branding/carter/styles/light/Style";
+import {CountryPickerInput} from "../../components/Application/CountryPickerInput/View";
 import Routes from "../../navigation/Routes";
 import {FocusAwareStatusBar} from "../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
 
 
-const assets = AppConfig.assets.default;
-
 export const VerifyPhone = (props) => {
 
 
-  //Theme based styling and colors
-  const scheme = useColorScheme();
-  const { colors } = useTheme();
-  const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
-  const screenStyles = Styles(globalStyles, colors);
+    //Theme based styling and colors
+    const scheme = useColorScheme();
+    const {colors} = useTheme();
+    const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
+    const screenStyles = Styles(globalStyles, colors);
 
-  //Internal States
-  const [counterCode, setCounterCode] = useState(59)
+    //Internal States
+    const [counterCode, setCounterCode] = useState(59)
 
     //References
     let inputRef = useRef();
     let counterCodeIntervalRef = useRef();
 
-  useEffect(() => {
-    counterCodeIntervalRef.current = setInterval(() => {
-      setCounterCode(counterCode => counterCode - 1);
-    }, 1000);
-  }, []);
+    useEffect(() => {
+        counterCodeIntervalRef.current = setInterval(() => {
+            setCounterCode(counterCode => counterCode - 1);
+        }, 1000);
+    }, []);
 
-  useEffect(() => {
-    if (counterCode === 1) {
-      return () => clearInterval(counterCodeIntervalRef.current);
-    }
-  }, [counterCode])
+    useEffect(() => {
+        if (counterCode === 1) {
+            return () => clearInterval(counterCodeIntervalRef.current);
+        }
+    }, [counterCode])
 
-  useEffect(() => {
-    return () => {
-      if (counterCode === 1) {
-        return () => clearInterval(counterCodeIntervalRef.current);
-      }
-    }
-  })
+    useEffect(() => {
+        return () => {
+            if (counterCode === 1) {
+                return () => clearInterval(counterCodeIntervalRef.current);
+            }
+        }
+    })
 
     return (
         <KeyboardAwareScrollView
@@ -64,9 +61,9 @@ export const VerifyPhone = (props) => {
             <View style={screenStyles.container}>
                 <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
 
-              {/*<View style={screenStyles.headerContainer}>*/}
-              {/*  <Image source={assets.signup_form_header1} style={screenStyles.headerImage}/>*/}
-              {/*</View>*/}
+                {/*<View style={screenStyles.headerContainer}>*/}
+                {/*  <Image source={assets.signup_form_header1} style={screenStyles.headerImage}/>*/}
+                {/*</View>*/}
 
                 <AppHeader
                     isTranslucent
@@ -83,22 +80,22 @@ export const VerifyPhone = (props) => {
                     <Text style={screenStyles.subtitleText}>{"We have sent you SMS with a code to your number."}</Text>
 
 
-                  <CountryPickerInput
-                    containerStyle={screenStyles.countryPickerInputContainer}
-                    textInputRef={r => (inputRef = r)}
-                  />
+                    <CountryPickerInput
+                        containerStyle={screenStyles.countryPickerInputContainer}
+                        textInputRef={r => (inputRef = r)}
+                    />
 
 
-
-                  <AppButton
+                    <AppButton
                         title={'Next'}
                         onPress={() => {
-                          props.navigation.navigate(Routes.VERIFY_NUMBER_OTP_SCREEN)
+                            props.navigation.navigate(Routes.VERIFY_NUMBER_OTP_SCREEN)
                         }}
                     />
 
 
-                  <Text style={[screenStyles.subtitleText, screenStyles.confirmationCode]}>{"Resent confirmation code (0:" + counterCode + ")"}</Text>
+                    <Text
+                        style={[screenStyles.subtitleText, screenStyles.confirmationCode]}>{"Resent confirmation code (0:" + counterCode + ")"}</Text>
 
 
                 </View>

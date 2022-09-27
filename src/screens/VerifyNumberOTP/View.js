@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Keyboard, StatusBar, useColorScheme, View } from "react-native";
-import { Text } from "react-native-elements";
-import AppConfig from "../../../branding/App_config";
-import { Styles } from "./Style";
+import React, {useEffect, useState} from "react";
+import {Keyboard, useColorScheme, View} from "react-native";
+import {Text} from "react-native-elements";
+import {Styles} from "./Style";
 import AppHeader from "../../components/Application/AppHeader/View";
-import { StackActions, useTheme } from "@react-navigation/native";
-import { commonDarkStyles } from "../../../branding/carter/styles/dark/Style";
-import { commonLightStyles } from "../../../branding/carter/styles/light/Style";
+import {StackActions, useTheme} from "@react-navigation/native";
+import {commonDarkStyles} from "../../../branding/carter/styles/dark/Style";
+import {commonLightStyles} from "../../../branding/carter/styles/light/Style";
 import OtpInputs from "react-native-otp-inputs";
 import {FocusAwareStatusBar} from "../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
-
-
-const assets = AppConfig.assets.default;
 
 export const VerifyPhoneOTP = (props) => {
 
@@ -21,7 +17,7 @@ export const VerifyPhoneOTP = (props) => {
 
     //Theme based styling and colors
     const scheme = useColorScheme();
-    const { colors } = useTheme();
+    const {colors} = useTheme();
     const globalStyles = scheme === "dark" ? commonDarkStyles(colors) : commonLightStyles(colors);
     const screenStyles = Styles(globalStyles, colors);
 
@@ -48,7 +44,7 @@ export const VerifyPhoneOTP = (props) => {
 
     return (
         <View style={screenStyles.container}>
-            <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
+            <FocusAwareStatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
 
             <AppHeader
                 navigation={props.navigation}

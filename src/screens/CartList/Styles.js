@@ -6,7 +6,7 @@ const Fonts = AppConfig.fonts.default;
 const Typography = AppConfig.typography.default;
 
 
-export const Styles = function(styles, colors) {
+export const Styles = function (styles, colors) {
 
     return {
         mainContainer: {
@@ -46,7 +46,7 @@ export const Styles = function(styles, colors) {
         },
 
         bottomContainerParentVariant1: {
-          paddingBottom: hp(1.8)
+            paddingBottom: hp(1.8)
         },
 
 

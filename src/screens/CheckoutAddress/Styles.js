@@ -1,30 +1,30 @@
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import {heightPercentageToDP as hp} from "react-native-responsive-screen";
 
-export const Styles = function(colors) {
+export const Styles = function (colors) {
 
-  return {
-    container: {
-      flex: 1,
-    },
+    return {
+        container: {
+            flex: 1,
+        },
 
-    listContainer: {
-      flex: 0.9,
-    },
+        listContainer: {
+            flex: 0.9,
+        },
 
-    bottomContainer: {
-      flex: 0.1,
-      justifyContent: "center"
-    },
+        bottomContainer: {
+            flex: 0.1,
+            justifyContent: "center"
+        },
 
-    addressFirstItem: {
-        marginTop: hp(3)
-    },
+        addressFirstItem: {
+            marginTop: hp(3)
+        },
 
-    addressLastItem: {
-      marginBottom: hp(1)
+        addressLastItem: {
+            marginBottom: hp(1)
+        }
+
     }
-
-  }
 
 
 }

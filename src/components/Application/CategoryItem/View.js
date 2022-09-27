@@ -8,6 +8,7 @@ import {SvgIcon} from "../SvgIcon/View";
 
 export const CategoryItem = (props) => {
 
+    //Props
     const {
         primaryTitle,
         primaryColor,
