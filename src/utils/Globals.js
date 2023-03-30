@@ -19,8 +19,8 @@ class Globals {
     //Variant 1 Intro
     static intro1Items = [
         {
-            title: "Welcome to Carter grocery application",
-            subtitle: "Carter online grocery store is the no. 1 grocery application in the world",
+            title: "A spice like “Adàkaa” is not a bad idea.",
+            subtitle: "Order products from local merchants near you & pickup same day",
             headerImg: assets.intro1
         },
         {
@@ -43,7 +43,7 @@ class Globals {
     //Variant 2 Intro
     static intro2Items = [
         {
-            title: "Welcome to Carter grocery application",
+            title: "Welcome to Adakaa multivendor stores",
             subtitle: "Carter online grocery store is the no. 1 grocery application in the world",
             headerImg: IconNames.BagShopping,
             theme: "green"
@@ -71,8 +71,8 @@ class Globals {
     //Variant 3 Intro
     static intro3Items = [
         {
-            title: "Welcome to Carter grocery application",
-            subtitle: "Carter online grocery store is the no. 1 grocery application in the world",
+            title: "Welcome to Adakaa multivendor stores",
+            subtitle: "Order from local merchants across africa & pickup same day",
             headerImg: assets.intro2_img1
         },
         {

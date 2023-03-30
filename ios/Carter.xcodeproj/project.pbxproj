@@ -11,12 +11,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2472B55FDB4BF8815B58096D /* libPods-Carter-CarterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB4A86E7EC8D2BC5B8A5557 /* libPods-Carter-CarterTests.a */; };
+		17D559E71380D8E72B59944A /* libPods-Carter-CarterTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FDF2B621D58BE1B617EF8C5 /* libPods-Carter-CarterTests.a */; };
 		33B7871749314257B14A1465 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C1A85BA27F24B61A355C29F /* Rubik-Bold.ttf */; };
 		664BD71264EE4B4691C81FE3 /* ComicNeue-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15DAA1A7D41D4382B0822C8F /* ComicNeue-Bold.ttf */; };
 		81A1CD6C0A2941E1A8251A5A /* a.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E572F42F7C464D3B93E5120C /* a.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		8CA1C572D4D2E3B9DB154221 /* libPods-Carter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F99532850CAE9576A677AFA0 /* libPods-Carter.a */; };
+		B7BEA15E38F389C2DB41873D /* libPods-Carter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A4D9F0B4520D7713A8EC7C /* libPods-Carter.a */; };
 		BC1D4A69F69D4AC481E2BFD8 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0489B5A9C65546B3936F945B /* Rubik-Regular.ttf */; };
 		D6BAB2E8A7724EA0A80A1D43 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C05274DE40B4248A4D0C52F /* Rubik-Medium.ttf */; };
 		F8A3B3EBBDC749139C9EE601 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB10C16F8D6D49D9AF2357EA /* Rubik-Light.ttf */; };
@@ -36,26 +36,26 @@
 		00E356EE1AD99517003FC87E /* CarterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* CarterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarterTests.m; sourceTree = "<group>"; };
-		0489B5A9C65546B3936F945B /* Rubik-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Regular.ttf"; path = "../branding/carter/assets/fonts/Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		02F25542FA3D7291F0C1E509 /* Pods-Carter-CarterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carter-CarterTests.release.xcconfig"; path = "Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests.release.xcconfig"; sourceTree = "<group>"; };
+		0489B5A9C65546B3936F945B /* Rubik-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Regular.ttf"; path = "../branding/carter/assets/fonts/Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		11A4D9F0B4520D7713A8EC7C /* libPods-Carter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Carter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* Carter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Carter/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Carter/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Carter/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Carter/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Carter/main.m; sourceTree = "<group>"; };
-		15DAA1A7D41D4382B0822C8F /* ComicNeue-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "ComicNeue-Bold.ttf"; path = "../branding/carter/assets/fonts/ComicNeue-Bold.ttf"; sourceTree = "<group>"; };
-		1CB4A86E7EC8D2BC5B8A5557 /* libPods-Carter-CarterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Carter-CarterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C05274DE40B4248A4D0C52F /* Rubik-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Medium.ttf"; path = "../branding/carter/assets/fonts/Rubik-Medium.ttf"; sourceTree = "<group>"; };
-		6C1A85BA27F24B61A355C29F /* Rubik-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Bold.ttf"; path = "../branding/carter/assets/fonts/Rubik-Bold.ttf"; sourceTree = "<group>"; };
-		6FE256461E67B1ED47237D6A /* Pods-Carter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carter.debug.xcconfig"; path = "Target Support Files/Pods-Carter/Pods-Carter.debug.xcconfig"; sourceTree = "<group>"; };
+		15DAA1A7D41D4382B0822C8F /* ComicNeue-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "ComicNeue-Bold.ttf"; path = "../branding/carter/assets/fonts/ComicNeue-Bold.ttf"; sourceTree = "<group>"; };
+		1FDF2B621D58BE1B617EF8C5 /* libPods-Carter-CarterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Carter-CarterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C05274DE40B4248A4D0C52F /* Rubik-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Medium.ttf"; path = "../branding/carter/assets/fonts/Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		6C1A85BA27F24B61A355C29F /* Rubik-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Bold.ttf"; path = "../branding/carter/assets/fonts/Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Carter/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		97A6C52875A6ACC5A9323809 /* Pods-Carter-CarterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carter-CarterTests.release.xcconfig"; path = "Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests.release.xcconfig"; sourceTree = "<group>"; };
-		B4C3067F9CA4FCFCD76D3316 /* Pods-Carter-CarterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carter-CarterTests.debug.xcconfig"; path = "Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B866245C4CD8BE4337D7FCB6 /* Pods-Carter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carter.release.xcconfig"; path = "Target Support Files/Pods-Carter/Pods-Carter.release.xcconfig"; sourceTree = "<group>"; };
-		DB10C16F8D6D49D9AF2357EA /* Rubik-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Light.ttf"; path = "../branding/carter/assets/fonts/Rubik-Light.ttf"; sourceTree = "<group>"; };
-		E572F42F7C464D3B93E5120C /* a.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = a.ttf; path = ../branding/carter/assets/fonts/a.ttf; sourceTree = "<group>"; };
+		820E80ECD5E4A6BC02A1F7C4 /* Pods-Carter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carter.debug.xcconfig"; path = "Target Support Files/Pods-Carter/Pods-Carter.debug.xcconfig"; sourceTree = "<group>"; };
+		909A6CE13E4810964D89D12B /* Pods-Carter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carter.release.xcconfig"; path = "Target Support Files/Pods-Carter/Pods-Carter.release.xcconfig"; sourceTree = "<group>"; };
+		B95423A20513B5406AA67F52 /* Pods-Carter-CarterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Carter-CarterTests.debug.xcconfig"; path = "Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DB10C16F8D6D49D9AF2357EA /* Rubik-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Light.ttf"; path = "../branding/carter/assets/fonts/Rubik-Light.ttf"; sourceTree = "<group>"; };
+		E572F42F7C464D3B93E5120C /* a.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = a.ttf; path = ../branding/carter/assets/fonts/a.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F99532850CAE9576A677AFA0 /* libPods-Carter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Carter.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2472B55FDB4BF8815B58096D /* libPods-Carter-CarterTests.a in Frameworks */,
+				17D559E71380D8E72B59944A /* libPods-Carter-CarterTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CA1C572D4D2E3B9DB154221 /* libPods-Carter.a in Frameworks */,
+				B7BEA15E38F389C2DB41873D /* libPods-Carter.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,8 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				F99532850CAE9576A677AFA0 /* libPods-Carter.a */,
-				1CB4A86E7EC8D2BC5B8A5557 /* libPods-Carter-CarterTests.a */,
+				11A4D9F0B4520D7713A8EC7C /* libPods-Carter.a */,
+				1FDF2B621D58BE1B617EF8C5 /* libPods-Carter-CarterTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,12 +121,11 @@
 		30459229478AB99F692D79EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6FE256461E67B1ED47237D6A /* Pods-Carter.debug.xcconfig */,
-				B866245C4CD8BE4337D7FCB6 /* Pods-Carter.release.xcconfig */,
-				B4C3067F9CA4FCFCD76D3316 /* Pods-Carter-CarterTests.debug.xcconfig */,
-				97A6C52875A6ACC5A9323809 /* Pods-Carter-CarterTests.release.xcconfig */,
+				820E80ECD5E4A6BC02A1F7C4 /* Pods-Carter.debug.xcconfig */,
+				909A6CE13E4810964D89D12B /* Pods-Carter.release.xcconfig */,
+				B95423A20513B5406AA67F52 /* Pods-Carter-CarterTests.debug.xcconfig */,
+				02F25542FA3D7291F0C1E509 /* Pods-Carter-CarterTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -173,7 +172,6 @@
 				0489B5A9C65546B3936F945B /* Rubik-Regular.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,12 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "CarterTests" */;
 			buildPhases = (
-				5595C09614AE8CA1165EC8B5 /* [CP] Check Pods Manifest.lock */,
+				1F2FDF0E357074185D138A26 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				B490A7B2EEC97369DE5438AA /* [CP] Embed Pods Frameworks */,
-				3AAB7AA51871107AB073D965 /* [CP] Copy Pods Resources */,
+				E8B07F80459E0CF106389C13 /* [CP] Embed Pods Frameworks */,
+				9A40D8112E5E0F949231625B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -204,14 +202,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Carter" */;
 			buildPhases = (
-				F403C8B2AA08D76113C60EBA /* [CP] Check Pods Manifest.lock */,
+				B720E9ACABB71E31736A53A2 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				AD7AD72DFC39B998200B3105 /* [CP] Embed Pods Frameworks */,
-				CB23E95BAF78406186E0DAA0 /* [CP] Copy Pods Resources */,
+				C28D01448D4D62271B137A42 /* [CP] Embed Pods Frameworks */,
+				CEFB82A017A938BE218BD866 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,24 +296,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		3AAB7AA51871107AB073D965 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5595C09614AE8CA1165EC8B5 /* [CP] Check Pods Manifest.lock */ = {
+		1F2FDF0E357074185D138A26 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -337,58 +318,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AD7AD72DFC39B998200B3105 /* [CP] Embed Pods Frameworks */ = {
+		9A40D8112E5E0F949231625B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B490A7B2EEC97369DE5438AA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB23E95BAF78406186E0DAA0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F403C8B2AA08D76113C60EBA /* [CP] Check Pods Manifest.lock */ = {
+		B720E9ACABB71E31736A53A2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -408,6 +355,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C28D01448D4D62271B137A42 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEFB82A017A938BE218BD866 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Carter/Pods-Carter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8B07F80459E0CF106389C13 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Carter-CarterTests/Pods-Carter-CarterTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -462,7 +460,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4C3067F9CA4FCFCD76D3316 /* Pods-Carter-CarterTests.debug.xcconfig */;
+			baseConfigurationReference = B95423A20513B5406AA67F52 /* Pods-Carter-CarterTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -489,7 +487,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97A6C52875A6ACC5A9323809 /* Pods-Carter-CarterTests.release.xcconfig */;
+			baseConfigurationReference = 02F25542FA3D7291F0C1E509 /* Pods-Carter-CarterTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -513,12 +511,13 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FE256461E67B1ED47237D6A /* Pods-Carter.debug.xcconfig */;
+			baseConfigurationReference = 820E80ECD5E4A6BC02A1F7C4 /* Pods-Carter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = Carter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -539,11 +538,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B866245C4CD8BE4337D7FCB6 /* Pods-Carter.release.xcconfig */;
+			baseConfigurationReference = 909A6CE13E4810964D89D12B /* Pods-Carter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = Carter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

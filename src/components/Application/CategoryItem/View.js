@@ -29,10 +29,12 @@ export const CategoryItem = (props) => {
 
             <View style={Styles.categoryItemContainer}>
                 <ImageBackground
-                    source={bgURI}
+                    source={{uri: 'http://localhost:8000/storage/'+bgURI}}
+                   // source={{ uri: 'http://localhost:8000/storage/'}}
                     style={Styles.backgroundContainer}
                     imageStyle={Styles.backgroundImageStyle}
                     resizeMode={"cover"}>
+
                     <View style={Styles.mainContainer}>
 
                         <Text style={[Styles.secondaryTitle, {color: secondaryColor}]}>{secondaryTitle}</Text>

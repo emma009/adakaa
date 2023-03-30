@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {FlatList, Image, Text, TouchableOpacity, useColorScheme, View} from "react-native";
 
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -35,7 +35,13 @@ const slider_data = [
     }
 ];
 
+
+const data2 = ''
+
 export const Variant1Home = (props) => {
+
+
+    const [shop, setshop] = useState('');
 
     //Theme based styling and colors
     const scheme = useColorScheme();
@@ -92,6 +98,35 @@ export const Variant1Home = (props) => {
 
     }
 
+    useEffect(() => {
+        // Your code here
+        console.log('pppppAAAA');
+        this.goForFetch();
+
+      }, []);
+      
+
+    goForFetch = () => {
+        
+        fetch("http://127.0.0.1:8000/api/getshops")
+            .then(response => response.json())
+            .then(async (responseJson) => {
+                console.log('getting data from fetch', responseJson.data)
+
+                    setshop(
+                        responseJson.data
+                    )
+
+                  //  const data1 = responseJson;
+              
+
+              //  const data = await responseJson.json();
+              //  setshop(data);
+
+            })
+            .catch(error => console.log(error))
+    }
+
     return (
         <View style={[screenStyles.mainWrapper, {paddingTop: Globals.SAFE_AREA_INSET.top}]}>
 
@@ -121,7 +156,7 @@ export const Variant1Home = (props) => {
                                     props.navigation.navigate(Routes.CATEGORY_LIST)
                                 }}>
                                     <View style={screenStyles.sectionHeading}>
-                                        <Text style={screenStyles.sectionHeadingText}>Categories</Text>
+                                        <Text style={screenStyles.sectionHeadingText}>Shops</Text>
 
                                         <SvgIcon type={IconNames.ArrowRight} width={20} height={20}
                                                  color={colors.subHeadingColor}/>
@@ -131,20 +166,20 @@ export const Variant1Home = (props) => {
                                 <FlatList
                                     horizontal
                                     showsHorizontalScrollIndicator={false}
-                                    data={Globals.categoryItems}
+                                    data={shop}
                                     keyExtractor={(item, index) => {
                                         return item.id;
                                     }}
                                     renderItem={({item}) =>
                                         <CategoryItem
                                             navigation={props.navigation}
-                                            secondaryTitle={item.secondaryTitle}
+                                            secondaryTitle={item.name}
                                             secondaryColor={item.secondaryColor}
-                                            primaryTitle={item.primaryTitle}
+                                            primaryTitle={item.name}
                                             primaryColor={item.primaryColor}
                                             iconBgColor={item.iconBgColor}
                                             iconURI={item.iconURI}
-                                            bgURI={item.bgURI}
+                                            bgURI={item.logo}
                                         />
                                     }
                                 />

@@ -30,17 +30,13 @@ export const Variant3LoginScreen = (props) => {
 
             <View style={screenStyles.headerImage}/>
 
-            <AppHeader
-                isTranslucent
-                transparentHeader
-                title={"Welcome"}
-            />
+           
 
             <View style={[screenStyles.bottomContainer]}>
-                <Text style={screenStyles.titleText}>{"Welcome"}</Text>
+                <Text style={screenStyles.titleText}>Adakaa</Text>
 
                 <Text
-                    style={screenStyles.subtitleText}>{"To the world's no. 1 grocery app for Android and IOS. We deliver everything on time."}</Text>
+                    style={screenStyles.subtitleText}>{"Africa's most reliable and fastest multivendors online marketplace. We deliver everything on time."}</Text>
 
                 <AppSocialButton onPress={() => {
                 }}

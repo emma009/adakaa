@@ -67,7 +67,12 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export function RootStack() {
+
+   
+
+
     return (
+        
         <Stack.Navigator
             initialRouteName={Config.SELECTED_VARIANT}
             headerMode={'none'}
@@ -206,6 +211,8 @@ export function RootStack() {
         </Stack.Navigator>
     );
 }
+
+
 
 function bottomTabsVariant1() {
     return (

@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {useColorScheme, View} from "react-native";
+import {useColorScheme, View, Alert, ActivityIndicator} from "react-native";
 import {Button, Image, Text} from 'react-native-elements';
 import AppConfig from '../../../../branding/App_config';
 import AppInput from "../../../components/Application/AppInput/View"
@@ -14,11 +14,24 @@ import {commonDarkStyles} from "../../../../branding/carter/styles/dark/Style";
 import {commonLightStyles} from "../../../../branding/carter/styles/light/Style";
 import IconNames from "../../../../branding/carter/assets/IconNames";
 import {FocusAwareStatusBar} from "../../../components/Application/FocusAwareStatusBar/FocusAwareStatusBar";
+import Spinner from 'react-native-loading-spinner-overlay';
+
+import {
+    ToastAndroid,
+    Platform,
+    AlertIOS,
+  } from 'react-native';
+
 
 
 const assets = AppConfig.assets.default;
 
+
+
 export const Variant1LoginFormScreen = (props) => {
+
+    
+    
 
     //Theme based styling and colors
     const scheme = useColorScheme();
@@ -28,9 +41,115 @@ export const Variant1LoginFormScreen = (props) => {
 
 
     //Internal States
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+   // const [email, setEmail] = useState("")
+   // const [password, setPassword] = useState("")
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loginPending, setLoginPending] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    
+
+
+
+const doUserLogIn = async function () {
+
+    // Note that these values come from state variables that we've declared before
+    const usernameValue = email;
+    const passwordValue = password;
+    console.log('React world',usernameValue, 'password', passwordValue);
+    
+
+
+    
+        if(usernameValue == undefined || usernameValue == ''){
+
+
+            if (Platform.OS === 'android' ) {
+
+                ToastAndroid.show('Email field is required', ToastAndroid.SHORT);
+
+            }else{
+                   //ToastAndroid.show(, ToastAndroid.SHORT);
+                 Alert.alert('Please enter email to continue');
+
+            }
+
+         
+
+        }else if(passwordValue ==  undefined || passwordValue == ''){
+
+            if (Platform.OS === 'android' ) {
+
+                ToastAndroid.show('Password field is required', ToastAndroid.SHORT);
+
+            }else{
+                   //ToastAndroid.show(, ToastAndroid.SHORT);
+                 Alert.alert('Please enter password to continue');
+
+            }
+        }else{
+
+
+            setLoading(true);
+
+           
+
+
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    email: usernameValue,
+                    password: passwordValue
+                 })
+            };
+            const response = await fetch('http://127.0.0.1:8000/api/login2', requestOptions)
+            
+            .catch(error => {
+            console.error('5555555',error);
+            });
+
+            const data = await response.json();
+            console.log('neww', data);
+            
+            if(data.code == '560'){
+
+                Alert.alert(data.message);
+                setLoading(false);
+
+
+            }else{
+
+                Alert.alert(
+                    'Login Successful',
+                    'Welcome to Adakaa',
+                );
+
+                //AsyncStorage.setItem('userSession', JSON.stringify(data));
+
+
+
+                props.navigation.navigate(Routes.HOME_VARIANT1)
+                setLoading(false);
+
+            }
+
+
+
+
+            
+
+
+
+
+
+        }
+      
+
+  
+  };
 
     //References
     let inputRef = useRef();
@@ -51,6 +170,8 @@ export const Variant1LoginFormScreen = (props) => {
                     <Image source={assets.login_form_header1} style={screenStyles.headerImage}/>
                 </View>
 
+             
+
                 <AppHeader
                     isTranslucent
                     navigation={props.navigation}
@@ -62,7 +183,7 @@ export const Variant1LoginFormScreen = (props) => {
                 <View style={[screenStyles.bottomContainer]}>
                     <Text style={screenStyles.titleText}>{"Welcome Back!"}</Text>
 
-                    <Text style={screenStyles.subtitleText}>{"Sign in to your account"}</Text>
+                    <Text style={screenStyles.subtitleText}>{"Sign inx to your account"}</Text>
 
                     <AppInput
                         {...globalStyles.secondaryInputStyle}
@@ -113,17 +234,34 @@ export const Variant1LoginFormScreen = (props) => {
 
                     </View>
 
-                    <AppButton
-                        title={"Login"}
-                        onPress={() => {
-                            props.navigation.dispatch(
-                                CommonActions.reset({
-                                    index: 1,
-                                    routes: [{name: Routes.HOME_VARIANT1}],
-                                }),
-                            );
-                        }}
-                    />
+
+                    <View>
+                        {
+                            loading?(
+                            (
+                                <ActivityIndicator size="large" color="#00ff00" animating={true} style={
+                                                {
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                opacity: 1.0,
+                                                height: 200,
+                                                }} />
+                            )
+                                ):(
+                           
+                                <AppButton
+                                    title={"Login"}
+                                    onPress={() => {
+                                        //props.navigation.navigate(Routes.LOGIN_FORM_SCREEN1);
+
+                                        doUserLogIn();
+                                    }}
+                                />
+                            )
+                        }
+                        </View>
+
+                    
 
                     <View style={screenStyles.accountBottomContainer}>
                         <Text style={screenStyles.accountText}>{"Don't have an account?"}</Text>
@@ -141,4 +279,9 @@ export const Variant1LoginFormScreen = (props) => {
         </KeyboardAwareScrollView>
     )
 
+
+
+    
+
 }
+

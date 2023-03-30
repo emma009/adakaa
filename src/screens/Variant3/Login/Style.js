@@ -26,7 +26,7 @@ export const Styles = function (styles, scheme, colors) {
             fontFamily: fonts.RUBIK_MEDIUM,
             fontSize: Typography.H8,
             marginBottom: hp("0.8"),
-            color: colors.headingColor
+            color: '#ffff'
         },
 
         subtitleText: {
@@ -34,19 +34,20 @@ export const Styles = function (styles, scheme, colors) {
             fontSize: Typography.P4,
             lineHeight: Typography.H8,
             marginBottom: hp("1.6"),
-            color: colors.subHeadingColor
+            color: '#ffff'
         },
 
         accountBottomContainer: {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
+            color: '#ffff'
         },
 
         accountText: {
             fontFamily: fonts.RUBIK_REGULAR,
             fontSize: Typography.P5,
-            color: colors.subHeadingColor
+            color: '#ffff'
 
         },
 
